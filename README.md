@@ -10,6 +10,10 @@ worked solutions) is inside the single file.
 
 Contents
 
+- A Foundations section (vectors, the dq method, work and energy, reading formulas)
+  for readers starting from zero, and 23 "Why this is true" boxes that explain the
+  physical mechanism behind every rule
+
 - Ten interactive explorers (Coulomb's law, field superposition, zero-field point,
   flux, Gauss's law layers, sheets and slab, work and energy signs, dipole,
   capacitor networks, dielectrics with and without the battery)

@@ -77,6 +77,9 @@ li p{margin:.3rem 0}
 .chap .map{color:var(--muted);font-size:.95rem;margin-top:.3rem}
 .key{border-left:4px solid var(--accent);background:var(--accent-soft);padding:12px 16px;margin:1.2rem 0;border-radius:0 8px 8px 0}
 .key .t{font-family:var(--mono);font-size:.74rem;letter-spacing:.08em;text-transform:uppercase;color:var(--accent-ink);margin-bottom:4px}
+.why{border-left:4px solid var(--neg);background:var(--neg-soft);padding:12px 16px;margin:1.2rem 0;border-radius:0 8px 8px 0}
+.why .t{font-family:var(--mono);font-size:.74rem;letter-spacing:.08em;text-transform:uppercase;color:var(--neg);margin-bottom:4px}
+.why p{max-width:72ch}
 .trap{border-left:4px solid var(--warn);background:var(--warn-soft);padding:12px 16px;margin:1.2rem 0;border-radius:0 8px 8px 0}
 .trap .t{font-family:var(--mono);font-size:.74rem;letter-spacing:.08em;text-transform:uppercase;color:var(--warn);margin-bottom:4px}
 .ex{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:16px 18px;margin:1.4rem 0}
@@ -223,6 +226,7 @@ window.MathJax = {
     <summary>Contents</summary>
     <div class="menu">
       <a href="#start">How to use this guide</a>
+      <a href="#found">Foundations (start here if new)</a>
       <a href="#ch5">Ch. 5 · Charge, Coulomb's law, E-field</a>
       <a class="sub" href="#s5-1">Charge and charging</a>
       <a class="sub" href="#s5-3">Coulomb's law and superposition</a>
@@ -262,6 +266,10 @@ window.MathJax = {
 <div class="shell">
 <nav class="side" id="sidenav">
   <a class="ch" href="#start">How to use this guide</a>
+  <a class="ch" href="#found">Foundations</a>
+  <a class="sub" href="#f-1">Vectors</a>
+  <a class="sub" href="#f-2">The dq method</a>
+  <a class="sub" href="#f-3">Work and energy</a>
   <a class="ch" href="#ch5">Ch. 5 · Charge, Coulomb, E-field</a>
   <a class="sub" href="#s5-1">Charge and charging</a>
   <a class="sub" href="#s5-3">Coulomb's law and superposition</a>
@@ -332,10 +340,94 @@ window.MathJax = {
   <li>Every worked example lists its source (lecture unit, homework number, or exam) so you can go back to the original.</li>
   <li>The <a href="#appendix">Appendix</a> reproduces the provided equation sheet with notes on <em>which formula for which situation</em>. Learn the sheet's layout now so you are not hunting during the exam.</li>
   <li>Boxes marked <span class="ans" style="background:var(--warn)">Trap</span> are mistakes that the exam distractors are specifically designed to catch.</li>
+  <li><strong>New to the material?</strong> Read the <a href="#found">Foundations</a> section first. Throughout the guide, blue boxes labeled <em>Why this is true</em> explain the physical mechanism behind each rule, not just the rule; read them, because the exam's conceptual questions test exactly that reasoning.</li>
   <li><strong>Interactive parts.</strong> Worked examples hide their steps until you click <em>Show step</em>, so attempt each step first. Many examples end with a <em>Your answer</em> box that checks your number (relative tolerance about 3%; scientific notation like <code>3.35e5</code> is fine). Green-bordered <em>Explore</em> panels are live models: drag the sliders and watch the numbers and arrows respond.</li>
 </ul>
 <p class="small">Notation used throughout: \(k = 1/(4\pi\varepsilon_0) = 8.99\times10^{9}\ \mathrm{N\,m^2/C^2}\), \(\varepsilon_0 = 8.85\times10^{-12}\ \mathrm{C^2/(N\,m^2)}\), \(e = 1.60\times10^{-19}\ \mathrm{C}\). Numbers in solutions use \(k = 8.99\times10^9\) unless the source used \(9\times10^9\).</p>
 </div>
+
+
+<section class="chap" id="found">
+<div class="num">Start here if the material is new to you</div>
+<h2>Foundations: The Tools Every Chapter Uses</h2>
+<p class="map">Vectors and components · the "chop it up, treat each piece as a point, add" method · work, energy, and conservative forces from Physics 2111 · how to read a formula · numbers on the calculator</p>
+<p>Chapters 5 through 8 use a small toolkit over and over. If any of the items below feels shaky, spend twenty minutes here first. Everything later assumes these are automatic.</p>
+
+<h3 id="f-1">F.1 Vectors: the language of forces and fields</h3>
+<p>A <strong>vector</strong> is a quantity with a size and a direction: a force of 3 N pointing northeast, a field of 200 N/C pointing down. A <strong>scalar</strong> is just a number: 5 kg, 12 volts, −3 joules. Force and electric field are vectors. Energy and potential are scalars. Half the mistakes in this course come from treating one like the other.</p>
+<div class="key"><div class="t">Components: the only reliable way to add vectors</div>
+<p>Pick axes (usually \(x\) to the right, \(y\) up). Any vector \(\vec A\) with magnitude \(A\) and direction angle \(\theta\) measured from the \(+x\) axis splits into two numbers:</p>
+\[ A_x = A\cos\theta, \qquad A_y = A\sin\theta \]
+<p>To add vectors, add the \(x\)-parts together and the \(y\)-parts together, separately. To turn the result back into a magnitude and direction:</p>
+\[ A = \sqrt{A_x^2 + A_y^2}, \qquad \theta = \tan^{-1}\!\frac{A_y}{A_x}\ \text{(then fix the quadrant by looking at the signs)} \]
+<p>Never add magnitudes of vectors that point in different directions. Two 5 N forces can add to anything from 0 N (opposite) to 10 N (same direction).</p></div>
+
+<div class="why"><div class="t">Why components work, and a shortcut you will use constantly</div>
+<p>Components work because motion along \(x\) and motion along \(y\) are independent: a push to the right does nothing to your vertical motion. So the \(x\)-parts of all the forces combine among themselves, and so do the \(y\)-parts.</p>
+<p><strong>The shortcut.</strong> You rarely need the angle itself. If a force acts along a line from point 1 to point 2, and that line is the hypotenuse of a right triangle with horizontal side \(\Delta x\) and vertical side \(\Delta y\), then \(\cos\theta = \Delta x/r\) and \(\sin\theta = \Delta y/r\) where \(r = \sqrt{\Delta x^2+\Delta y^2}\). The triangle's own sides are the cosine and sine. In Lecture 1's Example 1.3, "\(0.45\ \mathrm{N}\times 2/\sqrt5\)" is exactly this: the force magnitude times (vertical side)/(hypotenuse).</p></div>
+
+<div class="key"><div class="t">Unit vectors, especially \(\hat r\)</div>
+<p>A <strong>unit vector</strong> has length 1 and only carries direction. \(\hat i\), \(\hat j\), \(\hat k\) point along \(+x\), \(+y\), \(+z\). Writing \(\vec A = A_x\hat i + A_y\hat j\) is just a way of listing components.</p>
+<p>The one that matters most here is \(\hat r\): the unit vector pointing <em>from</em> a source charge <em>to</em> the point you care about. If the source is at the origin and the point is at \((x, y)\), then \(\hat r = (x\hat i + y\hat j)/\sqrt{x^2+y^2}\). Multiplying any magnitude by \(\hat r\) makes a vector of that size pointing away from the source. That is why Coulomb's law and the field of a point charge are written with \(\hat r\): the formula gives the size, \(\hat r\) supplies the direction, and a negative sign on the charge flips it toward the source.</p></div>
+
+<div class="key"><div class="t">Two products you need to recognize</div>
+<p><strong>Dot product</strong> (a scalar): \(\vec A\cdot\vec B = AB\cos\theta\), with \(\theta\) the angle between them. It measures "how much of \(\vec A\) lies along \(\vec B\)." It is largest when they are parallel, zero when perpendicular, negative when they oppose. It appears in work (\(W = \vec F\cdot\vec d\)) and flux (\(\Phi = \vec E\cdot\vec A\)).</p>
+<p><strong>Cross product</strong> (a vector): \(|\vec A\times\vec B| = AB\sin\theta\), perpendicular to both, direction by the right-hand rule. It is zero when the vectors are parallel. It appears in torque on a dipole (\(\vec\tau = \vec p\times\vec E\)). For this exam you only need its magnitude and the fact that it vanishes at \(0^\circ\) and \(180^\circ\).</p></div>
+
+<h3 id="f-2">F.2 The method behind every integral in this course</h3>
+<p>Every formula for a rod, ring, disk, sphere, or cylinder comes from one idea, which Lecture 2 calls "the whole \(dq\) thing":</p>
+<ol class="steps">
+<li><strong>Chop the object into pieces so small that each piece is effectively a point.</strong> A piece of a rod is a tiny segment of length \(dx\); a piece of a surface is a tiny patch of area \(dA\); a piece of a volume is a tiny cube \(dV\).</li>
+<li><strong>Find the charge on one piece.</strong> Charge density is charge per unit size, so the piece's charge is density times size: \(dq = \lambda\,dx\), or \(\sigma\,dA\), or \(\rho\,dV\). For a uniform object, the density is the total charge divided by the total size (\(\lambda = Q/L\)). The letter \(d\) in front of a quantity means "a tiny amount of it."</li>
+<li><strong>Write what one point charge \(dq\) does</strong> (its force, its field, or its potential) using the point-charge formula with the distance \(r\) from <em>that piece</em> to the point of interest.</li>
+<li><strong>Add up all the pieces.</strong> An integral is exactly that: a sum of infinitely many infinitely small contributions. \(\int\) is an elongated S for "sum." The limits of the integral say which pieces are included (the ones that exist), so they run over the charged object and nothing else.</li>
+</ol>
+<div class="why"><div class="t">Why the pieces have to be points, and why vectors make it harder</div>
+<p>We only have one exact formula for force or field: the one for a point charge. An extended object has no formula of its own until we build one from points. That is the whole reason for the chopping.</p>
+<p>When the thing being added is a <em>vector</em> (force, field), each piece's contribution points in a different direction, so you must add components. Usually the geometry has a symmetry axis: for every piece on one side there is a mirror piece on the other, and their sideways components cancel exactly while their along-the-axis components add. So you multiply each piece's contribution by \(\cos\) or \(\sin\) of its angle to keep only the surviving component, and you write that trig factor in terms of the integration variable using the triangle shortcut from F.1. When the thing being added is a <em>scalar</em> (potential, Chapter 7), there are no directions and no trig factors at all, which is why Chapter 7 keeps saying "no sines and cosines."</p></div>
+
+<h3 id="f-3">F.3 Work, energy, and conservative forces (from Physics 2111)</h3>
+<div class="key"><div class="t">The definitions</div>
+<p><strong>Work</strong> done by a force on an object as it moves: \(W = \int\vec F\cdot d\vec l\), which for a constant force along a straight path is \(W = Fd\cos\theta\). Positive when the force has a component along the motion, negative when it opposes the motion, zero when perpendicular. Work is a scalar, in joules.</p>
+<p><strong>Work-energy theorem:</strong> the <em>total</em> work done by all forces equals the change in kinetic energy: \(W_{\text{net}} = \Delta K = \tfrac12mv_f^2 - \tfrac12mv_i^2\). Positive net work speeds things up.</p>
+<p><strong>Conservative force:</strong> one whose work between two points does not depend on the path taken (gravity, springs, and, as we will see, the Coulomb force). Only for such forces can we define a <strong>potential energy</strong> \(U\) by \(\Delta U = -W_{\text{by that force}}\). Then energy conservation reads \(\Delta K + \Delta U = W_{\text{other}}\), where "other" means non-conservative forces like your hand or friction.</p></div>
+<div class="why"><div class="t">Why \(\Delta U = -W\), with the minus sign, and what it means mechanically</div>
+<p>Lift a ball slowly. Gravity pulls down, the ball moves up, so gravity does negative work. The ball's kinetic energy did not change, yet you spent effort. Where did that effort go? Into the ball-Earth system as stored (potential) energy. So negative work by the conservative force means an increase in stored energy: \(\Delta U = -W_{\text{grav}}\). Let the ball fall: gravity does positive work, \(U\) drops, and the same amount shows up as kinetic energy. The minus sign is just the bookkeeping that keeps the total constant.</p>
+<p>The electric force works the same way with charge in place of mass. Push a positive charge toward another positive charge: the field's force opposes you, does negative work, and the system stores energy. Release it, and the field's positive work turns that stored energy into speed. Chapter 7 is built entirely on this one idea, and its sign questions all reduce to "which way is the force, and which way is the motion?"</p></div>
+<div class="tw"><table>
+<thead><tr><th>Gravity near Earth (2111)</th><th>Electrostatics (2112)</th><th>Comment</th></tr></thead>
+<tbody>
+<tr><td>mass \(m\)</td><td>charge \(q\)</td><td>the "handle" the field pulls on; charge can be negative</td></tr>
+<tr><td>gravitational field \(\vec g\) (9.81 N/kg down)</td><td>electric field \(\vec E\) (N/C)</td><td>force per unit "handle"</td></tr>
+<tr><td>\(\vec F = m\vec g\)</td><td>\(\vec F = q\vec E\)</td><td>negative \(q\) reverses the force</td></tr>
+<tr><td>\(U = mgh\)</td><td>\(U = qV\)</td><td>\(V\) plays the role of \(gh\), "height"</td></tr>
+<tr><td>\(gh\) (J/kg)</td><td>\(V\) (J/C = volt)</td><td>potential is energy per unit handle</td></tr>
+<tr><td>\(g = -\dfrac{d(gh)}{dh}\)</td><td>\(E_x = -\dfrac{dV}{dx}\)</td><td>field points "downhill" in potential</td></tr>
+<tr><td>\(\dfrac{Gm_1m_2}{r^2}\), always attractive</td><td>\(\dfrac{kq_1q_2}{r^2}\), attractive or repulsive</td><td>same inverse-square shape</td></tr>
+</tbody></table></div>
+
+<h3 id="f-4">F.4 How to read a formula so it teaches you something</h3>
+<ul>
+<li><strong>Name every symbol.</strong> In \(E = \lambda/(2\pi\varepsilon_0 r)\): \(E\) is the field magnitude, \(\lambda\) is charge per length on the line, \(\varepsilon_0\) is a constant of nature, \(r\) is the perpendicular distance from the line to the point. If you cannot say what a symbol is, you cannot use the formula.</li>
+<li><strong>Check the units.</strong> \(k\) has units N·m²/C², so \(kq/r^2\) has units N·m²/C² × C / m² = N/C. A result in the wrong units is wrong.</li>
+<li><strong>Check the limits.</strong> Far from any finite object the field must look like \(kQ/r^2\). Inside a hollow shell it must be zero. If your formula disagrees, it is wrong.</li>
+<li><strong>Check the dependence.</strong> Does the answer get bigger or smaller when it should? Doubling the charge should double a force. Halving a distance should quadruple an inverse-square force.</li>
+<li><strong>Check the sign and direction.</strong> Positive charges: field points away. Negative: toward. Like charges: repel. If the sign of the answer surprises you, redo the direction step, not the arithmetic.</li>
+</ul>
+
+<h3 id="f-5">F.5 Numbers, prefixes, and the calculator</h3>
+<div class="tw"><table>
+<thead><tr><th>Prefix</th><th>Factor</th><th>Typical use here</th></tr></thead>
+<tbody>
+<tr><td>p (pico)</td><td>\(10^{-12}\)</td><td>capacitance in pF, charge in pC</td></tr>
+<tr><td>n (nano)</td><td>\(10^{-9}\)</td><td>static charges in nC</td></tr>
+<tr><td>μ (micro)</td><td>\(10^{-6}\)</td><td>charges in μC, capacitance in μF, energy in μJ; also μg \(= 10^{-9}\) kg</td></tr>
+<tr><td>m (milli)</td><td>\(10^{-3}\)</td><td>mm, mg \(= 10^{-6}\) kg</td></tr>
+<tr><td>c (centi)</td><td>\(10^{-2}\)</td><td>cm; convert to m <em>before</em> squaring</td></tr>
+<tr><td>k (kilo)</td><td>\(10^{3}\)</td><td>kN/C, kV</td></tr>
+</tbody></table></div>
+<p>On the TI-30, enter \(8.99\times10^{9}\) as <code>8.99 EE 9</code> (the EE key, not the multiplication key), and \(1.6\times10^{-19}\) as <code>1.6 EE (−) 19</code> using the sign key, not the minus key. Keep three or four significant figures until the final step; exam answer choices are usually separated by factors of 2 or 10 or a sign, so rounding early rarely hurts, but cancellations (like Spring 2015 Q2, where two 0.14 N pieces nearly cancel to 0.007 N) punish early rounding.</p>
+</section>
 
 
 <section class="chap" id="ch5">
@@ -344,6 +436,8 @@ window.MathJax = {
 <p class="map">OpenStax 5.1 Electric charge · 5.2 Conductors, insulators, charging by induction · 5.3 Coulomb's law · 5.4 Electric field · 5.5 Fields of charge distributions · 5.6 Field lines · 5.7 Electric dipoles</p>
 
 <h3 id="s5-1">5.1–5.2 Charge, conductors, insulators, and how objects get charged</h3>
+<p><strong>Start with the atom.</strong> Every atom has a tiny nucleus of protons (charge \(+e\) each) and neutrons (no charge), surrounded by electrons (charge \(-e\) each). A normal atom has equal numbers of protons and electrons, so its total charge is zero: it is <em>neutral</em>. "Neutral" never means "no charge inside"; it means the positives and negatives balance. An object becomes charged when that balance is broken, and in ordinary matter the only way to break it is to move electrons: nuclei are locked into the solid, while the outermost electrons of many atoms are loosely held. So a "positively charged" comb is a comb missing some electrons, and a "negatively charged" balloon has extra ones.</p>
+
 
 <div class="key"><div class="t">The four facts about charge</div>
 <ol>
@@ -353,6 +447,11 @@ window.MathJax = {
 <li><strong>Charge lives on electrons.</strong> In ordinary charging, only electrons move. "Positively charged" means "missing electrons," never "gained protons."</li>
 </ol></div>
 
+<div class="why"><div class="t">Why these facts matter for problem solving</div>
+<p><strong>Two signs</strong> is what makes the electric force different from gravity: it can attract or repel, and a cluster of charges can add up to zero. That is why a neutral object feels no net Coulomb force from far away, and why "induced" charges (below) can appear without anything being created.</p>
+<p><strong>Quantization</strong> is why "how many electrons" is a meaningful question and why charges like \(1.6\times10^{-19}\ \mathrm{C}\) and its multiples keep appearing. In practice \(e\) is so small that a few nanocoulombs already means tens of billions of electrons, so for calculations charge behaves like a continuous fluid.</p>
+<p><strong>Conservation</strong> is the tool that fixes induced charges in Chapter 6: if a neutral conducting shell develops \(-Q\) on its inner surface, the \(+Q\) that used to balance it must be somewhere, and the only place left is the outer surface.</p>
+</div>
 <div class="ex"><div class="t">Counting electrons</div><div class="src">Homework 1, Problem 7 · Homework 1, Problem 8</div>
 <p>How many electrons make \(-6\ \mathrm{nC}\)? \(N = |q|/e = 6\times10^{-9}/1.60\times10^{-19} = 3.75\times10^{10}\) electrons. How many must be <em>removed</em> to leave \(+1.1\ \mu\mathrm{C}\)? \(N = 1.1\times10^{-6}/1.60\times10^{-19} = 6.9\times10^{12}\). Two foam balls each with an excess of \(N = 10^{6}\) protons carry \(Q = Ne = 1.6\times10^{-13}\ \mathrm{C}\); at \(d = 2.3\ \mathrm{m}\) the force between them is \(F = kQ^2/d^2 = 8.99\times10^{9}(1.6\times10^{-13})^2/2.3^2 = 4.3\times10^{-17}\ \mathrm{N}\).</p></div>
 
@@ -363,6 +462,11 @@ window.MathJax = {
 <li>An insulator can hold charge in its volume (a "uniform volume charge density \(\rho\)"), which is why Gauss's law problems with \(\rho\) always involve insulators, never conductors.</li>
 </ul>
 
+<div class="why"><div class="t">Why conductors and insulators behave differently, and why charge sits on the surface</div>
+<p>In a <strong>metal</strong>, each atom gives up one or two of its outer electrons to a shared "sea" that belongs to the whole crystal. Those electrons are not attached to any particular atom, so a push (an electric field) moves them freely through the material. In an <strong>insulator</strong>, every electron is tied up in a bond between specific atoms; a field can stretch the bond a little (the atom polarizes) but cannot pull the electron loose. Charge placed on an insulator stays put; charge placed on a metal flows.</p>
+<p>Now put extra electrons on a metal ball. They all repel each other, and they are free to move, so they run away from each other as far as they can. "As far as possible" on a ball means the surface, spread out evenly. If any excess charge remained inside, its neighbors would still be pushing it outward, so the arrangement is not finished until the interior holds none. The same logic says the field inside the metal must be zero when everything has settled: a nonzero field would still be pushing electrons around. Chapter 6 turns this argument into a proof with Gauss's law; for now, remember the picture of mutually repelling charges fleeing to the edge.</p>
+<p><strong>Why a charged balloon sticks to a neutral wall.</strong> The wall is an insulator, so its electrons cannot leave their atoms, but the balloon's negative charge pushes each atom's electrons slightly away and pulls each nucleus slightly closer. Every atom becomes a tiny dipole (Section 5.7) with its positive end nearer the balloon. Nearer means stronger, so the attraction of the positive ends slightly beats the repulsion of the negative ends, and the net force is attractive. This is the same mechanism as charging by induction, without the ground wire.</p>
+</div>
 <h4>Three ways to charge an object</h4>
 <div class="tw"><table>
 <thead><tr><th>Method</th><th>What happens</th><th>Contact?</th><th>Final sign</th></tr></thead>
@@ -429,6 +533,11 @@ window.MathJax = {
 \[ \vec F_{1,2} = \frac{k\,q_1 q_2}{r_{12}^2}\,\hat r_{12} \]
 <p>Keep the signs of \(q_1\) and \(q_2\) in this formula: if \(q_1q_2 \gt 0\) the force on 2 is along \(\hat r_{12}\) (pushed away from 1); if \(q_1q_2 \lt 0\) it is opposite to \(\hat r_{12}\) (pulled toward 1).</p></div>
 
+<div class="why"><div class="t">Why the force goes as \(1/r^2\), what \(k\) is, and why the two forces are equal</div>
+<p><strong>The inverse square.</strong> Picture a charge sending its "influence" out equally in all directions. At distance \(r\) that influence is spread over a sphere of area \(4\pi r^2\). Double the distance and the same influence covers four times the area, so its intensity at any one spot is one quarter. Anything that spreads out uniformly in three-dimensional space falls off this way: light from a bulb, sound from a speaker, gravity from a planet. The \(4\pi\) in \(k = 1/(4\pi\varepsilon_0)\) is literally the \(4\pi\) of that sphere's area, which is why the sheet gives \(\varepsilon_0\) two ways of appearing in this course.</p>
+<p><strong>The constant.</strong> \(k\) is a measured number that converts "charges and a distance" into newtons in our chosen units; there is no deriving it. Its size, \(9\times10^{9}\), says that a coulomb is an enormous amount of charge: two 1 C charges a meter apart would push with \(9\times10^{9}\ \mathrm{N}\), the weight of a million tonnes. Real static charges are nanocoulombs to microcoulombs. \(\varepsilon_0\) ("permittivity of free space") is the same constant in a different costume; the equation sheet uses whichever makes the formula look cleanest.</p>
+<p><strong>Equal and opposite.</strong> The formula contains \(q_1\) and \(q_2\) symmetrically, so the size of the force is the same no matter which charge you call "the one being pushed." This is Newton's third law, and it holds even when one charge is a million times bigger: the big charge feels exactly the force the small one feels. What differs is the <em>acceleration</em> (\(a = F/m\)), which is why a proton barely moves while an electron flies.</p>
+</div>
 <figure class="fig">
 <svg viewBox="0 0 640 150" role="img" aria-label="Direction of Coulomb force for like and unlike charges">
   <g font-size="12">
@@ -481,6 +590,10 @@ window.MathJax = {
 <li><strong>Components, not "adding magnitudes."</strong> Each force contributes \(F\cos\theta\) to \(x\) and \(F\sin\theta\) to \(y\), with the angle measured for that arrow. Sum the components, then take the magnitude \(\sqrt{F_x^2+F_y^2}\) and angle \(\tan^{-1}(F_y/F_x)\), fixing the quadrant by looking at the signs of \(F_x\) and \(F_y\).</li>
 </ul>
 
+<div class="why"><div class="t">Why superposition holds, and how to turn a picture into components</div>
+<p><strong>Why forces simply add.</strong> The force that charge 3 exerts on charge 2 does not care whether charge 1 exists; each pair interacts on its own. That is an experimental fact (electric forces are "linear"), and it is what makes every many-charge problem tractable: compute each pair force as if the others were absent, then add the vectors. Nothing fancier is ever needed for point charges.</p>
+<p><strong>The procedure, mechanically.</strong> (1) Mark the target charge. (2) For every other charge, draw an arrow on the target: pointing away from that charge if the signs match, toward it if they differ. Draw the arrow <em>on the target</em>, not on the other charge. (3) For each arrow, compute the magnitude \(k|q_1||q_2|/r^2\) with \(r\) the straight-line distance between the two charges (Pythagoras when they are not on a common axis). (4) For each arrow, get the components from the triangle whose hypotenuse joins the two charges: \(F_x = F\,(\Delta x/r)\), \(F_y = F\,(\Delta y/r)\), with the signs of \(\Delta x\) and \(\Delta y\) taken in the direction the arrow points. (5) Add the \(x\)'s, add the \(y\)'s. (6) Only now convert to magnitude and angle if asked. Step 2 is where the physics lives; steps 3 through 6 are arithmetic.</p>
+</div>
 <figure class="fig">
 <svg viewBox="0 0 640 260" role="img" aria-label="Worked example geometry: force on q2 from q1 and q3">
   <g font-size="12">
@@ -591,6 +704,8 @@ window.MathJax = {
 <p><strong>Problem 2 (spring plus two charges):</strong> \(q_1 = +q\) at the origin, \(q_2 = +q\) at distance \(r\) along a line at angle \(\theta\), \(q_3 = -q\) at \(3r\) on the same line; \(q_2\) is tied to \(q_1\) by a spring. Net force on \(q_2\): \(q_1\) pushes it outward with \(k q^2/r^2\); \(q_3\) pulls it outward (toward \(q_3\), which is farther along the line) with \(kq^2/(2r)^2\). Both point along \((\cos\theta,\sin\theta)\): \(\vec F = kq^2\left(\frac1{r^2}+\frac1{4r^2}\right)(\cos\theta\,\hat i+\sin\theta\,\hat j)\), so \(q_2\) moves toward \(q_3\), stretching the spring. At the new equilibrium (stretch \(\Delta r\)) the distances become \(r+\Delta r\) from \(q_1\) and \(2r-\Delta r\) from \(q_3\): \(\vec F_E = kq^2\left(\frac{1}{(r+\Delta r)^2}+\frac{1}{(2r-\Delta r)^2}\right)(\cos\theta\,\hat i+\sin\theta\,\hat j)\), balanced by the spring force \(-k_s\Delta r\,(\cos\theta\,\hat i+\sin\theta\,\hat j)\).</p></div>
 
 <h3 id="s5-4">5.4 The electric field</h3>
+<p><strong>The problem the field solves.</strong> Coulomb's law describes two charges pulling on each other across empty space with nothing in between: "action at a distance." That feels wrong, and it is also inconvenient: to know what happens to a new charge placed somewhere, you would have to recompute every pair force from scratch. The field fixes both. We imagine that a charge alters the space around it, and that any other charge placed at a point responds only to the local condition of that space. The condition is \(\vec E\): the force a one-coulomb positive test charge <em>would</em> feel there, per coulomb. Compute \(\vec E\) once from the source charges; then the force on anything you put at that point is just \(q\vec E\). Later in the course the field turns out to be physically real (it carries energy, and light is a traveling field), but for this exam its job is bookkeeping: separate "what the sources do to space" from "what a particular charge does in response."</p>
+
 
 <div class="key"><div class="t">Definition and the point-charge field</div>
 \[ \vec E \equiv \frac{\vec F}{q_{\text{test}}} \qquad\Longrightarrow\qquad \vec F = q\vec E \]
@@ -599,6 +714,11 @@ window.MathJax = {
 \[ \vec E = \frac{kQ}{r^2}\,\hat r \]
 <p>with \(\hat r\) pointing from the charge to the field point. <strong>Away</strong> from positive charges, <strong>toward</strong> negative charges. Many charges: add the vectors, \(\vec E = \sum_i \dfrac{kQ_i}{r_i^2}\hat r_i\).</p></div>
 
+<div class="why"><div class="t">Why the field points away from positive charges, and what "test charge" means</div>
+<p>The definition \(\vec E = \vec F/q\) uses a <em>positive</em> test charge by convention. A positive charge near a positive source is pushed away, so the field of a positive source points away from it. Near a negative source the positive test charge is pulled in, so that field points toward the source. A negative charge placed in any field feels \(\vec F = q\vec E\) with \(q \lt 0\): the same field, the opposite force. The field's direction is fixed by the sources; only the force flips.</p>
+<p>The test charge is imagined to be tiny so that it does not disturb the sources (a large test charge would push the source charges around and change the very field you are measuring). In problems you never need to worry about this; it is the reason the field is a property of the sources alone.</p>
+<p>Dividing by \(q\) also explains the units: N/C. In Chapter 7 you will meet the same unit as V/m, because a field is also a "potential slope." Both are correct; the equation sheet uses either.</p>
+</div>
 <div class="trap"><div class="t">Trap · what changes when you swap the test charge</div>
 <p>Lecture 2 clicker: a \(6\ \mu\mathrm{C}\) charge feels \(0.18\ \mathrm{N}\) in some field. Replace it with \(9\ \mu\mathrm{C}\): the <em>field</em> is unchanged (it comes from the other charges), so \(F = qE = 9\times(0.18/6) = 0.27\ \mathrm{N}\). A negative test charge feels the force <em>opposite</em> to \(\vec E\). Never let the test charge's sign change the direction you draw for \(\vec E\).</p></div>
 
@@ -691,6 +811,8 @@ window.MathJax = {
 </figure>
 
 <h3 id="s5-5">5.5 Fields of continuous charge distributions</h3>
+<p><strong>The situation.</strong> A charged rod, ring, or plate is not a point, so \(kQ/r^2\) does not apply: which \(r\)? Different parts of the object are at different distances and directions from the point where you want the field. The only tool we have is the point-charge formula, so we apply it to each small piece and add. Section F.2 explains the method in general; here it is applied to fields. The exam asks you to <em>set up</em> these integrals more often than to finish them, so the setup steps matter most.</p>
+
 
 <div class="key"><div class="t">The master recipe (Lecture 2: "it works for all!")</div>
 <p>Chop the object into pieces \(dq\), treat each as a point charge, add the vectors with an integral:</p>
@@ -747,6 +869,10 @@ window.MathJax = {
 <p>This is on the equation sheet as \(E = \dfrac{\lambda}{2\pi\varepsilon_0 r}\). It falls off as \(1/r\), not \(1/r^2\), because there is always more charge "in view" as you move away. Chapter 6 gets the same result in two lines with a cylindrical Gaussian surface. Direction: radially away from a positive line, radially toward a negative one.</p>
 <p><strong>Lecture 2 checkpoint (two parallel lines, both \(+\lambda\)):</strong> at the midpoint A the two fields are equal and opposite, \(E_A = 0\). At B, a distance \(a\) above the top line (and \(a + \)spacing from the bottom line), both fields point up: \(E_B \gt 0\). So \(E_A \lt E_B\).</p></div>
 
+<div class="why"><div class="t">Why a line gives \(1/r\) and a sheet gives a constant</div>
+<p>Move twice as far from a point charge and its field drops to a quarter: same charge, four times the area to spread over. Now move twice as far from an <em>infinite line</em>. Each individual piece of the line got weaker by the inverse square, but the pieces that contribute most are those within roughly a distance \(r\) along the line on either side of the nearest point, and when you double \(r\) that stretch of line doubles too: twice as much charge is "in play." One factor of \(1/r^2\) times one factor of \(r\) leaves \(1/r\). For an <em>infinite sheet</em> the same thing happens in two directions at once: doubling the distance doubles the width and doubling the height of the patch that matters, four times the charge, cancelling the inverse square completely. The field does not depend on distance at all.</p>
+<p>A cleaner way to say it: an infinite line looks exactly the same from any distance except for a scale factor, and an infinite sheet looks exactly the same from any distance, full stop. There is no ruler built into an infinite sheet, so its field has nothing to depend on. This is why the sheet field \(\sigma/2\varepsilon_0\) is such a convenient building block in Chapters 6 and 8.</p>
+</div>
 <div class="ex"><div class="t">Rod along its own axis: field at a point beyond the end</div><div class="src">Homework 2, Problem 5</div>
 <p>A rod of length \(L\) and charge \(q\) lies from \(x = 0\) to \(x = L\); the point \(P\) is at \(x = a + L\) (distance \(a\) beyond the right end).</p>
 <ol class="steps">
@@ -826,6 +952,10 @@ window.MathJax = {
 <li>Lines leave a conductor's surface perpendicular to it (Chapter 7).</li>
 </ul></div>
 
+<div class="why"><div class="t">Why field lines carry the information they do</div>
+<p>A field line is a path that always follows the local direction of \(\vec E\). Since the field at each point has one direction, two lines can never cross (they would need two directions at the crossing point). Lines begin on positive charges because that is where \(\vec E\) points away from, and end on negative charges for the same reason.</p>
+<p>The density rule comes from a choice plus the inverse square. Choose to draw a number of lines proportional to the charge. Around a lone point charge those lines spread radially; at distance \(r\) they pass through a sphere of area \(4\pi r^2\), so the number of lines per unit area falls as \(1/r^2\), exactly like \(E\). Because the field of many charges is the sum of point-charge fields, the same proportionality survives for any picture: crowded lines mean strong field, sparse lines mean weak field. This is also the intuition behind flux in Chapter 6, which is nothing but a count of lines through a surface.</p>
+</div>
 <figure class="fig">
 <div class="row">
 <div class="panel"><svg viewBox="0 0 230 200" class="fmap" role="img">
@@ -988,6 +1118,11 @@ window.MathJax = {
 <p>Two charges \(\pm q\) separated by \(\vec d\): dipole moment \(\vec p = q\vec d\), pointing from \(-q\) <strong>to</strong> \(+q\) (Lecture 2: "points from negative to positive, opposite the electric field inside the dipole"). Units C·m. Water: \(6.2\times10^{-30}\ \mathrm{C\,m}\).</p>
 \[ \vec\tau = \vec p\times\vec E,\quad |\tau| = pE\sin\theta \qquad\qquad U = -\vec p\cdot\vec E = -pE\cos\theta \]
 <p>\(\theta\) is the angle between \(\vec p\) and \(\vec E\). In a <em>uniform</em> field the net force on a dipole is zero (the \(+q\) and \(-q\) forces cancel); only the torque acts, and it rotates \(\vec p\) toward alignment with \(\vec E\).</p></div>
+<div class="why"><div class="t">Why a dipole turns but does not move, and where the energy formula comes from</div>
+<p>In a uniform field the \(+q\) end is pushed along \(\vec E\) with force \(qE\) and the \(-q\) end is pushed against \(\vec E\) with the same \(qE\). Equal and opposite forces cancel, so the dipole as a whole is not accelerated anywhere. But the two forces act at different points, a distance \(d\) apart, so together they form a couple that twists the dipole. The lever arm of each force is \((d/2)\sin\theta\), so the torque is \(2\cdot qE\cdot(d/2)\sin\theta = pE\sin\theta\), largest when the dipole is broadside to the field and zero when it is lined up. The twist always acts to swing \(\vec p\) toward \(\vec E\).</p>
+<p>Rotating the dipole against that torque takes work, and the work is stored as potential energy. Integrating \(\tau\,d\theta = pE\sin\theta\,d\theta\) gives \(U = -pE\cos\theta + \text{constant}\); choosing \(U = 0\) at \(\theta = 90^\circ\) drops the constant. Aligned (\(\theta = 0\)) is the bottom of the energy valley, \(-pE\); anti-aligned is the top, \(+pE\). A dipole released at any other angle swings toward alignment, just as a compass needle swings north.</p>
+<p>In a <em>non-uniform</em> field the two ends sit in fields of different strength, the forces no longer cancel, and the dipole is pulled toward the stronger-field region. That net force is why neutral dust sticks to a charged comb and why the balloon sticks to the wall.</p>
+</div>
 <div class="tw"><table>
 <thead><tr><th>Orientation of \(\vec p\) relative to \(\vec E\)</th><th>\(\theta\)</th><th>Torque</th><th>\(U\)</th><th>Stability</th></tr></thead>
 <tbody>
@@ -1028,6 +1163,8 @@ window.MathJax = {
 <p>Lecture 3 gives the whole motivation in one line: "What's the point of all this flux stuff? To introduce Gauss's law so we can find the E field <em>without doing an integral</em>." Gauss's law is always true; it is <em>useful</em> for finding \(E\) only when symmetry lets you pull \(E\) out of the integral. Exam questions test both halves: the "always true" half with flux-counting questions, the "useful" half with spheres, cylinders, and planes.</p>
 
 <h3 id="s6-1">6.1 Electric flux</h3>
+<p><strong>The picture to keep.</strong> Rain falls straight down. Hold a hoop flat and it catches the most rain; tilt it and it catches less; hold it vertical and none passes through, even though the rain is unchanged. The amount of rain through the hoop depends on the rain rate, the hoop's area, and the angle. Electric flux is the same idea with field lines instead of raindrops: it measures how much field "passes through" a surface. The angle enters through the surface's <em>normal</em> (the direction perpendicular to the surface), because a surface catches the component of the field along its normal and ignores the component sliding along it.</p>
+
 <div class="key"><div class="t">Flux = how much field passes through a surface</div>
 \[ \Phi_E = \int_S \vec E\cdot d\vec A \qquad\text{(uniform field, flat surface: } \Phi_E = EA\cos\theta) \]
 <p>\(d\vec A\) is a vector <em>normal</em> (perpendicular) to the surface element with magnitude \(dA\). \(\theta\) is the angle between \(\vec E\) and the normal, <em>not</em> the angle between \(\vec E\) and the surface. Units: N·m²/C. Picture: flux counts field lines crossing the surface. Tilting the surface reduces the count; a surface parallel to the field catches nothing.</p></div>
@@ -1087,6 +1224,8 @@ window.MathJax = {
 <p>Check with a point charge and a sphere: \(E = kq/R^2\) everywhere on the sphere, \(A = 4\pi R^2\), so \(\Phi = \dfrac{q}{4\pi\varepsilon_0 R^2}\,4\pi R^2 = q/\varepsilon_0\). Doubling the sphere's radius changes \(E\) by \(1/4\) and \(A\) by \(4\): flux unchanged (Lecture 3 clicker).</p></div>
 
 
+
+<p><strong>In plain language.</strong> Charges are the sources and sinks of field lines. Every positive charge sprouts a fixed number of lines (proportional to its charge) and every negative charge swallows a fixed number. Any closed surface, whatever its shape, is crossed by a line once for each line that starts inside it and does not end inside it. Lines from outside charges pass through in one side and out the other and contribute nothing on net. So counting the net lines crossing a closed surface is the same as counting the charge inside. Gauss's law is that counting rule written with an integral, and the \(1/\varepsilon_0\) is just the conversion between "number of lines" and coulombs. The next paragraphs make this exact.</p>
 <h4>Why the flux depends only on the enclosed charge</h4>
 <p>The sphere check above is a special case. The general statement needs three ideas, and each one is worth understanding because exam questions test them separately.</p>
 <ol class="steps">
@@ -1208,6 +1347,11 @@ window.MathJax = {
 <li><strong>Gaussian box around a neutral conducting slab</strong> (Fall 2015 Q21): \(Q_{\text{enc}} = \sigma_L + \sigma_R = 0\) so the flux is zero, smaller than the flux through a box around a charged sheet.</li>
 </ul></div>
 
+<div class="why"><div class="t">Why Gauss's law can find \(E\) only when there is symmetry, and how to think about symmetry</div>
+<p>Gauss's law is one equation. It says the total flux through a surface equals \(Q_{\text{enc}}/\varepsilon_0\). But a surface has infinitely many points, and \(E\) can differ at each one; one equation cannot determine infinitely many unknowns. Unless, that is, you already know that \(E\) is the <em>same</em> at every point of the surface and points straight through it. Then the integral collapses to (one unknown number) × (known area), and one equation is enough.</p>
+<p>How do you know \(E\) is the same everywhere on the surface without computing it? By symmetry, which is a way of reasoning that beginners often find slippery, so here it is spelled out. Suppose a charge distribution is unchanged when you rotate it about some axis. Then the field it produces must also be unchanged by that rotation, because the field is determined entirely by the charges, and after the rotation the charges are exactly where they were. So any two points that the rotation carries into each other must have fields of equal magnitude, related by the same rotation. For a sphere of charge, every point at radius \(r\) can be rotated into every other point at radius \(r\), so \(|E|\) is the same over the whole Gaussian sphere. And if \(\vec E\) had a sideways component at some point, a reflection through the plane containing the axis and that point would flip the sideways component while leaving the charges unchanged, a contradiction; so \(\vec E\) is radial. The same two moves (rotate to compare magnitudes, reflect to kill components) handle the cylinder and the plane.</p>
+<p>A cube of charge has no such symmetry: no rotation maps every point of a surrounding sphere onto every other point, so \(|E|\) varies over the sphere and Gauss's law, though still true, cannot be solved for \(E\). That is the meaning of Lecture 3's "always true, sometimes not useful."</p>
+</div>
 <div class="key"><div class="t">When Gauss's law gives you \(E\)</div>
 <p>Choose a closed surface on which either (1) \(E\) is constant in magnitude and perpendicular to the surface, so \(\oint \vec E\cdot d\vec A = EA\); or (2) \(\vec E\) is parallel to the surface, so the piece contributes zero. Then \(E = Q_{\text{enc}}/(\varepsilon_0 A)\). Only three symmetries allow this:</p>
 <div class="tw"><table>
@@ -1956,6 +2100,13 @@ window.MathJax = {
 </ol>
 <p><strong>Cavity rule.</strong> If a conductor has a cavity containing charge \(q\), a Gaussian surface inside the metal surrounding the cavity must enclose zero: the inner surface acquires exactly \(-q\). Charge conservation then puts \(Q_{\text{conductor}} + q\) on the outer surface. The outside world sees only the total \(Q_{\text{conductor}} + q\), arranged with the conductor's own symmetry.</p></div>
 
+<div class="why"><div class="t">The mechanism behind the four conductor properties</div>
+<p><strong>Why \(E = 0\) inside.</strong> Put a metal object in an electric field. The field pushes the free electrons; they move; wherever they pile up (one side) the metal becomes negative and wherever they leave (the other side) it becomes positive. Those separated charges make their own field, pointing <em>against</em> the applied one inside the metal. Electrons keep moving until the field they create exactly cancels the applied field everywhere inside; then there is nothing left to push them and the motion stops. In a good conductor this takes about \(10^{-19}\) seconds, so for any static problem the interior field is zero. "Electrostatic equilibrium" means this settling has finished.</p>
+<p><strong>Why the charge is on the surface.</strong> With \(E = 0\) throughout the metal, take any Gaussian surface drawn entirely inside the metal: zero field on it means zero flux means zero enclosed charge. Shrink and move that surface anywhere you like inside the material and it always encloses zero. So every bit of excess charge must be on the surfaces, where no interior Gaussian surface can enclose it.</p>
+<p><strong>Why \(E\) is perpendicular at the surface.</strong> A component of \(\vec E\) along the surface would drag the surface charges sideways along the surface. In equilibrium they are not moving, so that component is zero. Only the perpendicular component survives, and Gauss's pillbox gives its size, \(\sigma/\varepsilon_0\).</p>
+<p><strong>Why a cavity's wall takes exactly \(-q\).</strong> A charge \(q\) sitting in a hollow inside the metal makes a field. That field would penetrate the metal, so electrons rush toward the cavity wall (if \(q \gt 0\)) until the wall charge cancels the field of \(q\) everywhere in the metal. Gauss's law quantifies "cancels": a surface inside the metal enclosing the cavity has zero flux, so \(q + q_{\text{wall}} = 0\). The electrons that moved to the wall came from the rest of the metal, which is left with \(+q\), and that \(+q\) sits on the outer surface. Because the outer surface does not "know" where inside the cavity \(q\) is (the metal has screened it), the \(+q\) arranges itself by the outer surface's own symmetry.</p>
+<p><strong>Why sharp points spray charge.</strong> Two connected conductors share one potential (Chapter 7), and a sphere at potential \(V\) holds \(Q = 4\pi\varepsilon_0RV\) with surface density \(\sigma = Q/4\pi R^2 = \varepsilon_0V/R\). Smaller radius means larger \(\sigma\) and, since \(E = \sigma/\varepsilon_0\), larger field. A sharp point is a tiny-radius region, so the field there is intense enough to ionize air. Lightning rods work on this principle.</p>
+</div>
 <figure class="fig split">
 <svg viewBox="0 0 300 270" role="img" aria-label="Point charge inside a neutral conducting shell and induced charges">
   <g font-size="12">
@@ -2456,6 +2607,10 @@ window.MathJax = {
 <div class="key"><div class="t">Sheet bookkeeping</div>
 <p>Each infinite sheet makes a uniform field \(|\sigma|/(2\varepsilon_0)\) on both sides, pointing away from it if \(\sigma \gt 0\) and toward it if \(\sigma \lt 0\), <em>independent of distance</em>. The net field in any region is the sum of these constants. Procedure: for the region of interest, list each sheet, decide "away or toward," convert to \(\pm\), add. A <strong>neutral conducting slab</strong> placed among sheets contributes zero net field outside itself (its two faces carry \(\pm\sigma_{\text{ind}}\), whose fields cancel outside); inside the slab the total field must be zero, which fixes \(\sigma_{\text{ind}}\).</p></div>
 
+<div class="why"><div class="t">Why sheet problems are pure addition, and what the slab really does</div>
+<p>Each infinite sheet makes a field of constant magnitude \(|\sigma|/2\varepsilon_0\) that does not depend on distance (Section 5.5). Superposition says the field at a point is the sum of every sheet's field there. Since each sheet contributes one of only two values (\(\pm|\sigma|/2\varepsilon_0\), depending on which side of that sheet the point is on), the field in any region is a short signed sum. Moving the point around inside a region changes nothing; crossing a sheet flips that sheet's sign and jumps the field by \(|\sigma|/\varepsilon_0\).</p>
+<p>A conducting slab dropped into this field responds as in the mechanism box above: free electrons shift to one face until the field inside the slab is zero. Its two faces therefore carry opposite densities \(\pm\sigma_{\text{ind}}\), and from outside the slab their two contributions cancel (one face's field and the other's are equal and opposite everywhere outside the slab). That is why, for points outside a neutral slab, you can pretend the slab is not there; and why, for points inside it, you can set the total field to zero and solve for \(\sigma_{\text{ind}}\).</p>
+</div>
 <figure class="fig">
 <svg viewBox="0 0 700 250" role="img" aria-label="Superposition of sheet fields, Lecture 4 checkpoint">
   <g font-size="12">
@@ -2575,6 +2730,11 @@ window.MathJax = {
 \[ U = \frac{k\,q_1 q_2}{r} \]
 <p>Keep the signs. Like charges: \(U \gt 0\), and it grows as they get closer. Opposite charges: \(U \lt 0\), and it gets more negative (lower) as they get closer.</p></div>
 
+<div class="why"><div class="t">Why the Coulomb force has a potential energy, and where \(kq_1q_2/r\) comes from</div>
+<p><strong>Path independence.</strong> The force on \(q_2\) from a fixed \(q_1\) points along the line joining them and depends only on the distance \(r\). Move \(q_2\) along any path. On each tiny step, only the part of the step that changes \(r\) does work (the part perpendicular to the radial line is perpendicular to the force). So the total work depends only on the starting and ending distances, not on the route. That is the definition of a conservative force, and it is what allows a potential energy to exist. The same argument works for gravity, which is why the two theories look alike.</p>
+<p><strong>The formula, derived.</strong> Define \(U = 0\) when the charges are infinitely far apart (no interaction). Bring \(q_2\) in from infinity to distance \(d\) along a radial line. The field's force is \(kq_1q_2/r^2\) outward (for like charges); its work is \(W = \int_\infty^{d}\frac{kq_1q_2}{r^2}\,dr\), but the force and the inward motion oppose each other, so with \(dr\) negative this integral is \(kq_1q_2\left[-\frac1r\right]_\infty^{d} = -\frac{kq_1q_2}{d}\). Then \(U = -W = +\frac{kq_1q_2}{d}\). For opposite charges the force is inward, the work is positive, and \(U = -\frac{k|q_1q_2|}{d}\), which the same formula gives automatically once the signs of the charges are kept. So the one expression \(U = kq_1q_2/r\), signs included, covers both cases.</p>
+<p><strong>What the sign means physically.</strong> Positive \(U\) means the system holds energy it can release: let two like charges go and they fly apart, converting \(U\) into kinetic energy. Negative \(U\) means the system is bound: to separate two opposite charges you must supply \(|U|\) of work. "Higher \(U\)" always means "closer to being able to do something on its own."</p>
+</div>
 <figure class="fig">
 <svg viewBox="0 0 440 260" class="plot" role="img">
 <line x1="50" y1="170.5" x2="422" y2="170.5" class="grid"/>
@@ -2683,6 +2843,10 @@ window.MathJax = {
 \[ V = \frac{kq}{r}, \qquad V_{\text{total}} = \sum_i\frac{kq_i}{r_i}\quad\text{(scalar sum: signs, no components)} \]
 <p>Work you must do to bring a charge \(q\) from infinity (where \(V=0\)) to a point at potential \(V\), at constant speed: \(W_{\text{you}} = qV\). Work the field does: \(-qV\).</p></div>
 
+<div class="why"><div class="t">Why divide by the charge again, and what a volt is</div>
+<p>Chapter 5 divided force by charge to get a field that describes the space. Chapter 7 divides potential energy by charge for the same reason: \(U = qV\) means "\(V\) is what the space offers; \(q\) is how much of it a particular charge collects." A point at 100 V will give any charge \(q\) placed there \(100q\) joules of potential energy. The volt is one joule per coulomb, an energy per unit charge, exactly as \(gh\) in \(mgh\) is an energy per unit mass. Think of \(V\) as electrical height. Positive charges "fall" toward lower \(V\); negative charges "fall" toward higher \(V\) (because \(U = qV\) with \(q \lt 0\) is lowest where \(V\) is highest).</p>
+<p>Two practical consequences. First, \(V\) is a scalar, so the potential of many charges is a plain sum with signs and no components; this is what makes potential so much easier than field. Second, because only <em>differences</em> in \(U\) ever matter physically (only \(\Delta U\) appears in energy conservation), only differences in \(V\) matter. You may set \(V = 0\) wherever is convenient; "at infinity" is convenient for finite objects because \(kq/r\) goes to zero there on its own.</p>
+</div>
 <div class="ex"><div class="t">Potential from two point charges</div><div class="src">Lecture 6, Examples 6.2 and 6.3 · Fall 2018 Q3–4</div>
 <p>Along one line, left to right: point A, then \(+5\ \mathrm{nC}\) 10 cm away, then \(-5\ \mathrm{nC}\) another 10 cm on, then point B 10 cm beyond that. So A is 10 cm from \(+Q\) and 20 cm from \(-Q\); B is 20 cm from \(+Q\) and 10 cm from \(-Q\). Take \(V = 0\) at infinity (the standard choice).</p>
 <ol class="steps">
@@ -2706,6 +2870,11 @@ window.MathJax = {
 \[ V_b - V_a = -\int_a^b \vec E\cdot d\vec l \qquad\qquad \vec E = -\nabla V,\quad E_x = -\frac{\partial V}{\partial x},\ E_y = -\frac{\partial V}{\partial y},\ E_z = -\frac{\partial V}{\partial z} \]
 <p>\(\vec E\) points from high \(V\) to low \(V\) ("downhill"), and its magnitude is the steepness of \(V\). On a graph of \(V(x)\): \(E_x\) is minus the slope. Steepest slope = strongest field; positive slope = field pointing in \(-x\); flat = zero field.</p></div>
 
+<div class="why"><div class="t">Why there is a minus sign in \(\Delta V = -\int E\,dl\) and in \(E = -dV/dx\)</div>
+<p>Start from work. Move a charge \(q\) a small step \(d\vec l\); the field's force \(q\vec E\) does work \(q\vec E\cdot d\vec l\), and potential energy changes by the negative of that: \(dU = -q\vec E\cdot d\vec l\). Divide by \(q\): \(dV = -\vec E\cdot d\vec l\). Add up the steps: \(\Delta V = -\int\vec E\cdot d\vec l\). The minus sign is inherited from \(\Delta U = -W\): moving <em>with</em> the field lowers the potential, the way moving with gravity lowers your height.</p>
+<p>Read the same equation backward for a step along \(x\): \(dV = -E_x\,dx\), so \(E_x = -dV/dx\). The field is minus the slope of the potential. On a graph of \(V\) versus \(x\), where the curve goes downhill to the right (negative slope) the field points right; where it climbs to the right the field points left; where it is flat the field is zero. A steep curve means a strong field. This is the electrical version of "a ball on a hill rolls the way the ground slopes, faster where it is steeper."</p>
+<p>It also explains why a region of zero field has constant potential (flat ground is level, but level at whatever height it happens to be, not necessarily sea level), and why \(V\) is constant throughout a conductor.</p>
+</div>
 <figure class="fig">
 <svg viewBox="0 0 440 260" class="plot" role="img">
 <line x1="80.2" y1="22" x2="80.2" y2="220" class="ax"/>
@@ -2753,6 +2922,10 @@ window.MathJax = {
 </ol>
 <p>Lecture 6: "Good news: they're going to be really, really simple. Sometimes so simple we can do them conceptually."</p></div>
 
+<div class="why"><div class="t">Why "integrate inward from the reference" works, and why infinity fails for a line</div>
+<p>Once Gauss's law has given \(E(r)\) in every region, the potential at any radius is the running total of \(-E\,dr\) starting from wherever \(V\) is defined to be zero. Starting at infinity and walking inward, \(V\) rises while you walk against an outward field (positive enclosed charge) and falls while you walk with an inward one. Crossing a conductor adds nothing, because \(E = 0\) there, so \(V\) stays flat across the metal. Crossing the boundary of an insulator, \(E\) changes from one formula to another, so you switch integrands but keep adding. The result is continuous everywhere (there are no jumps in \(V\), because no finite field over a zero-thickness step can change it), which is a useful check on your algebra.</p>
+<p>For an infinite line or cylinder, \(E \propto 1/r\), and \(\int^\infty dr/r\) grows without bound: an infinite line has infinite total charge, and infinitely far away is not "far from all of it." So there is no natural zero at infinity. The formula \(V = -2k\lambda\ln(r/r_0)\) needs a chosen reference radius \(r_0\), and problems always supply one or ask only for a difference. This is why Fall 2018 Q19 rejects the \(\int_\infty^r\) answer choice.</p>
+</div>
 <div class="tw"><table>
 <thead><tr><th>Object (\(V=0\) at ∞ unless noted)</th><th>Outside</th><th>Inside</th><th>Where it appears</th></tr></thead>
 <tbody>
@@ -2880,6 +3053,11 @@ window.MathJax = {
 </ul></div>
 
 
+<div class="why"><div class="t">Why equipotentials are perpendicular to the field, and why a conductor is one big equipotential</div>
+<p>Move a charge a small step along an equipotential: \(\Delta V = 0\), so the field did no work, so the force had no component along the step. That is true for every direction lying within the equipotential surface, so \(\vec E\) has no component in the surface: it is perpendicular to it. The converse is just as useful: field lines cross equipotentials at right angles, so you can sketch one family from the other.</p>
+<p>Inside a conductor in equilibrium \(E = 0\), so \(\Delta V = 0\) between any two interior points; at the surface \(\vec E\) is perpendicular, so moving along the surface also costs nothing. The entire conductor, inside and surface, sits at one potential. This is why "two spheres connected by a wire" means "two spheres at the same \(V\)," and why charge flows through the wire until that is true: charge moves from high \(V\) to low \(V\) (for positive charge) as long as a difference remains, exactly as water flows until the levels equalize.</p>
+<p>Equal-step equipotentials are close together where \(V\) changes fast, that is, where \(E\) is large. That single fact answers every "where is the field strongest" map question and the "count the lines crossed" potential-difference questions.</p>
+</div>
 <figure class="fig split">
 <svg viewBox="0 0 360 330" class="v3" role="img">
 <defs>
@@ -4185,6 +4363,11 @@ window.MathJax = {
 <p>Units: farad, \(1\ \mathrm{F} = 1\ \mathrm{C/V}\). Practical values are pF to μF. \(Q\) is the magnitude of the charge on <em>one</em> plate (the plates hold \(+Q\) and \(-Q\)); \(\Delta V\) is the potential difference between them. Lecture 7's key points: \(+Q\) and \(-Q\) always have the same magnitude; charge does not jump across the gap, it is moved around the outside circuit; \(C\) is a positive number that depends only on geometry, "just like \(k\) for a spring."</p>
 <p><strong>Method for any geometry:</strong> put \(\pm Q\) on the conductors, find \(E\) between them with Gauss's law, integrate to get \(\Delta V\), and take the ratio \(Q/\Delta V\); the \(Q\) cancels.</p></div>
 
+<div class="why"><div class="t">What physically happens when a capacitor charges, and why \(Q\) is proportional to \(V\)</div>
+<p>Connect two metal plates to a battery. The battery is a pump for charge: it pulls electrons off the plate attached to its positive terminal and pushes them onto the plate attached to its negative terminal, through the wires, never across the gap. As the plates acquire \(+Q\) and \(-Q\) a field grows in the gap, and with it a potential difference between the plates. The battery keeps pumping until that potential difference equals its own; then there is nothing driving further flow and charging stops. The plates hold equal and opposite charges because every electron that landed on one plate left from the other.</p>
+<p>Now double the charge. Every field line in the gap comes from the plate charge, so the field doubles; the potential difference is the field times the gap, so it doubles too. \(Q\) and \(\Delta V\) rise together in fixed proportion, and the constant of proportionality, \(C = Q/\Delta V\), depends only on how the conductors are shaped and arranged. A big \(C\) means the plates can take a lot of charge before the voltage climbs: closer plates (smaller \(d\), so smaller \(\Delta V = Ed\) for the same \(E\)) or bigger plates (larger \(A\), so the same \(Q\) makes a smaller \(\sigma\) and a weaker field). The formula \(\varepsilon_0A/d\) is those two facts in one line.</p>
+<p>A farad is a coulomb per volt. One farad is enormous (a coulomb is enormous); practical capacitors are picofarads to microfarads, which is why the exam's numbers carry those prefixes.</p>
+</div>
 <figure class="fig split">
 <svg viewBox="0 0 320 210" role="img" aria-label="Parallel plate capacitor with field and charges">
   <g font-size="12">
@@ -4311,6 +4494,11 @@ window.MathJax = {
 </tbody></table></div>
 <p>Compare resistors (Chapter 10, not on this exam): capacitor rules are the <em>reverse</em> of resistor rules.</p></div>
 
+<div class="why"><div class="t">Why series capacitors share charge and parallel capacitors share voltage</div>
+<p><strong>Series.</strong> Two capacitors in a chain: battery, then \(C_1\), then \(C_2\), then back to the battery. Look at the conductor in the middle: the right plate of \(C_1\), the wire, and the left plate of \(C_2\). It is connected to nothing else. It started neutral, and charge can neither enter nor leave it (there is no path), so it stays neutral forever: if \(-Q\) collects on the right plate of \(C_1\), exactly \(+Q\) must appear on the left plate of \(C_2\). Every capacitor in the chain therefore carries the same \(Q\). Their voltages add along the chain to the battery's, so \(V = Q/C_1 + Q/C_2\), which is where \(1/C_{\text{eq}} = 1/C_1 + 1/C_2\) comes from. Adding capacitors in series <em>lowers</em> the capacitance: the battery must push the same charge across more gaps in a row.</p>
+<p><strong>Parallel.</strong> Two capacitors whose left plates are joined by a wire and whose right plates are joined by another wire. A wire in equilibrium is an equipotential, so both left plates are at one potential and both right plates at another: the two capacitors see the same \(\Delta V\). Each takes the charge its own capacitance allows, \(Q_i = C_i\Delta V\), and the battery supplies the sum. So \(C_{\text{eq}} = C_1 + C_2\): parallel plates act like one bigger plate.</p>
+<p>These two arguments are all you need to classify any pair in a circuit: "same isolated island between them" means series; "both ends on the same two wires" means parallel; anything else is neither.</p>
+</div>
 <div class="key"><div class="t">Circuit algorithm</div>
 <ol>
 <li><strong>Reduce.</strong> Find a pair that is purely series or purely parallel, replace it with one equivalent, redraw. Repeat until one \(C_{\text{eq}}\) faces the battery.</li>
@@ -4444,6 +4632,10 @@ window.MathJax = {
 \[ u = \frac{U}{\text{volume}} = \frac{1}{2}\varepsilon_0E^2 \]
 <p>Pick the form that uses what is held fixed: \(Q^2/2C\) when the charge is fixed (battery removed), \(\tfrac12CV^2\) when the voltage is fixed (battery connected).</p></div>
 
+<div class="why"><div class="t">Why the stored energy is half of \(QV\), and why it lives in the field</div>
+<p>Charging a capacitor means carrying charge from one plate to the other against the potential difference that already exists. The first bit of charge moves when the plates are uncharged and \(\Delta V = 0\): it costs nothing. The last bit moves against the full voltage. On average the charge was moved through half the final voltage, so the total work is \(\tfrac12 Q\,\Delta V\), not \(Q\,\Delta V\). The integral in the key box, \(\int_0^Q (q/C)\,dq = Q^2/2C\), is that averaging done exactly. The battery, meanwhile, moved the same charge through its full voltage and supplied \(Q\,\Delta V\); the other half is dissipated in the wires as heat (or radiated). That is a famous puzzle and it is true; the capacitor only ever keeps half.</p>
+<p>Where is the stored energy? Not in the charges themselves, which are the same electrons as before, but in the field between the plates. Divide \(U = \tfrac12 CV^2\) by the volume of the gap and everything about the geometry cancels except \(E\): \(u = \tfrac12\varepsilon_0E^2\) joules per cubic meter. This formula holds for the field of anything, not just capacitors, and it is the first hint that the field is a physical thing (Chapter 16 will show it carrying energy across empty space as light).</p>
+</div>
 <div class="ex"><div class="t">Energy and energy density</div><div class="src">Lecture 7, Example 7.3 · Homework 7, Problem 2</div>
 <p>\(C = 8\ \mathrm{pF}\), \(\Delta V = 120\ \mathrm{V}\), \(d = 1\ \mathrm{mm}\). \(U = \tfrac12(8\times10^{-12})(120)^2 = 5.8\times10^{-8}\ \mathrm{J}\). Check via \(Q = CV = 9.6\times10^{-10}\ \mathrm{C}\): \(Q^2/2C = 5.8\times10^{-8}\ \mathrm{J}\). Field: \(E = V/d = 1.2\times10^{5}\ \mathrm{V/m}\); \(u = \tfrac12\varepsilon_0E^2 = 0.5(8.85\times10^{-12})(1.2\times10^5)^2 = 0.064\ \mathrm{J/m^3}\). Check: \(A = Cd/\varepsilon_0 = 9.0\times10^{-4}\ \mathrm{m^2}\), volume \(Ad = 9.0\times10^{-7}\ \mathrm{m^3}\), \(U/(Ad) = 0.064\ \mathrm{J/m^3}\).</p>
 <div class="check" data-answer="5.76e-08" data-tol="0.03"><label for="check-in-31">Your answer, U stored (Example 7.3):</label><input type="text" id="check-in-31" inputmode="decimal" placeholder="e.g. 0.47 or 3.35e5" autocomplete="off"><span class="small">J</span><button type="button" id="check-btn-31">Check</button><span class="fb" aria-live="polite"></span></div>
@@ -4477,6 +4669,12 @@ window.MathJax = {
 \[ E = \frac{E_0}{\kappa}, \qquad C = \kappa C_0, \qquad \varepsilon_0\oint\kappa\vec E\cdot d\vec A = q_{\text{free}} \]
 <p><strong>Molecular model (8.5):</strong> the field polarizes the molecules (aligns permanent dipoles or induces dipoles). The net effect is an induced surface charge \(-\sigma_i\) on the dielectric face next to the \(+\) plate and \(+\sigma_i\) next to the \(-\) plate, partially cancelling the plate charge. The field inside is \(E = (\sigma - \sigma_i)/\varepsilon_0 = \sigma/(\kappa\varepsilon_0)\), so \(\sigma_i = \sigma(1 - 1/\kappa)\). A conductor is the \(\kappa \to \infty\) limit (complete cancellation, \(E = 0\)).</p></div>
 
+<div class="why"><div class="t">The mechanism of a dielectric, and why the battery decides what happens</div>
+<p>A dielectric is an insulator: its electrons cannot flow, but every molecule can stretch. In the gap field, each molecule's electrons shift slightly toward the positive plate and its nuclei toward the negative plate (or, for molecules like water that are dipoles already, the dipoles rotate to line up). Inside the material these tiny shifts cancel neighbor against neighbor, but at the two faces they do not: the face next to the \(+\) plate ends up with a thin layer of negative charge, the face next to the \(-\) plate with positive charge. These <em>bound</em> charges make a field opposing the plates' field, so the total field inside the dielectric is smaller, \(E = E_0/\kappa\), where \(\kappa\) measures how easily the material polarizes. A metal is the extreme case, \(\kappa\to\infty\): its electrons move all the way and cancel the field completely.</p>
+<p>A weaker field for the same plate charge means a smaller \(\Delta V = Ed\), and therefore a larger \(C = Q/\Delta V\). That is all "\(C = \kappa C_0\)" says.</p>
+<p><strong>Why the battery matters.</strong> Inserting the slab lowers the voltage for the plates' current charge. If the battery is <em>disconnected</em>, the charge has nowhere to go: \(Q\) is fixed, \(\Delta V\) drops, and the stored energy \(Q^2/2C\) drops (the slab is actually pulled into the gap; the missing energy went into that pull). If the battery is <em>connected</em>, it notices the voltage sag and pumps in more charge until \(\Delta V\) is back to its own value: \(Q\) rises to \(\kappa Q_0\), and the energy \(\tfrac12 CV^2\) rises, supplied by the battery. Same slab, opposite answers to "did the energy go up?", decided entirely by whether the charge or the voltage was held fixed.</p>
+<p>An uncharged <em>conducting</em> slab works the same way but more so: its faces take on \(\mp Q\) fully, the field inside it is zero, and the effective gap shrinks by its thickness, \(C = \varepsilon_0A/(d - t)\).</p>
+</div>
 <figure class="fig">
 <div class="row">
 <div class="panel">
