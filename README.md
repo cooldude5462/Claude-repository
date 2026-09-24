@@ -15,7 +15,9 @@ Contents
   capacitor networks, dielectrics with and without the battery)
 - Worked examples with step-by-step reveal and self-check answer boxes
 - Chapter-by-chapter explanations built from Lecture Units 1–7, with diagrams
-  including numerically computed field-line and equipotential maps
+  including numerically computed field-line and equipotential maps, 3D cutaway
+  renderings of Gaussian surfaces and layered spheres and cylinders, derivation
+  cards for every Gauss's-law case, and a 3D potential landscape
 - Worked examples from the lectures and Homework 1–7
 - All four past Hour Exam 1 papers (Spring 2014, Spring 2015, Fall 2015, Fall 2018)
   with click-to-reveal solutions, 99 questions in total
