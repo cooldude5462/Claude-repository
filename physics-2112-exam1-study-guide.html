@@ -599,33 +599,38 @@ window.MathJax = {
 <p><strong>The procedure, mechanically.</strong> (1) Mark the target charge. (2) For every other charge, draw an arrow on the target: pointing away from that charge if the signs match, toward it if they differ. Draw the arrow <em>on the target</em>, not on the other charge. (3) For each arrow, compute the magnitude \(k|q_1||q_2|/r^2\) with \(r\) the straight-line distance between the two charges (Pythagoras when they are not on a common axis). (4) For each arrow, get the components from the triangle whose hypotenuse joins the two charges: \(F_x = F\,(\Delta x/r)\), \(F_y = F\,(\Delta y/r)\), with the signs of \(\Delta x\) and \(\Delta y\) taken in the direction the arrow points. (5) Add the \(x\)'s, add the \(y\)'s. (6) Only now convert to magnitude and angle if asked. Step 2 is where the physics lives; steps 3 through 6 are arithmetic.</p>
 </div>
 <figure class="fig">
-<svg viewBox="0 0 690 260" class="wide" role="img" aria-label="Worked example geometry: force on q2 from q1 and q3">
+<svg viewBox="0 0 720 330" class="wide" role="img" aria-label="Worked example geometry: force on q2 from q1 and q3">
   <g font-size="12">
-  <!-- grid: q2 at (0,0)->(300,70); q3 at (1,-2)->(360,190); q1 at (-3,-2)->(120,190); scale 60px/m -->
-  <line x1="60" y1="70" x2="440" y2="70" class="mut thin" stroke-dasharray="3 5"/>
-  <line x1="300" y1="30" x2="300" y2="230" class="mut thin" stroke-dasharray="3 5"/>
-  <line x1="300" y1="70" x2="360" y2="190" class="mut thin"/>
-  <line x1="300" y1="70" x2="120" y2="190" class="mut thin"/>
-  <text x="340" y="120" class="txs">√5 m</text><text x="185" y="120" class="txs">√13 m</text>
-  <circle cx="300" cy="70" r="15" class="pos"/><text x="288" y="75" fill="#fff" font-weight="700" font-size="11">q₂</text>
-  <text x="312" y="58" class="tx">+10 μC (target)</text>
-  <circle cx="360" cy="190" r="15" class="pos"/><text x="348" y="195" fill="#fff" font-weight="700" font-size="11">q₃</text>
-  <text x="380" y="195" class="tx">+25 μC at (1, −2) m</text>
-  <circle cx="120" cy="190" r="15" class="neg"/><text x="108" y="195" fill="#fff" font-weight="700" font-size="11">q₁</text>
-  <text x="20" y="225" class="tx">−30 μC at (−3, −2) m</text>
-  <!-- forces on q2: F32 repulsive, direction (-1,2)/sqrt5 (up-left). draw 90px long -->
-  <path d="M300 70 L259.8 -10.5" stroke="var(--pos)" stroke-width="2.6" fill="none"/>
-  <path d="M300 70 L262 5.5" stroke="var(--pos)" stroke-width="2.6" fill="none" marker-end="url(#apos)"/>
-  <text x="222" y="22" class="pos" font-weight="600">F₃,₂ = 0.45 N (away from q₃)</text>
-  <!-- F12 attractive toward q1: direction (-3,-2)/sqrt13 -> (-0.832,-0.555) screen: x -, y + (down). length 60 -->
-  <path d="M300 70 L250 103" stroke="var(--neg)" stroke-width="2.6" fill="none" marker-end="url(#aneg)"/>
-  <text x="150" y="98" class="neg" font-weight="600">F₁,₂ = 0.21 N (toward q₁)</text>
-  <!-- axes label -->
-  <text x="430" y="66" class="txs">x</text><text x="304" y="40" class="txs">y</text>
-  <!-- resultant -->
-  <path d="M300 70 L225 12" stroke="var(--accent)" stroke-width="3" fill="none" marker-end="url(#aacc)" stroke-dasharray="7 4"/>
-  <text x="470" y="30" class="tx" font-weight="600">Net: Fx = −0.37 N, Fy = +0.29 N</text>
-  <text x="470" y="48" class="tx">|F| = 0.47 N at 142° from +x</text>
+  <!-- grid: q2 at (0,0)->(330,150); q3 at (1,-2)->(390,270); q1 at (-3,-2)->(150,270); scale 60 px/m. forces: 200 px/N -->
+  <line x1="90" y1="150" x2="470" y2="150" class="mut thin" stroke-dasharray="3 5"/>
+  <line x1="330" y1="108" x2="330" y2="310" class="mut thin" stroke-dasharray="3 5"/>
+  <text x="474" y="146" class="txs">x</text><text x="334" y="104" class="txs">y</text>
+  <line x1="330" y1="150" x2="390" y2="270" class="mut thin"/>
+  <line x1="330" y1="150" x2="150" y2="270" class="mut thin"/>
+  <text x="368" y="206" class="txs">√5 m</text><text x="196" y="206" class="txs">√13 m</text>
+  <!-- charges -->
+  <circle cx="330" cy="150" r="15" class="pos"/><text x="318" y="155" fill="#fff" font-weight="700" font-size="11">q₂</text>
+  <text x="348" y="140" class="tx">+10 μC (target)</text>
+  <circle cx="390" cy="270" r="15" class="pos"/><text x="378" y="275" fill="#fff" font-weight="700" font-size="11">q₃</text>
+  <text x="410" y="275" class="tx">+25 μC at (1, −2) m</text>
+  <circle cx="150" cy="270" r="15" class="neg"/><text x="138" y="275" fill="#fff" font-weight="700" font-size="11">q₁</text>
+  <text x="60" y="305" class="tx">−30 μC at (−3, −2) m</text>
+  <!-- F32: repulsive, along (-1,+2)/sqrt5 = up-left on screen, 0.45 N -> 90 px -->
+  <path d="M330 150 L289.8 69.5" stroke="var(--pos)" stroke-width="2.6" fill="none" marker-end="url(#apos)"/>
+  <text x="296" y="66" class="pos" font-weight="700">F₃,₂</text>
+  <!-- F12: attractive, toward q1 along (-3,-2)/sqrt13 = down-left on screen, 0.21 N -> 42 px -->
+  <path d="M330 150 L295 173.3" stroke="var(--neg)" stroke-width="2.6" fill="none" marker-end="url(#aneg)"/>
+  <text x="250" y="180" class="neg" font-weight="700" text-anchor="end">F₁,₂</text>
+  <!-- resultant (-0.37, +0.29) N -> 0.47 N -> 94 px -->
+  <path d="M330 150 L256 92" stroke="var(--accent)" stroke-width="3" fill="none" marker-end="url(#aacc)" stroke-dasharray="7 4"/>
+  <text x="248" y="90" class="tx" font-weight="700" fill="var(--accent)" text-anchor="end">F_net</text>
+  <!-- legend -->
+  <rect x="470" y="22" width="238" height="96" rx="8" fill="var(--surface)" stroke="var(--line)"/>
+  <line x1="482" y1="40" x2="506" y2="40" stroke="var(--pos)" stroke-width="2.6"/><text x="514" y="44" class="txs">F₃,₂ = 0.45 N, away from q₃ (repel)</text>
+  <line x1="482" y1="62" x2="506" y2="62" stroke="var(--neg)" stroke-width="2.6"/><text x="514" y="66" class="txs">F₁,₂ = 0.21 N, toward q₁ (attract)</text>
+  <line x1="482" y1="84" x2="506" y2="84" stroke="var(--accent)" stroke-width="3" stroke-dasharray="7 4"/><text x="514" y="88" class="txs" font-weight="600">F_net: Fx = −0.37 N, Fy = +0.29 N</text>
+  <text x="514" y="108" class="txs">|F_net| = 0.47 N at 142° from +x</text>
+  <text x="470" y="132" class="txs" fill="var(--muted)">arrows drawn to scale (same N-per-length)</text>
   </g>
 </svg>
 <figcaption>Lecture 1, Example 1.3 (force on \(q_2\) in 2D), redrawn with the geometry that reproduces the lecture's numbers. Distances come from the Pythagorean theorem, directions from the sign rule, components from the triangle's own side ratios (no need to compute the angle itself).</figcaption>
@@ -850,11 +855,11 @@ window.MathJax = {
   <rect x="250" y="194" width="14" height="12" fill="var(--pos)" stroke="var(--ink)"/>
   <text x="238" y="240" class="tx">dq = λ dx at position x</text>
   <line x1="257" y1="200" x2="80" y2="80" class="ink thin" stroke-dasharray="5 3"/>
-  <text x="150" y="150" class="tx">r = √(x² + h²)</text>
+  <text x="196" y="128" class="tx">r = √(x² + h²)</text>
   <!-- dE at P: direction from dq to P: (-177,-120) normalized -> up-left -->
   <path d="M80 80 L28 44.7" stroke="var(--accent)" stroke-width="2.6" fill="none" marker-end="url(#aacc)"/>
   <text x="0" y="40" class="tx" font-weight="600">dE</text>
-  <path d="M80 80 L36 80" stroke="var(--muted)" stroke-width="1.6" fill="none" marker-end="url(#amut)"/><text x="38" y="96" class="txs">dEₓ = −dE sinθ</text>
+  <path d="M80 80 L36 80" stroke="var(--muted)" stroke-width="1.6" fill="none" marker-end="url(#amut)"/><text x="76" y="96" class="txs" text-anchor="end">dEₓ = −dE sinθ</text>
   <path d="M80 80 L80 46" stroke="var(--muted)" stroke-width="1.6" fill="none" marker-end="url(#amut)"/><text x="86" y="50" class="txs">dE_y = dE cosθ</text>
   <path d="M80 110 A30 30 0 0 0 100 96" fill="none" stroke="var(--ink)" stroke-width="1"/><text x="96" y="122" class="txs">θ</text>
   <text x="430" y="60" class="tx">sinθ = x / √(x²+h²)</text>
@@ -892,7 +897,7 @@ window.MathJax = {
 <div class="trap"><div class="t">Trap · the multiple-choice integral</div><p>Distractors in Homework 2 P5(c) and on exams change one thing at a time: wrong limits (\(0\) to \(a+L\) instead of \(0\) to \(L\)), wrong power (\(1/r\) instead of \(1/r^2\)), a constant distance (\(a+L/2\), which would only be right if the whole rod were at its midpoint), or \(dq\) integrated "from 0 to \(q\)" with an \(x\)-dependent integrand. Check: limits cover the charged object only; integrand has \(r^2\) in the denominator where \(r\) depends on the variable; prefactor uses \(\lambda = q/L\) when \(dx\) is the measure.</p></div></div>
 
 <figure class="fig">
-<svg viewBox="0 0 660 270" class="wide" role="img" aria-label="Ring of charge on axis and an arc of charge at its center">
+<svg viewBox="0 0 700 270" class="wide" role="img" aria-label="Ring of charge on axis and an arc of charge at its center">
   <g font-size="12">
   <!-- ring -->
   <ellipse cx="170" cy="190" rx="110" ry="34" fill="none" stroke="var(--pos)" stroke-width="4"/>
@@ -908,14 +913,14 @@ window.MathJax = {
   <path d="M170 70 L130 70" stroke="var(--muted)" stroke-width="1.6" fill="none" marker-end="url(#amut)"/><text x="56" y="86" class="txs">dE sinθ (cancels</text><text x="56" y="100" class="txs">with opposite dq)</text>
   <text x="30" y="250" class="tx">E_axis = kQh / (h² + a²)^{3/2}, along the axis</text>
   <!-- arc -->
-  <path d="M470 100 A80 80 0 0 1 470 260" fill="none" stroke="var(--pos)" stroke-width="4" transform="translate(0,-40)"/>
-  <circle cx="470" cy="140" r="5" fill="var(--ink)"/><text x="440" y="132" class="tx" font-weight="600">C</text>
-  <line x1="470" y1="140" x2="550" y2="140" class="mut thin"/>
-  <line x1="470" y1="140" x2="539.3" y2="100" class="mut thin"/>
-  <path d="M500 140 A30 30 0 0 0 496 124" fill="none" stroke="var(--ink)" stroke-width="1"/><text x="504" y="134" class="txs">θ</text>
-  <circle cx="539.3" cy="100" r="6" fill="var(--pos)" stroke="var(--ink)"/><text x="548" y="98" class="txs">dq = λ R dθ</text>
-  <path d="M470 140 L434 160.8" stroke="var(--accent)" stroke-width="2.4" fill="none" marker-end="url(#aacc)"/>
-  <text x="392" y="178" class="tx" font-weight="600">dE = k λ dθ / R</text>
+  <path d="M530 100 A80 80 0 0 1 530 260" fill="none" stroke="var(--pos)" stroke-width="4" transform="translate(0,-40)"/>
+  <circle cx="530" cy="140" r="5" fill="var(--ink)"/><text x="500" y="132" class="tx" font-weight="600">C</text>
+  <line x1="530" y1="140" x2="610" y2="140" class="mut thin"/>
+  <line x1="530" y1="140" x2="599.3" y2="100" class="mut thin"/>
+  <path d="M560 140 A30 30 0 0 0 556 124" fill="none" stroke="var(--ink)" stroke-width="1"/><text x="564" y="134" class="txs">θ</text>
+  <circle cx="599.3" cy="100" r="6" fill="var(--pos)" stroke="var(--ink)"/><text x="608" y="98" class="txs">dq = λ R dθ</text>
+  <path d="M530 140 L494 160.8" stroke="var(--accent)" stroke-width="2.4" fill="none" marker-end="url(#aacc)"/>
+  <text x="452" y="178" class="tx" font-weight="600">dE = k λ dθ / R</text>
   <text x="380" y="215" class="tx">dEₓ = −(kλ/R) cosθ dθ</text>
   <text x="380" y="235" class="tx">dE_y = −(kλ/R) sinθ dθ</text>
   <text x="380" y="262" class="tx">semicircle (−π/2..π/2): Eₓ = −2kλ/R, E_y = 0</text>
@@ -2623,19 +2628,19 @@ window.MathJax = {
   <g stroke="var(--pos)" stroke-width="1.8" fill="none"><path d="M112 80 L60 80" marker-end="url(#apos)"/><path d="M112 130 L60 130" marker-end="url(#apos)"/><path d="M128 80 L180 80" marker-end="url(#apos)"/><path d="M128 130 L180 130" marker-end="url(#apos)"/></g>
   <circle cx="60" cy="105" r="3.5" fill="var(--ink)"/><text x="48" y="122" class="tx">P</text>
   <text x="20" y="230" class="tx">E_P = σ/2ε₀ (leftward)</text>
-  <text x="300" y="22" class="tx" font-weight="600">Case B: +, −, + sheets, same |σ|</text>
-  <line x1="420" y1="40" x2="420" y2="200" stroke="var(--pos)" stroke-width="4"/>
-  <line x1="480" y1="40" x2="480" y2="200" stroke="var(--neg)" stroke-width="4"/>
-  <line x1="540" y1="40" x2="540" y2="200" stroke="var(--pos)" stroke-width="4"/>
-  <text x="414" y="215" class="pos" font-weight="700">+</text><text x="475" y="215" class="neg" font-weight="700">−</text><text x="534" y="215" class="pos" font-weight="700">+</text>
-  <circle cx="360" cy="105" r="3.5" fill="var(--ink)"/><text x="348" y="122" class="tx">P</text>
+  <text x="330" y="22" class="tx" font-weight="600">Case B: +, −, + sheets, same |σ|</text>
+  <line x1="460" y1="40" x2="460" y2="200" stroke="var(--pos)" stroke-width="4"/>
+  <line x1="520" y1="40" x2="520" y2="200" stroke="var(--neg)" stroke-width="4"/>
+  <line x1="580" y1="40" x2="580" y2="200" stroke="var(--pos)" stroke-width="4"/>
+  <text x="454" y="215" class="pos" font-weight="700">+</text><text x="515" y="215" class="neg" font-weight="700">−</text><text x="574" y="215" class="pos" font-weight="700">+</text>
+  <circle cx="400" cy="105" r="3.5" fill="var(--ink)"/><text x="396" y="94" class="tx">P</text>
   <g stroke-width="1.8" fill="none">
-   <path d="M412 70 L370 70" stroke="var(--pos)" marker-end="url(#apos)"/><text x="300" y="74" class="txs">from left +: away, left</text>
-   <path d="M370 100 L412 100" stroke="var(--neg)" marker-end="url(#aneg)"/><text x="300" y="104" class="txs">from −: toward, right</text>
-   <path d="M412 130 L370 130" stroke="var(--pos)" marker-end="url(#apos)"/><text x="300" y="134" class="txs">from right +: away, left</text>
+   <path d="M452 70 L410 70" stroke="var(--pos)" marker-end="url(#apos)"/><text x="392" y="74" class="txs" text-anchor="end">from left +: away, left</text>
+   <path d="M410 100 L452 100" stroke="var(--neg)" marker-end="url(#aneg)"/><text x="392" y="104" class="txs" text-anchor="end">from −: toward, right</text>
+   <path d="M452 130 L410 130" stroke="var(--pos)" marker-end="url(#apos)"/><text x="392" y="134" class="txs" text-anchor="end">from right +: away, left</text>
   </g>
-  <path d="M412 170 L370 170" stroke="var(--accent)" stroke-width="3" fill="none" marker-end="url(#aacc)"/><text x="300" y="174" class="tx" font-weight="600">net: σ/2ε₀ left</text>
-  <text x="300" y="240" class="tx">Same magnitude at P in both cases (answer C).</text>
+  <path d="M452 170 L410 170" stroke="var(--accent)" stroke-width="3" fill="none" marker-end="url(#aacc)"/><text x="392" y="174" class="tx" font-weight="600" text-anchor="end">net: σ/2ε₀ left</text>
+  <text x="330" y="240" class="tx">Same magnitude at P in both cases (answer C).</text>
   </g>
 </svg>
 <figcaption>Lecture 4 checkpoint "Infinite Sheets of Charge." Each sheet's contribution is a constant regardless of how far P is from it, so two of the three sheets in Case B cancel exactly and the third is all that survives.</figcaption>
@@ -4543,19 +4548,19 @@ window.MathJax = {
   <!-- (c) Fall 2015 -->
   <g transform="translate(0,195)">
    <text x="10" y="8" stroke="none" fill="var(--ink)" font-weight="600" font-size="12">(c) Fall 2015</text>
-   <path d="M60 30 H106 M114 30 H160 V90 H114 M106 90 H60 V30 M60 60 V110 H172 M188 110 H300 V60 M160 60 H200 M200 30 H246 M254 30 H300 V90 H254 M246 90 H200 V30"/>
+   <path d="M60 30 H106 M114 30 H160 V90 H114 M106 90 H60 V30 M60 60 V130 H172 M188 130 H300 V60 M160 60 H200 M200 30 H246 M254 30 H300 V90 H254 M246 90 H200 V30"/>
    <path d="M106 18 V42 M114 18 V42"/><text x="102" y="14" stroke="none" fill="var(--ink)">C₂</text>
    <path d="M106 78 V102 M114 78 V102"/><text x="102" y="114" stroke="none" fill="var(--ink)">C₁</text>
    <path d="M246 18 V42 M254 18 V42"/><text x="242" y="14" stroke="none" fill="var(--ink)">C₄</text>
    <path d="M246 78 V102 M254 78 V102"/><text x="242" y="114" stroke="none" fill="var(--ink)">C₃</text>
-   <path d="M172 98 V122"/><path d="M188 104 V116" stroke-width="3"/><text x="176" y="96" stroke="none" fill="var(--ink)">V_b</text>
-   <text x="40" y="135" stroke="none" fill="var(--muted)" font-size="10.5">(C₁ ∥ C₂) in series with (C₃ ∥ C₄)</text>
+   <path d="M172 118 V142"/><path d="M188 124 V136" stroke-width="3"/><text x="170" y="114" stroke="none" fill="var(--ink)">V_b</text>
+   <text x="40" y="152" stroke="none" fill="var(--muted)" font-size="10.5">(C₁ ∥ C₂) in series with (C₃ ∥ C₄)</text>
   </g>
   <!-- (d) Fall 2018 -->
   <g transform="translate(350,195)">
    <text x="10" y="8" stroke="none" fill="var(--ink)" font-weight="600" font-size="12">(d) Fall 2018</text>
    <path d="M40 30 H86 M94 30 H160 M160 30 H236 M244 30 H320 V66 M320 74 V110 H244 M236 110 H160 M160 110 H94 M86 110 H40 V30 M160 30 V66 M160 74 V110"/>
-   <path d="M86 18 V42 M94 18 V42"/><text x="82" y="14" stroke="none" fill="var(--ink)">C₅</text>
+   <path d="M86 18 V42 M94 18 V42"/><text x="100" y="16" stroke="none" fill="var(--ink)">C₅</text>
    <path d="M236 18 V42"/><path d="M244 24 V36" stroke-width="3"/><text x="232" y="14" stroke="none" fill="var(--ink)">V</text>
    <path d="M148 66 H172 M148 74 H172"/><text x="176" y="74" stroke="none" fill="var(--ink)">C₃</text>
    <path d="M308 66 H332 M308 74 H332"/><text x="290" y="74" stroke="none" fill="var(--ink)">C₁</text>
