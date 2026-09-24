@@ -34,8 +34,8 @@ Contents
 ## Quiz prep: Homework 5 and 6
 
 `quiz-prep-hw5-hw6-potential.html` is a focused companion for the Chapter 7 quiz
-(electric potential energy and electric potential). It ranks the eleven Homework 5
-and 6 problems by how likely each is to be the quiz question, teaches the two ideas
-from zero, gives a memorize card (quizzes allow no equation sheet), solves every
-homework problem step by step with the printout's numbers, and ends with a ten-question
-self-test.
+(electric potential energy and electric potential). The quiz question is a homework
+problem with new numbers, so the page turns each of the eleven Homework 5 and 6 problems
+into a recipe with blank slots, solves it with the printout's numbers, adds practice runs
+with fresh numbers and full answers, ranks the problems by likelihood, gives a memorize
+card (quizzes allow no equation sheet), and ends with a ten-problem timed drill.
