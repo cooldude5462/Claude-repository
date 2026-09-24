@@ -1,0 +1,773 @@
+<!doctype html>
+<html lang="en">
+<head>
+<title>Potential Quiz Prep</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Quiz preparation for Physics 2112 Homework 5 and 6: electric potential energy and electric potential, with every homework problem solved.">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+:root{
+  --bg:#F6F5F0; --surface:#FFFFFF; --surface2:#EEECE4; --ink:#1B2230; --muted:#5C6470; --line:#D8D5CC;
+  --accent:#0E6B57; --accent-soft:#DDF0EA; --accent-ink:#0A4F41;
+  --pos:#C8392E; --pos-soft:#F9E1DE; --neg:#2456B3; --neg-soft:#DEE7F8;
+  --warn:#9A6410; --warn-soft:#FBF0DA; --gold:#B7791F;
+  --code:#F0EEE6;
+  --display:"Fraunces", Georgia, "Times New Roman", serif;
+  --body:"IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;
+  --mono:"IBM Plex Mono", Menlo, Consolas, monospace;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    color-scheme:dark;
+    --bg:#141920; --surface:#1C232C; --surface2:#242D38; --ink:#E9E7E1; --muted:#A3ABB6; --line:#313B47;
+    --accent:#4CC7A5; --accent-soft:#163A32; --accent-ink:#8FE3C9;
+    --pos:#F2705F; --pos-soft:#3F2320; --neg:#7AA6F5; --neg-soft:#1D2B47;
+    --warn:#E7B85A; --warn-soft:#3A2E14; --gold:#E0B04A; --code:#222A34;
+  }
+}
+:root[data-theme="dark"]{
+  color-scheme:dark;
+  --bg:#141920; --surface:#1C232C; --surface2:#242D38; --ink:#E9E7E1; --muted:#A3ABB6; --line:#313B47;
+  --accent:#4CC7A5; --accent-soft:#163A32; --accent-ink:#8FE3C9;
+  --pos:#F2705F; --pos-soft:#3F2320; --neg:#7AA6F5; --neg-soft:#1D2B47;
+  --warn:#E7B85A; --warn-soft:#3A2E14; --gold:#E0B04A; --code:#222A34;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-wrap:break-word}
+a{color:var(--accent);text-decoration-thickness:1px;text-underline-offset:2px}
+a:focus-visible,button:focus-visible,summary:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.topbar{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:var(--surface);border-bottom:1px solid var(--line);padding:10px 16px;display:flex;gap:14px;align-items:center;flex-wrap:wrap}
+.topbar .name{font-family:var(--display);font-weight:700;font-size:1.05rem;letter-spacing:-.01em}
+.topbar .course{font-family:var(--mono);font-size:.78rem;color:var(--muted);letter-spacing:.04em;text-transform:uppercase}
+.topbar details{margin-left:auto}
+.topbar summary{cursor:pointer;font-size:.9rem;color:var(--accent);list-style:none;padding:4px 10px;border:1px solid var(--line);border-radius:6px}
+.topbar summary::-webkit-details-marker{display:none}
+.topbar details[open] summary{background:var(--accent-soft)}
+.topbar .menu{position:absolute;right:16px;top:100%;background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:10px 14px;max-height:70vh;overflow:auto;width:min(92vw,360px);box-shadow:0 8px 24px rgba(0,0,0,.12)}
+.topbar .menu a{display:block;padding:4px 0;font-size:.92rem;text-decoration:none;color:var(--ink)}
+.topbar .menu a.sub{padding-left:14px;color:var(--muted);font-size:.85rem}
+.shell{display:block;max-width:1240px;margin:0 auto}
+.side{display:none}
+@media (min-width:1040px){
+  .shell{display:grid;grid-template-columns:270px minmax(0,1fr);gap:0}
+  .side{display:block;position:sticky;top:calc(env(safe-area-inset-top,0px) + 58px);align-self:start;height:calc(100vh - 70px);overflow:auto;padding:22px 14px 22px 18px;border-right:1px solid var(--line);font-size:.86rem}
+  .topbar details{display:none}
+}
+.side a{display:block;text-decoration:none;color:var(--muted);padding:3px 8px;border-left:2px solid transparent;border-radius:0 4px 4px 0}
+.side a.ch{color:var(--ink);font-weight:600;margin-top:12px}
+.side a.sub{padding-left:16px}
+.side a.active{border-left-color:var(--accent);color:var(--accent-ink);background:var(--accent-soft)}
+main{padding:28px 16px 80px;min-width:0}
+@media (min-width:700px){main{padding:36px 32px 90px}}
+.wrap{max-width:820px}
+h1,h2,h3,h4{font-family:var(--display);line-height:1.15;text-wrap:balance;margin:0}
+h1{font-size:clamp(2rem,5vw,3rem);font-weight:700;letter-spacing:-.02em}
+[id]{scroll-margin-top:84px}
+h2{font-size:clamp(1.5rem,3.4vw,2rem);font-weight:700;margin-top:3rem;padding-top:1.2rem;border-top:1px solid var(--line);scroll-margin-top:84px}
+h3{font-size:1.28rem;font-weight:700;margin-top:2rem;scroll-margin-top:80px}
+h4{font-size:1.05rem;font-weight:700;margin-top:1.4rem;font-family:var(--body)}
+p{margin:.75rem 0;max-width:70ch}
+ul,ol{max-width:70ch;padding-left:1.3rem}
+li{margin:.3rem 0}
+li p{margin:.3rem 0}
+.lede{font-size:1.12rem;color:var(--muted);max-width:62ch}
+.eyebrow{font-family:var(--mono);font-size:.74rem;letter-spacing:.09em;text-transform:uppercase;color:var(--accent-ink);margin-bottom:.4rem}
+.chap{margin-top:4rem;padding-top:1.5rem;border-top:3px solid var(--accent);scroll-margin-top:80px}
+.chap .num{font-family:var(--mono);font-size:.8rem;letter-spacing:.1em;text-transform:uppercase;color:var(--accent-ink)}
+.chap h2{border:none;margin-top:.2rem;padding-top:0;font-size:clamp(1.8rem,4vw,2.4rem)}
+.chap .map{color:var(--muted);font-size:.95rem;margin-top:.3rem}
+.key{border-left:4px solid var(--accent);background:var(--accent-soft);padding:12px 16px;margin:1.2rem 0;border-radius:0 8px 8px 0}
+.key .t{font-family:var(--mono);font-size:.74rem;letter-spacing:.08em;text-transform:uppercase;color:var(--accent-ink);margin-bottom:4px}
+
+.sym{margin:.6rem 0 1rem;padding:8px 12px;border:1px dashed var(--line);border-radius:8px;background:var(--surface);font-size:.86rem;line-height:1.5}
+.sym .st{font-family:var(--mono);font-size:.66rem;letter-spacing:.08em;text-transform:uppercase;color:var(--accent-ink);margin-bottom:4px}
+.sym dl{display:grid;grid-template-columns:max-content 1fr;gap:3px 14px;margin:0}
+.sym dt{margin:0;white-space:nowrap;font-weight:600}
+.sym dd{margin:0}
+.sym dt mjx-container{font-size:1.02em}
+@media (max-width:480px){.sym dl{grid-template-columns:1fr}.sym dt{margin-top:4px}.sym dd{padding-left:12px}}
+.why{border-left:4px solid var(--neg);background:var(--neg-soft);padding:12px 16px;margin:1.2rem 0;border-radius:0 8px 8px 0}
+.why .t{font-family:var(--mono);font-size:.74rem;letter-spacing:.08em;text-transform:uppercase;color:var(--neg);margin-bottom:4px}
+.why p{max-width:72ch}
+.trap{border-left:4px solid var(--warn);background:var(--warn-soft);padding:12px 16px;margin:1.2rem 0;border-radius:0 8px 8px 0}
+.trap .t{font-family:var(--mono);font-size:.74rem;letter-spacing:.08em;text-transform:uppercase;color:var(--warn);margin-bottom:4px}
+.ex{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:16px 18px;margin:1.4rem 0}
+.ex .t{font-family:var(--display);font-weight:700;font-size:1.05rem;margin:0 0 .2rem}
+.ex .src{font-family:var(--mono);font-size:.74rem;color:var(--muted);letter-spacing:.04em;margin-bottom:.6rem}
+.steps{counter-reset:s;list-style:none;padding-left:0;max-width:72ch}
+.steps>li{counter-increment:s;position:relative;padding-left:2.4rem;margin:.6rem 0}
+.steps>li::before{content:counter(s);position:absolute;left:0;top:.15rem;width:1.7rem;height:1.7rem;border-radius:50%;background:var(--accent);color:#fff;font-family:var(--mono);font-size:.8rem;display:flex;align-items:center;justify-content:center;font-weight:600}
+.fig{margin:1.4rem 0;background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:12px}
+.fig{overflow-x:auto}
+.fig svg{max-width:100%;height:auto;display:block;margin:0 auto;font-family:var(--body)}
+.fig svg.wide{min-width:560px}
+.tw table{min-width:560px}
+.fig figcaption{font-size:.88rem;color:var(--muted);margin-top:8px;max-width:70ch}
+.fig .row{display:flex;gap:14px;flex-wrap:wrap;justify-content:center}
+.fig .row>*{flex:1 1 260px;min-width:0}
+svg .ax{stroke:var(--muted);stroke-width:1.2}
+svg .guide{stroke:var(--line);stroke-width:1;stroke-dasharray:3 3}
+svg .c1{stroke:var(--accent);stroke-width:2.4}
+svg .c2{stroke:var(--neg);stroke-width:2.4}
+svg .c3{stroke:var(--pos);stroke-width:2.4}
+svg .lab{fill:var(--muted);font-size:12px}
+svg .note{fill:var(--ink);font-size:11.5px}
+svg .ink{stroke:var(--ink)} svg .thin{stroke-width:1.2} svg .med{stroke-width:2}
+svg .pos{fill:var(--pos)} svg .neg{fill:var(--neg)} svg .tx{fill:var(--ink);font-size:13px} svg .txs{fill:var(--muted);font-size:11px}
+svg .posline{stroke:var(--pos)} svg .negline{stroke:var(--neg)} svg .acc{stroke:var(--accent)} svg .mut{stroke:var(--muted)}
+svg .metal{fill:var(--surface2);stroke:var(--ink)} svg .insul{fill:var(--accent-soft);stroke:var(--accent)}
+svg .white{fill:var(--surface)}
+.grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:14px;margin:1rem 0}
+table{border-collapse:collapse;width:100%;font-size:.93rem;margin:1rem 0;font-variant-numeric:tabular-nums}
+.tw{overflow-x:auto;margin:1rem 0}
+th,td{border-bottom:1px solid var(--line);padding:8px 10px;text-align:left;vertical-align:top}
+th{font-family:var(--mono);font-size:.74rem;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);font-weight:500}
+tbody tr:nth-child(odd){background:var(--surface)}
+code,.mono{font-family:var(--mono);font-size:.9em;background:var(--code);padding:1px 5px;border-radius:4px}
+details.q{background:var(--surface);border:1px solid var(--line);border-radius:10px;margin:.9rem 0;padding:0}
+details.q summary{cursor:pointer;padding:12px 16px;list-style:none;display:flex;gap:10px;align-items:flex-start}
+details.q summary::-webkit-details-marker{display:none}
+details.q summary .n{font-family:var(--mono);font-size:.78rem;color:var(--accent-ink);background:var(--accent-soft);padding:2px 7px;border-radius:5px;white-space:nowrap;margin-top:2px}
+details.q summary .qt{flex:1;max-width:70ch}
+details.q summary::after{content:"show solution";font-family:var(--mono);font-size:.72rem;color:var(--muted);white-space:nowrap;margin-top:4px}
+details.q[open] summary::after{content:"hide"}
+details.q .sol{padding:0 16px 14px;border-top:1px dashed var(--line)}
+.ans{display:inline-block;font-family:var(--mono);font-size:.8rem;background:var(--accent);color:#fff;padding:2px 9px;border-radius:5px;margin:.4rem 0}
+.tag{display:inline-block;font-family:var(--mono);font-size:.72rem;color:var(--muted);border:1px solid var(--line);padding:1px 7px;border-radius:5px;margin-left:6px;vertical-align:middle}
+.pill-pos{color:var(--pos);font-weight:600}.pill-neg{color:var(--neg);font-weight:600}
+.callout{background:var(--surface2);border-radius:8px;padding:12px 16px;margin:1rem 0;font-size:.95rem}
+.logi{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;margin:1.2rem 0}
+.logi>div{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:12px 14px}
+.logi .k{font-family:var(--mono);font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.logi .v{font-weight:600;margin-top:2px}
+.checklist{list-style:none;padding-left:0}
+.checklist li{padding-left:1.6rem;position:relative}
+.checklist li::before{content:"";position:absolute;left:0;top:.45rem;width:.85rem;height:.85rem;border:1.5px solid var(--accent);border-radius:3px}
+.small{font-size:.88rem;color:var(--muted)}
+hr{border:0;border-top:1px solid var(--line);margin:2rem 0}
+
+/* --- figures, maps, widgets --- */
+.fig.split{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:18px;align-items:center}
+@media (max-width:700px){.fig.split{grid-template-columns:1fr}}
+.fig .expl{font-size:.93rem;line-height:1.55}
+.fig .expl p{margin:.4rem 0}
+.fig .expl .f{font-family:var(--mono);font-size:.84rem;background:var(--code);padding:2px 6px;border-radius:4px;display:inline-block;margin:2px 0}
+.fig .panel{display:flex;flex-direction:column;gap:6px;align-items:center}
+.fig .panel .cap{font-size:.84rem;color:var(--muted);text-align:center}
+.fmap{max-width:100%;height:auto;border-radius:8px}
+.fmap-bg{fill:var(--surface2)}
+.fline{fill:none;stroke:var(--accent);stroke-width:1.3;opacity:.9}
+.fline-arrow{fill:var(--accent)}
+.fq{fill:#fff;font-size:10px;font-weight:700}
+.ftitle{fill:var(--muted);font-size:11px}
+.eqline{fill:none;stroke:var(--neg);stroke-width:1.2;stroke-dasharray:5 4;opacity:.9}
+svg .grid{stroke:var(--line);stroke-width:1}
+svg .reg{fill:var(--muted);font-size:10.5px}
+svg .reg-ins{fill:var(--accent-soft)} svg .reg-metal{fill:url(#hatch)} svg .reg-none{fill:none}
+svg .dot{fill:var(--ink)}
+svg .hatch{fill:url(#hatch);stroke:var(--ink);stroke-width:1.4}
+svg .gauss{fill:none;stroke:var(--accent);stroke-width:1.8;stroke-dasharray:6 4}
+.widget{background:var(--surface);border:1.5px solid var(--accent);border-radius:12px;padding:14px 16px 16px;margin:1.5rem 0}
+.widget .wt{font-family:var(--mono);font-size:.74rem;letter-spacing:.08em;text-transform:uppercase;color:var(--accent-ink);margin-bottom:2px}
+.widget .wh{font-family:var(--display);font-weight:700;font-size:1.08rem;margin-bottom:.5rem}
+.widget .wd{font-size:.9rem;color:var(--muted);margin:0 0 .6rem;max-width:70ch}
+.ctrl{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:10px 16px;margin:.5rem 0 .8rem}
+.ctrl label{display:block;font-size:.82rem;color:var(--muted)}
+.ctrl label b{color:var(--ink);font-weight:600;font-family:var(--mono);font-size:.8rem}
+.ctrl input[type=range]{width:100%;accent-color:var(--accent);margin:2px 0 0}
+.ctrl input[type=number],.ctrl select{width:100%;font:inherit;font-size:.9rem;padding:4px 6px;border:1px solid var(--line);border-radius:6px;background:var(--surface);color:var(--ink)}
+.seg{display:inline-flex;flex-wrap:wrap;border:1px solid var(--line);border-radius:7px;overflow:hidden;margin:2px 0}
+.seg button{font:inherit;font-size:.82rem;padding:4px 10px;border:0;background:var(--surface);color:var(--ink);cursor:pointer;white-space:nowrap}
+.seg button.on{background:var(--accent);color:#fff}
+.wgrid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:14px;align-items:start}
+@media (max-width:720px){.wgrid{grid-template-columns:1fr}}
+.widget svg{max-width:100%;height:auto;display:block}
+.readout{font-family:var(--mono);font-size:.82rem;background:var(--code);border-radius:8px;padding:10px 12px;line-height:1.7;overflow-x:auto}
+.readout b{color:var(--accent-ink)}
+.readout .neg{color:var(--neg)} .readout .pos{color:var(--pos)}
+.bars{display:grid;gap:8px;margin-top:8px}
+.bar{display:grid;grid-template-columns:3.2rem 1fr 6rem;gap:8px;align-items:center;font-family:var(--mono);font-size:.8rem}
+.bar .track{height:14px;background:var(--surface2);border-radius:4px;overflow:hidden}
+.bar .fill{height:100%;background:var(--accent);border-radius:4px;transition:width .2s}
+.stepbar{display:flex;gap:8px;flex-wrap:wrap;margin:.6rem 0 .2rem}
+.stepbar button,.check button{font:inherit;font-size:.82rem;padding:5px 12px;border:1px solid var(--accent);border-radius:7px;background:var(--surface);color:var(--accent-ink);cursor:pointer}
+.stepbar button:hover,.check button:hover{background:var(--accent-soft)}
+.stepbar button:disabled{opacity:.45;cursor:default}
+.steps li.hid{display:none}
+.steps li.reveal{animation:fadein .35s ease}
+@keyframes fadein{from{opacity:0;transform:translateY(-3px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){.steps li.reveal{animation:none}}
+.check{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin:.6rem 0 .2rem;font-size:.88rem}
+.check label{color:var(--muted)}
+.check input{font:inherit;font-size:.9rem;width:9.5rem;padding:4px 8px;border:1px solid var(--line);border-radius:6px;background:var(--surface);color:var(--ink)}
+.check .fb{font-family:var(--mono);font-size:.8rem}
+.check .fb.ok{color:var(--accent-ink)} .check .fb.no{color:var(--pos)}
+
+mjx-container{overflow-x:auto;overflow-y:hidden;max-width:100%}
+mjx-container[display="true"]{margin:.8rem 0 !important}
+@media (max-width:600px){.topbar .course{display:none}.topbar{padding:8px 16px}}
+@media (prefers-reduced-motion:no-preference){html{scroll-behavior:smooth}}
+@media print{.topbar,.side,.stepbar,.check{display:none}.shell{display:block}details.q{break-inside:avoid}details.q .sol{display:block}.steps li.hid{display:list-item}}
+
+.wrap{max-width:900px;margin:0 auto;padding:0 16px 60px}
+.hero{padding:28px 0 6px}
+.kicker{font-family:var(--mono);font-size:.76rem;letter-spacing:.08em;text-transform:uppercase;color:var(--accent-ink);margin-bottom:10px}
+.lede{font-size:1.08rem;max-width:70ch;margin:.9rem 0}
+.rules{background:var(--warn-soft);border-left:4px solid var(--warn);padding:12px 16px;border-radius:0 8px 8px 0;max-width:76ch}
+.tier{display:inline-block;font-family:var(--mono);font-size:.66rem;letter-spacing:.06em;text-transform:uppercase;padding:2px 8px;border-radius:5px;white-space:nowrap;vertical-align:middle;margin-left:6px}
+.t1{background:var(--pos);color:#fff}.t2{background:var(--warn);color:#fff}.t3{background:var(--muted);color:#fff}
+.rank td:nth-child(1){font-family:var(--mono);color:var(--muted)}
+.rank td:nth-child(2){white-space:nowrap}
+.rank table{min-width:700px}
+.given{font-size:.93rem;background:var(--code);padding:10px 14px;border-radius:8px;margin:.5rem 0 .8rem;line-height:1.55}
+.ansbox{margin:.8rem 0;padding:10px 14px;border:1px solid var(--accent);border-radius:8px;background:var(--accent-soft)}
+.ansbox .ans{margin:0 8px 0 0}
+.mem{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px;margin:1rem 0}
+.tile{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:10px 12px 8px}
+.tile .mt{font-family:var(--mono);font-size:.7rem;letter-spacing:.08em;text-transform:uppercase;color:var(--accent-ink)}
+.tile .mn{font-size:.84rem;color:var(--muted);line-height:1.45}
+.tile mjx-container[display="true"]{margin:.5rem 0 .4rem!important}
+.ex .t{display:flex;flex-wrap:wrap;align-items:center;gap:6px}
+h2{scroll-margin-top:20px}
+details.q summary .qt{max-width:none}
+@media (max-width:600px){.wrap{padding:0 14px 40px}.hero{padding-top:16px}}
+</style>
+<script>
+window.MathJax = {
+  tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]']], processEscapes: true, packages: {'[+]': ['ams']} },
+  svg: { fontCache: 'global' },
+  options: { enableMenu: false, skipHtmlTags: ['script','noscript','style','textarea','pre','code'] }
+};
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-svg.js" async></script>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <marker id="aink" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="var(--ink)"/></marker>
+    <marker id="apos" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="var(--pos)"/></marker>
+    <marker id="aneg" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="var(--neg)"/></marker>
+    <marker id="aacc" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="var(--accent)"/></marker>
+    <marker id="amut" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="var(--muted)"/></marker>
+    <pattern id="hatch" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><rect width="6" height="6" fill="var(--surface2)"/><line x1="0" y1="0" x2="0" y2="6" stroke="var(--line)" stroke-width="2"/></pattern>
+  </defs>
+</svg>
+<div class="wrap">
+<header class="hero">
+  <div class="kicker">Physics 2112 · Quiz prep · Homework 5 and 6 · OpenStax Vol. 2, Chapter 7</div>
+  <h1>Electric Potential Energy and Electric Potential</h1>
+  <p class="lede">One Homework 5 or Homework 6 question becomes today's quiz question. This page teaches the two ideas from zero, ranks the eleven homework problems by how likely each is to be picked, and then solves every one of them step by step with the exact numbers from your printouts.</p>
+  <div class="rules"><strong>What the syllabus says about quizzes.</strong> Closed book, closed note, and <em>no equation sheet</em>. "A few short questions," usually multiple choice, "answered by conceptual reasoning or with a few short lines of algebra." So the formulas below have to be in your head, and the questions that fit that description are the ones to drill first.</div>
+</header>
+
+<h2 id="rank">1 · Which problem is most likely to be the quiz question?</h2>
+<p>A quiz question has to be short, test one idea, and work as multiple choice or a few lines of algebra. Problems that copy a lecture example or clicker question, or that keep showing up on past exams, are the instructor's favorites. Ranked on those grounds:</p>
+<div class="tw"><table class="rank">
+<thead><tr><th>Rank</th><th>Problem</th><th>What it asks</th><th>Why it makes a good quiz question</th><th>Tier</th></tr></thead>
+<tbody>
+<tr><td>1</td><td><a href="#h5p4">HW5 P4</a></td><td>\(U\) of a fixed charge and a free charge; speed after release</td><td>Two lines: \(U = kQq/r\), then energy conservation. It is Lecture 5's Example 5.1 and the "EPE of a point charge" checkpoint, and Fall 2015 Q8–9 is the same idea near a line.</td><td><span class="tier t1">most likely</span></td></tr>
+<tr><td>2</td><td><a href="#h5p5">HW5 P5</a></td><td>Work by the field moving a proton between four points near a point charge</td><td>Pure concept: two answers are zero (same distance, same \(V\)), the other two are \(W = -e\,\Delta V\). Perfect multiple choice.</td><td><span class="tier t1">most likely</span></td></tr>
+<tr><td>3</td><td><a href="#h5p1">HW5 P1</a></td><td>\(U\) of three charges in a right triangle; \(\Delta U\) when the third charge is brought in</td><td>Lecture 5's "potential energy of many charges" slide, and the exam favorite (Spring 2014 Q13, Fall 2018 Q2, Spring 2015 Q24). Part (b) tests one idea: only the new charge's pairs count.</td><td><span class="tier t1">most likely</span></td></tr>
+<tr><td>4</td><td><a href="#h6p5">HW6 P5</a></td><td>\(\vec E\) and \(V\) in three regions between two charged plates</td><td>Uniform field, \(\Delta V = -Ed\); every answer is a one-term expression; the select-all parts are conceptual.</td><td><span class="tier t1">most likely</span></td></tr>
+<tr><td>5</td><td><a href="#h5p3">HW5 P3</a></td><td>Symbolic \(U\) of \(+q, -q, +q\) on a line</td><td>Three pair terms, answer \(-3kq^2/2L\). Very easy to turn into multiple choice with sign and factor distractors.</td><td><span class="tier t2">likely</span></td></tr>
+<tr><td>6</td><td><a href="#h5p6">HW5 P6</a></td><td>Particle released between two fixed charges; speed later</td><td>Same method as P4 with two source charges and one Pythagoras step. Slightly longer, still a few lines.</td><td><span class="tier t2">likely</span></td></tr>
+<tr><td>7</td><td><a href="#h6p4">HW6 P4</a></td><td>\(|\Delta V|\) between coaxial cylinders</td><td>One formula, \(\frac{Q}{2\pi\varepsilon_0 L}\ln\frac ba\), from Lecture 7's Example 7.2. The distractor is the unused outer radius \(c\).</td><td><span class="tier t2">likely</span></td></tr>
+<tr><td>8</td><td><a href="#h5p2">HW5 P2</a></td><td>Two charges from \(U\), \(r\), and their sum</td><td>One formula but a quadratic to solve; longer than "a few lines," so less likely, though a quiz could give the charges and ask for \(U\) instead.</td><td><span class="tier t2">likely</span></td></tr>
+<tr><td>9</td><td><a href="#h6p2">HW6 P2</a></td><td>Charged cylinder with \(V = 0\) at \(r = 2R\)</td><td>Gauss then integrate; the log. A quiz would take one part, most likely "what is \(V\) inside the cylinder?"</td><td><span class="tier t3">possible</span></td></tr>
+<tr><td>10</td><td><a href="#h6p3">HW6 P3</a></td><td>Charged pipe with \(V = 0\) at \(3a\); moving the zero</td><td>Same as P2 with \(\sigma\); the "add a constant to move the zero" part is a neat conceptual question.</td><td><span class="tier t3">possible</span></td></tr>
+<tr><td>11</td><td><a href="#h6p1">HW6 P1</a></td><td>Aluminum sphere inside a copper shell: \(E\) and \(V\) in four regions, equipotentials, field lines</td><td>Ten parts; too long to copy whole. A quiz might ask for \(V\) inside the copper (\(k(Q-q)/c\)) or which regions are equipotentials.</td><td><span class="tier t3">possible</span></td></tr>
+</tbody></table></div>
+<div class="key"><div class="t">If you have 20 minutes</div>
+<p>Read Section 2 once, memorize the card in Section 3, then work HW5 P4, P5, and P1 and HW6 P5 with the solutions covered. If you have an hour, do all eleven and the self-test at the end.</p></div>
+
+<h2 id="ideas">2 · The two ideas, from zero</h2>
+
+<h3>2.1 Work, and why a "potential energy" exists at all</h3>
+<p>Work is force times the distance moved along the force: \(W = Fd\cos\theta\), in joules. When a force helps the motion (\(\theta \lt 90^\circ\)) its work is positive; when it fights the motion its work is negative. The work-energy theorem from Physics 2111 says the total work by all forces equals the change in kinetic energy, \(W_{\text{total}} = \Delta K\).</p>
+<p>Some forces, gravity and the Coulomb force among them, have a special property: the work they do between two points does not depend on the path. For such a force you can define a <strong>potential energy</strong> \(U\) that only depends on <em>where</em> things are, with</p>
+\[ \Delta U = U_{\text{final}} - U_{\text{initial}} = -W_{\text{field}} \]
+<div class="sym"><div class="st">What each letter means</div><dl>
+<dt>\(W\)</dt><dd>work done by a force, in joules (J)</dd>
+<dt>\(F,\ d,\ \theta\)</dt><dd>force magnitude (N), distance moved (m), angle between the force and the motion</dd>
+<dt>\(\Delta K\)</dt><dd>change in kinetic energy, \(\tfrac12mv_f^2 - \tfrac12mv_i^2\), in J</dd>
+<dt>\(U,\ \Delta U\)</dt><dd>electric potential energy and its change (final minus initial), in J</dd>
+<dt>\(W_{\text{field}}\)</dt><dd>work done by the <em>electric</em> force (not by your hand), in J</dd>
+</dl></div>
+<div class="why"><div class="t">Why the minus sign</div>
+<p>Lift a ball. Gravity pulls down while the ball moves up, so gravity's work is negative, and the ball's potential energy goes <em>up</em>. Same rule for charges: when the electric force does negative work (the charge is pushed against the field's wishes), \(U\) increases; when the field does positive work (the charge goes where the field pushes it), \(U\) decreases. Lecture 5's slogan: "Nature wants things to move in such a way that PE decreases." A charge released from rest always starts moving in the direction that lowers \(U\).</p>
+<p>Your hand is different. It is not a conservative force, so it has no potential energy of its own. When you carry a charge at constant speed, \(\Delta K = 0\), so your work exactly cancels the field's: \(W_{\text{hand}} = -W_{\text{field}} = +\Delta U\). Whatever energy you put in is stored as \(U\).</p></div>
+
+<h3>2.2 Potential energy of two point charges</h3>
+\[ U = \frac{k\,q_1 q_2}{r} \qquad (U = 0 \text{ when the charges are infinitely far apart}) \]
+<div class="sym"><div class="st">What each letter means</div><dl>
+<dt>\(U\)</dt><dd>the potential energy stored in the <em>pair</em>, in J; it belongs to the system, not to one charge</dd>
+<dt>\(k\)</dt><dd>Coulomb's constant, \(8.99\times10^{9}\ \mathrm{N\,m^2/C^2}\)</dd>
+<dt>\(q_1,\ q_2\)</dt><dd>the two charges <em>with their signs</em>, in coulombs (C); \(1\ \mu\mathrm{C} = 10^{-6}\ \mathrm{C}\), \(1\ \mathrm{nC} = 10^{-9}\ \mathrm{C}\)</dd>
+<dt>\(r\)</dt><dd>the distance between them, in meters; it is <em>not</em> squared (the force has \(r^2\), the energy has \(r\))</dd>
+</dl></div>
+<figure class="fig"><svg viewBox="0 0 560 240" role="img" aria-label="Potential energy of a pair versus separation for like and opposite charges">
+<line x1="50" y1="118" x2="545" y2="118" class="ax"/><line x1="60" y1="18" x2="60" y2="230" class="ax"/>
+<text x="548.0" y="122.0" class="txs" >r</text><text x="64.0" y="16.0" class="txs" >U</text><text x="40.0" y="122.0" class="txs" >0</text>
+<path d="M88.0 25.1 L92.0 36.8 L96.0 45.8 L100.0 53.0 L104.0 58.9 L108.0 63.8 L112.0 68.0 L116.0 71.6 L120.0 74.7 L124.0 77.4 L128.0 79.8 L132.0 81.9 L136.0 83.8 L140.0 85.5 L144.0 87.0 L148.0 88.5 L152.0 89.7 L156.0 90.9 L160.0 92.0 L164.0 93.0 L168.0 93.9 L172.0 94.8 L176.0 95.6 L180.0 96.3 L184.0 97.0 L188.0 97.7 L192.0 98.3 L196.0 98.9 L200.0 99.4 L204.0 99.9 L208.0 100.4 L212.0 100.9 L216.0 101.3 L220.0 101.8 L224.0 102.1 L228.0 102.5 L232.0 102.9 L236.0 103.2 L240.0 103.6 L244.0 103.9 L248.0 104.2 L252.0 104.5 L256.0 104.7 L260.0 105.0 L264.0 105.3 L268.0 105.5 L272.0 105.7 L276.0 106.0 L280.0 106.2 L284.0 106.4 L288.0 106.6 L292.0 106.8 L296.0 107.0 L300.0 107.2 L304.0 107.3 L308.0 107.5 L312.0 107.7 L316.0 107.8 L320.0 108.0 L324.0 108.2 L328.0 108.3 L332.0 108.4 L336.0 108.6 L340.0 108.7 L344.0 108.8 L348.0 109.0 L352.0 109.1 L356.0 109.2 L360.0 109.3 L364.0 109.4 L368.0 109.6 L372.0 109.7 L376.0 109.8 L380.0 109.9 L384.0 110.0 L388.0 110.1 L392.0 110.2 L396.0 110.3 L400.0 110.4 L404.0 110.4 L408.0 110.5 L412.0 110.6 L416.0 110.7 L420.0 110.8 L424.0 110.9 L428.0 110.9 L432.0 111.0 L436.0 111.1 L440.0 111.2 L444.0 111.2 L448.0 111.3 L452.0 111.4 L456.0 111.4 L460.0 111.5 L464.0 111.6 L468.0 111.6 L472.0 111.7 L476.0 111.8 L480.0 111.8 L484.0 111.9 L488.0 111.9 L492.0 112.0 L496.0 112.0 L500.0 112.1 L504.0 112.1 L508.0 112.2 L512.0 112.2 L516.0 112.3 L520.0 112.3 L524.0 112.4 L528.0 112.4" fill="none" class="c3" /><path d="M88.0 210.9 L92.0 199.2 L96.0 190.2 L100.0 183.0 L104.0 177.1 L108.0 172.2 L112.0 168.0 L116.0 164.4 L120.0 161.3 L124.0 158.6 L128.0 156.2 L132.0 154.1 L136.0 152.2 L140.0 150.5 L144.0 149.0 L148.0 147.5 L152.0 146.3 L156.0 145.1 L160.0 144.0 L164.0 143.0 L168.0 142.1 L172.0 141.2 L176.0 140.4 L180.0 139.7 L184.0 139.0 L188.0 138.3 L192.0 137.7 L196.0 137.1 L200.0 136.6 L204.0 136.1 L208.0 135.6 L212.0 135.1 L216.0 134.7 L220.0 134.2 L224.0 133.9 L228.0 133.5 L232.0 133.1 L236.0 132.8 L240.0 132.4 L244.0 132.1 L248.0 131.8 L252.0 131.5 L256.0 131.3 L260.0 131.0 L264.0 130.7 L268.0 130.5 L272.0 130.3 L276.0 130.0 L280.0 129.8 L284.0 129.6 L288.0 129.4 L292.0 129.2 L296.0 129.0 L300.0 128.8 L304.0 128.7 L308.0 128.5 L312.0 128.3 L316.0 128.2 L320.0 128.0 L324.0 127.8 L328.0 127.7 L332.0 127.6 L336.0 127.4 L340.0 127.3 L344.0 127.2 L348.0 127.0 L352.0 126.9 L356.0 126.8 L360.0 126.7 L364.0 126.6 L368.0 126.4 L372.0 126.3 L376.0 126.2 L380.0 126.1 L384.0 126.0 L388.0 125.9 L392.0 125.8 L396.0 125.7 L400.0 125.6 L404.0 125.6 L408.0 125.5 L412.0 125.4 L416.0 125.3 L420.0 125.2 L424.0 125.1 L428.0 125.1 L432.0 125.0 L436.0 124.9 L440.0 124.8 L444.0 124.8 L448.0 124.7 L452.0 124.6 L456.0 124.6 L460.0 124.5 L464.0 124.4 L468.0 124.4 L472.0 124.3 L476.0 124.2 L480.0 124.2 L484.0 124.1 L488.0 124.1 L492.0 124.0 L496.0 124.0 L500.0 123.9 L504.0 123.9 L508.0 123.8 L512.0 123.8 L516.0 123.7 L520.0 123.7 L524.0 123.6 L528.0 123.6" fill="none" class="c2" />
+<text x="150.0" y="50.0" class="tx" fill="var(--pos)" font-weight="600">like signs: U = +k|q₁q₂|/r</text>
+<text x="150.0" y="68.0" class="txs" >hill: they fly apart, U → kinetic energy</text>
+<text x="150.0" y="196.0" class="tx" fill="var(--neg)" font-weight="600">opposite signs: U = −k|q₁q₂|/r</text>
+<text x="150.0" y="214.0" class="txs" >well: bound, you must supply |U| to separate them</text>
+<text x="420.0" y="110.0" class="txs" >both → 0 as r → ∞</text>
+</svg><figcaption>The energy of a pair as a function of separation. Like charges (red) have positive energy that grows as they approach: pushing them together stores energy, and releasing them lets them fly apart, converting \(U\) to kinetic energy. Opposite charges (blue) have negative energy that gets more negative as they approach: they are bound, and you must supply \(|U|\) to pull them apart.</figcaption></figure>
+<div class="why"><div class="t">Why 1/r, and why the sign matters</div>
+<p>The Coulomb force falls as \(1/r^2\). Potential energy is the work needed to bring the charges in from infinity, and adding up (integrating) a \(1/r^2\) force over distance gives \(1/r\). Keep the signs of the charges in the formula: a positive product means like charges (a hill, \(U \gt 0\)), a negative product means opposite charges (a well, \(U \lt 0\)). Lecture 5's clickers: two opposite charges at \(d\) have <em>lower</em> energy than at \(2d\) (deeper in the well), while two negative charges at \(d\) have <em>higher</em> energy than at \(2d\) (higher on the hill). "Highest potential energy" is the answer to both questions but for opposite reasons.</p></div>
+<p><strong>Change in \(U\) when one charge moves.</strong> If \(+q\) goes from distance \(r_1\) to distance \(r_2\) from a fixed \(+Q\):</p>
+\[ \Delta U = kQq\left(\frac{1}{r_2} - \frac{1}{r_1}\right) \]
+<p>This is the Lecture 5 checkpoint (answer D). Only the starting and ending distances matter; the straight-line distance actually traveled, \(R\), never appears, because the force is conservative. Moving away (\(r_2 \gt r_1\)) makes \(\Delta U\) negative for like charges, as it must.</p>
+
+<h3>2.3 Many charges: one term per pair</h3>
+\[ U_{\text{total}} = \sum_{\text{every pair}}\frac{k\,q_i q_j}{r_{ij}} \]
+<div class="sym"><div class="st">What each letter means</div><dl>
+<dt>\(\sum_{\text{every pair}}\)</dt><dd>add one term for each pair of charges, counting each pair once: 3 charges make 3 pairs, 4 charges make 6 pairs</dd>
+<dt>\(q_i,\ q_j\)</dt><dd>the two charges in that pair, with signs, in C</dd>
+<dt>\(r_{ij}\)</dt><dd>the distance between those two charges, in m</dd>
+</dl></div>
+<p>\(U_{\text{total}}\) is the work an outside agent must do to assemble the whole arrangement from charges that start infinitely far apart. Lecture 5 builds it one charge at a time: the first charge costs nothing (nothing is there yet), the second costs its pair with the first, the third costs its pairs with both of the others, and so on. Two consequences you will use:</p>
+<ul>
+<li><strong>Bringing in one more charge</strong> \(q\) (the others already in place) changes \(U\) by the sum of the <em>new</em> pairs only, which is \(\Delta U = qV\) where \(V\) is the potential the existing charges make at the new spot (HW5 P1 part b, HW5 P5, Fall 2018 Q4).</li>
+<li><strong>Pairs between fixed charges never change</strong> while a third charge moves, so leave them out of any energy-conservation calculation (HW5 P6).</li>
+</ul>
+
+<h3>2.4 Energy conservation: the speed of a released charge</h3>
+<p>The Coulomb force is conservative, so when nothing else does work (no hand, no friction), mechanical energy is conserved:</p>
+\[ K_i + U_i = K_f + U_f \qquad\Longrightarrow\qquad \tfrac12 m v_f^2 = U_i - U_f \ \text{ (released from rest)} \]
+<div class="sym"><div class="st">What each letter means</div><dl>
+<dt>\(K_i,\ K_f\)</dt><dd>initial and final kinetic energy, \(\tfrac12mv^2\), in J; \(K_i = 0\) when released from rest</dd>
+<dt>\(U_i,\ U_f\)</dt><dd>potential energy at the starting and ending positions, from \(kQq/r\) (summed over the moving charge's pairs), in J</dd>
+<dt>\(m\)</dt><dd>mass of the moving charge, in kg: \(1\ \mu\mathrm{g} = 10^{-9}\ \mathrm{kg}\), \(1\ \mathrm{mg} = 10^{-6}\ \mathrm{kg}\)</dd>
+<dt>\(v_f\)</dt><dd>its speed at the end, \(v_f = \sqrt{2(U_i - U_f)/m}\), in m/s</dd>
+</dl></div>
+<p>Steps that never change: (1) write \(U\) at the start, (2) write \(U\) at the end, (3) the difference is the kinetic energy gained, (4) \(v = \sqrt{2K/m}\). If the charge is released from rest and \(U_i - U_f\) comes out negative, you have the direction wrong: a charge released from rest can only move toward lower \(U\). Only when <em>both</em> charges are free (Lecture 5, Example 5.1) do you also need momentum conservation to split the energy between them.</p>
+
+<h3>2.5 Electric potential: energy per coulomb</h3>
+<p>The potential energy of a charge \(q\) in someone else's field is always proportional to \(q\). Divide it out and what remains is a property of the location alone, the <strong>electric potential</strong>:</p>
+\[ V = \frac{U}{q}, \qquad V_{\text{point charge}} = \frac{kq}{r}, \qquad V_{\text{several}} = \sum_i \frac{kq_i}{r_i} \]
+<div class="sym"><div class="st">What each letter means</div><dl>
+<dt>\(V\)</dt><dd>electric potential at a point, in volts (1 V = 1 J/C); a plain number, no direction</dd>
+<dt>\(U\)</dt><dd>the potential energy a charge \(q\) has at that point, in J; so \(U = qV\)</dd>
+<dt>\(q\) (in \(kq/r\))</dt><dd>the source charge making the potential, with its sign: a negative charge makes negative \(V\)</dd>
+<dt>\(r,\ r_i\)</dt><dd>distance from the source charge to the point, in m</dd>
+<dt>\(\sum_i\)</dt><dd>add the numbers \(kq_i/r_i\) for each source charge; no components, no angles ("no sines or cosines," Lecture 6)</dd>
+</dl></div>
+<p>The two relationships you will use constantly:</p>
+\[ \Delta U = q\,\Delta V, \qquad W_{\text{field}} = -q\,\Delta V, \qquad W_{\text{you}} = +q\,\Delta V \]
+<div class="why"><div class="t">Why potential is useful, and how to read its sign</div>
+<p>Field is force per coulomb; potential is energy per coulomb. Both describe the space, not the test charge. Around a positive charge \(V\) is a hill (positive, higher near the charge); around a negative charge it is a well. A <em>positive</em> charge rolls downhill, toward lower \(V\). A <em>negative</em> charge does the opposite: its energy \(qV\) is lowest where \(V\) is highest, so it moves toward higher \(V\). Lecture 6's Example 6.1 makes the point: flipping the sign of \(q\) flips the force, the works, and \(\Delta U\), but \(\Delta V\) stays \(+2.4\ \mathrm{V}\); the potential difference belongs to the field, not to the charge.</p></div>
+
+<h3>2.6 Equipotentials: same distance, same potential, zero work</h3>
+<p>All points at the same distance from a point charge have the same \(V\). Moving a charge between two such points changes nothing: \(\Delta V = 0\), so \(\Delta U = 0\) and the field does no work, no matter how long or curved the path. Surfaces of constant \(V\) are called equipotentials; for a point charge they are spheres, for a long line they are cylinders, for a large flat sheet they are planes. The field is always perpendicular to them and points from high \(V\) to low \(V\). A conductor in equilibrium has \(E = 0\) inside, so its <em>entire volume</em> is one equipotential (Lecture 6 checkpoint: zero field means <em>constant</em> \(V\), not zero \(V\)). Equipotential lines drawn at equal voltage steps are closest together where the field is strongest.</p>
+
+<h3>2.7 Potential from the field, and field from the potential</h3>
+\[ V_b - V_a = -\int_a^b \vec E\cdot d\vec l, \qquad \text{uniform field along the motion: } \Delta V = -Ed, \qquad E_x = -\frac{dV}{dx} \]
+<div class="sym"><div class="st">What each letter means</div><dl>
+<dt>\(V_a,\ V_b\)</dt><dd>potential at the start and end points, in V</dd>
+<dt>\(\vec E\)</dt><dd>the electric field along the path, in N/C = V/m</dd>
+<dt>\(d\vec l\)</dt><dd>a tiny step along the path, in m; the dot product keeps the part of the step along \(\vec E\)</dd>
+<dt>\(d\)</dt><dd>distance moved along the field direction, in m</dd>
+<dt>\(E_x = -dV/dx\)</dt><dd>the field is minus the slope of \(V\); it points "downhill," from high \(V\) to low \(V\)</dd>
+</dl></div>
+<p>Walking <em>with</em> the field lowers \(V\); walking against it raises \(V\); walking perpendicular to it changes nothing. On a graph of \(V\) versus \(x\), the field is strongest where the curve is steepest, and it points in \(-x\) wherever the slope is positive (Lecture 6 checkpoints).</p>
+
+<h3>2.8 Extended objects: Gauss's law first, then integrate (Homework 6)</h3>
+<p>For spheres, cylinders, and plates, Lecture 6's two-step plan: (1) use Gauss's law to write \(E\) in every region, (2) integrate \(-E\,dr\) starting from the point where \(V\) is defined to be zero. The Gauss results you need to remember (no sheet on the quiz):</p>
+<div class="tw"><table>
+<thead><tr><th>Object</th><th>\(E\) outside</th><th>\(E\) inside a conductor</th><th>\(V\) from it</th></tr></thead>
+<tbody>
+<tr><td>point charge, or any sphere / shell seen from outside, total enclosed \(Q_{\text{enc}}\)</td><td>\(\dfrac{kQ_{\text{enc}}}{r^2} = \dfrac{Q_{\text{enc}}}{4\pi\varepsilon_0 r^2}\)</td><td>0</td><td>\(\dfrac{kQ_{\text{enc}}}{r}\) with \(V(\infty) = 0\); constant across a conductor</td></tr>
+<tr><td>long line, rod, or cylinder, charge per length \(\lambda\)</td><td>\(\dfrac{2k\lambda}{r} = \dfrac{\lambda}{2\pi\varepsilon_0 r}\)</td><td>0</td><td>\(V(r) = -\dfrac{\lambda}{2\pi\varepsilon_0}\ln\dfrac{r}{r_0}\), zero at a chosen \(r_0\) (never at infinity)</td></tr>
+<tr><td>one large sheet, \(\sigma\)</td><td>\(\dfrac{\sigma}{2\varepsilon_0}\) on each side, constant</td><td>–</td><td>linear: \(\Delta V = -Ed\)</td></tr>
+<tr><td>two plates \(\pm\sigma\)</td><td>\(\dfrac{\sigma}{\varepsilon_0}\) between, 0 outside</td><td>–</td><td>\(V\) rises linearly across the gap by \(\sigma d/\varepsilon_0\), flat outside</td></tr>
+</tbody></table></div>
+<div class="sym"><div class="st">What each letter means</div><dl>
+<dt>\(Q_{\text{enc}}\)</dt><dd>the net charge inside a sphere of radius \(r\) around the center, with signs, in C</dd>
+<dt>\(\lambda\)</dt><dd>charge per unit length, C/m; for a pipe of radius \(a\) with surface density \(\sigma\), \(\lambda = 2\pi a\sigma\)</dd>
+<dt>\(\sigma\)</dt><dd>charge per unit area, C/m²</dd>
+<dt>\(\varepsilon_0\)</dt><dd>\(8.85\times10^{-12}\ \mathrm{C^2/(N\,m^2)}\); \(k = 1/(4\pi\varepsilon_0)\)</dd>
+<dt>\(r\)</dt><dd>distance from the center (spheres) or perpendicular distance from the axis (cylinders), in m</dd>
+<dt>\(r_0\)</dt><dd>the reference radius where \(V = 0\) is declared (HW6 uses \(2R\) and \(3a\))</dd>
+<dt>\(\ln\)</dt><dd>natural logarithm; \(\ln(1/2) = -\ln 2\), \(\ln(2/3) = -\ln(3/2)\)</dd>
+</dl></div>
+<div class="why"><div class="t">Why a conductor is flat in V, and why lines cannot use infinity</div>
+<p>Inside a conductor in equilibrium the field is zero, and \(\Delta V = -\int E\,dr\) adds up nothing across it, so \(V\) holds the value it had at the outer surface all the way through (HW6 P1's copper shell, P2's aluminum interior). For an infinite line the field falls only as \(1/r\), and \(\int dr/r = \ln r\) grows without limit, so "zero at infinity" is impossible; the problem hands you a reference radius instead, and the potential at any \(r\) is minus the log of the ratio \(r/r_0\).</p></div>
+<h2 id="mem">3 · Memorize card (no equation sheet on the quiz)</h2>
+<p>Everything below must come from memory. Say each line out loud with the meaning of every letter; the letters are defined in Section 2.</p>
+<div class="mem">
+<div class="tile"><div class="mt">Pair energy</div>\[U = \frac{kq_1q_2}{r}\]<div class="mn">signs in, \(r\) not squared, zero at infinity</div></div>
+<div class="tile"><div class="mt">One charge moves</div>\[\Delta U = kQq\left(\frac1{r_2}-\frac1{r_1}\right)\]<div class="mn">final minus initial; path length irrelevant</div></div>
+<div class="tile"><div class="mt">Many charges</div>\[U = \sum_{\text{pairs}}\frac{kq_iq_j}{r_{ij}}\]<div class="mn">3 charges: 3 terms; 4 charges: 6 terms</div></div>
+<div class="tile"><div class="mt">Released from rest</div>\[\tfrac12mv^2 = U_i - U_f\]<div class="mn">\(v = \sqrt{2(U_i-U_f)/m}\); μg \(=10^{-9}\) kg, mg \(=10^{-6}\) kg</div></div>
+<div class="tile"><div class="mt">Potential</div>\[V = \frac{U}{q} = \frac{kq}{r},\quad V = \sum_i\frac{kq_i}{r_i}\]<div class="mn">scalar sum with signs; 1 V = 1 J/C</div></div>
+<div class="tile"><div class="mt">Work and potential</div>\[\Delta U = q\Delta V,\ \ W_{\text{field}} = -q\Delta V,\ \ W_{\text{you}} = q\Delta V\]<div class="mn">same \(V\) on both ends means zero work</div></div>
+<div class="tile"><div class="mt">V from E, E from V</div>\[\Delta V = -\!\int\!\vec E\cdot d\vec l = -Ed\ (\text{uniform}),\quad E_x = -\frac{dV}{dx}\]<div class="mn">field points downhill in \(V\)</div></div>
+<div class="tile"><div class="mt">Gauss results</div>\[E_{\text{sphere}} = \frac{kQ_{\text{enc}}}{r^2},\ E_{\text{line}} = \frac{\lambda}{2\pi\varepsilon_0 r},\ E_{\text{plates}} = \frac{\sigma}{\varepsilon_0}\]<div class="mn">\(E = 0\) inside any conductor; one sheet alone: \(\sigma/2\varepsilon_0\)</div></div>
+<div class="tile"><div class="mt">Line or cylinder potential</div>\[V(r) = -\frac{\lambda}{2\pi\varepsilon_0}\ln\frac{r}{r_0}\]<div class="mn">zero at the given \(r_0\); constant inside a conductor</div></div>
+<div class="tile"><div class="mt">Coaxial cylinders</div>\[|\Delta V| = \frac{Q}{2\pi\varepsilon_0 L}\ln\frac ba\]<div class="mn">\(a\) inner radius, \(b\) gap's outer radius; \(c\) never appears</div></div>
+<div class="tile"><div class="mt">Constants</div>\[k = 8.99\times10^{9},\ \ e = 1.60\times10^{-19}\ \mathrm{C}\]<div class="mn">\(\varepsilon_0 = 8.85\times10^{-12}\); \(\dfrac{1}{2\pi\varepsilon_0} = 2k = 1.80\times10^{10}\)</div></div>
+<div class="tile"><div class="mt">Sign sentences</div><p class="mn" style="margin-top:6px">Like charges: \(U \gt 0\), energy released as they separate. Opposite: \(U \lt 0\), bound. Positive charge rolls to lower \(V\); negative charge climbs to higher \(V\). Field does negative work when the charge is forced against it.</p></div>
+</div>
+
+<h2 id="hw5">4 · Homework 5, every problem solved</h2>
+<p class="small">Numbers are the ones on your printout (\(k = 8.99\times10^{9}\ \mathrm{N\,m^2/C^2}\)). Work each one on paper with the solution covered, then compare.</p>
+
+<div class="ex" id="h5p1"><div class="t">HW5 Problem 1 · Three charges in a right triangle <span class="tier t1">most likely</span></div><div class="src">Concept: sum over pairs · bringing in one charge counts only its own pairs</div>
+<div class="given">\(q_1 = 9.5\ \mu\mathrm{C}\) (left corner, +), \(q_2 = 58\ \mu\mathrm{C}\) (right-angle corner, drawn −), \(q_3 = 25\ \mu\mathrm{C}\) (top, +). \(q_1\)–\(q_2\): \(a = 26\ \mathrm{cm}\). \(q_2\)–\(q_3\): \(b = 65\ \mathrm{cm}\). (a) \(U\) of the configuration. (b) \(\Delta U\) when \(q_3\) is brought in from infinity with \(q_1, q_2\) fixed.</div>
+<figure class="fig"><svg viewBox="0 0 440 300" role="img" aria-label="Homework 5 Problem 1: three charges on a right triangle">
+<line x1="70" y1="240" x2="320" y2="240" class="ink thin"/><line x1="320" y1="240" x2="320" y2="50" class="ink thin"/>
+<line x1="70" y1="240" x2="320" y2="50" class="mut thin" stroke-dasharray="5 4"/>
+<path d="M306 240 V226 H320" fill="none" class="mut thin"/>
+<circle cx="70" cy="240" r="12" class="pos"/><text x="70" y="244.5" fill="#fff" font-weight="700" font-size="14" text-anchor="middle">+</text><circle cx="320" cy="240" r="12" class="neg"/><text x="320" y="244.5" fill="#fff" font-weight="700" font-size="14" text-anchor="middle">−</text><circle cx="320" cy="50" r="12" class="pos"/><text x="320" y="54.5" fill="#fff" font-weight="700" font-size="14" text-anchor="middle">+</text>
+<text x="40.0" y="275.0" class="tx" >q₁ = +9.5 μC</text><text x="300.0" y="275.0" class="tx" >q₂ = −58 μC (figure)</text><text x="338.0" y="46.0" class="tx" >q₃ = +25 μC</text>
+<text x="160.0" y="262.0" class="tx" text-anchor="middle">a = 26 cm</text><text x="334.0" y="150.0" class="tx" >b = 65 cm</text>
+<text x="56.0" y="112.0" class="tx" fill="var(--muted)">√(a² + b²) = 70.0 cm</text>
+<text x="120.0" y="222.0" class="txs" fill="var(--neg)">U₁₂ = −19.1 J</text><text x="56.0" y="132.0" class="txs" fill="var(--pos)">U₁₃ = +3.05 J</text><text x="310.0" y="160.0" class="txs" fill="var(--neg)" text-anchor="end">U₂₃ = −20.1 J</text>
+</svg><figcaption>Three pairs, three distances. The hypotenuse is the third distance and is not given; Pythagoras supplies it.</figcaption></figure>
+<ol class="steps">
+<li><strong>Find all three distances.</strong> \(r_{12} = a = 0.26\ \mathrm{m}\), \(r_{23} = b = 0.65\ \mathrm{m}\), \(r_{13} = \sqrt{0.26^2 + 0.65^2} = \sqrt{0.0676 + 0.4225} = 0.700\ \mathrm{m}\).</li>
+<li><strong>Decide the signs.</strong> The figure marks \(q_2\) with a minus sign; the printed values are magnitudes. So \(q_2 = -58\ \mu\mathrm{C}\), the other two positive. (Expert TA sets signs in the figure and sizes in the text. If Expert TA accepted \(+42\ \mathrm{J}\) from you, your version treated all three as positive; the method below is identical, only the signs of two terms flip.)</li>
+<li><strong>One term per pair.</strong>
+\(U_{12} = \dfrac{k q_1 q_2}{r_{12}} = \dfrac{8.99\times10^{9}(9.5\times10^{-6})(-58\times10^{-6})}{0.26} = -19.05\ \mathrm{J}\);
+\(U_{23} = \dfrac{8.99\times10^{9}(-58\times10^{-6})(25\times10^{-6})}{0.65} = -20.05\ \mathrm{J}\);
+\(U_{13} = \dfrac{8.99\times10^{9}(9.5\times10^{-6})(25\times10^{-6})}{0.700} = +3.05\ \mathrm{J}\).</li>
+<li><strong>Add.</strong> \(U = -19.05 - 20.05 + 3.05 = -36.1\ \mathrm{J}\). Negative: the two attractions outweigh the one repulsion, so the field did positive work assembling this and an outside agent got \(36\ \mathrm{J}\) back.</li>
+<li><strong>Part (b).</strong> With \(q_1\) and \(q_2\) already in place, their pair \(U_{12}\) exists before and after; only the pairs that <em>involve</em> \(q_3\) are created: \(\Delta U = U_{23} + U_{13} = -20.05 + 3.05 = -17.0\ \mathrm{J}\). Equivalently \(\Delta U = q_3 V\) where \(V\) is the potential of \(q_1, q_2\) at \(q_3\)'s spot.</li>
+</ol>
+<div class="ansbox"><span class="ans">Answers</span> (a) \(U = -36.1\ \mathrm{J}\) with \(q_2\) negative (\(+42.2\ \mathrm{J}\) if all positive). (b) \(\Delta U = -17.0\ \mathrm{J}\) (\(+23.1\ \mathrm{J}\) if all positive).</div>
+<details class="q"><summary><span class="n">Quiz versions</span><span class="qt">How this could be asked in three minutes</span></summary><div class="sol">
+<ul>
+<li>Symbolic: three equal charges \(q\) at the corners of an equilateral triangle of side \(d\): \(U = 3kq^2/d\). Make one negative: \(U = -kq^2/d\) (two attractive pairs, one repulsive).</li>
+<li>"How much work must you do to bring \(q_3\) in?" Same as part (b): \(W_{\text{you}} = \Delta U\). "How much work does the field do?" The negative of that.</li>
+<li>Square with charges (Spring 2014 Q13, Fall 2018 Q2): six pairs, four sides at \(a\) and two diagonals at \(a\sqrt2\). Count before you compute.</li>
+</ul></div></details>
+<div class="trap"><div class="t">Traps</div><p>Counting a pair twice (there are 3 pairs, not 6). Using \(r^2\) instead of \(r\). Forgetting that the hypotenuse is \(\sqrt{a^2+b^2}\), not \(a + b\). Including the fixed pair \(U_{12}\) in part (b). Dropping the minus sign on \(q_2\).</p></div>
+</div>
+
+<div class="ex" id="h5p2"><div class="t">HW5 Problem 2 · Two charges from their energy <span class="tier t2">likely</span></div><div class="src">Concept: invert \(U = kq_1q_2/r\) · the sign of \(U\) tells you the signs of the charges</div>
+<div class="given">\(U = -33\ \mathrm{J}\), \(r = 16\ \mathrm{cm}\), \(q_+ + q_- = 45\ \mu\mathrm{C}\). Find \(q_+\) and \(q_-\) in μC.</div>
+<ol class="steps">
+<li><strong>Read the sign.</strong> \(U \lt 0\) means the charges have opposite signs (one positive, one negative), which is why the problem calls them \(q_+\) and \(q_-\).</li>
+<li><strong>Product from the energy.</strong> \(q_+q_- = \dfrac{Ur}{k} = \dfrac{(-33)(0.16)}{8.99\times10^{9}} = -5.87\times10^{-10}\ \mathrm{C^2}\). In microcoulombs (multiply by \(10^{12}\)): \(q_+q_- = -587\ (\mu\mathrm{C})^2\).</li>
+<li><strong>Sum and product give a quadratic.</strong> Let \(x = q_+\) in μC; then \(q_- = 45 - x\) and \(x(45 - x) = -587\), i.e. \(x^2 - 45x - 587 = 0\).</li>
+<li><strong>Solve.</strong> \(x = \dfrac{45 + \sqrt{45^2 + 4(587)}}{2} = \dfrac{45 + \sqrt{2025 + 2348}}{2} = \dfrac{45 + 66.1}{2} = 55.6\). (The other root is negative, so it is \(q_-\)'s value up to sign, not \(q_+\).)</li>
+<li><strong>Check.</strong> \(q_- = 45 - 55.6 = -10.6\ \mu\mathrm{C}\). \(U = 8.99\times10^{9}(55.6\times10^{-6})(-10.6\times10^{-6})/0.16 = -33\ \mathrm{J}\). ✓</li>
+</ol>
+<div class="ansbox"><span class="ans">Answers</span> \(q_+ = 55.6\ \mu\mathrm{C}\), \(q_- = -10.6\ \mu\mathrm{C}\).</div>
+<details class="q"><summary><span class="n">Quiz versions</span><span class="qt">The short forms of this problem</span></summary><div class="sol">
+<ul>
+<li>Forward direction (far more quiz-friendly): "\(+5\ \mu\mathrm{C}\) and \(-2\ \mu\mathrm{C}\) are 10 cm apart; what is \(U\)?" \(U = 8.99\times10^{9}(5\times10^{-6})(-2\times10^{-6})/0.10 = -0.90\ \mathrm{J}\).</li>
+<li>Conceptual: "\(U\) of a pair is negative. The charges are: (A) both positive (B) both negative (C) opposite." C.</li>
+<li>"The separation is doubled; \(U\) becomes?" Half as large in magnitude, same sign.</li>
+</ul></div></details>
+</div>
+
+<div class="ex" id="h5p3"><div class="t">HW5 Problem 3 · Three charges on a line, symbolic <span class="tier t2">likely</span></div><div class="src">Concept: sum over pairs with a common factor \(kq^2/L\)</div>
+<div class="given">Charges \(+q\), \(-q\), \(+q\) on a line, each neighbor a distance \(L\) apart. (a) \(U\) in terms of \(k, L, q\). (b) Numeric value in mJ for \(L = 5.26\ \mathrm{m}\), \(q = 7.91\ \mu\mathrm{C}\).</div>
+<figure class="fig"><svg viewBox="0 0 560 160" role="img" aria-label="Homework 5 Problem 3: +q, −q, +q on a line">
+<line x1="60" y1="105" x2="500" y2="105" class="mut thin"/>
+<circle cx="80" cy="105" r="12" class="pos"/><text x="80" y="109.5" fill="#fff" font-weight="700" font-size="14" text-anchor="middle">+</text><circle cx="280" cy="105" r="12" class="neg"/><text x="280" y="109.5" fill="#fff" font-weight="700" font-size="14" text-anchor="middle">−</text><circle cx="480" cy="105" r="12" class="pos"/><text x="480" y="109.5" fill="#fff" font-weight="700" font-size="14" text-anchor="middle">+</text>
+<text x="80.0" y="140.0" class="tx" text-anchor="middle">+q</text><text x="280.0" y="140.0" class="tx" text-anchor="middle">−q</text><text x="480.0" y="140.0" class="tx" text-anchor="middle">+q</text>
+<line x1="96" y1="128" x2="264" y2="128" class="mut thin" marker-start="url(#amut)" marker-end="url(#amut)"/><text x="180.0" y="124.0" class="txs" text-anchor="middle">L</text>
+<line x1="296" y1="128" x2="464" y2="128" class="mut thin" marker-start="url(#amut)" marker-end="url(#amut)"/><text x="380.0" y="124.0" class="txs" text-anchor="middle">L</text>
+<path d="M92 92 Q180 40 268 92" fill="none" stroke="var(--neg)" stroke-width="1.6"/><text x="180.0" y="58.0" class="tx" text-anchor="middle" fill="var(--neg)">−kq²/L</text>
+<path d="M292 92 Q380 40 468 92" fill="none" stroke="var(--neg)" stroke-width="1.6"/><text x="380.0" y="58.0" class="tx" text-anchor="middle" fill="var(--neg)">−kq²/L</text>
+<path d="M84 90 Q280 -40 476 90" fill="none" stroke="var(--pos)" stroke-width="1.6"/><text x="280.0" y="22.0" class="tx" text-anchor="middle" fill="var(--pos)">+kq²/(2L)  (distance 2L)</text>
+</svg><figcaption>Three pairs: two neighbor pairs at distance \(L\) with opposite signs, one end-to-end pair at \(2L\) with like signs.</figcaption></figure>
+<ol class="steps">
+<li><strong>List the pairs and distances.</strong> Left–middle: \((+q)(-q)\) at \(L\). Middle–right: \((-q)(+q)\) at \(L\). Left–right: \((+q)(+q)\) at \(2L\).</li>
+<li><strong>Write each term.</strong> \(\dfrac{k(+q)(-q)}{L} = -\dfrac{kq^2}{L}\), again \(-\dfrac{kq^2}{L}\), and \(\dfrac{k(+q)(+q)}{2L} = +\dfrac{kq^2}{2L}\).</li>
+<li><strong>Add.</strong> \(U = \dfrac{kq^2}{L}\left(-1 - 1 + \tfrac12\right) = -\dfrac{3kq^2}{2L}\).</li>
+<li><strong>Numbers.</strong> \(\dfrac{kq^2}{L} = \dfrac{8.99\times10^{9}(7.91\times10^{-6})^2}{5.26} = \dfrac{0.5625}{5.26} = 0.1069\ \mathrm{J}\), so \(U = -1.5(0.1069) = -0.160\ \mathrm{J} = -160\ \mathrm{mJ}\).</li>
+</ol>
+<div class="ansbox"><span class="ans">Answers</span> (a) \(U = -\dfrac{3kq^2}{2L}\). (b) \(U = -160\ \mathrm{mJ}\).</div>
+<details class="q"><summary><span class="n">Quiz versions</span><span class="qt">Multiple-choice distractors to expect</span></summary><div class="sol">
+<p>\(+3kq^2/2L\) (sign dropped), \(-2kq^2/L\) (the \(2L\) pair forgotten), \(-5kq^2/2L\) (the \(2L\) pair given the wrong sign), \(-3kq^2/L\) (the far pair counted at distance \(L\)). Variants: four charges alternating \(+,-,+,-\) with spacing \(L\): pairs at \(L\) (three, all negative), at \(2L\) (two, both positive), at \(3L\) (one, negative): \(U = \dfrac{kq^2}{L}\left(-3 + 1 - \tfrac13\right) = -\dfrac{7kq^2}{3L}\).</p></div></details>
+</div>
+
+<div class="ex" id="h5p4"><div class="t">HW5 Problem 4 · Fixed charge, free charge released <span class="tier t1">most likely</span></div><div class="src">Concept: \(U = kQq/r\), then energy conservation · Lecture 5 Example 5.1 and checkpoint</div>
+<div class="given">\(Q_1 = +5.7\ \mu\mathrm{C}\) fixed. \(Q_2 = +3.5\ \mathrm{nC}\), mass \(6.4\ \mu\mathrm{g}\), free. (a) \(U\) when \(Q_2\) is \(0.39\ \mathrm{m}\) from \(Q_1\). (b) Released from rest at \(0.39\ \mathrm{m}\): speed at \(0.79\ \mathrm{m}\).</div>
+<figure class="fig"><svg viewBox="0 0 560 180" role="img" aria-label="Homework 5 Problem 4: a charge released near a fixed charge">
+<line x1="30" y1="95" x2="540" y2="95" class="mut thin" stroke-dasharray="3 5"/>
+<circle cx="60" cy="95" r="14" class="pos"/><text x="60" y="99.5" fill="#fff" font-weight="700" font-size="14" text-anchor="middle">+</text><text x="60.0" y="132.0" class="tx" text-anchor="middle">Q₁ = +5.7 μC, fixed</text>
+<circle cx="255" cy="95" r="9" fill="none" stroke="var(--pos)" stroke-width="2" stroke-dasharray="3 3"/><text x="255.0" y="70.0" class="txs" text-anchor="middle">start: r = 0.39 m, v = 0</text><text x="255.0" y="132.0" class="tx" text-anchor="middle">U = 4.60×10⁻⁴ J</text>
+<circle cx="455" cy="95" r="9" class="pos"/><text x="455.0" y="70.0" class="txs" text-anchor="middle">later: r = 0.79 m</text><text x="455.0" y="132.0" class="tx" text-anchor="middle">U = 2.27×10⁻⁴ J</text>
+<path d="M270 95 L440 95" stroke="var(--accent)" stroke-width="3" fill="none" marker-end="url(#aacc)"/>
+<text x="355.0" y="86.0" class="txs" text-anchor="middle">pushed outward</text>
+<text x="355.0" y="160.0" class="tx" text-anchor="middle" font-weight="600">K = U_i − U_f = 2.33×10⁻⁴ J  →  v = √(2K/m) = 270 m/s</text>
+<text x="455.0" y="54.0" class="txs" text-anchor="middle">Q₂ = +3.5 nC, 6.4 μg</text>
+</svg><figcaption>Like charges: \(Q_2\) is pushed outward, so it speeds up as it moves away. The energy it loses from \(U\) appears as kinetic energy.</figcaption></figure>
+<ol class="steps">
+<li><strong>Units first.</strong> \(Q_1 = 5.7\times10^{-6}\ \mathrm{C}\), \(Q_2 = 3.5\times10^{-9}\ \mathrm{C}\), \(m = 6.4\ \mu\mathrm{g} = 6.4\times10^{-9}\ \mathrm{kg}\) (micro-gram: \(10^{-6}\) g \(= 10^{-9}\) kg).</li>
+<li><strong>Part (a).</strong> \(U_i = \dfrac{kQ_1Q_2}{r_i} = \dfrac{8.99\times10^{9}(5.7\times10^{-6})(3.5\times10^{-9})}{0.39} = \dfrac{1.794\times10^{-4}}{0.39} = 4.60\times10^{-4}\ \mathrm{J}\). Positive, as it must be for like charges.</li>
+<li><strong>Energy at the end.</strong> \(U_f = \dfrac{1.794\times10^{-4}}{0.79} = 2.27\times10^{-4}\ \mathrm{J}\).</li>
+<li><strong>Conservation.</strong> Released from rest, \(K_i = 0\): \(K_f = U_i - U_f = 4.60\times10^{-4} - 2.27\times10^{-4} = 2.33\times10^{-4}\ \mathrm{J}\). Positive, so the motion outward is allowed. (Same thing as \(-\Delta U\) with \(\Delta U = kQ_1Q_2(1/0.79 - 1/0.39)\).)</li>
+<li><strong>Speed.</strong> \(v = \sqrt{\dfrac{2K_f}{m}} = \sqrt{\dfrac{2(2.33\times10^{-4})}{6.4\times10^{-9}}} = \sqrt{7.28\times10^{4}} = 270\ \mathrm{m/s}\).</li>
+</ol>
+<div class="ansbox"><span class="ans">Answers</span> (a) \(U = 4.6\times10^{-4}\ \mathrm{J}\). (b) \(v = 270\ \mathrm{m/s}\).</div>
+<details class="q"><summary><span class="n">Quiz versions</span><span class="qt">The same problem in other clothes</span></summary><div class="sol">
+<ul>
+<li>"Speed when very far away": \(U_f = 0\), so \(v = \sqrt{2U_i/m} = \sqrt{2(4.60\times10^{-4})/6.4\times10^{-9}} = 379\ \mathrm{m/s}\).</li>
+<li>"How much work did the field do from 0.39 m to 0.79 m?" \(W_{\text{field}} = -\Delta U = +2.33\times10^{-4}\ \mathrm{J}\) (positive: the push and the motion agree).</li>
+<li>Opposite signs: a negative \(Q_2\) released at 0.79 m falls inward; \(K\) at 0.39 m is the same \(2.33\times10^{-4}\ \mathrm{J}\), now gained by moving <em>closer</em>.</li>
+<li>Conceptual: "\(+q\) moves from \(r_1\) to \(r_2\) from \(+Q\), traveling a straight distance \(R\). \(\Delta U = \)?" \(kQq(1/r_2 - 1/r_1)\); \(R\) is a distractor.</li>
+</ul></div></details>
+<div class="trap"><div class="t">Traps</div><p>Mass in grams instead of kilograms (\(\mu\)g is \(10^{-9}\) kg; the result is off by \(\sqrt{1000}\)). Using \(\Delta U\) with the wrong sign and getting a negative \(K\). Squaring \(r\). Forgetting the factor 2 in \(v = \sqrt{2K/m}\).</p></div>
+</div>
+
+<div class="ex" id="h5p5"><div class="t">HW5 Problem 5 · Work by the field on a proton near a point charge <span class="tier t1">most likely</span></div><div class="src">Concept: \(W_{\text{field}} = -q\,\Delta V\) · equal distances mean equal \(V\) and zero work</div>
+<div class="given">\(q = 7.8\ \mu\mathrm{C}\) at the origin. A \((0, 5)\ \mathrm{m}\), B \((5, 0)\ \mathrm{m}\), C \((5, 5)\ \mathrm{m}\), D \((5, -5)\ \mathrm{m}\). Work done by the field moving a proton (charge \(+e\)) (a) A→B, (b) C→D, (c) C→A, (d) D→B.</div>
+<figure class="fig"><svg viewBox="0 0 420 350" role="img" aria-label="Homework 5 Problem 5: points A, B, C, D around a point charge with equipotential circles">
+<line x1="30" y1="175" x2="400" y2="175" class="ax"/><line x1="150" y1="20" x2="150" y2="340" class="ax"/>
+<text x="404.0" y="179.0" class="txs" >x</text><text x="154.0" y="18.0" class="txs" >y</text>
+<circle cx="150" cy="175" r="100" class="gauss"/><circle cx="150" cy="175" r="141.4" class="gauss" stroke="var(--neg)"/>
+<circle cx="150" cy="175" r="10" class="pos"/><text x="150" y="179.5" fill="#fff" font-weight="700" font-size="14" text-anchor="middle">+</text><text x="104.0" y="201.0" class="txs" >q = 7.8 μC</text>
+<circle cx="150" cy="75" r="5" class="dot"/><text x="98.0" y="67.0" class="tx" >A (0, 5)</text>
+<circle cx="250" cy="175" r="5" class="dot"/><text x="258.0" y="193.0" class="tx" >B (5, 0)</text>
+<circle cx="250" cy="75" r="5" class="dot"/><text x="260.0" y="69.0" class="tx" >C (5, 5)</text>
+<circle cx="250" cy="275" r="5" class="dot"/><text x="260.0" y="291.0" class="tx" >D (5, −5)</text>
+<path d="M238 75 L162 75" stroke="var(--neg)" stroke-width="2.4" fill="none" marker-end="url(#aneg)"/><text x="200.0" y="65.0" class="txs" text-anchor="middle" fill="var(--neg)">C→A: r 7.07 → 5 m</text>
+<path d="M250 263 L250 187" stroke="var(--neg)" stroke-width="2.4" fill="none" marker-end="url(#aneg)"/><text x="262.0" y="229.0" class="txs" fill="var(--neg)">D→B: r 7.07 → 5 m</text>
+<text x="32.0" y="105.0" class="txs" fill="var(--accent)">r = 5 m circle:</text><text x="32.0" y="119.0" class="txs" fill="var(--accent)">V = 1.40×10⁴ V</text>
+<text x="20.0" y="332.0" class="txs" fill="var(--neg)">r = 7.07 m circle:</text><text x="20.0" y="346.0" class="txs" fill="var(--neg)">V = 9.92×10³ V</text>
+<text x="32.0" y="225.0" class="txs" >A→B and C→D stay</text><text x="32.0" y="239.0" class="txs" >on one circle: W = 0</text>
+</svg><figcaption>A and B sit on the same circle around \(q\) (radius 5 m), and so do C and D (radius \(5\sqrt2 = 7.07\ \mathrm{m}\)). Every circle around a point charge is an equipotential. The only moves that cost or release energy are the ones that change the radius: C→A and D→B both go from 7.07 m in to 5 m.</figcaption></figure>
+<ol class="steps">
+<li><strong>Distances from \(q\).</strong> \(r_A = r_B = 5\ \mathrm{m}\). \(r_C = r_D = \sqrt{5^2 + 5^2} = 7.07\ \mathrm{m}\).</li>
+<li><strong>Potentials.</strong> \(V = kq/r\): \(V_A = V_B = \dfrac{8.99\times10^{9}(7.8\times10^{-6})}{5} = 1.40\times10^{4}\ \mathrm{V}\); \(V_C = V_D = \dfrac{7.01\times10^{4}}{7.07} = 9.92\times10^{3}\ \mathrm{V}\).</li>
+<li><strong>(a) and (b).</strong> A→B: \(\Delta V = 0\), so \(W_{AB} = -e\,\Delta V = 0\). C→D: same, \(W_{CD} = 0\). The path does not matter, only the endpoints.</li>
+<li><strong>(c) C→A.</strong> \(\Delta V = V_A - V_C = 1.40\times10^{4} - 0.99\times10^{4} = +4.11\times10^{3}\ \mathrm{V}\). \(W_{CA} = -e\,\Delta V = -(1.60\times10^{-19})(4.11\times10^{3}) = -6.6\times10^{-16}\ \mathrm{J}\). Negative makes sense: the positive \(q\) pushes the proton outward, and we moved it inward, against the push.</li>
+<li><strong>(d) D→B.</strong> Same radii, same answer: \(W_{DB} = -6.6\times10^{-16}\ \mathrm{J}\).</li>
+</ol>
+<div class="ansbox"><span class="ans">Answers</span> (a) 0 · (b) 0 · (c) \(-6.6\times10^{-16}\ \mathrm{J}\) · (d) \(-6.6\times10^{-16}\ \mathrm{J}\).</div>
+<details class="q"><summary><span class="n">Quiz versions</span><span class="qt">Where the multiple-choice traps are</span></summary><div class="sol">
+<ul>
+<li>"Work done by <em>you</em> moving the proton C→A at constant speed": \(+6.6\times10^{-16}\ \mathrm{J}\) (the opposite sign).</li>
+<li>Replace the proton by an electron: every nonzero answer flips sign (\(W_{CA} = +6.6\times10^{-16}\ \mathrm{J}\)); the zeros stay zero.</li>
+<li>"Along which path is the work largest?" Trick: work depends only on the endpoints. Any path from C to A gives the same answer.</li>
+<li>"Rank the potentials": \(V_A = V_B \gt V_C = V_D \gt 0\); closer to a positive charge is higher.</li>
+<li>In electron-volts: moving through \(4.11\ \mathrm{kV}\) is \(4.11\ \mathrm{keV}\) of energy (\(1\ \mathrm{eV} = 1.60\times10^{-19}\ \mathrm{J}\)).</li>
+</ul></div></details>
+</div>
+
+<div class="ex" id="h5p6"><div class="t">HW5 Problem 6 · Particle released between two fixed charges <span class="tier t2">likely</span></div><div class="src">Concept: energy conservation with two sources · the fixed pair's own \(U\) never changes</div>
+<div class="given">Two \(5.22\ \mu\mathrm{C}\) charges fixed at \(x = +3.01\ \mathrm{cm}\) and \(x = -3.01\ \mathrm{cm}\). A \(3.08\ \mu\mathrm{C}\), \(7.64\ \mathrm{mg}\) particle is released from rest at \(y = 1.99\ \mathrm{cm}\). Its speed at \(y = 5.35\ \mathrm{cm}\)?</div>
+<figure class="fig"><svg viewBox="0 0 440 250" role="img" aria-label="Homework 5 Problem 6: a particle released on the axis between two fixed charges">
+<line x1="40" y1="205" x2="400" y2="205" class="ax"/><line x1="210" y1="20" x2="210" y2="240" class="ax"/>
+<text x="404.0" y="209.0" class="txs" >x</text><text x="215.0" y="18.0" class="txs" >y</text>
+<line x1="125.72" y1="205" x2="210" y2="149.28" class="mut thin" stroke-dasharray="4 3"/><line x1="294.28" y1="205" x2="210" y2="149.28" class="mut thin" stroke-dasharray="4 3"/>
+<line x1="125.72" y1="205" x2="210" y2="55.20000000000002" class="mut thin" stroke-dasharray="4 3"/><line x1="294.28" y1="205" x2="210" y2="55.20000000000002" class="mut thin" stroke-dasharray="4 3"/>
+<circle cx="125.72" cy="205" r="12" class="pos"/><text x="125.72" y="209.5" fill="#fff" font-weight="700" font-size="14" text-anchor="middle">+</text><circle cx="294.28" cy="205" r="12" class="pos"/><text x="294.28" y="209.5" fill="#fff" font-weight="700" font-size="14" text-anchor="middle">+</text>
+<text x="111.7" y="235.0" class="txs" text-anchor="middle">5.22 μC at −3.01 cm</text><text x="308.3" y="235.0" class="txs" text-anchor="middle">5.22 μC at +3.01 cm</text>
+<circle cx="210" cy="149.28" r="7" fill="none" stroke="var(--pos)" stroke-width="2" stroke-dasharray="3 3"/><text x="222.0" y="153.3" class="txs" >start y = 1.99 cm, v = 0</text>
+<circle cx="210" cy="55.20000000000002" r="7" class="pos"/><text x="222.0" y="59.2" class="txs" >y = 5.35 cm, v = ?</text>
+<path d="M210 139.28 L210 65.20000000000002" stroke="var(--accent)" stroke-width="3" fill="none" marker-end="url(#aacc)"/>
+<text x="60.0" y="150.0" class="txs" fill="var(--ink)">rᵢ = 3.61 cm</text><text x="40.0" y="110.0" class="txs" fill="var(--ink)">r_f = 6.14 cm</text>
+<text x="24.0" y="40.0" class="tx" font-weight="600">U = 2kQq/r (two equal pairs)</text><text x="24.0" y="58.0" class="txs" >q = 3.08 μC, m = 7.64 mg</text>
+</svg><figcaption>By symmetry the particle stays on the \(y\)-axis and is always the same distance from both fixed charges, so its potential energy is two identical pair terms.</figcaption></figure>
+<ol class="steps">
+<li><strong>Units.</strong> \(Q = 5.22\times10^{-6}\ \mathrm{C}\), \(q = 3.08\times10^{-6}\ \mathrm{C}\), \(m = 7.64\ \mathrm{mg} = 7.64\times10^{-6}\ \mathrm{kg}\), positions in meters.</li>
+<li><strong>Distances to each fixed charge (Pythagoras).</strong> Start: \(r_i = \sqrt{3.01^2 + 1.99^2}\ \mathrm{cm} = 3.61\ \mathrm{cm} = 0.0361\ \mathrm{m}\). End: \(r_f = \sqrt{3.01^2 + 5.35^2}\ \mathrm{cm} = 6.14\ \mathrm{cm} = 0.0614\ \mathrm{m}\).</li>
+<li><strong>Potential energy of the moving particle.</strong> Two pairs, both \(kQq/r\): \(U = \dfrac{2kQq}{r}\). With \(2kQq = 2(8.99\times10^{9})(5.22\times10^{-6})(3.08\times10^{-6}) = 0.2891\ \mathrm{J\,m}\): \(U_i = 0.2891/0.0361 = 8.01\ \mathrm{J}\), \(U_f = 0.2891/0.0614 = 4.71\ \mathrm{J}\). (The pair between the two fixed charges is the same before and after; leave it out.)</li>
+<li><strong>Conservation.</strong> \(K_f = U_i - U_f = 3.30\ \mathrm{J}\).</li>
+<li><strong>Speed.</strong> \(v = \sqrt{2(3.30)/7.64\times10^{-6}} = \sqrt{8.64\times10^{5}} = 930\ \mathrm{m/s}\).</li>
+</ol>
+<div class="ansbox"><span class="ans">Answer</span> \(v = 930\ \mathrm{m/s}\).</div>
+<details class="q"><summary><span class="n">Quiz versions</span><span class="qt">Shorter forms</span></summary><div class="sol">
+<ul>
+<li>"Speed when very far away": \(K = U_i = 8.01\ \mathrm{J}\), \(v = \sqrt{2(8.01)/7.64\times10^{-6}} = 1450\ \mathrm{m/s}\).</li>
+<li>"What is the potential at the release point?" \(V = 2kQ/r_i = 2(8.99\times10^{9})(5.22\times10^{-6})/0.0361 = 2.6\times10^{6}\ \mathrm{V}\); then \(U = qV\) reproduces 8.0 J.</li>
+<li>Conceptual: "The particle is released at the origin instead. What happens?" The two pushes cancel there; it stays put (unstable equilibrium along \(y\)).</li>
+</ul></div></details>
+<div class="trap"><div class="t">Traps</div><p>Using \(1.99\ \mathrm{cm}\) as the distance to a fixed charge (it is the height, not the hypotenuse). Counting only one of the two pairs. Milligrams: \(7.64\ \mathrm{mg} = 7.64\times10^{-6}\ \mathrm{kg}\).</p></div>
+</div>
+<h2 id="hw6">5 · Homework 6, every problem solved</h2>
+<p class="small">These are "Gauss's law, then integrate" problems. Every answer is an expression. Expert TA's variable list for each part tells you which letters may appear; when \(k\) is not in the list, write \(1/(4\pi\varepsilon_0)\) instead of \(k\) and \(1/(2\pi\varepsilon_0)\) instead of \(2k\).</p>
+
+<div class="ex" id="h6p5"><div class="t">HW6 Problem 5 · Two charged plates: field and potential in three regions <span class="tier t1">most likely</span></div><div class="src">Concept: sheet fields add or cancel · \(\Delta V = -Ed\) in a uniform field · \(V = 0\) where the problem says</div>
+<div class="given">Plate at \(y = 0\) with \(-\sigma\) (defined as \(V = 0\)); plate at \(y = d\) with \(+\sigma\). Find \(\vec E\) and \(V\) for \(y \lt 0\), \(0 \lt y \lt d\), \(y \gt d\); then the equipotential and field-line statements.</div>
+<figure class="fig"><svg viewBox="0 0 600 250" role="img" aria-label="Homework 6 Problem 5: two charged plates, the field between them, and the potential graph">
+<line x1="30" y1="200" x2="330" y2="200" class="ax" marker-end="url(#amut)"/><text x="334.0" y="204.0" class="txs" >y</text>
+<rect x="116" y="40" width="8" height="160" fill="var(--neg)"/><rect x="236" y="40" width="8" height="160" fill="var(--pos)"/>
+<text x="120.0" y="30.0" class="tx" text-anchor="middle" fill="var(--neg)" font-weight="600">−σ at y = 0 (V = 0)</text><text x="240.0" y="30.0" class="tx" text-anchor="middle" fill="var(--pos)" font-weight="600">+σ at y = d</text>
+<path d="M230 80 L132 80" stroke="var(--accent)" stroke-width="2.4" fill="none" marker-end="url(#aacc)"/><path d="M230 120 L132 120" stroke="var(--accent)" stroke-width="2.4" fill="none" marker-end="url(#aacc)"/><path d="M230 160 L132 160" stroke="var(--accent)" stroke-width="2.4" fill="none" marker-end="url(#aacc)"/>
+<text x="180.0" y="104.0" class="txs" text-anchor="middle" fill="var(--accent)">E = σ/ε₀, along −ĵ</text>
+<text x="70.0" y="120.0" class="tx" text-anchor="middle">E = 0</text><text x="290.0" y="120.0" class="tx" text-anchor="middle">E = 0</text>
+<text x="120.0" y="220.0" class="txs" text-anchor="middle">0</text><text x="240.0" y="220.0" class="txs" text-anchor="middle">d</text>
+<line x1="370" y1="200" x2="590" y2="200" class="ax"/><line x1="370" y1="40" x2="370" y2="210" class="ax"/><text x="592.0" y="204.0" class="txs" >y</text><text x="374.0" y="38.0" class="txs" >V</text>
+<path d="M370 200 L430 200 L500 80 L585 80" fill="none" class="c1"/>
+<line x1="430" y1="200" x2="430" y2="70" class="guide"/><line x1="500" y1="200" x2="500" y2="70" class="guide"/>
+<text x="430.0" y="220.0" class="txs" text-anchor="middle">0</text><text x="500.0" y="220.0" class="txs" text-anchor="middle">d</text>
+<text x="506.0" y="70.0" class="txs" >σd/ε₀, flat beyond</text><text x="472.0" y="176.0" class="txs" >σy/ε₀</text><text x="372.0" y="190.0" class="txs" >V = 0</text>
+</svg><figcaption>Each plate alone makes \(\sigma/2\varepsilon_0\) pointing away from \(+\sigma\) and toward \(-\sigma\). Outside the pair the two contributions cancel; between them they add to \(\sigma/\varepsilon_0\), pointing from the positive plate toward the negative one, which is the \(-y\) direction here. The potential rises linearly across the gap and is flat outside.</figcaption></figure>
+<ol class="steps">
+<li><strong>Field of each plate.</strong> A large sheet makes a uniform field of size \(\sigma/2\varepsilon_0\) on both sides: away from a positive sheet, toward a negative one.</li>
+<li><strong>Left region, \(y \lt 0\).</strong> The \(-\sigma\) plate is to the right and pulls toward itself: \(+\hat j\). The \(+\sigma\) plate is also to the right and pushes away: \(-\hat j\). Equal sizes, opposite directions: \(\vec E = 0\).</li>
+<li><strong>Between, \(0 \lt y \lt d\).</strong> The \(-\sigma\) plate is below and pulls down (\(-\hat j\)); the \(+\sigma\) plate is above and pushes down (\(-\hat j\)). They add: \(\vec E = -\dfrac{\sigma}{\varepsilon_0}\hat j\).</li>
+<li><strong>Right region, \(y \gt d\).</strong> Both plates are below; \(-\sigma\) pulls down, \(+\sigma\) pushes up: \(\vec E = 0\).</li>
+<li><strong>Potential, starting from the zero.</strong> \(V(0) = 0\) at the negative plate. Moving from \(0\) to \(y\) inside the gap goes <em>against</em> the field (field points \(-y\), we move \(+y\)), so \(V\) rises: \(V(y) = -\int_0^y E_y\,dy' = -\int_0^y\left(-\dfrac{\sigma}{\varepsilon_0}\right)dy' = +\dfrac{\sigma y}{\varepsilon_0}\).</li>
+<li><strong>Outside.</strong> Where \(E = 0\), \(V\) does not change. Left of the negative plate: \(V = 0\) (same as the plate). Right of the positive plate: \(V = \dfrac{\sigma d}{\varepsilon_0}\), the value reached at \(y = d\).</li>
+</ol>
+<div class="ansbox"><span class="ans">Answers</span> (a) \(\vec E = 0\) · (b) \(\vec E = -\dfrac{\sigma}{\varepsilon_0}\hat j\) · (c) \(\vec E = 0\) · (d) \(V = 0\) · (e) \(V = \dfrac{\sigma y}{\varepsilon_0}\) · (f) \(V = \dfrac{\sigma d}{\varepsilon_0}\).</div>
+<p><strong>(g) Equipotentials, true statements:</strong> the whole volume left of the negative plate (\(V = 0\) everywhere there); the whole volume right of the positive plate (\(V = \sigma d/\varepsilon_0\)); between the plates, planes perpendicular to the \(y\) axis (each such plane has one \(y\), hence one \(V\)). False: the volume between the plates (\(V\) changes with \(y\)); line segments parallel to \(y\) (\(V\) changes along them); planes perpendicular to \(x\) or \(z\) (they span all \(y\) values).</p>
+<p><strong>(h) Field lines, true statements:</strong> where the field is nonzero the lines are parallel to the \(y\) axis; the density is greatest between the plates (the only place the field is nonzero); lines originate at \(y = d\) (the positive plate) and terminate at \(y = 0\) (the negative plate). False: parallel to \(x\) or \(z\); greatest density outside; originate at \(y = 0\).</p>
+<details class="q"><summary><span class="n">Quiz versions</span><span class="qt">Likely rewordings</span></summary><div class="sol">
+<ul>
+<li>"The potential difference between the plates is": \(\sigma d/\varepsilon_0 = Ed\), positive plate higher.</li>
+<li>"An electron released between the plates moves": toward the positive plate (\(+y\)), toward higher \(V\), gaining \(e\,\sigma d/\varepsilon_0\) of kinetic energy across the full gap.</li>
+<li>"Which way can a charge be moved with zero work?" Parallel to the plates (Spring 2015 Q18).</li>
+<li>Flip the signs (\(+\sigma\) at \(y = 0\)): the field between becomes \(+\sigma/\varepsilon_0\,\hat j\) and \(V(y) = -\sigma y/\varepsilon_0\).</li>
+</ul></div></details>
+<div class="trap"><div class="t">Traps</div><p>Writing \(\sigma/2\varepsilon_0\) between the plates (that is one sheet alone; two sheets give \(\sigma/\varepsilon_0\)). Giving \(V\) a nonzero value outside the negative plate (the field is zero there, so \(V\) stays at the plate's value, 0). Pointing \(\vec E\) from \(-\) to \(+\).</p></div>
+</div>
+
+<div class="ex" id="h6p4"><div class="t">HW6 Problem 4 · Potential difference between coaxial cylinders <span class="tier t2">likely</span></div><div class="src">Concept: Gauss's law in the gap, then integrate the \(1/r\) field · Lecture 7 Example 7.2</div>
+<div class="given">Inner conductor radius \(a\) with \(+Q\); shell with inner radius \(b\), outer radius \(c\), charge \(-Q\); length \(L \gg c\). Find \(|\Delta V|\) between the conductors.</div>
+<figure class="fig"><svg viewBox="0 0 320 236" role="img" style="max-width:380px" aria-label="Homework 6 Problem 4: coaxial cylindrical conductors in cross-section">
+<path d="M250 118 A100 100 0 1 0 50 118 A100 100 0 1 0 250 118 M226 118 A76 76 0 1 1 74 118 A76 76 0 1 1 226 118" fill="url(#hatch)" stroke="var(--ink)" stroke-width="1.4" fill-rule="evenodd"/>
+<circle cx="150" cy="118" r="30" fill="url(#hatch)" stroke="var(--ink)" stroke-width="1.4"/>
+<path d="M183.0 118.0 L220.0 118.0" stroke="var(--pos)" stroke-width="1.8" fill="none" marker-end="url(#apos)"/><path d="M173.3 141.3 L199.5 167.5" stroke="var(--pos)" stroke-width="1.8" fill="none" marker-end="url(#apos)"/><path d="M150.0 151.0 L150.0 188.0" stroke="var(--pos)" stroke-width="1.8" fill="none" marker-end="url(#apos)"/><path d="M126.7 141.3 L100.5 167.5" stroke="var(--pos)" stroke-width="1.8" fill="none" marker-end="url(#apos)"/><path d="M117.0 118.0 L80.0 118.0" stroke="var(--pos)" stroke-width="1.8" fill="none" marker-end="url(#apos)"/><path d="M126.7 94.7 L100.5 68.5" stroke="var(--pos)" stroke-width="1.8" fill="none" marker-end="url(#apos)"/><path d="M150.0 85.0 L150.0 48.0" stroke="var(--pos)" stroke-width="1.8" fill="none" marker-end="url(#apos)"/><path d="M173.3 94.7 L199.5 68.5" stroke="var(--pos)" stroke-width="1.8" fill="none" marker-end="url(#apos)"/>
+<text x="150.0" y="123.0" class="tx" text-anchor="middle" font-weight="700" fill="var(--pos)">+Q</text><text x="234.0" y="32.0" class="tx" font-weight="700" fill="var(--neg)">−Q</text>
+<line x1="150" y1="118" x2="178.2" y2="128.3" class="ink thin"/>
+<text x="164.0" y="104.0" class="txs" >a</text>
+<line x1="150" y1="148" x2="150" y2="194" class="mut thin" stroke-dasharray="3 3"/><text x="154.0" y="190.0" class="txs" >b</text>
+<line x1="150" y1="194" x2="150" y2="218" class="mut thin" stroke-dasharray="3 3"/><text x="154.0" y="216.0" class="txs" >c</text>
+</svg><figcaption>The field lives only in the gap \(a \lt r \lt b\). A Gaussian cylinder of radius \(r\) there encloses \(+Q\) (per length \(L\)); one of radius \(r \gt c\) encloses \(+Q - Q = 0\). The shell's outer radius \(c\) never enters.</figcaption></figure>
+<ol class="steps">
+<li><strong>Field in the gap.</strong> Cylindrical symmetry: \(E\,(2\pi rL) = Q_{\text{enc}}/\varepsilon_0 = Q/\varepsilon_0\), so \(E = \dfrac{Q}{2\pi\varepsilon_0 L\,r}\), radially outward (from \(+Q\) toward \(-Q\)).</li>
+<li><strong>Integrate across the gap.</strong> \(|\Delta V| = \displaystyle\int_a^b E\,dr = \frac{Q}{2\pi\varepsilon_0 L}\int_a^b\frac{dr}{r} = \frac{Q}{2\pi\varepsilon_0 L}\ln\frac{b}{a}\).</li>
+<li><strong>Sign, if asked.</strong> Walking outward is walking with the field, so \(V\) drops: the inner conductor is at the higher potential by this amount.</li>
+</ol>
+<div class="ansbox"><span class="ans">Answer</span> \(\Delta V = \dfrac{Q}{2\pi\varepsilon_0 L}\ln\dfrac{b}{a}\). The offered \(\ln(c/a)\) and \(\ln(c/b)\) are distractors.</div>
+<details class="q"><summary><span class="n">Quiz versions</span><span class="qt">One step further</span></summary><div class="sol">
+<ul>
+<li>"The capacitance": \(C = Q/\Delta V = \dfrac{2\pi\varepsilon_0 L}{\ln(b/a)}\) (Chapter 8, Lecture 7).</li>
+<li>"Field inside the inner conductor / inside the shell metal / outside the shell": zero, zero, zero.</li>
+<li>"If \(b\) is decreased toward \(a\)": \(\ln(b/a) \to 0\), \(\Delta V \to 0\) for the same \(Q\).</li>
+</ul></div></details>
+</div>
+
+<div class="ex" id="h6p2"><div class="t">HW6 Problem 2 · Charged aluminum cylinder with \(V = 0\) at \(r = 2R\) <span class="tier t3">possible</span></div><div class="src">Concept: log potential measured from a chosen reference · conductor interior is flat</div>
+<div class="given">Long conducting cylinder, radius \(R\), charge per length \(\lambda\). \(V = 0\) at \(r = 2R\). Find \(E_r\) outside and inside, \(V\) outside and inside, pick the graphs, and the equipotential and field-line statements.</div>
+<figure class="fig"><svg viewBox="0 0 600 240" role="img" aria-label="Homework 6 Problem 2: charged conducting cylinder with the zero of potential at 2R, and the potential graph">
+<circle cx="120" cy="125" r="90" class="gauss"/>
+<circle cx="120" cy="125" r="45" fill="url(#hatch)" stroke="var(--ink)" stroke-width="1.4"/>
+<path d="M167.0 125.0 L205.0 125.0" stroke="var(--pos)" stroke-width="1.8" fill="none" marker-end="url(#apos)"/><path d="M153.2 158.2 L180.1 185.1" stroke="var(--pos)" stroke-width="1.8" fill="none" marker-end="url(#apos)"/><path d="M120.0 172.0 L120.0 210.0" stroke="var(--pos)" stroke-width="1.8" fill="none" marker-end="url(#apos)"/><path d="M86.8 158.2 L59.9 185.1" stroke="var(--pos)" stroke-width="1.8" fill="none" marker-end="url(#apos)"/><path d="M73.0 125.0 L35.0 125.0" stroke="var(--pos)" stroke-width="1.8" fill="none" marker-end="url(#apos)"/><path d="M86.8 91.8 L59.9 64.9" stroke="var(--pos)" stroke-width="1.8" fill="none" marker-end="url(#apos)"/><path d="M120.0 78.0 L120.0 40.0" stroke="var(--pos)" stroke-width="1.8" fill="none" marker-end="url(#apos)"/><path d="M153.2 91.8 L180.1 64.9" stroke="var(--pos)" stroke-width="1.8" fill="none" marker-end="url(#apos)"/>
+<text x="120.0" y="129.0" class="tx" text-anchor="middle" font-weight="700">λ</text><text x="94.0" y="72.0" class="txs" >metal, E = 0</text>
+<text x="214.0" y="121.0" class="txs" fill="var(--accent)">r = 2R:</text><text x="214.0" y="135.0" class="txs" fill="var(--accent)">V = 0 here</text>
+<text x="20.0" y="232.0" class="txs" >field radial outside, E = λ/(2πε₀r)</text>
+<line x1="320" y1="127.6" x2="585" y2="127.6" class="ax"/><line x1="320" y1="30" x2="320" y2="215" class="ax"/>
+<text x="577.0" y="121.6" class="txs" >r</text><text x="306.0" y="40.0" class="txs" >V</text><text x="306.0" y="131.6" class="txs" >0</text>
+<path d="M320.0 56.4 L321.9 56.4 L323.8 56.4 L325.7 56.4 L327.6 56.4 L329.5 56.4 L331.4 56.4 L333.2 56.4 L335.1 56.4 L337.0 56.4 L338.9 56.4 L340.8 56.4 L342.7 56.4 L344.6 56.4 L346.5 56.4 L348.4 56.4 L350.3 56.4 L352.2 56.4 L354.1 56.4 L356.0 56.4 L357.9 56.4 L359.8 56.4 L361.6 56.4 L363.5 56.4 L365.4 56.4 L367.3 56.4 L369.2 56.4 L371.1 56.4 L373.0 56.4 L374.9 56.4 L376.8 56.4 L378.7 56.4 L380.6 56.4 L382.5 56.4 L384.4 58.4 L386.2 61.4 L388.1 64.3 L390.0 67.1 L391.9 69.9 L393.8 72.5 L395.7 75.1 L397.6 77.7 L399.5 80.2 L401.4 82.6 L403.3 84.9 L405.2 87.2 L407.1 89.5 L409.0 91.7 L410.9 93.9 L412.8 96.0 L414.6 98.1 L416.5 100.1 L418.4 102.1 L420.3 104.1 L422.2 106.0 L424.1 107.9 L426.0 109.7 L427.9 111.5 L429.8 113.3 L431.7 115.1 L433.6 116.8 L435.5 118.5 L437.4 120.2 L439.2 121.8 L441.1 123.4 L443.0 125.0 L444.9 126.6 L446.8 128.2 L448.7 129.7 L450.6 131.2 L452.5 132.7 L454.4 134.1 L456.3 135.5 L458.2 137.0 L460.1 138.4 L462.0 139.7 L463.9 141.1 L465.8 142.4 L467.6 143.8 L469.5 145.1 L471.4 146.4 L473.3 147.7 L475.2 148.9 L477.1 150.2 L479.0 151.4 L480.9 152.6 L482.8 153.8 L484.7 155.0 L486.6 156.2 L488.5 157.3 L490.4 158.5 L492.2 159.6 L494.1 160.7 L496.0 161.9 L497.9 163.0 L499.8 164.0 L501.7 165.1 L503.6 166.2 L505.5 167.2 L507.4 168.3 L509.3 169.3 L511.2 170.3 L513.1 171.3 L515.0 172.3 L516.9 173.3 L518.8 174.3 L520.6 175.3 L522.5 176.3 L524.4 177.2 L526.3 178.2 L528.2 179.1 L530.1 180.0 L532.0 181.0 L533.9 181.9 L535.8 182.8 L537.7 183.7 L539.6 184.6 L541.5 185.4 L543.4 186.3 L545.2 187.2 L547.1 188.1 L549.0 188.9 L550.9 189.7 L552.8 190.6 L554.7 191.4 L556.6 192.2 L558.5 193.1 L560.4 193.9 L562.3 194.7 L564.2 195.5 L566.1 196.3 L568.0 197.1 L569.9 197.8 L571.8 198.6 L573.6 199.4 L575.5 200.2 L577.4 200.9 L579.3 201.7 L581.2 202.4 L583.1 203.2 L585.0 203.9" fill="none" class="c1" />
+<line x1="383.1" y1="30" x2="383.1" y2="215" class="guide"/><text x="383.1" y="229.0" class="txs" text-anchor="middle">R</text>
+<line x1="446.2" y1="30" x2="446.2" y2="215" class="guide"/><text x="446.2" y="229.0" class="txs" text-anchor="middle">2R</text>
+<text x="326.0" y="48.4" class="txs" >(λ/2πε₀) ln 2, flat inside</text><text x="458.8" y="161.3" class="txs" >−(λ/2πε₀) ln(r/2R)</text>
+</svg><figcaption>Left: the field is radial and exists only outside the metal. Right: \(V(r)\) is flat inside (at the surface value), then falls logarithmically, passing through zero at the reference radius \(2R\) and going negative beyond it. \(E_r\) jumps from 0 to \(\lambda/(2\pi\varepsilon_0R)\) at the surface and then falls as \(1/r\).</figcaption></figure>
+<ol class="steps">
+<li><strong>(a) Outside, \(r \gt R\).</strong> Gaussian cylinder encloses \(\lambda L\): \(E_r = \dfrac{\lambda}{2\pi\varepsilon_0 r}\).</li>
+<li><strong>(b) Inside, \(r \lt R\).</strong> Conductor: \(E_r = 0\) (all the charge sits on the surface).</li>
+<li><strong>(c) \(V\) outside.</strong> Start at the zero and walk to \(r\): \(V(r) = -\displaystyle\int_{2R}^{r}\frac{\lambda}{2\pi\varepsilon_0 r'}dr' = -\frac{\lambda}{2\pi\varepsilon_0}\ln\frac{r}{2R}\). For \(r \lt 2R\) the log is negative and \(V \gt 0\) (closer to a positive cylinder is higher); for \(r \gt 2R\), \(V \lt 0\).</li>
+<li><strong>(d) \(V\) inside.</strong> No field, so \(V\) is constant at the surface value: \(V = -\dfrac{\lambda}{2\pi\varepsilon_0}\ln\dfrac{R}{2R} = -\dfrac{\lambda}{2\pi\varepsilon_0}\ln\dfrac12 = +\dfrac{\lambda}{2\pi\varepsilon_0}\ln 2\).</li>
+<li><strong>(e) Graph of \(E_r\):</strong> zero up to \(R\), a jump, then a \(1/r\) decay. <strong>(f) Graph of \(V\):</strong> flat positive plateau up to \(R\), then a falling curve that crosses zero at \(2R\).</li>
+</ol>
+<div class="ansbox"><span class="ans">Answers</span> (a) \(\dfrac{\lambda}{2\pi\varepsilon_0 r}\) · (b) 0 · (c) \(-\dfrac{\lambda}{2\pi\varepsilon_0}\ln\dfrac{r}{2R}\) · (d) \(\dfrac{\lambda}{2\pi\varepsilon_0}\ln 2\).</div>
+<p><strong>(g) Equipotentials, true:</strong> the entire interior of the cylinder; cylindrical surfaces concentric with the axis. False: the whole exterior (\(V\) varies with \(r\)); radial lines (\(V\) changes along them); planes containing the axis or perpendicular to it (both contain many values of \(r\)).</p>
+<p><strong>(h) Field lines, true:</strong> they run along radial lines from the surface of the cylinder out to infinity; their density is greatest just outside the cylinder (where \(E\) is largest). False: circles around the axis; parallel to the axis; densest inside (zero field there); densest far away; starting at the axis (nothing is there; the charge is on the surface).</p>
+<details class="q"><summary><span class="n">Quiz versions</span><span class="qt">Shortest forms</span></summary><div class="sol">
+<ul>
+<li>"\(V = 0\) at \(2R\). What is \(V\) on the surface?" \((\lambda/2\pi\varepsilon_0)\ln 2 = 2k\lambda\ln 2\). Positive for positive \(\lambda\).</li>
+<li>"Difference between \(r = R\) and \(r = 4R\)": \(V(R) - V(4R) = \dfrac{\lambda}{2\pi\varepsilon_0}\ln 4\).</li>
+<li>Conceptual: "Why can't \(V = 0\) be set at infinity here?" The \(1/r\) field integrates to a log that diverges.</li>
+</ul></div></details>
+</div>
+
+<div class="ex" id="h6p3"><div class="t">HW6 Problem 3 · Metal pipe with surface density, \(V = 0\) at \(3a\), then move the zero <span class="tier t3">possible</span></div><div class="src">Concept: convert \(\sigma\) on a pipe to \(\lambda\) · same log · adding a constant moves the zero</div>
+<div class="given">Long metal pipe, radius \(a\), surface charge density \(\sigma\); \(V = 0\) at \(r = 3a\). Find \(E_r\) outside and inside, \(V\) outside and inside, and the constant \(V_{\text{shift}}\) that moves the zero to \(r = 2a\).</div>
+<ol class="steps">
+<li><strong>Charge per length.</strong> A length \(L\) of pipe has area \(2\pi aL\) and charge \(\sigma\,2\pi aL\), so \(\lambda = 2\pi a\sigma\).</li>
+<li><strong>(a) Outside.</strong> \(E_r = \dfrac{\lambda}{2\pi\varepsilon_0 r} = \dfrac{2\pi a\sigma}{2\pi\varepsilon_0 r} = \dfrac{\sigma a}{\varepsilon_0 r}\). Check at the surface: \(\sigma/\varepsilon_0\), the conductor-surface rule.</li>
+<li><strong>(b) Inside.</strong> \(E_r = 0\) (no charge enclosed; metal).</li>
+<li><strong>(c) \(V\) outside.</strong> \(V(r) = -\displaystyle\int_{3a}^{r}\frac{\sigma a}{\varepsilon_0 r'}dr' = -\frac{\sigma a}{\varepsilon_0}\ln\frac{r}{3a}\).</li>
+<li><strong>(d) \(V\) inside.</strong> Constant at the surface value: \(-\dfrac{\sigma a}{\varepsilon_0}\ln\dfrac{a}{3a} = -\dfrac{\sigma a}{\varepsilon_0}\ln\dfrac13 = \dfrac{\sigma a}{\varepsilon_0}\ln 3\).</li>
+<li><strong>(e) Moving the zero.</strong> The new potential is the old one plus a constant, chosen so that the new value at \(2a\) is zero: \(V_{\text{shift}} = -V_{\text{old}}(2a) = +\dfrac{\sigma a}{\varepsilon_0}\ln\dfrac{2a}{3a} = \dfrac{\sigma a}{\varepsilon_0}\ln\dfrac23\). This is a negative number (\(\ln\tfrac23 = -0.405\)), which makes sense: \(2a\) is closer to the positive pipe than \(3a\), so the old potential there was positive and must be pulled down to zero.</li>
+</ol>
+<div class="ansbox"><span class="ans">Answers</span> (a) \(\dfrac{\sigma a}{\varepsilon_0 r}\) · (b) 0 · (c) \(-\dfrac{\sigma a}{\varepsilon_0}\ln\dfrac{r}{3a}\) · (d) \(\dfrac{\sigma a}{\varepsilon_0}\ln 3\) · (e) \(V_{\text{shift}} = \dfrac{\sigma a}{\varepsilon_0}\ln\dfrac23\).</div>
+<details class="q"><summary><span class="n">Quiz versions</span><span class="qt">Conceptual angles</span></summary><div class="sol">
+<ul>
+<li>"Changing the reference point changes: (A) \(E\) (B) \(V\) at every point by the same constant (C) \(\Delta V\) between two points." B only. Differences and fields never move.</li>
+<li>"\(V\) inside the pipe is": constant and equal to the surface value (not zero).</li>
+</ul></div></details>
+</div>
+
+<div class="ex" id="h6p1"><div class="t">HW6 Problem 1 · Aluminum sphere (\(-q\)) inside a copper shell (\(+Q\)) <span class="tier t3">possible</span></div><div class="src">Concept: Gauss's law region by region, then integrate inward from infinity · conductors are flat</div>
+<div class="given">Solid aluminum sphere, radius \(a\), charge \(-q\). Concentric copper shell, inner radius \(b\), outer radius \(c\), charge \(+Q\), with \(Q \gt q\). \(V(\infty) = 0\). Find \(E_r\) and \(V\) in \(r \gt c\), \(b \lt r \lt c\), \(a \lt r \lt b\), \(r \lt a\); then the equipotential and field-line statements.</div>
+<figure class="fig"><svg viewBox="0 0 600 300" role="img" aria-label="Homework 6 Problem 1: aluminum sphere in a copper shell, surface charges, fields, and the potential graph">
+<circle cx="150" cy="150" r="42" fill="url(#hatch)" stroke="var(--ink)" stroke-width="1.4"/><path d="M270 150 A120 120 0 1 0 30 150 A120 120 0 1 0 270 150 M242 150 A92 92 0 1 1 58 150 A92 92 0 1 1 242 150" fill="url(#hatch)" stroke="var(--ink)" stroke-width="1.4" fill-rule="evenodd"/>
+<path d="M222.7 192.0 L195.0 176.0" stroke="var(--neg)" stroke-width="2" fill="none" marker-end="url(#aneg)"/><path d="M257.4 212.0 L276.4 223.0" stroke="var(--pos)" stroke-width="2" fill="none" marker-end="url(#apos)"/><path d="M108.0 222.7 L124.0 195.0" stroke="var(--neg)" stroke-width="2" fill="none" marker-end="url(#aneg)"/><path d="M88.0 257.4 L77.0 276.4" stroke="var(--pos)" stroke-width="2" fill="none" marker-end="url(#apos)"/><path d="M77.3 108.0 L105.0 124.0" stroke="var(--neg)" stroke-width="2" fill="none" marker-end="url(#aneg)"/><path d="M42.6 88.0 L23.6 77.0" stroke="var(--pos)" stroke-width="2" fill="none" marker-end="url(#apos)"/><path d="M192.0 77.3 L176.0 105.0" stroke="var(--neg)" stroke-width="2" fill="none" marker-end="url(#aneg)"/><path d="M212.0 42.6 L223.0 23.6" stroke="var(--pos)" stroke-width="2" fill="none" marker-end="url(#apos)"/>
+<text x="150.0" y="155.0" class="tx" text-anchor="middle" font-weight="700" fill="var(--neg)">−q</text>
+<text x="150.0" y="70.0" class="txs" fill="var(--pos)" text-anchor="middle">+q on inner surface</text><text x="4.0" y="290.0" class="txs" fill="var(--pos)">Q − q on outer surface</text>
+<text x="150.0" y="236.0" class="txs" fill="var(--neg)" text-anchor="middle">gap: E inward</text><text x="150.0" y="290.0" class="txs" fill="var(--pos)">outside: E outward</text>
+<text x="4.0" y="250.0" class="txs" >copper: E = 0</text><text x="4.0" y="264.0" class="txs" >aluminum: E = 0</text>
+<line x1="330" y1="120.8" x2="585" y2="120.8" class="ax"/><line x1="330" y1="40" x2="330" y2="250" class="ax"/>
+<text x="577.0" y="114.8" class="txs" >r</text><text x="334.0" y="50.0" class="txs" >V</text><text x="316.0" y="124.8" class="txs" >0</text>
+<path d="M330.0 220.2 L331.4 220.2 L332.8 220.2 L334.2 220.2 L335.6 220.2 L337.0 220.2 L338.3 220.2 L339.7 220.2 L341.1 220.2 L342.5 220.2 L343.9 220.2 L345.3 220.2 L346.7 220.2 L348.1 220.2 L349.5 220.2 L350.9 220.2 L352.3 220.2 L353.6 220.2 L355.0 220.2 L356.4 220.2 L357.8 220.2 L359.2 220.2 L360.6 220.2 L362.0 220.2 L363.4 220.2 L364.8 220.2 L366.2 220.2 L367.6 220.2 L368.9 220.2 L370.3 220.2 L371.7 220.2 L373.1 220.2 L374.5 220.2 L375.9 220.2 L377.3 213.8 L378.7 204.8 L380.1 196.2 L381.5 188.2 L382.9 180.5 L384.2 173.2 L385.6 166.3 L387.0 159.8 L388.4 153.5 L389.8 147.5 L391.2 141.9 L392.6 136.4 L394.0 131.2 L395.4 126.2 L396.8 121.5 L398.2 116.9 L399.5 112.5 L400.9 108.3 L402.3 104.2 L403.7 100.3 L405.1 96.5 L406.5 92.9 L407.9 89.4 L409.3 86.0 L410.7 82.8 L412.1 79.6 L413.5 76.6 L414.8 73.6 L416.2 70.8 L417.6 68.0 L419.0 65.4 L420.4 62.8 L421.8 60.3 L423.2 58.6 L424.6 58.6 L426.0 58.6 L427.4 58.6 L428.8 58.6 L430.1 58.6 L431.5 58.6 L432.9 58.6 L434.3 58.6 L435.7 58.6 L437.1 58.6 L438.5 58.6 L439.9 58.6 L441.3 58.6 L442.7 58.6 L444.1 58.6 L445.4 58.6 L446.8 58.6 L448.2 58.6 L449.6 58.6 L451.0 58.9 L452.4 59.6 L453.8 60.3 L455.2 60.9 L456.6 61.6 L458.0 62.2 L459.4 62.9 L460.7 63.5 L462.1 64.1 L463.5 64.7 L464.9 65.3 L466.3 65.8 L467.7 66.4 L469.1 66.9 L470.5 67.5 L471.9 68.0 L473.3 68.5 L474.7 69.0 L476.0 69.5 L477.4 70.0 L478.8 70.4 L480.2 70.9 L481.6 71.4 L483.0 71.8 L484.4 72.3 L485.8 72.7 L487.2 73.1 L488.6 73.5 L490.0 73.9 L491.3 74.4 L492.7 74.7 L494.1 75.1 L495.5 75.5 L496.9 75.9 L498.3 76.3 L499.7 76.6 L501.1 77.0 L502.5 77.3 L503.9 77.7 L505.3 78.0 L506.6 78.4 L508.0 78.7 L509.4 79.0 L510.8 79.3 L512.2 79.7 L513.6 80.0 L515.0 80.3 L516.4 80.6 L517.8 80.9 L519.2 81.2 L520.6 81.5 L521.9 81.8 L523.3 82.0 L524.7 82.3 L526.1 82.6 L527.5 82.8 L528.9 83.1 L530.3 83.4 L531.7 83.6 L533.1 83.9 L534.5 84.1 L535.9 84.4 L537.2 84.6 L538.6 84.9 L540.0 85.1 L541.4 85.3 L542.8 85.6 L544.2 85.8 L545.6 86.0 L547.0 86.3 L548.4 86.5 L549.8 86.7 L551.2 86.9 L552.5 87.1 L553.9 87.3 L555.3 87.5 L556.7 87.7 L558.1 87.9 L559.5 88.1 L560.9 88.3 L562.3 88.5 L563.7 88.7 L565.1 88.9 L566.5 89.1 L567.8 89.3 L569.2 89.5 L570.6 89.6 L572.0 89.8 L573.4 90.0 L574.8 90.2 L576.2 90.3 L577.6 90.5 L579.0 90.7 L580.4 90.9 L581.8 91.0 L583.1 91.2 L584.5 91.3" fill="none" class="c1" />
+<line x1="376.4" y1="40" x2="376.4" y2="250" class="guide"/><text x="376.4" y="264.0" class="txs" text-anchor="middle">a</text><line x1="422.7" y1="40" x2="422.7" y2="250" class="guide"/><text x="422.7" y="264.0" class="txs" text-anchor="middle">b</text><line x1="450.5" y1="40" x2="450.5" y2="250" class="guide"/><text x="450.5" y="264.0" class="txs" text-anchor="middle">c</text>
+<text x="334.0" y="198.2" class="txs" >flat in</text><text x="334.0" y="211.2" class="txs" >aluminum</text><text x="416.7" y="50.6" class="txs" >flat in copper</text><text x="496.9" y="65.9" class="txs" >k(Q−q)/r</text>
+<text x="430.0" y="150.0" class="txs" >rises toward b</text>
+</svg><figcaption>Cross-section with the induced charges. The copper's inner surface must hold \(+q\) (so a Gaussian sphere inside the copper encloses zero), leaving \(Q - q \gt 0\) on its outer surface. Field in the gap points inward (toward \(-q\)); field outside points outward (net charge \(Q - q\) is positive). Right: \(V(r)\), flat across each conductor, \(1/r\) elsewhere, lowest at the negative sphere.</figcaption></figure>
+<ol class="steps">
+<li><strong>Surface charges first.</strong> Aluminum surface: \(-q\). Copper inner surface: \(+q\) (a Gaussian sphere in the copper metal has \(E = 0\), hence encloses zero). Copper outer surface: \(Q - q\).</li>
+<li><strong>(a) \(r \gt c\).</strong> Enclosed \(= -q + Q\): \(E_r = \dfrac{Q - q}{4\pi\varepsilon_0 r^2}\), outward since \(Q \gt q\).</li>
+<li><strong>(b) \(b \lt r \lt c\).</strong> Inside the copper: \(E_r = 0\).</li>
+<li><strong>(c) \(a \lt r \lt b\).</strong> Enclosed \(= -q\): \(E_r = -\dfrac{q}{4\pi\varepsilon_0 r^2}\) (inward).</li>
+<li><strong>(d) \(r \lt a\).</strong> Inside the aluminum: \(E_r = 0\).</li>
+<li><strong>(e) \(V\) for \(r \gt c\).</strong> Looks like a point charge \(Q - q\): \(V = \dfrac{Q - q}{4\pi\varepsilon_0 r}\).</li>
+<li><strong>(f) \(V\) for \(b \lt r \lt c\).</strong> No field, so \(V\) is frozen at its value at \(r = c\): \(V = \dfrac{Q - q}{4\pi\varepsilon_0 c}\).</li>
+<li><strong>(g) \(V\) for \(a \lt r \lt b\).</strong> Start at \(r = b\) with the copper's value and integrate inward through the inward field: \(V(r) = V(b) - \displaystyle\int_b^r E_r\,dr' = \frac{Q-q}{4\pi\varepsilon_0 c} - \int_b^r\left(-\frac{q}{4\pi\varepsilon_0 r'^2}\right)dr' = \frac{Q-q}{4\pi\varepsilon_0 c} - \frac{q}{4\pi\varepsilon_0}\left(\frac1r - \frac1b\right)\). Walking inward toward a negative charge, \(V\) decreases, and this expression does decrease as \(r\) shrinks. ✓</li>
+<li><strong>(h) \(V\) for \(r \lt a\).</strong> Frozen at the aluminum's surface value: \(V = \dfrac{Q-q}{4\pi\varepsilon_0 c} - \dfrac{q}{4\pi\varepsilon_0}\left(\dfrac1a - \dfrac1b\right)\).</li>
+</ol>
+<div class="ansbox"><span class="ans">Answers</span> \(E_r\): \(\dfrac{Q-q}{4\pi\varepsilon_0 r^2}\), 0, \(-\dfrac{q}{4\pi\varepsilon_0 r^2}\), 0. \(V\): \(\dfrac{Q-q}{4\pi\varepsilon_0 r}\), \(\dfrac{Q-q}{4\pi\varepsilon_0 c}\), \(\dfrac{Q-q}{4\pi\varepsilon_0 c} - \dfrac{q}{4\pi\varepsilon_0}\left(\dfrac1r-\dfrac1b\right)\), \(\dfrac{Q-q}{4\pi\varepsilon_0 c} - \dfrac{q}{4\pi\varepsilon_0}\left(\dfrac1a-\dfrac1b\right)\).</div>
+<p><strong>(i) Equipotentials, true:</strong> the whole copper volume \(b \lt r \lt c\); spherical surfaces in the gap \(a \lt r \lt b\); the whole aluminum volume \(r \lt a\); spherical surfaces outside, \(r \gt c\). False: the whole gap volume and the whole outside volume (\(V\) varies with \(r\) there); radial lines (\(V\) changes along them).</p>
+<p><strong>(j) Field lines, true:</strong> some lines originate on the copper's inner surface (\(+q\)) and terminate on the aluminum's surface (\(-q\)); some originate on the copper's outer surface (\(Q - q \gt 0\)) and extend to infinity; the line density is greater in \(a \lt r \lt b\) than in \(b \lt r \lt c\) (where it is zero). False: circular lines anywhere (field lines are radial; circles are equipotentials); lines from the copper's outer surface to its inner surface (they would cross the metal, where \(E = 0\)); lines originating on the aluminum (a negative charge is where lines end); lines coming in from infinity (the net charge is positive, so lines go out).</p>
+<details class="q"><summary><span class="n">Quiz versions</span><span class="qt">The parts most worth memorizing</span></summary><div class="sol">
+<ul>
+<li>"What is \(V\) inside the copper?" \(k(Q-q)/c\): the outer radius, because the outside world sees only the net charge and \(V\) is frozen through the metal (Fall 2018 Q10 asks exactly this).</li>
+<li>"What charge is on the copper's inner surface?" \(+q\). "Outer surface?" \(Q - q\).</li>
+<li>"Where is \(E = 0\)?" Inside both metals: \(r \lt a\) and \(b \lt r \lt c\).</li>
+<li>"If instead \(q \gt Q\)": the outer surface charge \(Q - q\) is negative, the outside field points inward, and outside lines come in from infinity.</li>
+</ul></div></details>
+</div>
+
+<h2 id="test">6 · Self-test (cover the answers)</h2>
+<p>Ten quick questions in the quiz's own style. Answer before opening.</p>
+<details class="q"><summary><span class="n">1</span><span class="qt">Two negative charges are moved from separation \(2d\) to separation \(d\). The potential energy of the pair (A) increases (B) decreases (C) stays the same (D) becomes negative.</span></summary><div class="sol"><p><strong>A.</strong> Like charges: \(U = kq^2/r \gt 0\) and it grows as \(r\) shrinks. Someone had to push them together.</p></div></details>
+<details class="q"><summary><span class="n">2</span><span class="qt">\(+q\) is moved from distance \(r_1\) to distance \(r_2\) from a fixed \(+Q\) along a straight path of length \(R\). \(\Delta U = \)? (A) \(kQq/R\) (B) \(kQqR/r_1^2\) (C) \(kQq(1/r_2 - 1/r_1)\) (D) \(kQq(1/r_1 - 1/r_2)\)</span></summary><div class="sol"><p><strong>C.</strong> Final minus initial. \(R\) is a distractor: the work of a conservative force does not depend on the path.</p></div></details>
+<details class="q"><summary><span class="n">3</span><span class="qt">A proton is carried once around a full circle centered on a point charge. The work done by the electric field is (A) positive (B) negative (C) zero (D) depends on the direction of travel.</span></summary><div class="sol"><p><strong>C.</strong> Start and end points are the same, so \(\Delta V = 0\) and \(W = -e\Delta V = 0\). The same holds for any two points at the same distance from the charge (HW5 P5 a, b).</p></div></details>
+<details class="q"><summary><span class="n">4</span><span class="qt">The electric field is zero throughout a region. The potential there is (A) zero everywhere (B) zero at one point at least (C) constant (D) cannot be determined.</span></summary><div class="sol"><p><strong>C.</strong> \(\Delta V = -\int E\,dl = 0\) between any two points, so \(V\) is the same everywhere in the region, but its value can be anything (Lecture 6 checkpoint; the inside of every conductor).</p></div></details>
+<details class="q"><summary><span class="n">5</span><span class="qt">A negative charge is released from rest. It moves toward (A) lower potential (B) higher potential (C) constant potential (D) it does not move.</span></summary><div class="sol"><p><strong>B.</strong> \(\Delta U = q\Delta V\) must be negative; with \(q \lt 0\) that needs \(\Delta V \gt 0\). Negative charges climb the potential hill; positive charges roll down it.</p></div></details>
+<details class="q"><summary><span class="n">6</span><span class="qt">Charges \(+q, -q, +q\) sit on a line, neighbors \(L\) apart. \(U = \)? (A) \(-2kq^2/L\) (B) \(-3kq^2/2L\) (C) \(+3kq^2/2L\) (D) \(-5kq^2/2L\)</span></summary><div class="sol"><p><strong>B.</strong> Two pairs at \(L\) with opposite signs (\(-1 - 1\)) and one pair at \(2L\) with like signs (\(+\tfrac12\)): \(-\tfrac32\,kq^2/L\) (HW5 P3).</p></div></details>
+<details class="q"><summary><span class="n">7</span><span class="qt">\(Q_2 = 3.5\ \mathrm{nC}\), \(m = 6.4\ \mu\mathrm{g}\), is released from rest 0.39 m from a fixed \(5.7\ \mu\mathrm{C}\) charge. Its speed when very far away is about (A) 270 m/s (B) 380 m/s (C) 12 m/s (D) 0.38 m/s</span></summary><div class="sol"><p><strong>B.</strong> All of \(U_i = 4.6\times10^{-4}\ \mathrm{J}\) becomes kinetic energy: \(v = \sqrt{2(4.6\times10^{-4})/6.4\times10^{-9}} = 379\ \mathrm{m/s}\). (A is the speed at 0.79 m, HW5 P4; D is what you get with grams instead of kilograms.)</p></div></details>
+<details class="q"><summary><span class="n">8</span><span class="qt">A point charge \(+q\) sits inside a neutral conducting shell of inner radius \(b\) and outer radius \(c\). The potential inside the metal of the shell is (A) 0 (B) \(kq/b\) (C) \(kq/c\) (D) \(kq(1/b - 1/c)\)</span></summary><div class="sol"><p><strong>C.</strong> Outside the shell the potential is \(kq/r\) (net enclosed charge \(q\)), and \(V\) is frozen through the metal at the value it has at the outer surface, \(kq/c\). Not zero: zero field means constant \(V\), not zero \(V\).</p></div></details>
+<details class="q"><summary><span class="n">9</span><span class="qt">Plates: \(-\sigma\) at \(y = 0\) (\(V = 0\)), \(+\sigma\) at \(y = d\). Between them, (A) \(\vec E = +\frac{\sigma}{2\varepsilon_0}\hat j\), \(V = \sigma y/2\varepsilon_0\) (B) \(\vec E = -\frac{\sigma}{\varepsilon_0}\hat j\), \(V = \sigma y/\varepsilon_0\) (C) \(\vec E = +\frac{\sigma}{\varepsilon_0}\hat j\), \(V = -\sigma y/\varepsilon_0\) (D) \(\vec E = 0\), \(V = 0\)</span></summary><div class="sol"><p><strong>B.</strong> The two sheet fields add between the plates (\(\sigma/\varepsilon_0\)) and point from \(+\) to \(-\), which is \(-\hat j\); walking in \(+y\) against the field raises \(V\) linearly (HW6 P5).</p></div></details>
+<details class="q"><summary><span class="n">10</span><span class="qt">Coaxial conductors: inner radius \(a\) with \(+Q\), shell from \(b\) to \(c\) with \(-Q\), length \(L\). \(|\Delta V|\) depends on (A) \(a\) and \(b\) only (B) \(a\) and \(c\) only (C) \(b\) and \(c\) only (D) all three.</span></summary><div class="sol"><p><strong>A.</strong> \(|\Delta V| = \dfrac{Q}{2\pi\varepsilon_0 L}\ln\dfrac ba\). The field exists only in the gap, so only the two surfaces facing the gap matter (HW6 P4).</p></div></details>
+
+<h2 id="last">7 · The last look before the quiz</h2>
+<ul class="checklist">
+<li>\(U = kq_1q_2/r\): signs in, \(r\) not squared, one term per pair, zero at infinity.</li>
+<li>Released from rest: \(\tfrac12mv^2 = U_i - U_f\); convert μg and mg to kg before anything else.</li>
+<li>\(V = kq/r\) is a plain number; add with signs; \(\Delta U = q\Delta V\); the field's work is \(-q\Delta V\), yours is \(+q\Delta V\).</li>
+<li>Same distance from a point charge means same \(V\) and zero work, whatever the path.</li>
+<li>Positive charges move to lower \(V\); negative charges to higher \(V\); moving along an equipotential costs no work at all.</li>
+<li>\(\Delta V = -Ed\) in a uniform field; \(E\) is minus the slope of \(V\); \(E = 0\) in a conductor means \(V\) is constant there, not zero.</li>
+<li>Gauss then integrate: sphere \(kQ_{\text{enc}}/r^2 \to kQ_{\text{enc}}/r\); line \(\lambda/(2\pi\varepsilon_0 r) \to -\frac{\lambda}{2\pi\varepsilon_0}\ln(r/r_0)\); plates \(\sigma/\varepsilon_0 \to\) linear \(V\).</li>
+<li>Coaxial cylinders: \(\ln(b/a)\), never \(c\). Nested shells: inner surface takes \(-(\text{enclosed})\), outer surface takes the rest; \(V\) in the metal is \(k(\text{net})/c\).</li>
+<li>\(k = 8.99\times10^{9}\), \(e = 1.60\times10^{-19}\ \mathrm{C}\), \(\varepsilon_0 = 8.85\times10^{-12}\), \(2k = 1/(2\pi\varepsilon_0) = 1.80\times10^{10}\).</li>
+</ul>
+<p class="small">Built from your Homework 5 and 6 printouts, Lecture Units 5 and 6, the syllabus quiz policy, and the four past Hour Exam 1 papers. Companion to the full <em>Electrostatics Exam Companion</em>.</p>
+</div>
+
+</body>
+</html>
