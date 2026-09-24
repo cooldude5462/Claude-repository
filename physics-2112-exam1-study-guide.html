@@ -90,7 +90,10 @@ li p{margin:.3rem 0}
 .steps>li{counter-increment:s;position:relative;padding-left:2.4rem;margin:.6rem 0}
 .steps>li::before{content:counter(s);position:absolute;left:0;top:.15rem;width:1.7rem;height:1.7rem;border-radius:50%;background:var(--accent);color:#fff;font-family:var(--mono);font-size:.8rem;display:flex;align-items:center;justify-content:center;font-weight:600}
 .fig{margin:1.4rem 0;background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:12px}
+.fig{overflow-x:auto}
 .fig svg{max-width:100%;height:auto;display:block;margin:0 auto;font-family:var(--body)}
+.fig svg.wide{min-width:560px}
+.tw table{min-width:560px}
 .fig figcaption{font-size:.88rem;color:var(--muted);margin-top:8px;max-width:70ch}
 .fig .row{display:flex;gap:14px;flex-wrap:wrap;justify-content:center}
 .fig .row>*{flex:1 1 260px;min-width:0}
@@ -478,7 +481,7 @@ window.MathJax = {
 </tbody></table></div>
 
 <figure class="fig">
-<svg viewBox="0 0 770 210" role="img" aria-label="Charging by induction in three steps">
+<svg viewBox="0 0 770 210" class="wide" role="img" aria-label="Charging by induction in three steps">
   <g font-size="12">
   <!-- panel 1 -->
   <text x="20" y="20" class="tx" font-weight="600">1. Bring a + rod near</text>
@@ -540,7 +543,7 @@ window.MathJax = {
 <p><strong>Equal and opposite.</strong> The formula contains \(q_1\) and \(q_2\) symmetrically, so the size of the force is the same no matter which charge you call "the one being pushed." This is Newton's third law, and it holds even when one charge is a million times bigger: the big charge feels exactly the force the small one feels. What differs is the <em>acceleration</em> (\(a = F/m\)), which is why a proton barely moves while an electron flies.</p>
 </div>
 <figure class="fig">
-<svg viewBox="0 0 640 150" role="img" aria-label="Direction of Coulomb force for like and unlike charges">
+<svg viewBox="0 0 640 150" class="wide" role="img" aria-label="Direction of Coulomb force for like and unlike charges">
   <g font-size="12">
   <circle cx="60" cy="60" r="16" class="pos"/><text x="54" y="65" fill="#fff" font-weight="700">q₁</text>
   <circle cx="250" cy="60" r="16" class="pos"/><text x="244" y="65" fill="#fff" font-weight="700">q₂</text>
@@ -596,7 +599,7 @@ window.MathJax = {
 <p><strong>The procedure, mechanically.</strong> (1) Mark the target charge. (2) For every other charge, draw an arrow on the target: pointing away from that charge if the signs match, toward it if they differ. Draw the arrow <em>on the target</em>, not on the other charge. (3) For each arrow, compute the magnitude \(k|q_1||q_2|/r^2\) with \(r\) the straight-line distance between the two charges (Pythagoras when they are not on a common axis). (4) For each arrow, get the components from the triangle whose hypotenuse joins the two charges: \(F_x = F\,(\Delta x/r)\), \(F_y = F\,(\Delta y/r)\), with the signs of \(\Delta x\) and \(\Delta y\) taken in the direction the arrow points. (5) Add the \(x\)'s, add the \(y\)'s. (6) Only now convert to magnitude and angle if asked. Step 2 is where the physics lives; steps 3 through 6 are arithmetic.</p>
 </div>
 <figure class="fig">
-<svg viewBox="0 0 690 260" role="img" aria-label="Worked example geometry: force on q2 from q1 and q3">
+<svg viewBox="0 0 690 260" class="wide" role="img" aria-label="Worked example geometry: force on q2 from q1 and q3">
   <g font-size="12">
   <!-- grid: q2 at (0,0)->(300,70); q3 at (1,-2)->(360,190); q1 at (-3,-2)->(120,190); scale 60px/m -->
   <line x1="60" y1="70" x2="440" y2="70" class="mut thin" stroke-dasharray="3 5"/>
@@ -724,7 +727,7 @@ window.MathJax = {
 <p>Lecture 2 clicker: a \(6\ \mu\mathrm{C}\) charge feels \(0.18\ \mathrm{N}\) in some field. Replace it with \(9\ \mu\mathrm{C}\): the <em>field</em> is unchanged (it comes from the other charges), so \(F = qE = 9\times(0.18/6) = 0.27\ \mathrm{N}\). A negative test charge feels the force <em>opposite</em> to \(\vec E\). Never let the test charge's sign change the direction you draw for \(\vec E\).</p></div>
 
 <figure class="fig">
-<svg viewBox="0 0 640 230" role="img" aria-label="Field at two points near a pair of opposite charges">
+<svg viewBox="0 0 640 230" class="wide" role="img" aria-label="Field at two points near a pair of opposite charges">
   <g font-size="12">
   <circle cx="150" cy="150" r="15" class="pos"/><text x="142" y="155" fill="#fff" font-weight="700">+Q</text>
   <circle cx="330" cy="150" r="15" class="neg"/><text x="322" y="155" fill="#fff" font-weight="700">−Q</text>
@@ -835,7 +838,7 @@ window.MathJax = {
 </tbody></table></div>
 
 <figure class="fig">
-<svg viewBox="0 0 660 250" role="img" aria-label="Setup for the field of a finite line of charge at a point above one end">
+<svg viewBox="0 0 660 250" class="wide" role="img" aria-label="Setup for the field of a finite line of charge at a point above one end">
   <g font-size="12">
   <line x1="80" y1="200" x2="600" y2="200" class="mut thin"/><text x="604" y="204" class="txs">x</text>
   <line x1="80" y1="230" x2="80" y2="30" class="mut thin"/><text x="70" y="26" class="txs">y</text>
@@ -889,7 +892,7 @@ window.MathJax = {
 <div class="trap"><div class="t">Trap · the multiple-choice integral</div><p>Distractors in Homework 2 P5(c) and on exams change one thing at a time: wrong limits (\(0\) to \(a+L\) instead of \(0\) to \(L\)), wrong power (\(1/r\) instead of \(1/r^2\)), a constant distance (\(a+L/2\), which would only be right if the whole rod were at its midpoint), or \(dq\) integrated "from 0 to \(q\)" with an \(x\)-dependent integrand. Check: limits cover the charged object only; integrand has \(r^2\) in the denominator where \(r\) depends on the variable; prefactor uses \(\lambda = q/L\) when \(dx\) is the measure.</p></div></div>
 
 <figure class="fig">
-<svg viewBox="0 0 660 270" role="img" aria-label="Ring of charge on axis and an arc of charge at its center">
+<svg viewBox="0 0 660 270" class="wide" role="img" aria-label="Ring of charge on axis and an arc of charge at its center">
   <g font-size="12">
   <!-- ring -->
   <ellipse cx="170" cy="190" rx="110" ry="34" fill="none" stroke="var(--pos)" stroke-width="4"/>
@@ -1817,7 +1820,7 @@ window.MathJax = {
 </div>
 </figure>
 <figure class="fig">
-<svg viewBox="0 0 700 230" role="img" aria-label="The three Gaussian surfaces: sphere, cylinder, pillbox">
+<svg viewBox="0 0 700 230" class="wide" role="img" aria-label="The three Gaussian surfaces: sphere, cylinder, pillbox">
   <g font-size="12">
   <!-- sphere -->
   <circle cx="110" cy="110" r="14" class="pos"/><text x="103" y="115" fill="#fff" font-weight="700" font-size="11">Q</text>
@@ -2613,7 +2616,7 @@ window.MathJax = {
 <p>A conducting slab dropped into this field responds as in the mechanism box above: free electrons shift to one face until the field inside the slab is zero. Its two faces therefore carry opposite densities \(\pm\sigma_{\text{ind}}\), and from outside the slab their two contributions cancel (one face's field and the other's are equal and opposite everywhere outside the slab). That is why, for points outside a neutral slab, you can pretend the slab is not there; and why, for points inside it, you can set the total field to zero and solve for \(\sigma_{\text{ind}}\).</p>
 </div>
 <figure class="fig">
-<svg viewBox="0 0 700 250" role="img" aria-label="Superposition of sheet fields, Lecture 4 checkpoint">
+<svg viewBox="0 0 700 250" class="wide" role="img" aria-label="Superposition of sheet fields, Lecture 4 checkpoint">
   <g font-size="12">
   <text x="20" y="22" class="tx" font-weight="600">Case A: one + sheet</text>
   <line x1="120" y1="40" x2="120" y2="200" stroke="var(--pos)" stroke-width="4"/>
@@ -2650,7 +2653,7 @@ window.MathJax = {
 <p><strong>Homework 4 Problem 5</strong> (center plane \(+2\sigma_0\), outer planes \(-\sigma_0\) each, \(\sigma_0 = 435\ \mathrm{pC/m^2}\)): outside the stack the three contributions are \(2 - 1 - 1 = 0\), so Regions I and IV have zero field. Between the center and either outer plane, add the three constants: the center plane contributes \(2\sigma_0/2\varepsilon_0 = \sigma_0/\varepsilon_0\) pointing away from it; the near negative plane contributes \(\sigma_0/2\varepsilon_0\) toward itself (same direction); the far negative plane contributes \(\sigma_0/2\varepsilon_0\) toward itself (opposite direction). Net \(= \sigma_0/\varepsilon_0 = 435\times10^{-12}/8.85\times10^{-12} = 49\ \mathrm{N/C}\), pointing from the positive center plane toward the negative plane in each gap (\(-\hat k\) below the center, \(+\hat k\) above, for planes parallel to \(x\)-\(y\)).</p></div>
 
 <figure class="fig">
-<svg viewBox="0 0 700 250" role="img" aria-label="Two charged sheets and a neutral conducting slab, the standard exam configuration">
+<svg viewBox="0 0 700 250" class="wide" role="img" aria-label="Two charged sheets and a neutral conducting slab, the standard exam configuration">
   <g font-size="12">
   <line x1="40" y1="230" x2="660" y2="230" class="ink thin"/><text x="662" y="234" class="txs">x</text>
   <rect x="80" y="40" width="70" height="190" class="metal" stroke-width="1.5"/>
@@ -4510,7 +4513,7 @@ window.MathJax = {
 <p>If a problem gives you one capacitor's charge instead of the battery voltage (Spring 2014 Q16–19), start there and unwind <em>outward</em>: \(V\) of that capacitor gives \(V\) of its parallel partners, then \(Q\) of the series string it belongs to, and so on.</p></div>
 
 <figure class="fig">
-<svg viewBox="0 0 700 350" role="img" aria-label="The four past-exam capacitor circuits, redrawn">
+<svg viewBox="0 0 700 350" class="wide" role="img" aria-label="The four past-exam capacitor circuits, redrawn">
   <g font-size="11" stroke="var(--ink)" stroke-width="1.6" fill="none">
   <!-- (a) Spring 2014 -->
   <g transform="translate(0,0)">
