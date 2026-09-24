@@ -78,6 +78,14 @@ li p{margin:.3rem 0}
 .chap .map{color:var(--muted);font-size:.95rem;margin-top:.3rem}
 .key{border-left:4px solid var(--accent);background:var(--accent-soft);padding:12px 16px;margin:1.2rem 0;border-radius:0 8px 8px 0}
 .key .t{font-family:var(--mono);font-size:.74rem;letter-spacing:.08em;text-transform:uppercase;color:var(--accent-ink);margin-bottom:4px}
+
+.sym{margin:.6rem 0 1rem;padding:8px 12px;border:1px dashed var(--line);border-radius:8px;background:var(--surface);font-size:.86rem;line-height:1.5}
+.sym .st{font-family:var(--mono);font-size:.66rem;letter-spacing:.08em;text-transform:uppercase;color:var(--accent-ink);margin-bottom:4px}
+.sym dl{display:grid;grid-template-columns:max-content 1fr;gap:3px 14px;margin:0}
+.sym dt{margin:0;white-space:nowrap;font-weight:600}
+.sym dd{margin:0}
+.sym dt mjx-container{font-size:1.02em}
+@media (max-width:480px){.sym dl{grid-template-columns:1fr}.sym dt{margin-top:4px}.sym dd{padding-left:12px}}
 .why{border-left:4px solid var(--neg);background:var(--neg-soft);padding:12px 16px;margin:1.2rem 0;border-radius:0 8px 8px 0}
 .why .t{font-family:var(--mono);font-size:.74rem;letter-spacing:.08em;text-transform:uppercase;color:var(--neg);margin-bottom:4px}
 .why p{max-width:72ch}
@@ -274,6 +282,8 @@ window.MathJax = {
   <a class="sub" href="#f-1">Vectors</a>
   <a class="sub" href="#f-2">The dq method</a>
   <a class="sub" href="#f-3">Work and energy</a>
+
+  <a class="sub" href="#f-6">Every symbol, defined</a>
   <a class="ch" href="#ch5">Ch. 5 · Charge, Coulomb, E-field</a>
   <a class="sub" href="#s5-1">Charge and charging</a>
   <a class="sub" href="#s5-3">Coulomb's law and superposition</a>
@@ -346,6 +356,8 @@ window.MathJax = {
   <li>Boxes marked <span class="ans" style="background:var(--warn)">Trap</span> are mistakes that the exam distractors are specifically designed to catch.</li>
   <li><strong>New to the material?</strong> Read the <a href="#found">Foundations</a> section first. Throughout the guide, blue boxes labeled <em>Why this is true</em> explain the physical mechanism behind each rule, not just the rule; read them, because the exam's conceptual questions test exactly that reasoning.</li>
   <li><strong>Interactive parts.</strong> Worked examples hide their steps until you click <em>Show step</em>, so attempt each step first. Many examples end with a <em>Your answer</em> box that checks your number (relative tolerance about 3%; scientific notation like <code>3.35e5</code> is fine). Green-bordered <em>Explore</em> panels are live models: drag the sliders and watch the numbers and arrows respond.</li>
+  <li><strong>Every letter is defined.</strong> Each equation in the chapters is followed by a dashed box, <em>What each letter means</em>, that names every symbol in it and gives its unit. If you meet a symbol anywhere else (exam solutions, the appendix), look it up in <a href="#f-6">Foundations F.6</a>, the full symbol glossary.</li>
+
 </ul>
 <p class="small">Notation used throughout: \(k = 1/(4\pi\varepsilon_0) = 8.99\times10^{9}\ \mathrm{N\,m^2/C^2}\), \(\varepsilon_0 = 8.85\times10^{-12}\ \mathrm{C^2/(N\,m^2)}\), \(e = 1.60\times10^{-19}\ \mathrm{C}\). Numbers in solutions use \(k = 8.99\times10^9\) unless the source used \(9\times10^9\).</p>
 </div>
@@ -362,6 +374,8 @@ window.MathJax = {
 <div class="key"><div class="t">Components: the only reliable way to add vectors</div>
 <p>Pick axes (usually \(x\) to the right, \(y\) up). Any vector \(\vec A\) with magnitude \(A\) and direction angle \(\theta\) measured from the \(+x\) axis splits into two numbers:</p>
 \[ A_x = A\cos\theta, \qquad A_y = A\sin\theta \]
+<div class="sym"><div class="st">What each letter means</div><dl><dt>\(\vec A\)</dt><dd>any vector (a force, a field, a displacement); the arrow on top means it has a direction as well as a size</dd><dt>\(A\)</dt><dd>the magnitude (length) of \(\vec A\), always positive, in whatever unit the vector has (N for a force, N/C for a field)</dd><dt>\(A_x,\ A_y\)</dt><dd>the \(x\)-component and \(y\)-component of \(\vec A\): its "shadow" on each axis; these carry signs (negative means pointing in \(-x\) or \(-y\))</dd><dt>\(\theta\)</dt><dd>the direction angle of \(\vec A\), measured counterclockwise from the \(+x\) axis, in degrees or radians</dd><dt>\(\tan^{-1}\)</dt><dd>inverse tangent (arctan): the angle whose tangent is the ratio; your calculator returns \(-90^\circ\) to \(+90^\circ\), so add \(180^\circ\) when \(A_x \lt 0\)</dd></dl></div>
+
 <p>To add vectors, add the \(x\)-parts together and the \(y\)-parts together, separately. To turn the result back into a magnitude and direction:</p>
 \[ A = \sqrt{A_x^2 + A_y^2}, \qquad \theta = \tan^{-1}\!\frac{A_y}{A_x}\ \text{(then fix the quadrant by looking at the signs)} \]
 <p>Never add magnitudes of vectors that point in different directions. Two 5 N forces can add to anything from 0 N (opposite) to 10 N (same direction).</p></div>
@@ -372,11 +386,15 @@ window.MathJax = {
 
 <div class="key"><div class="t">Unit vectors, especially \(\hat r\)</div>
 <p>A <strong>unit vector</strong> has length 1 and only carries direction. \(\hat i\), \(\hat j\), \(\hat k\) point along \(+x\), \(+y\), \(+z\). Writing \(\vec A = A_x\hat i + A_y\hat j\) is just a way of listing components.</p>
-<p>The one that matters most here is \(\hat r\): the unit vector pointing <em>from</em> a source charge <em>to</em> the point you care about. If the source is at the origin and the point is at \((x, y)\), then \(\hat r = (x\hat i + y\hat j)/\sqrt{x^2+y^2}\). Multiplying any magnitude by \(\hat r\) makes a vector of that size pointing away from the source. That is why Coulomb's law and the field of a point charge are written with \(\hat r\): the formula gives the size, \(\hat r\) supplies the direction, and a negative sign on the charge flips it toward the source.</p></div>
+<p>The one that matters most here is \(\hat r\): the unit vector pointing <em>from</em> a source charge <em>to</em> the point you care about. If the source is at the origin and the point is at \((x, y)\), then \(\hat r = (x\hat i + y\hat j)/\sqrt{x^2+y^2}\). Multiplying any magnitude by \(\hat r\) makes a vector of that size pointing away from the source. That is why Coulomb's law and the field of a point charge are written with \(\hat r\): the formula gives the size, \(\hat r\) supplies the direction, and a negative sign on the charge flips it toward the source.</p>
+<div class="sym"><div class="st">What each letter means</div><dl><dt>\(\hat i,\ \hat j,\ \hat k\)</dt><dd>unit vectors (length 1, no units) along \(+x\), \(+y\), \(+z\); the hat means "unit vector"</dd><dt>\(\hat r\)</dt><dd>unit vector pointing from the source charge toward the field point; the formula supplies the size, \(\hat r\) supplies the direction</dd><dt>\((x, y)\)</dt><dd>coordinates of the field point relative to the source, in m</dd><dt>\(\sqrt{x^2+y^2}\)</dt><dd>the distance from the source to the point (Pythagoras); dividing by it is what makes the vector have length 1</dd></dl></div>
+</div>
 
 <div class="key"><div class="t">Two products you need to recognize</div>
 <p><strong>Dot product</strong> (a scalar): \(\vec A\cdot\vec B = AB\cos\theta\), with \(\theta\) the angle between them. It measures "how much of \(\vec A\) lies along \(\vec B\)." It is largest when they are parallel, zero when perpendicular, negative when they oppose. It appears in work (\(W = \vec F\cdot\vec d\)) and flux (\(\Phi = \vec E\cdot\vec A\)).</p>
-<p><strong>Cross product</strong> (a vector): \(|\vec A\times\vec B| = AB\sin\theta\), perpendicular to both, direction by the right-hand rule. It is zero when the vectors are parallel. It appears in torque on a dipole (\(\vec\tau = \vec p\times\vec E\)). For this exam you only need its magnitude and the fact that it vanishes at \(0^\circ\) and \(180^\circ\).</p></div>
+<p><strong>Cross product</strong> (a vector): \(|\vec A\times\vec B| = AB\sin\theta\), perpendicular to both, direction by the right-hand rule. It is zero when the vectors are parallel. It appears in torque on a dipole (\(\vec\tau = \vec p\times\vec E\)). For this exam you only need its magnitude and the fact that it vanishes at \(0^\circ\) and \(180^\circ\).</p>
+<div class="sym"><div class="st">What each letter means</div><dl><dt>\(\vec A\cdot\vec B\)</dt><dd>dot product of two vectors: a single number (scalar), \(AB\cos\theta\)</dd><dt>\(|\vec A\times\vec B|\)</dt><dd>magnitude of the cross product: \(AB\sin\theta\), a vector perpendicular to both</dd><dt>\(A,\ B\)</dt><dd>the magnitudes of the two vectors</dd><dt>\(\theta\)</dt><dd>the angle between the two vectors when their tails are placed together</dd><dt>\(W = \vec F\cdot\vec d\)</dt><dd>work \(W\) (J) done by a constant force \(\vec F\) (N) over a displacement \(\vec d\) (m)</dd><dt>\(\Phi = \vec E\cdot\vec A\)</dt><dd>electric flux \(\Phi\) (N·m²/C) of a uniform field \(\vec E\) through a flat surface whose area vector \(\vec A\) has size equal to the area (m²) and points along the surface normal</dd><dt>\(\vec\tau = \vec p\times\vec E\)</dt><dd>torque \(\vec\tau\) (N·m) on a dipole of dipole moment \(\vec p\) (C·m) in a field \(\vec E\)</dd></dl></div>
+</div>
 
 <h3 id="f-2">F.2 The method behind every integral in this course</h3>
 <p>Every formula for a rod, ring, disk, sphere, or cylinder comes from one idea, which Lecture 2 calls "the whole \(dq\) thing":</p>
@@ -394,7 +412,9 @@ window.MathJax = {
 <div class="key"><div class="t">The definitions</div>
 <p><strong>Work</strong> done by a force on an object as it moves: \(W = \int\vec F\cdot d\vec l\), which for a constant force along a straight path is \(W = Fd\cos\theta\). Positive when the force has a component along the motion, negative when it opposes the motion, zero when perpendicular. Work is a scalar, in joules.</p>
 <p><strong>Work-energy theorem:</strong> the <em>total</em> work done by all forces equals the change in kinetic energy: \(W_{\text{net}} = \Delta K = \tfrac12mv_f^2 - \tfrac12mv_i^2\). Positive net work speeds things up.</p>
-<p><strong>Conservative force:</strong> one whose work between two points does not depend on the path taken (gravity, springs, and, as we will see, the Coulomb force). Only for such forces can we define a <strong>potential energy</strong> \(U\) by \(\Delta U = -W_{\text{by that force}}\). Then energy conservation reads \(\Delta K + \Delta U = W_{\text{other}}\), where "other" means non-conservative forces like your hand or friction.</p></div>
+<p><strong>Conservative force:</strong> one whose work between two points does not depend on the path taken (gravity, springs, and, as we will see, the Coulomb force). Only for such forces can we define a <strong>potential energy</strong> \(U\) by \(\Delta U = -W_{\text{by that force}}\). Then energy conservation reads \(\Delta K + \Delta U = W_{\text{other}}\), where "other" means non-conservative forces like your hand or friction.</p>
+<div class="sym"><div class="st">What each letter means</div><dl><dt>\(W\)</dt><dd>work done by a force, in joules (J); positive if the force helps the motion, negative if it opposes it</dd><dt>\(\vec F\)</dt><dd>the force doing the work, in newtons (N)</dd><dt>\(d\vec l\)</dt><dd>a tiny step along the path the object follows, in m; the integral adds up \(\vec F\cdot d\vec l\) over every step</dd><dt>\(F,\ d,\ \theta\)</dt><dd>for a constant force on a straight path: the force magnitude, the distance moved, and the angle between force and motion</dd><dt>\(W_{\text{net}}\)</dt><dd>the total work done by <em>all</em> forces together</dd><dt>\(\Delta K\)</dt><dd>change in kinetic energy, in J: \(\tfrac12 mv_f^2 - \tfrac12 mv_i^2\)</dd><dt>\(m\)</dt><dd>mass of the moving object, in kg</dd><dt>\(v_i,\ v_f\)</dt><dd>initial and final speeds, in m/s</dd><dt>\(U\)</dt><dd>potential energy, in J; only defined for conservative forces</dd><dt>\(\Delta U\)</dt><dd>change in potential energy: final minus initial; equals minus the work done by the conservative force</dd><dt>\(W_{\text{other}}\)</dt><dd>work done by non-conservative forces (a hand, friction, a motor), in J</dd></dl></div>
+</div>
 <div class="why"><div class="t">Why \(\Delta U = -W\), with the minus sign, and what it means mechanically</div>
 <p>Lift a ball slowly. Gravity pulls down, the ball moves up, so gravity does negative work. The ball's kinetic energy did not change, yet you spent effort. Where did that effort go? Into the ball-Earth system as stored (potential) energy. So negative work by the conservative force means an increase in stored energy: \(\Delta U = -W_{\text{grav}}\). Let the ball fall: gravity does positive work, \(U\) drops, and the same amount shows up as kinetic energy. The minus sign is just the bookkeeping that keeps the total constant.</p>
 <p>The electric force works the same way with charge in place of mass. Push a positive charge toward another positive charge: the field's force opposes you, does negative work, and the system stores energy. Release it, and the field's positive work turns that stored energy into speed. Chapter 7 is built entirely on this one idea, and its sign questions all reduce to "which way is the force, and which way is the motion?"</p></div>
@@ -431,6 +451,102 @@ window.MathJax = {
 <tr><td>k (kilo)</td><td>\(10^{3}\)</td><td>kN/C, kV</td></tr>
 </tbody></table></div>
 <p>On the TI-30, enter \(8.99\times10^{9}\) as <code>8.99 EE 9</code> (the EE key, not the multiplication key), and \(1.6\times10^{-19}\) as <code>1.6 EE (−) 19</code> using the sign key, not the minus key. Keep three or four significant figures until the final step; exam answer choices are usually separated by factors of 2 or 10 or a sign, so rounding early rarely hurts, but cancellations (like Spring 2015 Q2, where two 0.14 N pieces nearly cancel to 0.007 N) punish early rounding.</p>
+<h3 id="f-6">F.6 Every symbol in this guide, in one table</h3>
+<p>Each equation in the chapters has its own <em>What each letter means</em> box. This table is the master list: if a letter appears anywhere (an exam solution, the appendix, a figure) and you are not sure what it stands for, find it here. The same letter can mean different things in different formulas (\(V\) is potential in Chapter 7 but volume in \(
+ho = Q/V\); \(A\) is area in most places but the constant in \(
+ho = Ar\) in Homework 4), so read the sentence around it.</p>
+<h4>Charge and constants</h4>
+<div class="tw"><table><thead><tr><th>Symbol</th><th>Name</th><th>What it means</th><th>Unit</th></tr></thead><tbody>
+<tr><td>\(q,\ Q\)</td><td>electric charge</td><td>the amount of charge on an object or a point charge, with its sign; lowercase is usually the small or moving charge, uppercase the big or fixed one</td><td>coulomb, C</td></tr>
+<tr><td>\(e\)</td><td>elementary charge</td><td>the size of the charge on one proton (\(+e\)) or one electron (\(-e\))</td><td>\(1.602\times10^{-19}\) C</td></tr>
+<tr><td>\(N\)</td><td>number of elementary charges</td><td>how many electrons (or protons) were added or removed; a whole number</td><td>none</td></tr>
+<tr><td>\(k\)</td><td>Coulomb's constant</td><td>the proportionality constant in Coulomb's law; \(k = 1/(4\pi\varepsilon_0)\)</td><td>\(8.99\times10^{9}\) N·m²/C²</td></tr>
+<tr><td>\(\varepsilon_0\)</td><td>permittivity of free space</td><td>a constant of nature that appears in Gauss's law and capacitance</td><td>\(8.85\times10^{-12}\) C²/(N·m²)</td></tr>
+<tr><td>\(dq\)</td><td>element of charge</td><td>a tiny piece of a charged object, treated as a point charge when integrating</td><td>C</td></tr>
+<tr><td>\(\lambda\)</td><td>linear charge density</td><td>charge per unit length on a line, rod, ring, or arc; \(\lambda = Q/L\) if uniform</td><td>C/m</td></tr>
+<tr><td>\(\sigma\)</td><td>surface charge density</td><td>charge per unit area on a sheet, plate, or the surface of a conductor; \(\sigma = Q/A\) if uniform</td><td>C/m²</td></tr>
+<tr><td>\(\rho\)</td><td>volume charge density</td><td>charge per unit volume inside an insulator; \(
+ho = Q/V\) if uniform</td><td>C/m³</td></tr>
+<tr><td>\(Q_{\text{enc}},\ \lambda_{\text{enc}}\)</td><td>enclosed charge</td><td>the net charge (or charge per length) inside a Gaussian surface</td><td>C, C/m</td></tr>
+<tr><td>\(Q_{\text{shell}},\ q_{\text{inner}},\ \sigma_{\text{ind}}\)</td><td>shell and induced charges</td><td>net charge on a conducting shell; charge induced on a conductor's inner surface; induced surface density on a slab</td><td>C, C, C/m²</td></tr>
+</tbody></table></div>
+<h4>Geometry</h4>
+<div class="tw"><table><thead><tr><th>Symbol</th><th>Name</th><th>What it means</th><th>Unit</th></tr></thead><tbody>
+<tr><td>\(r\)</td><td>distance</td><td>center-to-center distance between two charges, or distance from a source to the field point; for lines and cylinders, the perpendicular distance from the axis</td><td>m</td></tr>
+<tr><td>\(r_{12}\)</td><td>separation of charges 1 and 2</td><td>distance between charge 1 and charge 2</td><td>m</td></tr>
+<tr><td>\(\hat r,\ \hat r_{12}\)</td><td>radial unit vector</td><td>unit vector pointing from the source (charge 1) toward the field point (charge 2); supplies direction only</td><td>none</td></tr>
+<tr><td>\(\hat i,\ \hat j,\ \hat k\)</td><td>axis unit vectors</td><td>unit vectors along \(+x\), \(+y\), \(+z\)</td><td>none</td></tr>
+<tr><td>\(x,\ y,\ z\)</td><td>coordinates</td><td>position of a point along each axis</td><td>m</td></tr>
+<tr><td>\(d\)</td><td>separation or gap</td><td>distance between two charges, two sheets, or two capacitor plates; also the charge separation in a dipole</td><td>m</td></tr>
+<tr><td>\(h\)</td><td>perpendicular distance</td><td>distance from a rod, ring, or disk to the field point along the axis or perpendicular</td><td>m</td></tr>
+<tr><td>\(R,\ a,\ b,\ c\)</td><td>radii</td><td>radius of a sphere, ring, disk, or cylinder; \(a \lt b \lt c\) for nested layers (inner surface, outer surface)</td><td>m</td></tr>
+<tr><td>\(L,\ \ell\)</td><td>length</td><td>length of a rod, cylinder, or Gaussian cylinder</td><td>m</td></tr>
+<tr><td>\(A\)</td><td>area</td><td>area of a plate, sheet, or Gaussian surface (also a constant in \(
+ho = Ar\), with units C/m⁴)</td><td>m²</td></tr>
+<tr><td>\(V\) (volume)</td><td>volume</td><td>volume of a charged region (same letter as potential; the sentence tells you which)</td><td>m³</td></tr>
+<tr><td>\(t\)</td><td>thickness</td><td>thickness of a slab inserted into a capacitor gap</td><td>m</td></tr>
+<tr><td>\(\theta\)</td><td>angle</td><td>an angle: between a field and a normal, between two vectors, or the position of a charge element on an arc</td><td>rad or °</td></tr>
+<tr><td>\(\theta_0\)</td><td>opening angle</td><td>the total angle spanned by an arc of charge</td><td>rad</td></tr>
+<tr><td>\(dx,\ ds,\ d\theta,\ dr,\ dA,\ dV\)</td><td>differentials</td><td>a tiny piece of length, arc length, angle, radius, area, or volume; the "d" means "a very small amount of"</td><td>same as the variable</td></tr>
+<tr><td>\(d\vec A\)</td><td>surface element vector</td><td>a tiny patch of surface with area \(dA\), pointing along its normal (outward on a closed surface)</td><td>m²</td></tr>
+<tr><td>\(\hat n\)</td><td>unit normal</td><td>unit vector perpendicular to a surface</td><td>none</td></tr>
+<tr><td>\(d\vec l,\ d\vec s,\ d\vec r\)</td><td>path element</td><td>a tiny step along a path, pointing in the direction of travel</td><td>m</td></tr>
+</tbody></table></div>
+<h4>Forces, fields, flux</h4>
+<div class="tw"><table><thead><tr><th>Symbol</th><th>Name</th><th>What it means</th><th>Unit</th></tr></thead><tbody>
+<tr><td>\(\vec F,\ F\)</td><td>electric force</td><td>the Coulomb force vector, and its magnitude</td><td>newton, N</td></tr>
+<tr><td>\(\vec F_{1,2}\)</td><td>force by 1 on 2</td><td>the force that charge 1 exerts on charge 2 (course "by-on" notation)</td><td>N</td></tr>
+<tr><td>\(F_x,\ F_y\)</td><td>force components</td><td>the parts of a force along \(x\) and \(y\)</td><td>N</td></tr>
+<tr><td>\(\vec E,\ E\)</td><td>electric field</td><td>force per unit positive charge at a point, and its magnitude</td><td>N/C = V/m</td></tr>
+<tr><td>\(E_x,\ E_y,\ E_z,\ E_r,\ E_\perp\)</td><td>field components</td><td>the field along \(x\), \(y\), \(z\); along the radial direction; perpendicular to a line</td><td>N/C</td></tr>
+<tr><td>\(d\vec E,\ dE\)</td><td>field of one element</td><td>the tiny field contributed by one piece of charge \(dq\)</td><td>N/C</td></tr>
+<tr><td>\(E_0\)</td><td>reference field</td><td>the field with no dielectric (or before something was changed)</td><td>N/C</td></tr>
+<tr><td>\(E_{\text{ext}}\)</td><td>external field</td><td>the field that other objects (the sheets) make inside a slab</td><td>N/C</td></tr>
+<tr><td>\(m,\ g\)</td><td>mass, gravity</td><td>mass of a particle; gravitational acceleration \(9.81\ \mathrm{m/s^2}\)</td><td>kg, m/s²</td></tr>
+<tr><td>\(a,\ v\)</td><td>acceleration, speed</td><td>acceleration of a charge (\(a = qE/m\)); speed</td><td>m/s², m/s</td></tr>
+<tr><td>\(\vec p,\ p\)</td><td>dipole moment</td><td>\(q\vec d\) for charges \(\pm q\) separated by \(\vec d\); points from \(-q\) to \(+q\)</td><td>C·m</td></tr>
+<tr><td>\(\vec\tau,\ \tau\)</td><td>torque</td><td>twisting effect of the field on a dipole</td><td>N·m</td></tr>
+<tr><td>\(\Phi,\ \Phi_E\)</td><td>electric flux</td><td>how much field passes through a surface: field lines counted through the surface</td><td>N·m²/C</td></tr>
+<tr><td>\(d\Omega\)</td><td>solid angle</td><td>the "cone of directions" a patch subtends as seen from a charge; a full sphere is \(4\pi\)</td><td>steradian (none)</td></tr>
+</tbody></table></div>
+<h4>Energy and potential</h4>
+<div class="tw"><table><thead><tr><th>Symbol</th><th>Name</th><th>What it means</th><th>Unit</th></tr></thead><tbody>
+<tr><td>\(W\)</td><td>work</td><td>energy transferred by a force along a path; \(W_{\text{field}}\) is by the electric force, \(W_{\text{you}}\) or \(W_{\text{ext}}\) by an outside agent</td><td>joule, J</td></tr>
+<tr><td>\(K,\ \Delta K\)</td><td>kinetic energy</td><td>\(\tfrac12mv^2\), and its change</td><td>J</td></tr>
+<tr><td>\(U,\ \Delta U\)</td><td>electric potential energy</td><td>energy stored in the arrangement of charges, and its change (final minus initial)</td><td>J</td></tr>
+<tr><td>\(U_{\text{total}}\)</td><td>total potential energy</td><td>sum over all pairs of charges</td><td>J</td></tr>
+<tr><td>\(V\)</td><td>electric potential</td><td>potential energy per unit charge at a point; a scalar (no direction)</td><td>volt, V = J/C</td></tr>
+<tr><td>\(\Delta V,\ V_b - V_a\)</td><td>potential difference</td><td>voltage between two points (point \(b\) minus point \(a\))</td><td>V</td></tr>
+<tr><td>\(V(\text{ref}),\ r_0\)</td><td>reference potential and radius</td><td>the place where \(V\) is chosen to be zero (infinity for finite objects, a stated radius for lines)</td><td>V, m</td></tr>
+<tr><td>\(\nabla V\)</td><td>gradient of \(V\)</td><td>the vector of slopes \((\partial V/\partial x, \partial V/\partial y, \partial V/\partial z)\); \(\vec E = -\nabla V\)</td><td>V/m</td></tr>
+<tr><td>\(\partial V/\partial x\)</td><td>partial derivative</td><td>the slope of \(V\) in the \(x\) direction, holding \(y\) and \(z\) fixed</td><td>V/m</td></tr>
+<tr><td>\(\ln\)</td><td>natural logarithm</td><td>log base \(e\); appears in the potential of lines and cylinders</td><td>none</td></tr>
+<tr><td>\(\mathrm{eV}\)</td><td>electron-volt</td><td>energy an elementary charge gains through 1 V</td><td>\(1.60\times10^{-19}\) J</td></tr>
+</tbody></table></div>
+<h4>Capacitance</h4>
+<div class="tw"><table><thead><tr><th>Symbol</th><th>Name</th><th>What it means</th><th>Unit</th></tr></thead><tbody>
+<tr><td>\(C\)</td><td>capacitance</td><td>charge stored per volt, \(Q/\Delta V\); set by geometry and dielectric only</td><td>farad, F = C/V</td></tr>
+<tr><td>\(C_0\)</td><td>reference capacitance</td><td>capacitance with no dielectric (empty gap)</td><td>F</td></tr>
+<tr><td>\(C_{\text{eq}}\)</td><td>equivalent capacitance</td><td>the single capacitor that could replace a combination</td><td>F</td></tr>
+<tr><td>\(C_i,\ Q_i,\ V_i\)</td><td>per-capacitor values</td><td>capacitance, charge, and voltage of capacitor number \(i\) in a circuit</td><td>F, C, V</td></tr>
+<tr><td>\(V_{\text{battery}},\ \mathcal E\)</td><td>battery voltage</td><td>the potential difference the battery maintains</td><td>V</td></tr>
+<tr><td>\(\kappa\)</td><td>dielectric constant</td><td>factor by which an insulator weakens the field inside it and raises \(C\)</td><td>none</td></tr>
+<tr><td>\(\sigma_i\)</td><td>induced surface density</td><td>bound charge that appears on the faces of a polarized dielectric</td><td>C/m²</td></tr>
+<tr><td>\(u\)</td><td>energy density</td><td>energy stored per unit volume of field, \(\tfrac12\varepsilon_0E^2\)</td><td>J/m³</td></tr>
+<tr><td>\(q_{\text{free}}\)</td><td>free charge</td><td>charge on the plates (not the bound charge in the dielectric)</td><td>C</td></tr>
+</tbody></table></div>
+<h4>Symbols and operations</h4>
+<div class="tw"><table><thead><tr><th>Symbol</th><th>Name</th><th>What it means</th><th>Unit</th></tr></thead><tbody>
+<tr><td>\(\Delta\)</td><td>change in</td><td>final value minus initial value</td><td></td></tr>
+<tr><td>\(\sum\)</td><td>sum</td><td>add up every term; \(\sum_i\) means "over every charge \(i\)"; \(\sum_{i \lt j}\) means "over every pair, once"</td><td></td></tr>
+<tr><td>\(\int,\ \oint\)</td><td>integral, closed integral</td><td>add up infinitely many tiny contributions; the circle means the surface is closed</td><td></td></tr>
+<tr><td>\(|x|\)</td><td>absolute value / magnitude</td><td>the size of a number or vector, sign dropped</td><td></td></tr>
+<tr><td>\(\equiv\)</td><td>is defined as</td><td>a definition, not a result</td><td></td></tr>
+<tr><td>\(\propto\)</td><td>is proportional to</td><td>grows in fixed ratio with</td><td></td></tr>
+<tr><td>\(\gg,\ \ll\)</td><td>much greater / much less than</td><td>used for limiting cases ("far away")</td><td></td></tr>
+<tr><td>\(\to\)</td><td>approaches</td><td>"in the limit as"</td><td></td></tr>
+</tbody></table></div>
+
 </section>
 
 
@@ -449,7 +565,9 @@ window.MathJax = {
 <li><strong>Quantized.</strong> Every charge is an integer multiple of the elementary charge: \(q = Ne\), with \(e = 1.602\times10^{-19}\ \mathrm{C}\). The proton's charge is exactly \(+e\), the electron's exactly \(-e\).</li>
 <li><strong>Conserved.</strong> Charge is never created or destroyed, only moved. When you rub two objects, one loses electrons and the other gains the same number. (Lecture 1's Fermilab example: a proton and an antiproton, \(+1\) and \(-1\), can annihilate into neutral particles because the total was zero to begin with.)</li>
 <li><strong>Charge lives on electrons.</strong> In ordinary charging, only electrons move. "Positively charged" means "missing electrons," never "gained protons."</li>
-</ol></div>
+</ol>
+<div class="sym"><div class="st">What each letter means</div><dl><dt>\(q\)</dt><dd>the total charge on the object, in coulombs (C), with its sign</dd><dt>\(N\)</dt><dd>the number of elementary charges: how many electrons were removed (positive object) or added (negative object); a whole number with no unit</dd><dt>\(e\)</dt><dd>the elementary charge, \(1.602\times10^{-19}\ \mathrm{C}\): the size of the charge on one electron or one proton. So \(q = Ne\) says "total charge = (how many) × (charge of each)"</dd></dl></div>
+</div>
 
 <div class="why"><div class="t">Why these facts matter for problem solving</div>
 <p><strong>Two signs</strong> is what makes the electric force different from gravity: it can attract or repel, and a cluster of charges can add up to zero. That is why a neutral object feels no net Coulomb force from far away, and why "induced" charges (below) can appear without anything being created.</p>
@@ -532,9 +650,13 @@ window.MathJax = {
 
 <div class="key"><div class="t">Coulomb's law (magnitude and direction)</div>
 \[ F = \frac{k\,|q_1|\,|q_2|}{r^2}, \qquad k = \frac{1}{4\pi\varepsilon_0} = 8.99\times10^{9}\ \mathrm{\frac{N\,m^2}{C^2}} \]
+<div class="sym"><div class="st">What each letter means</div><dl><dt>\(F\)</dt><dd>the magnitude (size) of the force each charge exerts on the other, in newtons (N); the same for both charges</dd><dt>\(k\)</dt><dd>Coulomb\'s constant, \(8.99\times10^{9}\ \mathrm{N\,m^2/C^2}\); it converts "charges and a distance" into newtons. Same thing as \(1/(4\pi\varepsilon_0)\)</dd><dt>\(q_1,\ q_2\)</dt><dd>the two charges, in coulombs (C); the absolute-value bars mean "use the sizes, drop the signs" when computing the magnitude, then decide the direction from the signs</dd><dt>\(r\)</dt><dd>the center-to-center distance between the two charges, in meters (m); it is squared, so halving \(r\) makes the force four times larger</dd><dt>\(\varepsilon_0\)</dt><dd>permittivity of free space, \(8.85\times10^{-12}\ \mathrm{C^2/(N\,m^2)}\); a constant of nature, given on the equation sheet</dd></dl></div>
+
 <p>The force is along the line joining the charges. Like signs push apart, opposite signs pull together. Newton's third law holds: the force on \(q_1\) from \(q_2\) is exactly equal in magnitude and opposite in direction to the force on \(q_2\) from \(q_1\), <em>regardless of which charge is bigger</em>.</p>
 <p>Vector form with the course's "by-on" notation (\(\vec F_{1,2}\) is the force <em>by</em> 1 <em>on</em> 2, and \(\hat r_{12}\) is the unit vector pointing <em>from</em> 1 <em>to</em> 2):</p>
 \[ \vec F_{1,2} = \frac{k\,q_1 q_2}{r_{12}^2}\,\hat r_{12} \]
+<div class="sym"><div class="st">What each letter means</div><dl><dt>\(\vec F_{1,2}\)</dt><dd>the force vector <em>by</em> charge 1 <em>on</em> charge 2 (read the subscripts as "by, on"), in N</dd><dt>\(q_1 q_2\)</dt><dd>the product of the two charges <em>with their signs</em>: positive for like charges (result points along \(\hat r_{12}\), repulsion), negative for opposite charges (result points against \(\hat r_{12}\), attraction)</dd><dt>\(r_{12}\)</dt><dd>the distance between charge 1 and charge 2, in m</dd><dt>\(\hat r_{12}\)</dt><dd>unit vector (length 1) pointing from charge 1 toward charge 2; it carries the direction and nothing else</dd></dl></div>
+
 <p>Keep the signs of \(q_1\) and \(q_2\) in this formula: if \(q_1q_2 \gt 0\) the force on 2 is along \(\hat r_{12}\) (pushed away from 1); if \(q_1q_2 \lt 0\) it is opposite to \(\hat r_{12}\) (pulled toward 1).</p></div>
 
 <div class="why"><div class="t">Why the force goes as \(1/r^2\), what \(k\) is, and why the two forces are equal</div>
@@ -588,7 +710,11 @@ window.MathJax = {
 <h4>Superposition: the only rule for many charges</h4>
 <p>The net force on a charge is the <strong>vector sum</strong> of the individual Coulomb forces from every other charge, each computed as if the others were absent:</p>
 \[ \vec F_1 = \vec F_{2,1} + \vec F_{3,1} + \vec F_{4,1} + \cdots \]
+<div class="sym"><div class="st">What each letter means</div><dl><dt>\(\vec F_1\)</dt><dd>the net (total) force vector on charge 1, in N</dd><dt>\(\vec F_{2,1},\ \vec F_{3,1},\ \dots\)</dt><dd>the individual force vectors by charge 2 on charge 1, by charge 3 on charge 1, and so on, each computed from Coulomb's law as if the other charges did not exist</dd><dt>\(+\)</dt><dd>vector addition: add \(x\)-components together and \(y\)-components together, never the magnitudes</dd></dl></div>
+
 <p>This is Newton's second law bookkeeping from Physics 2111 (\(\sum F_x = ma_x\), \(\sum F_y = ma_y\)) with a new force. Lecture 1 emphasizes two habits:</p>
+<div class="sym"><div class="st">What each letter means</div><dl><dt>\(\sum F_x,\ \sum F_y\)</dt><dd>the sum of the \(x\)-components (and, separately, the \(y\)-components) of every force on the object, in N</dd><dt>\(m\)</dt><dd>the mass of the object, in kg</dd><dt>\(a_x,\ a_y\)</dt><dd>the components of its acceleration, in m/s²; both are zero when the object is in equilibrium (at rest, or "floating")</dd></dl></div>
+
 <ul>
 <li><strong>Draw the picture first.</strong> Put an arrow on the target charge for each other charge: away from like signs, toward opposite signs. Only then compute magnitudes.</li>
 <li><strong>Components, not "adding magnitudes."</strong> Each force contributes \(F\cos\theta\) to \(x\) and \(F\sin\theta\) to \(y\), with the angle measured for that arrow. Sum the components, then take the magnitude \(\sqrt{F_x^2+F_y^2}\) and angle \(\tan^{-1}(F_y/F_x)\), fixing the quadrant by looking at the signs of \(F_x\) and \(F_y\).</li>
@@ -597,6 +723,8 @@ window.MathJax = {
 <div class="why"><div class="t">Why superposition holds, and how to turn a picture into components</div>
 <p><strong>Why forces simply add.</strong> The force that charge 3 exerts on charge 2 does not care whether charge 1 exists; each pair interacts on its own. That is an experimental fact (electric forces are "linear"), and it is what makes every many-charge problem tractable: compute each pair force as if the others were absent, then add the vectors. Nothing fancier is ever needed for point charges.</p>
 <p><strong>The procedure, mechanically.</strong> (1) Mark the target charge. (2) For every other charge, draw an arrow on the target: pointing away from that charge if the signs match, toward it if they differ. Draw the arrow <em>on the target</em>, not on the other charge. (3) For each arrow, compute the magnitude \(k|q_1||q_2|/r^2\) with \(r\) the straight-line distance between the two charges (Pythagoras when they are not on a common axis). (4) For each arrow, get the components from the triangle whose hypotenuse joins the two charges: \(F_x = F\,(\Delta x/r)\), \(F_y = F\,(\Delta y/r)\), with the signs of \(\Delta x\) and \(\Delta y\) taken in the direction the arrow points. (5) Add the \(x\)'s, add the \(y\)'s. (6) Only now convert to magnitude and angle if asked. Step 2 is where the physics lives; steps 3 through 6 are arithmetic.</p>
+<div class="sym"><div class="st">What each letter means</div><dl><dt>\(F\)</dt><dd>the magnitude of one pair force, \(k|q_1||q_2|/r^2\), in N</dd><dt>\(F_x,\ F_y\)</dt><dd>its components along \(x\) and \(y\), in N, with signs</dd><dt>\(\Delta x,\ \Delta y\)</dt><dd>the horizontal and vertical separations between the two charges (target minus source, in m); their signs give the direction of \(\hat r\)</dd><dt>\(r\)</dt><dd>the straight-line distance, \(\sqrt{\Delta x^2 + \Delta y^2}\), in m; \(\Delta x/r\) and \(\Delta y/r\) are the cosine and sine of the direction angle without ever computing the angle</dd></dl></div>
+
 </div>
 <figure class="fig">
 <svg viewBox="0 0 720 330" class="wide" role="img" aria-label="Worked example geometry: force on q2 from q1 and q3">
@@ -689,7 +817,9 @@ window.MathJax = {
 <p><strong>Homework 1 Problem 3:</strong> \(+5.9\ \mu\mathrm{C}\) at \(x=0\), \(-1.1\ \mu\mathrm{C}\) at \(x = 0.21\ \mathrm{m}\). Opposite signs, smaller magnitude on the right, so the zero is at \(x \gt 0.21\). Set \(\dfrac{k(5.9)}{x^2} = \dfrac{k(1.1)}{(x-0.21)^2}\). Take square roots: \(\sqrt{5.9}\,(x-0.21) = \sqrt{1.1}\,x\), so \(2.429x - 0.510 = 1.049x\), \(x = 0.370\ \mathrm{m}\). If instead the second charge were \(+1.1\ \mu\mathrm{C}\), the zero is between: \(\sqrt{5.9}\,(0.21-x) = \sqrt{1.1}\,x\), \(x = 0.510/3.478 = 0.147\ \mathrm{m}\).</p>
 <p><strong>Lecture Example 2.2:</strong> \(+4\ \mu\mathrm{C}\) at 0 and \(+10\ \mu\mathrm{C}\) at 0.4 m: \(\sqrt4\,(0.4-r) = \sqrt{10}\,r\), \(r = 0.8/5.16 = 0.155\ \mathrm{m}\) from the 4 μC charge.</p><div class="check" data-answer="0.37" data-tol="0.03"><label for="check-in-3">Your answer, x of the zero for Homework 1 P3 (opposite signs):</label><input type="text" id="check-in-3" inputmode="decimal" placeholder="e.g. 0.47 or 3.35e5" autocomplete="off"><span class="small">m</span><button type="button" id="check-btn-3">Check</button><span class="fb" aria-live="polite"></span></div>
 
-<div class="trap"><div class="t">Trap</div><p>Never solve \(k q_1/x^2 = k q_2/(d-x)^2\) by cross-multiplying into a quadratic unless you must; taking the square root of both sides is faster and avoids the spurious root that lands in the wrong region. Always check the answer is in the region your sign rule predicted.</p></div>
+<div class="trap"><div class="t">Trap</div><p>Never solve \(k q_1/x^2 = k q_2/(d-x)^2\) by cross-multiplying into a quadratic unless you must; taking the square root of both sides is faster and avoids the spurious root that lands in the wrong region. Always check the answer is in the region your sign rule predicted.</p>
+<div class="sym"><div class="st">What each letter means</div><dl><dt>\(q_1,\ q_2\)</dt><dd>the two source charges (use their magnitudes here; the signs were used to decide which region to search)</dd><dt>\(d\)</dt><dd>the distance between the two charges, in m</dd><dt>\(x\)</dt><dd>the unknown: the distance from charge 1 to the point where the two fields cancel, in m; \(d - x\) is then its distance from charge 2</dd><dt>\(k\)</dt><dd>Coulomb's constant; it appears on both sides and cancels</dd></dl></div>
+</div>
 </div>
 
 
@@ -710,6 +840,8 @@ window.MathJax = {
 
 <div class="ex"><div class="t">Coulomb force balanced by other forces</div><div class="src">Homework 1, Problems 1 and 2</div>
 <p><strong>Problem 1 (charge floating above another):</strong> \(Q_1 = +5\ \mathrm{nC}\) is fixed; \(Q_2\) of mass \(5.5\ \mu\mathrm{g}\) hovers \(d = 35\ \mathrm{cm}\) directly above it with zero net force. The free-body diagram of \(Q_2\) has weight \(mg\) down and the electric force up, so the electric force must be repulsive: \(Q_2\) is <strong>positive</strong>. Then \(k|Q_1||Q_2|/d^2 = mg\), so \(|Q_2| = mgd^2/(kQ_1) = (5.5\times10^{-9})(9.81)(0.35)^2/(8.99\times10^9\times5\times10^{-9}) = 1.47\times10^{-10}\ \mathrm{C} = 0.147\ \mathrm{nC}\).</p>
+<div class="sym"><div class="st">What each letter means</div><dl><dt>\(Q_1,\ Q_2\)</dt><dd>the fixed charge below and the floating charge above, in C</dd><dt>\(d\)</dt><dd>the vertical distance between them, in m</dd><dt>\(m\)</dt><dd>the mass of the floating charge, in kg (convert μg: \(1\ \mu\mathrm{g} = 10^{-9}\ \mathrm{kg}\))</dd><dt>\(g\)</dt><dd>gravitational acceleration, \(9.81\ \mathrm{m/s^2}\); \(mg\) is the weight, in N</dd><dt>\(k|Q_1||Q_2|/d^2 = mg\)</dt><dd>the balance statement: electric push up equals weight down, because the net force on a floating object is zero</dd></dl></div>
+
 <p><strong>Problem 2 (spring plus two charges):</strong> \(q_1 = +q\) at the origin, \(q_2 = +q\) at distance \(r\) along a line at angle \(\theta\), \(q_3 = -q\) at \(3r\) on the same line; \(q_2\) is tied to \(q_1\) by a spring. Net force on \(q_2\): \(q_1\) pushes it outward with \(k q^2/r^2\); \(q_3\) pulls it outward (toward \(q_3\), which is farther along the line) with \(kq^2/(2r)^2\). Both point along \((\cos\theta,\sin\theta)\): \(\vec F = kq^2\left(\frac1{r^2}+\frac1{4r^2}\right)(\cos\theta\,\hat i+\sin\theta\,\hat j)\), so \(q_2\) moves toward \(q_3\), stretching the spring. At the new equilibrium (stretch \(\Delta r\)) the distances become \(r+\Delta r\) from \(q_1\) and \(2r-\Delta r\) from \(q_3\): \(\vec F_E = kq^2\left(\frac{1}{(r+\Delta r)^2}+\frac{1}{(2r-\Delta r)^2}\right)(\cos\theta\,\hat i+\sin\theta\,\hat j)\), balanced by the spring force \(-k_s\Delta r\,(\cos\theta\,\hat i+\sin\theta\,\hat j)\).</p></div>
 
 <h3 id="s5-4">5.4 The electric field</h3>
@@ -718,9 +850,13 @@ window.MathJax = {
 
 <div class="key"><div class="t">Definition and the point-charge field</div>
 \[ \vec E \equiv \frac{\vec F}{q_{\text{test}}} \qquad\Longrightarrow\qquad \vec F = q\vec E \]
+<div class="sym"><div class="st">What each letter means</div><dl><dt>\(\vec E\)</dt><dd>the electric field vector: the force per coulomb that a positive test charge would feel at that point, in N/C (= V/m)</dd><dt>\(\vec F\)</dt><dd>the electric force on the test charge, in N</dd><dt>\(q_{\text{test}}\)</dt><dd>a small positive "probe" charge imagined at the point, in C; dividing by it removes the probe from the answer, so \(\vec E\) describes the space, not the probe</dd><dt>\(q\)</dt><dd>any charge placed in the field, in C, with its sign: a negative \(q\) feels a force opposite to \(\vec E\)</dd><dt>\(\equiv\)</dt><dd>"is defined as"; this is a definition, not a law</dd></dl></div>
+
 <p>The field is the force <em>per unit positive charge</em> that <em>would</em> act at a point. It is a property of the space, defined whether or not a test charge is present (Lecture 2: "what if I remove \(q_2\)? Is there anything at that point in space?"). Units: N/C, which equals V/m (Chapter 7). Gravity's analog is \(\vec g = \vec F/m\).</p>
 <p>Field of a single point charge \(Q\) at distance \(r\):</p>
 \[ \vec E = \frac{kQ}{r^2}\,\hat r \]
+<div class="sym"><div class="st">What each letter means</div><dl><dt>\(Q\)</dt><dd>the source charge making the field, in C, with its sign (a negative \(Q\) flips the direction toward itself)</dd><dt>\(k\)</dt><dd>Coulomb\'s constant, \(8.99\times10^{9}\ \mathrm{N\,m^2/C^2}\); it converts "charges and a distance" into newtons. Same thing as \(1/(4\pi\varepsilon_0)\)</dd><dt>\(r\)</dt><dd>distance from the source charge to the point where you want the field, in m</dd><dt>\(\hat r\)</dt><dd>unit vector (length exactly 1, no units) pointing <em>from</em> the source charge <em>toward</em> the point you care about; it only supplies a direction</dd><dt>\(\sum_i,\ Q_i,\ r_i,\ \hat r_i\)</dt><dd>for many charges: add (as vectors) the field of each charge \(i\), using its own charge, its own distance to the point, and its own direction</dd></dl></div>
+
 <p>with \(\hat r\) pointing from the charge to the field point. <strong>Away</strong> from positive charges, <strong>toward</strong> negative charges. Many charges: add the vectors, \(\vec E = \sum_i \dfrac{kQ_i}{r_i^2}\hat r_i\).</p></div>
 
 <div class="why"><div class="t">Why the field points away from positive charges, and what "test charge" means</div>
@@ -826,6 +962,9 @@ window.MathJax = {
 <div class="key"><div class="t">The master recipe (Lecture 2: "it works for all!")</div>
 <p>Chop the object into pieces \(dq\), treat each as a point charge, add the vectors with an integral:</p>
 \[ \vec E = \int d\vec E = \int \frac{k\,dq}{r^2}\,\hat r \]
+<div class="sym"><div class="st">What each letter means</div><dl><dt>\(d\vec E\)</dt><dd>the tiny field made by one tiny piece of the object, in N/C</dd><dt>\(dq\)</dt><dd>the charge of that tiny piece, in C, written as (density) × (tiny length, area, or volume)</dd><dt>\(r\)</dt><dd>distance from that piece to the field point \(P\), in m; it changes from piece to piece, which is why it stays inside the integral</dd><dt>\(\hat r\)</dt><dd>unit vector (length exactly 1, no units) pointing <em>from</em> the source charge <em>toward</em> the point you care about; it only supplies a direction</dd><dt>\(\int\)</dt><dd>integral sign: "add up the contributions of all the tiny pieces"</dd><dt>\(\lambda\)</dt><dd>linear charge density: charge per unit length along a line, rod, or ring, in C/m (\(\lambda = Q/L\) when uniform)</dd><dt>\(\sigma\)</dt><dd>surface charge density: charge per unit area on a sheet or surface, in C/m² (\(\sigma = Q/A\) when uniform)</dd><dt>\(\rho\)</dt><dd>volume charge density: charge per unit volume inside an insulator, in C/m³ (\(
+ho = Q/V\) when uniform)</dd><dt>\(dx,\ ds,\ R\,d\theta,\ dA,\ dV\)</dt><dd>the tiny length, arc length (radius times tiny angle), area, or volume of the piece</dd><dt>\(Q,\ L,\ A,\ V\)</dt><dd>the object's total charge, length, area, or volume, used to compute a uniform density</dd><dt>\(dE_x,\ dE_y,\ \theta\)</dt><dd>components of \(d\vec E\) and the angle used to split it; \(\theta\) is measured from an axis you choose</dd><dt>\(h\)</dt><dd>the perpendicular distance from the object to the field point, in m</dd></dl></div>
+
 <ol>
 <li><strong>Write \(dq\) in terms of a geometric variable.</strong> Line: \(dq = \lambda\,dx\) or \(\lambda\,ds = \lambda R\,d\theta\) on an arc. Surface: \(dq = \sigma\,dA\). Volume: \(dq = \rho\,dV\). For uniform density, \(\lambda = Q/L\), \(\sigma = Q/A\), \(\rho = Q/V\).</li>
 <li><strong>Write \(r\)</strong>, the distance from that \(dq\) to the field point \(P\), in the same variable (Pythagoras).</li>
@@ -870,11 +1009,15 @@ window.MathJax = {
   </g>
 </svg>
 <figcaption>Lecture 2, Example 2.3: a finite rod from \(x=0\) to \(x=a\), field point \(P\) at height \(h\) above the left end. The lecture substitutes \(x = h\tan\theta\), \(dx = h\sec^2\theta\,d\theta\); the trig substitution collapses \(kλ\,h\sec^2\theta\,d\theta\,\sin\theta/(h^2\sec^2\theta)\) into \((k\lambda/h)\sin\theta\,d\theta\). Result: \(E_x = -\dfrac{k\lambda}{h}\left(1-\dfrac{h}{\sqrt{a^2+h^2}}\right)\) (pointing away from the rod), \(E_y = \dfrac{k\lambda}{h}\cdot\dfrac{a}{\sqrt{a^2+h^2}}\).</figcaption>
+<div class="sym"><div class="st">What each letter means</div><dl><dt>\(\lambda\)</dt><dd>the rod's charge per unit length, C/m</dd><dt>\(a\)</dt><dd>the length of the rod, in m (it runs from \(x = 0\) to \(x = a\))</dd><dt>\(h\)</dt><dd>the height of the field point \(P\) above the left end, in m</dd><dt>\(x,\ dx\)</dt><dd>the position of a charge element along the rod and the tiny length of that element; \(dq = \lambda\,dx\)</dd><dt>\(\theta\)</dt><dd>the angle at \(P\) between the vertical and the line to the element, so \(\tan\theta = x/h\)</dd><dt>\(E_x,\ E_y\)</dt><dd>the field components at \(P\): \(E_x\) points away from the rod (negative here), \(E_y\) points up</dd><dt>\(k\)</dt><dd>Coulomb\'s constant, \(8.99\times10^{9}\ \mathrm{N\,m^2/C^2}\); it converts "charges and a distance" into newtons. Same thing as \(1/(4\pi\varepsilon_0)\)</dd></dl></div>
+
 </figure>
 
 <div class="ex"><div class="t">The infinite line of charge (two ways)</div><div class="src">Lecture 2 (integral) · Lecture 4 (Gauss's law)</div>
 <p>Extend the rod from \(-\infty\) to \(+\infty\). By symmetry \(E_x\) cancels. The \(\theta\)-integral limits become \(-\pi/2\) to \(\pi/2\) (Lecture 2 clicker: "the limits would be \(-\pi/2\) to \(\pi/2\)"), and the perpendicular component uses \(\cos\theta\):</p>
 \[ E_\perp = \frac{k\lambda}{h}\int_{-\pi/2}^{\pi/2}\cos\theta\,d\theta = \frac{2k\lambda}{h} = \frac{\lambda}{2\pi\varepsilon_0 h} \]
+<div class="sym"><div class="st">What each letter means</div><dl><dt>\(E_\perp\)</dt><dd>the field component perpendicular to the line (the only one that survives), in N/C</dd><dt>\(\lambda\)</dt><dd>linear charge density: charge per unit length along a line, rod, or ring, in C/m (\(\lambda = Q/L\) when uniform)</dd><dt>\(h\) (or \(r\))</dt><dd>the perpendicular distance from the line to the point, in m; the equation sheet calls it \(r\)</dd><dt>\(\theta\)</dt><dd>the angle from the perpendicular to the line joining the point and a charge element; it runs from \(-90^\circ\) to \(+90^\circ\) for an infinite line</dd><dt>\(k\)</dt><dd>Coulomb\'s constant, \(8.99\times10^{9}\ \mathrm{N\,m^2/C^2}\); it converts "charges and a distance" into newtons. Same thing as \(1/(4\pi\varepsilon_0)\)</dd><dt>\(\varepsilon_0\)</dt><dd>permittivity of free space, \(8.85\times10^{-12}\ \mathrm{C^2/(N\,m^2)}\); a constant of nature, given on the equation sheet</dd></dl></div>
+
 <p>This is on the equation sheet as \(E = \dfrac{\lambda}{2\pi\varepsilon_0 r}\). It falls off as \(1/r\), not \(1/r^2\), because there is always more charge "in view" as you move away. Chapter 6 gets the same result in two lines with a cylindrical Gaussian surface. Direction: radially away from a positive line, radially toward a negative one.</p>
 <p><strong>Lecture 2 checkpoint (two parallel lines, both \(+\lambda\)):</strong> at the midpoint A the two fields are equal and opposite, \(E_A = 0\). At B, a distance \(a\) above the top line (and \(a + \)spacing from the bottom line), both fields point up: \(E_B \gt 0\). So \(E_A \lt E_B\).</p></div>
 
@@ -892,7 +1035,9 @@ window.MathJax = {
 <li>Evaluate with \(u = a+L-x\): \(\int_0^L \frac{dx}{(a+L-x)^2} = \left[\frac{1}{a+L-x}\right]_0^L = \frac1a - \frac{1}{a+L} = \frac{L}{a(a+L)}\). So
 \[ \vec E(P) = \frac{kq}{a(a+L)}\,\hat i \]</li>
 <li>Check: \(a \gg L\) gives \(kq/a^2\), a point charge. Numbers (\(q = 470\ \mathrm{nC}\), \(L = 9.05\ \mathrm{cm}\), \(a = 4.1\ \mathrm{cm}\)): \(E = 8.99\times10^9(4.7\times10^{-7})/(0.041\times0.1315) = 7.8\times10^{5}\ \mathrm{N/C}\).</li>
-</ol><div class="check" data-answer="784000.0" data-tol="0.03"><label for="check-in-6">Your answer, E at P for the rod (HW2 P5):</label><input type="text" id="check-in-6" inputmode="decimal" placeholder="e.g. 0.47 or 3.35e5" autocomplete="off"><span class="small">N/C</span><button type="button" id="check-btn-6">Check</button><span class="fb" aria-live="polite"></span></div>
+</ol>
+<div class="sym"><div class="st">What each letter means</div><dl><dt>\(q\)</dt><dd>the total charge on the rod, in C</dd><dt>\(L\)</dt><dd>the length of the rod, in m; \(q/L\) is its linear density \(\lambda\)</dd><dt>\(a\)</dt><dd>the distance from the near end of the rod to the point \(P\), in m</dd><dt>\(x,\ dx\)</dt><dd>the position of a charge element along the rod (from 0 to \(L\)) and its tiny length</dd><dt>\(a + L - x\)</dt><dd>the distance from that element to \(P\): the far end is \(a + L\) from \(P\), and the element sits \(x\) closer</dd><dt>\(\hat i\)</dt><dd>unit vector along \(+x\); every piece pushes in this direction, so no components are needed</dd><dt>\(u\)</dt><dd>a substitution variable used to do the integral</dd></dl></div>
+<div class="check" data-answer="784000.0" data-tol="0.03"><label for="check-in-6">Your answer, E at P for the rod (HW2 P5):</label><input type="text" id="check-in-6" inputmode="decimal" placeholder="e.g. 0.47 or 3.35e5" autocomplete="off"><span class="small">N/C</span><button type="button" id="check-btn-6">Check</button><span class="fb" aria-live="polite"></span></div>
 
 <div class="trap"><div class="t">Trap · the multiple-choice integral</div><p>Distractors in Homework 2 P5(c) and on exams change one thing at a time: wrong limits (\(0\) to \(a+L\) instead of \(0\) to \(L\)), wrong power (\(1/r\) instead of \(1/r^2\)), a constant distance (\(a+L/2\), which would only be right if the whole rod were at its midpoint), or \(dq\) integrated "from 0 to \(q\)" with an \(x\)-dependent integrand. Check: limits cover the charged object only; integrand has \(r^2\) in the denominator where \(r\) depends on the variable; prefactor uses \(\lambda = q/L\) when \(dx\) is the measure.</p></div></div>
 
@@ -937,12 +1082,16 @@ window.MathJax = {
 \[ E_z(h) = \int_0^{2\pi}\frac{k\lambda R\,d\theta}{h^2+R^2}\cdot\frac{h}{\sqrt{h^2+R^2}} = \frac{kQh}{(h^2+R^2)^{3/2}} \]
 (Fall 2018 Q17 is exactly this integral; the distractors use \(R/\sqrt{h^2+R^2}\), or \(\sqrt{h^2+R^2}\) in the first denominator, or drop the \(R\) from \(dq\).)</li>
 <li>Limits: \(h \gg R\) gives \(kQ/h^2\), a point charge (Fall 2018 Q18, Lecture 2 clicker). \(h = 0\) gives \(E = 0\) at the center, by symmetry. The maximum is at \(h = R/\sqrt2\).</li>
-</ol></div>
+</ol>
+<div class="sym"><div class="st">What each letter means</div><dl><dt>\(Q\)</dt><dd>the total charge on the ring, in C</dd><dt>\(R\)</dt><dd>the radius of the ring, in m</dd><dt>\(\lambda,\ d\theta\)</dt><dd>the ring's charge per length, \(Q/(2\pi R)\), and the tiny angle spanned by one element, so \(dq = \lambda R\,d\theta\)</dd><dt>\(h\)</dt><dd>the distance along the axis from the ring's center to the field point, in m</dd><dt>\(\sqrt{h^2+R^2}\)</dt><dd>the distance from every element to the field point (the same for all of them)</dd><dt>\(E_z\)</dt><dd>the field along the axis (the only component that survives), in N/C</dd><dt>\(h/\sqrt{h^2+R^2}\)</dt><dd>the cosine of the angle between each element's field and the axis, which picks out the axial part</dd><dt>\(k\)</dt><dd>Coulomb\'s constant, \(8.99\times10^{9}\ \mathrm{N\,m^2/C^2}\); it converts "charges and a distance" into newtons. Same thing as \(1/(4\pi\varepsilon_0)\)</dd></dl></div>
+</div>
 
 <div class="ex"><div class="t">Semicircle and arc of charge at the center</div><div class="src">Homework 2, Problems 3 and 4 · Spring 2014, Questions 5–7 · Fall 2015, Questions 6–7</div>
 <p><strong>Spring 2014 Q5–7:</strong> semicircle of radius \(r = 5\ \mathrm{cm}\) on the right (\(x \gt 0\)) with \(Q = +15\ \mu\mathrm{C}\). \(\lambda = Q/(\pi r) = 15\times10^{-6}/(\pi\times0.05) = 95\ \mu\mathrm{C/m}\). With \(\theta\) measured from \(+x\), the element at angle \(\theta\) is at \((r\cos\theta, r\sin\theta)\); its field at the origin points toward the origin, along \((-\cos\theta,-\sin\theta)\). Thus \(E_x = -\displaystyle\int_{-\pi/2}^{\pi/2}\frac{k\lambda}{r}\cos\theta\,d\theta = -\frac{2k\lambda}{r}\), and \(E_y = 0\) by symmetry. The total field at the origin points in \(-x\) (away from the arc). To cancel it with a point charge at \((-r,0)\) you need a field pointing \(+x\) at the origin, i.e. away from \((-r,0)\): a <strong>positive</strong> charge (Q7).</p>
 <p><strong>Fall 2015 Q6–7:</strong> a full circle made of a \(+q\) top half and a \(-q\) bottom half. Top half: field at the center points away from the top, i.e. down. Bottom half (negative): points toward the bottom, i.e. down. Net: \(-y\). For the top semicircle alone, \(\lambda = q/(\pi R)\) and \(dq = \lambda R\,d\theta = (q/\pi)\,d\theta\), so \(dE = kq\,d\theta/(\pi R^2)\); with \(\theta\) measured from the \(y\)-axis as in that figure, \(E_x = \int_{-\pi/2}^{\pi/2}\frac{kq\sin\theta\,d\theta}{\pi R^2}\), which integrates to zero (as symmetry demands). The distractors omit the \(\pi\) (wrong \(\lambda\)) or use \(\cos\theta\) (that would be the \(y\)-component's factor).</p>
 <p><strong>Homework 2 Problem 3 (arc with opening angle \(\theta_0 = 53^\circ\), \(\lambda = -29.5\ \mu\mathrm{C/m}\), \(R = 1.1\ \mathrm{m}\)):</strong> for an arc symmetric about the \(y\)-axis spanning \(-\theta_0/2\) to \(+\theta_0/2\) from that axis, the \(x\)-part cancels and \(|E_y| = \dfrac{k|\lambda|}{R}\int_{-\theta_0/2}^{\theta_0/2}\cos\theta\,d\theta = \dfrac{2k|\lambda|}{R}\sin(\theta_0/2) = \dfrac{2(8.99\times10^9)(29.5\times10^{-6})}{1.1}\sin(26.5^\circ) = 2.15\times10^{5}\ \mathrm{N/C}\). Because \(\lambda \lt 0\), the field points <em>toward</em> the arc. Sign of \(E_y\) depends on where the figure puts the arc relative to \(P\); read the figure.</p>
+<div class="sym"><div class="st">What each letter means</div><dl><dt>\(\theta_0\)</dt><dd>the total opening angle of the arc, in radians or degrees</dd><dt>\(R\)</dt><dd>the radius of the arc, in m (every element is this far from the center)</dd><dt>\(\lambda\)</dt><dd>the arc's charge per length, C/m; \(|\lambda|\) means use its size and get the direction from the sign</dd><dt>\(\theta\)</dt><dd>the angle of a charge element measured from the arc's symmetry axis</dd><dt>\(E_y\)</dt><dd>the field at the center along the symmetry axis; the perpendicular part cancels by symmetry</dd><dt>\(2k|\lambda|/R\)</dt><dd>the semicircle result (\(\theta_0 = 180^\circ\), \(\sin 90^\circ = 1\))</dd></dl></div>
+
 <p><strong>Homework 2 Problem 4 (semicircle, \(R = 17.4\ \mathrm{cm}\), \(Q = 34.7\ \mathrm{nC}\)):</strong> \(\lambda = Q/(\pi R)\), \(|E| = 2k\lambda/R = 2kQ/(\pi R^2) = 2(8.99\times10^9)(34.7\times10^{-9})/(\pi\times0.174^2) = 6.56\times10^{3}\ \mathrm{N/C}\), pointing along the symmetry axis away from the (positive) arc.</p>
 <div class="check" data-answer="6560" data-tol="0.03"><label for="check-in-7">Your answer, |E| for the HW2 P4 semicircle:</label><input type="text" id="check-in-7" inputmode="decimal" placeholder="e.g. 0.47 or 3.35e5" autocomplete="off"><span class="small">N/C</span><button type="button" id="check-btn-7">Check</button><span class="fb" aria-live="polite"></span></div>
 <div class="trap"><div class="t">Trap · \(dq\) on an arc</div><p>Lecture 2 clicker: the charge in an element \(d\theta\) of a half ring with total charge \(Q\) is \(dq = \dfrac{Q}{\pi}\,d\theta\), not \(Q\,d\theta\) and not \(\dfrac{Q}{2\pi}\,d\theta\) (that is a full ring). Then \(dE_y = \dfrac{kQ\,d\theta}{\pi R^2}\sin\theta\) (for \(\theta\) from the \(x\)-axis), and integrating \(0\) to \(\pi\) gives \(E = \dfrac{2kQ}{\pi R^2}\) along the axis.</p></div></div>
@@ -950,6 +1099,8 @@ window.MathJax = {
 <div class="ex"><div class="t">Disk of charge, and the infinite sheet limit</div><div class="src">Lecture 2, Example 2.5 · used in Chapters 6 and 8</div>
 <p>Build a disk of radius \(a\) from rings of radius \(r\) and width \(dr\): \(dq = \sigma\,dA = \sigma(2\pi r\,dr)\). Each ring contributes the on-axis ring field:</p>
 \[ E = \int_0^{a}\frac{k\,\sigma\,2\pi r\,h\,dr}{(h^2+r^2)^{3/2}} = 2\pi k\sigma\left(1-\frac{h}{\sqrt{h^2+a^2}}\right) = \frac{\sigma}{2\varepsilon_0}\left(1-\frac{h}{\sqrt{h^2+a^2}}\right) \]
+<div class="sym"><div class="st">What each letter means</div><dl><dt>\(\sigma\)</dt><dd>surface charge density: charge per unit area on a sheet or surface, in C/m² (\(\sigma = Q/A\) when uniform)</dd><dt>\(a\)</dt><dd>the outer radius of the disk, in m</dd><dt>\(r,\ dr\)</dt><dd>the radius of one thin ring inside the disk and its tiny width; \(2\pi r\,dr\) is the ring's area, so \(dq = \sigma\,2\pi r\,dr\)</dd><dt>\(h\)</dt><dd>the distance from the disk's center along its axis to the field point, in m</dd><dt>\(E\)</dt><dd>the field on the axis, in N/C, pointing away from a positive disk</dd><dt>\(u\)</dt><dd>the substitution \(u = h^2 + r^2\) that makes the integral doable</dd><dt>\(k\)</dt><dd>Coulomb\'s constant, \(8.99\times10^{9}\ \mathrm{N\,m^2/C^2}\); it converts "charges and a distance" into newtons. Same thing as \(1/(4\pi\varepsilon_0)\)</dd><dt>\(\varepsilon_0\)</dt><dd>permittivity of free space, \(8.85\times10^{-12}\ \mathrm{C^2/(N\,m^2)}\); a constant of nature, given on the equation sheet</dd></dl></div>
+
 <p>(substitute \(u = h^2+r^2\), \(du = 2r\,dr\)). For \(a \to \infty\), or \(h \ll a\), this becomes the field of an <strong>infinite sheet</strong>: \(E = \dfrac{\sigma}{2\varepsilon_0}\), constant, independent of distance, perpendicular to the sheet, pointing away from positive \(\sigma\) on both sides. That constant field is the reason parallel-plate capacitors work (Ch. 8) and why multi-sheet problems (Ch. 6) are pure bookkeeping.</p></div>
 
 <h3 id="s5-6">5.6 Electric field lines</h3>
@@ -1121,11 +1272,15 @@ window.MathJax = {
 </figure>
 <p><strong>Lecture 3 checkpoints, decoded.</strong> In the two-charge picture, count the lines: charge 1 has far more lines than charge 2, so \(|Q_1| \gt |Q_2|\). Lines leave one charge and arrive at the other, so the charges have <em>opposite</em> signs (if they were like signs, lines from one would curve away from the other and never connect). Point A, right next to charge 2 where lines are bunched, has a bigger field than point B in the sparse region: \(|E_A| \gt |E_B|\). In the "red circle" question, lines both enter and leave the circle, with more leaving (outward lines at the bottom) than entering: net enclosed charge is positive, but a negative charge must be inside to terminate the entering lines. The choice with \(-Q\) and \(+2Q\) matches: net \(+Q\), some lines arriving, twice as many leaving.</p>
 <p><strong>Motion in a field.</strong> A charge released from rest in a field accelerates along the line (positive) or opposite to it (negative). If the lines are getting denser in the direction of motion, the force grows, so it is <em>not</em> constant acceleration (Lecture 3 clicker: "lines getting denser… force getting stronger!"). Only in a uniform field (parallel, evenly spaced lines) is the motion constant-acceleration kinematics: \(a = qE/m\).</p>
+<div class="sym"><div class="st">What each letter means</div><dl><dt>\(a\)</dt><dd>acceleration of the charge, in m/s²</dd><dt>\(q\)</dt><dd>the charge of the particle, in C, with its sign</dd><dt>\(E\)</dt><dd>the field magnitude where the particle is, in N/C</dd><dt>\(m\)</dt><dd>the particle's mass, in kg (proton \(1.67\times10^{-27}\ \mathrm{kg}\), electron \(9.11\times10^{-31}\ \mathrm{kg}\))</dd></dl></div>
+
 
 <h3 id="s5-7">5.7 Electric dipoles</h3>
 <div class="key"><div class="t">Dipole moment, torque, and energy</div>
 <p>Two charges \(\pm q\) separated by \(\vec d\): dipole moment \(\vec p = q\vec d\), pointing from \(-q\) <strong>to</strong> \(+q\) (Lecture 2: "points from negative to positive, opposite the electric field inside the dipole"). Units C·m. Water: \(6.2\times10^{-30}\ \mathrm{C\,m}\).</p>
 \[ \vec\tau = \vec p\times\vec E,\quad |\tau| = pE\sin\theta \qquad\qquad U = -\vec p\cdot\vec E = -pE\cos\theta \]
+<div class="sym"><div class="st">What each letter means</div><dl><dt>\(\vec p,\ p\)</dt><dd>the dipole moment vector and its magnitude \(qd\), in C·m, pointing from \(-q\) to \(+q\)</dd><dt>\(q\)</dt><dd>the size of each of the two charges, in C</dd><dt>\(\vec d\)</dt><dd>the displacement from \(-q\) to \(+q\), in m</dd><dt>\(\vec E,\ E\)</dt><dd>the external field the dipole sits in and its magnitude, N/C</dd><dt>\(\vec\tau,\ |\tau|\)</dt><dd>the torque on the dipole and its size, in N·m</dd><dt>\(\theta\)</dt><dd>the angle between \(\vec p\) and \(\vec E\)</dd><dt>\(U\)</dt><dd>the potential energy of the dipole, in J: lowest (\(-pE\)) when aligned, highest (\(+pE\)) when anti-aligned</dd><dt>\(\times,\ \cdot\)</dt><dd>cross product (magnitude \(pE\sin\theta\)) and dot product (\(pE\cos\theta\))</dd></dl></div>
+
 <p>\(\theta\) is the angle between \(\vec p\) and \(\vec E\). In a <em>uniform</em> field the net force on a dipole is zero (the \(+q\) and \(-q\) forces cancel); only the torque acts, and it rotates \(\vec p\) toward alignment with \(\vec E\).</p></div>
 <div class="why"><div class="t">Why a dipole turns but does not move, and where the energy formula comes from</div>
 <p>In a uniform field the \(+q\) end is pushed along \(\vec E\) with force \(qE\) and the \(-q\) end is pushed against \(\vec E\) with the same \(qE\). Equal and opposite forces cancel, so the dipole as a whole is not accelerated anywhere. But the two forces act at different points, a distance \(d\) apart, so together they form a couple that twists the dipole. The lever arm of each force is \((d/2)\sin\theta\), so the torque is \(2\cdot qE\cdot(d/2)\sin\theta = pE\sin\theta\), largest when the dipole is broadside to the field and zero when it is lined up. The twist always acts to swing \(\vec p\) toward \(\vec E\).</p>
@@ -1176,6 +1331,8 @@ window.MathJax = {
 
 <div class="key"><div class="t">Flux = how much field passes through a surface</div>
 \[ \Phi_E = \int_S \vec E\cdot d\vec A \qquad\text{(uniform field, flat surface: } \Phi_E = EA\cos\theta) \]
+<div class="sym"><div class="st">What each letter means</div><dl><dt>\(\Phi_E\)</dt><dd>the electric flux through the surface, in N·m²/C: a count of how much field passes through</dd><dt>\(\int_S\)</dt><dd>add up over every patch of the surface \(S\)</dd><dt>\(\vec E\)</dt><dd>the electric field vector: the force per coulomb that a positive test charge would feel at that point, in N/C (= V/m)</dd><dt>\(d\vec A\)</dt><dd>a tiny patch of the surface, treated as a vector: its size is the patch area \(dA\) (m²) and it points along the patch's normal (perpendicular to the surface; outward for a closed surface)</dd><dt>\(E,\ A\)</dt><dd>for a uniform field and a flat surface: the field magnitude (N/C) and the total area (m²)</dd><dt>\(\theta\)</dt><dd>the angle between \(\vec E\) and the surface's <em>normal</em> (not the surface itself); \(\cos\theta = 1\) when the field pokes straight through, 0 when it skims along</dd></dl></div>
+
 <p>\(d\vec A\) is a vector <em>normal</em> (perpendicular) to the surface element with magnitude \(dA\). \(\theta\) is the angle between \(\vec E\) and the normal, <em>not</em> the angle between \(\vec E\) and the surface. Units: N·m²/C. Picture: flux counts field lines crossing the surface. Tilting the surface reduces the count; a surface parallel to the field catches nothing.</p></div>
 
 <figure class="fig split">
@@ -1224,11 +1381,15 @@ window.MathJax = {
 <div class="ex"><div class="t">Flux through a cylinder around a charged rod</div><div class="src">Lecture 3 checkpoint · Homework 3, Problem 1</div>
 <p>An infinite rod of density \(\lambda\) passes along the axis of a cylinder of radius \(s\) and length \(L\). On the curved surface \(\vec E\) is radial, constant in magnitude \(E = \lambda/(2\pi\varepsilon_0 s)\), and parallel to \(d\vec A\); on the flat ends \(\vec E\) is parallel to the surface, so they contribute nothing. Hence</p>
 \[ \Phi = E\,(2\pi sL) = \frac{\lambda}{2\pi\varepsilon_0 s}\,2\pi sL = \frac{\lambda L}{\varepsilon_0} \]
+<div class="sym"><div class="st">What each letter means</div><dl><dt>\(\Phi\)</dt><dd>the flux through the closed cylinder, N·m²/C</dd><dt>\(E\)</dt><dd>magnitude of the electric field, in N/C (the same unit as V/m)</dd><dt>\(s\)</dt><dd>the radius of the cylinder (the perpendicular distance from the rod), in m; it cancels</dd><dt>\(L\)</dt><dd>the length of the cylinder, in m; \(2\pi sL\) is the area of its curved side</dd><dt>\(\lambda\)</dt><dd>linear charge density: charge per unit length along a line, rod, or ring, in C/m (\(\lambda = Q/L\) when uniform)</dd><dt>\(\varepsilon_0\)</dt><dd>permittivity of free space, \(8.85\times10^{-12}\ \mathrm{C^2/(N\,m^2)}\); a constant of nature, given on the equation sheet</dd></dl></div>
+
 <p>The radius \(s\) cancels. A cylinder with twice the radius and half the length encloses half the charge, so \(\Phi_1 = 2\Phi_2\). Homework 3 P1 asks for exactly this expression, \(\Phi = \lambda L/\varepsilon_0\). This is Gauss's law discovered by hand: <strong>flux depends only on the enclosed charge</strong>.</p></div>
 
 <h3 id="s6-2">6.2 Gauss's law</h3>
 <div class="key"><div class="t">Gauss's law</div>
 \[ \oint_S \vec E\cdot d\vec A = \frac{Q_{\text{enc}}}{\varepsilon_0} \]
+<div class="sym"><div class="st">What each letter means</div><dl><dt>\(\oint\)</dt><dd>integral over a <em>closed</em> surface (one with an inside and an outside, like a balloon); the circle on the sign is what marks it as closed</dd><dt>\(S\)</dt><dd>the closed surface you chose (the "Gaussian surface"); it is imaginary, not a physical object</dd><dt>\(\vec E\)</dt><dd>the electric field vector: the force per coulomb that a positive test charge would feel at that point, in N/C (= V/m)</dd><dt>\(d\vec A\)</dt><dd>a tiny patch of the surface, treated as a vector: its size is the patch area \(dA\) (m²) and it points along the patch's normal (perpendicular to the surface; outward for a closed surface)</dd><dt>\(\vec E\cdot d\vec A\)</dt><dd>the flux through one patch: field magnitude × patch area × cosine of the angle between them</dd><dt>\(Q_{\text{enc}}\)</dt><dd>the net charge <em>enclosed</em> inside the Gaussian surface, in C (count signs; charge outside the surface does not count)</dd><dt>\(\varepsilon_0\)</dt><dd>permittivity of free space, \(8.85\times10^{-12}\ \mathrm{C^2/(N\,m^2)}\); a constant of nature, given on the equation sheet</dd></dl></div>
+
 <p>The net flux through <em>any</em> closed surface equals the total charge inside divided by \(\varepsilon_0\). Charges outside the surface contribute field on the surface but zero <em>net</em> flux (their lines enter and leave). Where the charge sits inside does not matter, and the surface's shape does not matter.</p>
 <p>Check with a point charge and a sphere: \(E = kq/R^2\) everywhere on the sphere, \(A = 4\pi R^2\), so \(\Phi = \dfrac{q}{4\pi\varepsilon_0 R^2}\,4\pi R^2 = q/\varepsilon_0\). Doubling the sphere's radius changes \(E\) by \(1/4\) and \(A\) by \(4\): flux unchanged (Lecture 3 clicker).</p></div>
 
@@ -1239,6 +1400,8 @@ window.MathJax = {
 <p>The sphere check above is a special case. The general statement needs three ideas, and each one is worth understanding because exam questions test them separately.</p>
 <ol class="steps">
 <li><strong>A single charge inside any closed surface.</strong> Take a small patch \(dA\) of the surface at distance \(r\) from the charge, tilted so its normal makes angle \(\theta\) with the radial direction. The flux through it is \(d\Phi = E\,dA\cos\theta = \dfrac{kq}{r^2}\,(dA\cos\theta)\). The quantity \(dA\cos\theta/r^2\) is the <em>solid angle</em> \(d\Omega\) the patch subtends as seen from the charge (the fraction of "all directions" that the patch covers, times \(4\pi\)). So \(d\Phi = kq\,d\Omega\). Adding up every patch of a closed surface that surrounds the charge covers every direction once: \(\oint d\Omega = 4\pi\). Therefore \(\Phi = 4\pi kq = q/\varepsilon_0\), for a sphere, a blob, a cube, anything, and no matter where inside the charge sits.</li>
+<div class="sym"><div class="st">What each letter means</div><dl><dt>\(d\Phi\)</dt><dd>the tiny flux through one patch, N·m²/C</dd><dt>\(dA\)</dt><dd>the area of the patch, m²</dd><dt>\(r\)</dt><dd>the distance from the charge to the patch, m</dd><dt>\(\theta\)</dt><dd>the angle between the patch's normal and the line from the charge (the radial direction)</dd><dt>\(d\Omega\)</dt><dd>the solid angle of the patch as seen from the charge: the "cone of directions" it fills; all directions together make \(4\pi\)</dd><dt>\(q\)</dt><dd>the enclosed point charge, C</dd></dl></div>
+
 <li><strong>A charge outside the surface.</strong> Now a narrow cone of directions from the charge either misses the surface or pierces it an even number of times: in, then out. At the entry patch the field points into the surface (\(\cos\theta \lt 0\)), at the exit patch out (\(\cos\theta \gt 0\)), and both patches subtend the same \(d\Omega\). Their contributions cancel exactly. Net flux from an outside charge: zero. The field on the surface is <em>not</em> zero, only its net flux.</li>
 <li><strong>Superposition.</strong> The field of many charges is the sum of the individual fields, so the flux is the sum of the individual fluxes: \(q_i/\varepsilon_0\) for each charge inside, 0 for each charge outside. That sum is \(Q_{\text{enc}}/\varepsilon_0\). This is Gauss's law.</li>
 </ol>
@@ -1370,6 +1533,8 @@ window.MathJax = {
 <tr><td>Cylindrical (infinite lines, rods, tubes)</td><td>coaxial cylinder, radius \(r\), length \(L\)</td><td>\(2\pi rL\) (ends give 0)</td><td>\(E = \dfrac{\lambda_{\text{enc}}}{2\pi\varepsilon_0 r} = \dfrac{2k\lambda_{\text{enc}}}{r}\)</td></tr>
 <tr><td>Planar (infinite sheets, slabs)</td><td>pillbox through the sheet, end area \(A\)</td><td>\(2A\) (both ends; side gives 0)</td><td>\(E = \dfrac{\sigma}{2\varepsilon_0}\) each side</td></tr>
 </tbody></table></div>
+<div class="sym"><div class="st">What each letter means</div><dl><dt>\(E\)</dt><dd>magnitude of the electric field, in N/C (the same unit as V/m)</dd><dt>\(Q_{\text{enc}}\)</dt><dd>the net charge <em>enclosed</em> inside the Gaussian surface, in C (count signs; charge outside the surface does not count)</dd><dt>\(\lambda_{\text{enc}}\)</dt><dd>the charge per unit length enclosed by the Gaussian cylinder, in C/m</dd><dt>\(\sigma\)</dt><dd>the surface density of the sheet, C/m²</dd><dt>\(r\)</dt><dd>the radius of the Gaussian sphere or cylinder: put it through the point where you want \(E\)</dd><dt>\(4\pi r^2\)</dt><dd>surface area of the Gaussian sphere</dd><dt>\(L,\ 2\pi rL\)</dt><dd>the length of the Gaussian cylinder and the area of its curved side; the two flat ends contribute nothing because \(\vec E\) skims along them</dd><dt>\(A,\ 2A\)</dt><dd>the end area of the pillbox; both ends catch flux for a free sheet</dd><dt>\(k\)</dt><dd>Coulomb\'s constant, \(8.99\times10^{9}\ \mathrm{N\,m^2/C^2}\); it converts "charges and a distance" into newtons. Same thing as \(1/(4\pi\varepsilon_0)\)</dd><dt>\(\varepsilon_0\)</dt><dd>permittivity of free space, \(8.85\times10^{-12}\ \mathrm{C^2/(N\,m^2)}\); a constant of nature, given on the equation sheet</dd></dl></div>
+
 <p>Lecture 3's checkpoint: for a charged <em>cube</em>, none of the listed surfaces works (a sphere around a cube does not have constant \(E\) on it). Gauss's law is still true there; it just cannot be solved for \(E\).</p></div>
 
 
@@ -1501,6 +1666,8 @@ window.MathJax = {
 <p><em>Surface integral.</em> On the sphere every \(d\vec A\) is radial, so \(\vec E\cdot d\vec A = E\,dA\) with \(E\) constant on the surface:</p>
 <p class="f">∮ E·dA = E ∮ dA = E · 4πr²</p>
 <p><em>Solve.</em> \(E\,4\pi r^2 = Q_{\text{enc}}/\varepsilon_0\), so \(E = \dfrac{Q_{\text{enc}}}{4\pi\varepsilon_0 r^2} = \dfrac{kQ_{\text{enc}}}{r^2}\). The radius \(r\) is <em>your</em> choice: put the Gaussian sphere through the point where you want \(E\).</p>
+<div class="sym"><div class="st">What each letter means</div><dl><dt>\(E(r)\)</dt><dd>the field magnitude at radius \(r\); the notation says it depends only on \(r\)</dd><dt>\(\hat r\)</dt><dd>unit vector (length exactly 1, no units) pointing <em>from</em> the source charge <em>toward</em> the point you care about; it only supplies a direction</dd><dt>\(d\vec A\)</dt><dd>a tiny patch of the surface, treated as a vector: its size is the patch area \(dA\) (m²) and it points along the patch's normal (perpendicular to the surface; outward for a closed surface)</dd><dt>\(E\,4\pi r^2\)</dt><dd>constant field times the sphere's area: the whole surface integral collapses to this</dd><dt>\(Q_{\text{enc}}\)</dt><dd>the net charge <em>enclosed</em> inside the Gaussian surface, in C (count signs; charge outside the surface does not count)</dd><dt>\(\varepsilon_0\)</dt><dd>permittivity of free space, \(8.85\times10^{-12}\ \mathrm{C^2/(N\,m^2)}\); a constant of nature, given on the equation sheet</dd><dt>\(k\)</dt><dd>Coulomb\'s constant, \(8.99\times10^{9}\ \mathrm{N\,m^2/C^2}\); it converts "charges and a distance" into newtons. Same thing as \(1/(4\pi\varepsilon_0)\)</dd></dl></div>
+
 </div>
 </figure>
 
@@ -1622,6 +1789,8 @@ window.MathJax = {
 <p><em>Surface integral.</em> Three pieces. Side wall: \(d\vec A\) is radial, parallel to \(\vec E\), and \(E\) is constant on it: \(E\cdot 2\pi rL\). Two flat caps: \(d\vec A\) is along the axis, perpendicular to \(\vec E\): zero.</p>
 <p class="f">E(2πrL) + 0 + 0 = λL/ε₀</p>
 <p><em>Solve.</em> \(E = \dfrac{\lambda}{2\pi\varepsilon_0 r} = \dfrac{2k\lambda}{r}\). The length \(L\) cancels, as it must for an infinite line. Same recipe for a rod, a tube, or a hollow cylinder: only \(\lambda_{\text{enc}}\) changes.</p>
+<div class="sym"><div class="st">What each letter means</div><dl><dt>\(E(r)\)</dt><dd>the field magnitude at perpendicular distance \(r\) from the axis</dd><dt>\(L\)</dt><dd>the length of the Gaussian cylinder, in m; it appears on both sides and cancels</dd><dt>\(2\pi rL\)</dt><dd>the area of the cylinder's curved side</dd><dt>\(\lambda,\ \lambda_{\text{enc}}\)</dt><dd>charge per unit length on the line; for thick objects, only the part inside radius \(r\)</dd><dt>\(\varepsilon_0\)</dt><dd>permittivity of free space, \(8.85\times10^{-12}\ \mathrm{C^2/(N\,m^2)}\); a constant of nature, given on the equation sheet</dd><dt>\(k\)</dt><dd>Coulomb\'s constant, \(8.99\times10^{9}\ \mathrm{N\,m^2/C^2}\); it converts "charges and a distance" into newtons. Same thing as \(1/(4\pi\varepsilon_0)\)</dd></dl></div>
+
 </div>
 </figure>
 
@@ -1878,6 +2047,9 @@ window.MathJax = {
 <tr><td>Infinite sheet, \(\sigma\) (insulating, or a thin plate)</td><td>both sides</td><td>\(\sigma A\) in a pillbox with two ends</td><td>\(\dfrac{\sigma}{2\varepsilon_0}\), constant, away from + / toward −</td></tr>
 <tr><td>Surface of a conductor, local \(\sigma\)</td><td>just outside</td><td>\(\sigma A\) in a pillbox with one end outside (other end inside where \(E=0\))</td><td>\(\dfrac{\sigma}{\varepsilon_0}\), perpendicular to the surface</td></tr>
 </tbody></table></div>
+<div class="sym"><div class="st">What each letter means</div><dl><dt>\(Q\)</dt><dd>the total charge of the object, C</dd><dt>\(R\)</dt><dd>the object's radius, m</dd><dt>\(r\)</dt><dd>the radius of the Gaussian surface = the distance from the center (or axis) to the point where you want \(E\), m</dd><dt>\(a,\ b\)</dt><dd>inner and outer radii of a thick shell, m</dd><dt>\(\rho\)</dt><dd>volume charge density: charge per unit volume inside an insulator, in C/m³ (\(
+ho = Q/V\) when uniform)</dd><dt>\(\lambda\)</dt><dd>linear charge density: charge per unit length along a line, rod, or ring, in C/m (\(\lambda = Q/L\) when uniform)</dd><dt>\(\sigma\)</dt><dd>surface charge density: charge per unit area on a sheet or surface, in C/m² (\(\sigma = Q/A\) when uniform)</dd><dt>\(\tfrac43\pi r^3,\ \pi r^2\)</dt><dd>volume of a ball of radius \(r\); cross-section area of a cylinder of radius \(r\) (times length gives its volume)</dd><dt>\(A\)</dt><dd>end area of the pillbox, m²</dd><dt>\(E\)</dt><dd>magnitude of the electric field, in N/C (the same unit as V/m)</dd><dt>\(k\)</dt><dd>Coulomb\'s constant, \(8.99\times10^{9}\ \mathrm{N\,m^2/C^2}\); it converts "charges and a distance" into newtons. Same thing as \(1/(4\pi\varepsilon_0)\)</dd><dt>\(\varepsilon_0\)</dt><dd>permittivity of free space, \(8.85\times10^{-12}\ \mathrm{C^2/(N\,m^2)}\); a constant of nature, given on the equation sheet</dd></dl></div>
+
 
 
 <h4>Derivation cards for the catalog</h4>
@@ -1894,6 +2066,9 @@ window.MathJax = {
 </div></details>
 <details class="q"><summary><span class="n">Card</span><span class="qt">Non-uniform density \(\rho(r)\), for example \(\rho = Ar\) (Homework 4, Problem 1)</span></summary><div class="sol">
 <p>Nothing changes except the integral: \(Q_{\text{enc}}(r) = \displaystyle\int_{r_{\text{in}}}^{r}\rho(r')\,4\pi r'^2\,dr'\). With \(\rho = Ar'\): \(4\pi A\displaystyle\int_{R_1}^{r} r'^3\,dr' = \pi A(r^4 - R_1^4)\). Add any point charge at the center, then \(E = kQ_{\text{enc}}/r^2\). The same idea for cylinders uses \(\lambda_{\text{enc}}(r) = \displaystyle\int\rho(r')\,2\pi r'\,dr'\).</p>
+<div class="sym"><div class="st">What each letter means</div><dl><dt>\(\rho(r)\)</dt><dd>a density that changes with radius, C/m³</dd><dt>\(A\)</dt><dd>here a given constant (units C/m⁴ for \(
+ho = Ar\)), <em>not</em> an area</dd><dt>\(r\prime\)</dt><dd>the "dummy" radius you integrate over, from the inner edge of the charge out to \(r\)</dd><dt>\(4\pi r\prime^2\,dr\prime\)</dt><dd>the volume of a thin spherical shell of radius \(r\prime\) and thickness \(dr\prime\)</dd><dt>\(2\pi r\prime\,dr\prime\)</dt><dd>the area of a thin ring, giving charge per unit length for cylinders</dd><dt>\(R_1,\ r_{\text{in}}\)</dt><dd>the inner radius where the charged material begins</dd><dt>\(Q_{\text{enc}}(r),\ \lambda_{\text{enc}}(r)\)</dt><dd>the enclosed charge (per length) as a function of the Gaussian radius</dd></dl></div>
+
 </div></details>
 <details class="q"><summary><span class="n">Card</span><span class="qt">Solid insulating cylinder, uniform \(\rho\): inside and outside</span></summary><div class="sol">
 <p>Gaussian cylinder radius \(r\), length \(L\): side flux \(E\,2\pi rL\), caps zero.</p>
@@ -2107,7 +2282,9 @@ window.MathJax = {
 <li>Just outside, \(\vec E\) is perpendicular to the surface with magnitude \(\sigma/\varepsilon_0\). (A parallel component would push surface charges along the surface.)</li>
 <li>The whole conductor, surface and interior, is at one potential (Chapter 7).</li>
 </ol>
-<p><strong>Cavity rule.</strong> If a conductor has a cavity containing charge \(q\), a Gaussian surface inside the metal surrounding the cavity must enclose zero: the inner surface acquires exactly \(-q\). Charge conservation then puts \(Q_{\text{conductor}} + q\) on the outer surface. The outside world sees only the total \(Q_{\text{conductor}} + q\), arranged with the conductor's own symmetry.</p></div>
+<p><strong>Cavity rule.</strong> If a conductor has a cavity containing charge \(q\), a Gaussian surface inside the metal surrounding the cavity must enclose zero: the inner surface acquires exactly \(-q\). Charge conservation then puts \(Q_{\text{conductor}} + q\) on the outer surface. The outside world sees only the total \(Q_{\text{conductor}} + q\), arranged with the conductor's own symmetry.</p>
+<div class="sym"><div class="st">What each letter means</div><dl><dt>\(\vec E\)</dt><dd>the electric field vector: the force per coulomb that a positive test charge would feel at that point, in N/C (= V/m)</dd><dt>\(\sigma\)</dt><dd>the local surface charge density on the conductor, C/m²; \(\sigma/\varepsilon_0\) is the field just outside</dd><dt>\(\varepsilon_0\)</dt><dd>permittivity of free space, \(8.85\times10^{-12}\ \mathrm{C^2/(N\,m^2)}\); a constant of nature, given on the equation sheet</dd><dt>\(q\)</dt><dd>a charge placed inside the cavity, C</dd><dt>\(-q\)</dt><dd>the charge induced on the cavity wall (inner surface)</dd><dt>\(Q_{\text{conductor}}\)</dt><dd>the conductor's own net charge, C; \(Q_{\text{conductor}} + q\) ends up on the outer surface</dd></dl></div>
+</div>
 
 <div class="why"><div class="t">The mechanism behind the four conductor properties</div>
 <p><strong>Why \(E = 0\) inside.</strong> Put a metal object in an electric field. The field pushes the free electrons; they move; wherever they pile up (one side) the metal becomes negative and wherever they leave (the other side) it becomes positive. Those separated charges make their own field, pointing <em>against</em> the applied one inside the metal. Electrons keep moving until the field they create exactly cancels the applied field everywhere inside; then there is nothing left to push them and the motion stops. In a good conductor this takes about \(10^{-19}\) seconds, so for any static problem the interior field is zero. "Electrostatic equilibrium" means this settling has finished.</p>
@@ -2115,6 +2292,8 @@ window.MathJax = {
 <p><strong>Why \(E\) is perpendicular at the surface.</strong> A component of \(\vec E\) along the surface would drag the surface charges sideways along the surface. In equilibrium they are not moving, so that component is zero. Only the perpendicular component survives, and Gauss's pillbox gives its size, \(\sigma/\varepsilon_0\).</p>
 <p><strong>Why a cavity's wall takes exactly \(-q\).</strong> A charge \(q\) sitting in a hollow inside the metal makes a field. That field would penetrate the metal, so electrons rush toward the cavity wall (if \(q \gt 0\)) until the wall charge cancels the field of \(q\) everywhere in the metal. Gauss's law quantifies "cancels": a surface inside the metal enclosing the cavity has zero flux, so \(q + q_{\text{wall}} = 0\). The electrons that moved to the wall came from the rest of the metal, which is left with \(+q\), and that \(+q\) sits on the outer surface. Because the outer surface does not "know" where inside the cavity \(q\) is (the metal has screened it), the \(+q\) arranges itself by the outer surface's own symmetry.</p>
 <p><strong>Why sharp points spray charge.</strong> Two connected conductors share one potential (Chapter 7), and a sphere at potential \(V\) holds \(Q = 4\pi\varepsilon_0RV\) with surface density \(\sigma = Q/4\pi R^2 = \varepsilon_0V/R\). Smaller radius means larger \(\sigma\) and, since \(E = \sigma/\varepsilon_0\), larger field. A sharp point is a tiny-radius region, so the field there is intense enough to ionize air. Lightning rods work on this principle.</p>
+<div class="sym"><div class="st">What each letter means</div><dl><dt>\(V\)</dt><dd>the potential of the conductor, V</dd><dt>\(R\)</dt><dd>the sphere's radius, m</dd><dt>\(Q\)</dt><dd>the charge it holds at that potential, C</dd><dt>\(\sigma\)</dt><dd>its surface charge density, C/m²</dd><dt>\(E\)</dt><dd>magnitude of the electric field, in N/C (the same unit as V/m)</dd><dt>\(\varepsilon_0\)</dt><dd>permittivity of free space, \(8.85\times10^{-12}\ \mathrm{C^2/(N\,m^2)}\); a constant of nature, given on the equation sheet</dd></dl></div>
+
 </div>
 <figure class="fig split">
 <svg viewBox="0 0 300 270" role="img" aria-label="Point charge inside a neutral conducting shell and induced charges">
@@ -2153,7 +2332,10 @@ window.MathJax = {
 <li><strong>For each region, write \(Q_{\text{enc}}(r)\)</strong> for a Gaussian sphere/cylinder of radius \(r\) in that region. Inside a conductor: skip, \(E = 0\).</li>
 <li><strong>\(E(r) = kQ_{\text{enc}}/r^2\)</strong> (sphere) or \(2k\lambda_{\text{enc}}/r\) (cylinder). Sign of \(Q_{\text{enc}}\) gives direction: positive means outward.</li>
 <li><strong>Sanity check:</strong> \(E\) is continuous except at surface charges; it is zero throughout every conductor; far away it looks like a point charge (or line) with the total charge.</li>
-</ol></div>
+</ol>
+<div class="sym"><div class="st">What each letter means</div><dl><dt>\(Q_{\text{enc}}(r)\)</dt><dd>enclosed charge as a function of the Gaussian radius \(r\): everything inside \(r\), including induced surface charges</dd><dt>\(\lambda_{\text{enc}}\)</dt><dd>the charge per unit length enclosed by the Gaussian cylinder, in C/m</dd><dt>\(E(r)\)</dt><dd>the field magnitude at radius \(r\); positive means outward</dd><dt>\(\rho\)</dt><dd>volume charge density: charge per unit volume inside an insulator, in C/m³ (\(
+ho = Q/V\) when uniform)</dd><dt>\(\lambda\)</dt><dd>linear charge density: charge per unit length along a line, rod, or ring, in C/m (\(\lambda = Q/L\) when uniform)</dd><dt>\(\sigma\)</dt><dd>surface charge density: charge per unit area on a sheet or surface, in C/m² (\(\sigma = Q/A\) when uniform)</dd><dt>\(k\)</dt><dd>Coulomb\'s constant, \(8.99\times10^{9}\ \mathrm{N\,m^2/C^2}\); it converts "charges and a distance" into newtons. Same thing as \(1/(4\pi\varepsilon_0)\)</dd></dl></div>
+</div>
 
 
 <h4>Walking a Gaussian sphere through the layers</h4>
@@ -2393,6 +2575,8 @@ window.MathJax = {
 </div>
 <figcaption>Fall 2018 Q7–10, Spring 2014 Q10–12, and Homework 6 P1 are exactly this object. The <a href="#w-gauss">explorer above</a> draws the same cutaway live for any charges and radii you choose.</figcaption>
 </figure>
+<div class="sym"><div class="st">What each letter means</div><dl><dt>\(Q\)</dt><dd>the charge of the insulating sphere, spread through its volume, C</dd><dt>\(a\)</dt><dd>the insulator's radius, m</dd><dt>\(b,\ c\)</dt><dd>the conducting shell's inner and outer radii, m</dd><dt>\(Q_{\text{shell}}\)</dt><dd>the shell's net charge, C</dd><dt>\(q_{\text{inner}}\)</dt><dd>the charge that collects on the shell's inner surface (\(-Q\)); the outer surface then carries \(Q_{\text{shell}} + Q\)</dd><dt>\(r\)</dt><dd>the radius of the Gaussian sphere, m</dd><dt>\(E\)</dt><dd>magnitude of the electric field, in N/C (the same unit as V/m)</dd><dt>\(k\)</dt><dd>Coulomb\'s constant, \(8.99\times10^{9}\ \mathrm{N\,m^2/C^2}\); it converts "charges and a distance" into newtons. Same thing as \(1/(4\pi\varepsilon_0)\)</dd></dl></div>
+
 
 <figure class="fig split">
 <svg viewBox="0 0 360 330" class="v3" role="img">
@@ -2614,7 +2798,9 @@ window.MathJax = {
 
 <h3 id="s6-5">6.5 Infinite sheets, conducting slabs, and superposition</h3>
 <div class="key"><div class="t">Sheet bookkeeping</div>
-<p>Each infinite sheet makes a uniform field \(|\sigma|/(2\varepsilon_0)\) on both sides, pointing away from it if \(\sigma \gt 0\) and toward it if \(\sigma \lt 0\), <em>independent of distance</em>. The net field in any region is the sum of these constants. Procedure: for the region of interest, list each sheet, decide "away or toward," convert to \(\pm\), add. A <strong>neutral conducting slab</strong> placed among sheets contributes zero net field outside itself (its two faces carry \(\pm\sigma_{\text{ind}}\), whose fields cancel outside); inside the slab the total field must be zero, which fixes \(\sigma_{\text{ind}}\).</p></div>
+<p>Each infinite sheet makes a uniform field \(|\sigma|/(2\varepsilon_0)\) on both sides, pointing away from it if \(\sigma \gt 0\) and toward it if \(\sigma \lt 0\), <em>independent of distance</em>. The net field in any region is the sum of these constants. Procedure: for the region of interest, list each sheet, decide "away or toward," convert to \(\pm\), add. A <strong>neutral conducting slab</strong> placed among sheets contributes zero net field outside itself (its two faces carry \(\pm\sigma_{\text{ind}}\), whose fields cancel outside); inside the slab the total field must be zero, which fixes \(\sigma_{\text{ind}}\).</p>
+<div class="sym"><div class="st">What each letter means</div><dl><dt>\(\sigma\)</dt><dd>the sheet's charge per unit area, C/m², with its sign</dd><dt>\(|\sigma|/(2\varepsilon_0)\)</dt><dd>the size of the field one sheet makes on either side, N/C; the same at every distance</dd><dt>\(\varepsilon_0\)</dt><dd>permittivity of free space, \(8.85\times10^{-12}\ \mathrm{C^2/(N\,m^2)}\); a constant of nature, given on the equation sheet</dd><dt>\(\pm\)</dt><dd>the sign you assign to each contribution: + if it points along your chosen positive axis, − if against</dd><dt>\(\sigma_{\text{ind}}\)</dt><dd>the induced charge density on each face of a neutral conducting slab (equal and opposite on the two faces), C/m²</dd></dl></div>
+</div>
 
 <div class="why"><div class="t">Why sheet problems are pure addition, and what the slab really does</div>
 <p>Each infinite sheet makes a field of constant magnitude \(|\sigma|/2\varepsilon_0\) that does not depend on distance (Section 5.5). Superposition says the field at a point is the sum of every sheet's field there. Since each sheet contributes one of only two values (\(\pm|\sigma|/2\varepsilon_0\), depending on which side of that sheet the point is on), the field in any region is a short signed sum. Moving the point around inside a region changes nothing; crossing a sheet flips that sheet's sign and jumps the field by \(|\sigma|/\varepsilon_0\).</p>
@@ -2691,6 +2877,8 @@ window.MathJax = {
 <li>Field the sheets produce <em>inside the slab</em> (\(x \lt 0.6\), both sheets to the right): \(\sigma_1\) pushes left, \(\sigma_2\) pulls right: \(E_{\text{ext}} = (-8 + 6.5)\times10^{-6}/(2\varepsilon_0) = -1.5\ \mu\mathrm{C/m^2}/(2\varepsilon_0)\).</li>
 <li>The slab's faces must cancel that inside the slab. Inside the slab, face \(\sigma_L\) (to the left) contributes \(+\sigma_L/2\varepsilon_0\) and face \(\sigma_R\) (to the right) contributes \(-\sigma_R/2\varepsilon_0 = +\sigma_L/2\varepsilon_0\) (using \(\sigma_R = -\sigma_L\)). Total from the slab: \(\sigma_L/\varepsilon_0\). Require \(\sigma_L/\varepsilon_0 - 1.5\ \mu\mathrm{C/m^2}/(2\varepsilon_0) = 0\): \(\sigma_L = +0.75\ \mu\mathrm{C/m^2}\), \(\sigma_R = -0.75\ \mu\mathrm{C/m^2}\).</li>
 <li>General rule that step 3 proves: with \(x\) to the right, \(E_{\text{ext}}\) the sheets' field inside the slab, the left face gets \(\sigma_L = -\varepsilon_0E_{\text{ext}}\) and the right face \(\sigma_R = +\varepsilon_0E_{\text{ext}}\). Here \(E_{\text{ext}} = -1.5\times10^{-6}/(2\varepsilon_0)\), so \(\sigma_L = +0.75\), \(\sigma_R = -0.75\ \mu\mathrm{C/m^2}\).</li>
+<div class="sym"><div class="st">What each letter means</div><dl><dt>\(\sigma_L,\ \sigma_R\)</dt><dd>the induced charge densities on the slab's left and right faces, C/m²; they are equal and opposite for a neutral slab</dd><dt>\(E_{\text{ext}}\)</dt><dd>the field the outside sheets make at the slab's location (with sign: positive if along \(+x\)), N/C</dd><dt>\(\varepsilon_0\)</dt><dd>permittivity of free space, \(8.85\times10^{-12}\ \mathrm{C^2/(N\,m^2)}\); a constant of nature, given on the equation sheet</dd><dt>\(x\)</dt><dd>the axis, taken to point to the right</dd></dl></div>
+
 </ol>
 <div class="check" data-answer="819000.0" data-tol="0.03"><label for="check-in-14">Your answer, Eₓ at point C (Fall 2018 Q13):</label><input type="text" id="check-in-14" inputmode="decimal" placeholder="e.g. 0.47 or 3.35e5" autocomplete="off"><span class="small">V/m</span><button type="button" id="check-btn-14">Check</button><span class="fb" aria-live="polite"></span></div>
 <div class="check" data-answer="-0.75" data-tol="0.02"><label for="check-in-15">Your answer, σ_R on the slab (Fall 2018 Q14):</label><input type="text" id="check-in-15" inputmode="decimal" placeholder="e.g. 0.47 or 3.35e5" autocomplete="off"><span class="small">μC/m²</span><button type="button" id="check-btn-15">Check</button><span class="fb" aria-live="polite"></span></div>
@@ -2718,7 +2906,9 @@ window.MathJax = {
 </div>
 
 <div class="ex"><div class="t">Sheet plus a line of charge: where is \(E = 0\)?</div><div class="src">Spring 2015 Q7–9</div>
-<p>Sheet \(\sigma\) in the plane \(x = 0\); line \(\lambda\) (parallel to \(z\)) at \(x = d\). On the \(x\)-axis at \(0 \lt r \lt d\): the line alone gives \(E_x = -\dfrac{\lambda}{2\pi\varepsilon_0(d-r)}\) (distance to the line is \(d-r\); a positive line pushes the point, which is to its left, toward \(-x\)). The sheet gives \(+\dfrac{\sigma}{2\varepsilon_0}\). Cancellation requires both terms to have opposite directions, which happens when \(\lambda\) and \(\sigma\) have the <em>same sign</em>. Setting magnitudes equal: \(\dfrac{\sigma}{2\varepsilon_0} = \dfrac{\lambda}{2\pi\varepsilon_0(d-r)}\Rightarrow d - r = \dfrac{\lambda}{\pi\sigma}\Rightarrow r = d - \dfrac{\lambda}{\pi\sigma}\).</p></div>
+<p>Sheet \(\sigma\) in the plane \(x = 0\); line \(\lambda\) (parallel to \(z\)) at \(x = d\). On the \(x\)-axis at \(0 \lt r \lt d\): the line alone gives \(E_x = -\dfrac{\lambda}{2\pi\varepsilon_0(d-r)}\) (distance to the line is \(d-r\); a positive line pushes the point, which is to its left, toward \(-x\)). The sheet gives \(+\dfrac{\sigma}{2\varepsilon_0}\). Cancellation requires both terms to have opposite directions, which happens when \(\lambda\) and \(\sigma\) have the <em>same sign</em>. Setting magnitudes equal: \(\dfrac{\sigma}{2\varepsilon_0} = \dfrac{\lambda}{2\pi\varepsilon_0(d-r)}\Rightarrow d - r = \dfrac{\lambda}{\pi\sigma}\Rightarrow r = d - \dfrac{\lambda}{\pi\sigma}\).</p>
+<div class="sym"><div class="st">What each letter means</div><dl><dt>\(\sigma\)</dt><dd>surface charge density: charge per unit area on a sheet or surface, in C/m² (\(\sigma = Q/A\) when uniform)</dd><dt>\(\lambda\)</dt><dd>linear charge density: charge per unit length along a line, rod, or ring, in C/m (\(\lambda = Q/L\) when uniform)</dd><dt>\(d\)</dt><dd>the distance from the sheet to the line, m</dd><dt>\(r\)</dt><dd>the position of the point on the \(x\)-axis, measured from the sheet, m; \(d - r\) is its distance from the line</dd><dt>\(E_x\)</dt><dd>the \(x\)-component of the field at that point, N/C, with sign</dd><dt>\(\varepsilon_0\)</dt><dd>permittivity of free space, \(8.85\times10^{-12}\ \mathrm{C^2/(N\,m^2)}\); a constant of nature, given on the equation sheet</dd></dl></div>
+</div>
 
 <div class="ex"><div class="t">Line charge plus a charged sphere-and-shell system</div><div class="src">Spring 2014 Q12</div>
 <p>Insulating sphere \(Q = +8\ \mu\mathrm{C}\) (radius 6 cm) inside an uncharged conducting shell (radius 10 cm), centered at the origin. A line \(\lambda = +1\ \mu\mathrm{C/m}\) parallel to \(z\) passes through \((-30\ \mathrm{cm}, 0)\). Field at \(P = (-20\ \mathrm{cm}, 0)\): from the line (10 cm away, to the left of P, positive): \(2k\lambda/r = 2(8.99\times10^9)(10^{-6})/0.1 = 1.8\times10^{5}\ \mathrm{N/C}\) in \(+x\). From the sphere system (P is outside the shell, total enclosed \(+8\ \mu\mathrm{C}\), 20 cm away): \(kQ/r^2 = 8.99\times10^9(8\times10^{-6})/0.04 = 1.8\times10^{6}\ \mathrm{N/C}\) pointing away from the origin, i.e. \(-x\). Net: \(E_x = 1.8\times10^5 - 1.8\times10^6 = -1.6\times10^{6}\ \mathrm{N/C}\). Superposition works across object types; Gauss's law just supplies each object's field.</p></div>
@@ -2734,14 +2924,20 @@ window.MathJax = {
 <h3 id="s7-1">7.1 Electric potential energy</h3>
 <div class="key"><div class="t">Work and potential energy (the 2111 connection)</div>
 \[ W = \int_{1}^{2}\vec F\cdot d\vec r, \qquad W_{\text{total}} = \Delta K, \qquad \Delta U = U_f - U_i = -W_{\text{field}} \]
+<div class="sym"><div class="st">What each letter means</div><dl><dt>\(W\)</dt><dd>work done by a force as the object moves from point 1 to point 2, in J</dd><dt>\(\vec F\)</dt><dd>the force (here the electric force), N</dd><dt>\(d\vec r\)</dt><dd>a tiny step along the path, m; the dot product keeps only the part of the step along the force</dd><dt>\(W_{\text{total}}\)</dt><dd>the work of all forces added together</dd><dt>\(\Delta K\)</dt><dd>the change in kinetic energy, J</dd><dt>\(U,\ U_i,\ U_f\)</dt><dd>electric potential energy, and its initial and final values, J</dd><dt>\(\Delta U\)</dt><dd>final minus initial potential energy, J</dd><dt>\(W_{\text{field}}\)</dt><dd>the work done by the electric field's force (not by your hand), J</dd></dl></div>
+
 <p>The Coulomb force is conservative, so it has a potential energy. Moving <em>with</em> the force: field does positive work, \(U\) decreases, kinetic energy can increase. Moving <em>against</em> the force: field does negative work, \(U\) increases (something else, like your hand, supplied the work). A charge released from rest moves in the direction that <strong>decreases</strong> \(U\) (Lecture 5 checkpoint: "Nature wants things to move in such a way that PE decreases").</p>
 <p>Two charges brought from far apart to separation \(r\) (choosing \(U = 0\) at infinity):</p>
 \[ U = \frac{k\,q_1 q_2}{r} \]
+<div class="sym"><div class="st">What each letter means</div><dl><dt>\(U\)</dt><dd>the potential energy of the pair, J, taking \(U = 0\) when they are infinitely far apart</dd><dt>\(k\)</dt><dd>Coulomb\'s constant, \(8.99\times10^{9}\ \mathrm{N\,m^2/C^2}\); it converts "charges and a distance" into newtons. Same thing as \(1/(4\pi\varepsilon_0)\)</dd><dt>\(q_1,\ q_2\)</dt><dd>the two charges <em>with their signs</em>, C: like signs give \(U \gt 0\), opposite signs give \(U \lt 0\)</dd><dt>\(r\)</dt><dd>their separation, m (not squared, unlike the force)</dd></dl></div>
+
 <p>Keep the signs. Like charges: \(U \gt 0\), and it grows as they get closer. Opposite charges: \(U \lt 0\), and it gets more negative (lower) as they get closer.</p></div>
 
 <div class="why"><div class="t">Why the Coulomb force has a potential energy, and where \(kq_1q_2/r\) comes from</div>
 <p><strong>Path independence.</strong> The force on \(q_2\) from a fixed \(q_1\) points along the line joining them and depends only on the distance \(r\). Move \(q_2\) along any path. On each tiny step, only the part of the step that changes \(r\) does work (the part perpendicular to the radial line is perpendicular to the force). So the total work depends only on the starting and ending distances, not on the route. That is the definition of a conservative force, and it is what allows a potential energy to exist. The same argument works for gravity, which is why the two theories look alike.</p>
 <p><strong>The formula, derived.</strong> Define \(U = 0\) when the charges are infinitely far apart (no interaction). Bring \(q_2\) in from infinity to distance \(d\) along a radial line. The field's force is \(kq_1q_2/r^2\) outward (for like charges); its work is \(W = \int_\infty^{d}\frac{kq_1q_2}{r^2}\,dr\), but the force and the inward motion oppose each other, so with \(dr\) negative this integral is \(kq_1q_2\left[-\frac1r\right]_\infty^{d} = -\frac{kq_1q_2}{d}\). Then \(U = -W = +\frac{kq_1q_2}{d}\). For opposite charges the force is inward, the work is positive, and \(U = -\frac{k|q_1q_2|}{d}\), which the same formula gives automatically once the signs of the charges are kept. So the one expression \(U = kq_1q_2/r\), signs included, covers both cases.</p>
+<div class="sym"><div class="st">What each letter means</div><dl><dt>\(d\)</dt><dd>the final separation of the two charges, m</dd><dt>\(r,\ dr\)</dt><dd>the running separation during the trip in from infinity, and a tiny change in it (negative when moving inward)</dd><dt>\(W\)</dt><dd>the work done by the field's force during the trip, J</dd><dt>\(U\)</dt><dd>the potential energy at separation \(d\), J; equals \(-W\)</dd></dl></div>
+
 <p><strong>What the sign means physically.</strong> Positive \(U\) means the system holds energy it can release: let two like charges go and they fly apart, converting \(U\) into kinetic energy. Negative \(U\) means the system is bound: to separate two opposite charges you must supply \(|U|\) of work. "Higher \(U\)" always means "closer to being able to do something on its own."</p>
 </div>
 <figure class="fig">
@@ -2780,6 +2976,8 @@ window.MathJax = {
 <li>\(\Delta U = -W_E = +1.92\times10^{-5}\ \mathrm{J}\).</li>
 <li>\(\Delta V = \Delta U/q = +2.4\ \mathrm{V}\). Equivalently \(\Delta V = -\vec E\cdot\Delta\vec s\); with \(\vec E\) down and \(\Delta\vec s\) up, the dot product is \(-(6)(0.4)\), so \(\Delta V = +2.4\ \mathrm{V}\). Moving against the field raises the potential.</li>
 </ol>
+<div class="sym"><div class="st">What each letter means</div><dl><dt>\(F\)</dt><dd>the electric force on the charge, \(qE\), N</dd><dt>\(d\)</dt><dd>the distance moved, m</dd><dt>\(W_E,\ W_H\)</dt><dd>work done by the electric field, and by the hand (outside force), J</dd><dt>\(\Delta U\)</dt><dd>change in potential energy, J; equals \(-W_E\)</dd><dt>\(\Delta V\)</dt><dd>change in potential, V; equals \(\Delta U/q\)</dd><dt>\(\vec E\)</dt><dd>the field vector, N/C</dd><dt>\(\Delta\vec s\)</dt><dd>the displacement vector (where it ended minus where it started), m</dd><dt>\(q\)</dt><dd>the moved charge, C, with sign</dd></dl></div>
+
 <div class="check" data-answer="2.4" data-tol="0.02"><label for="check-in-16">Your answer, ΔV = V₂ − V₁ (Example 6.1):</label><input type="text" id="check-in-16" inputmode="decimal" placeholder="e.g. 0.47 or 3.35e5" autocomplete="off"><span class="small">V</span><button type="button" id="check-btn-16">Check</button><span class="fb" aria-live="polite"></span></div>
 
 <p><strong>What changes if \(q \to -8\ \mu\mathrm{C}\)?</strong> The force flips (up), the works flip sign, \(\Delta U\) flips (\(-1.92\times10^{-5}\ \mathrm{J}\)), but \(\Delta V = +2.4\ \mathrm{V}\) is <strong>unchanged</strong>: potential difference is a property of the field and the two points, not of the test charge. <strong>What if instead the field pointed up?</strong> Then every one of (a)–(d) changes sign; nothing stays the same. <strong>What is \(V\) at point 1?</strong> Cannot be determined; only differences are physical. You may set \(V=0\) anywhere.</p></div>
@@ -2803,11 +3001,15 @@ window.MathJax = {
 <div class="ex"><div class="t">Change in \(U\) when one charge moves</div><div class="src">Lecture 5 checkpoint · Homework 5, Problem 4 · Fall 2015 Q8–9</div>
 <p>\(+q\) moves from distance \(r_1\) to \(r_2\) from a fixed \(+Q\):</p>
 \[ \Delta U = kQq\left(\frac{1}{r_2} - \frac{1}{r_1}\right) \]
+<div class="sym"><div class="st">What each letter means</div><dl><dt>\(\Delta U\)</dt><dd>change in potential energy, final minus initial, J</dd><dt>\(Q\)</dt><dd>the fixed charge, C</dd><dt>\(q\)</dt><dd>the charge that moves, C</dd><dt>\(r_1,\ r_2\)</dt><dd>the initial and final distances between them, m; only these two numbers matter, not the route</dd><dt>\(k\)</dt><dd>Coulomb\'s constant, \(8.99\times10^{9}\ \mathrm{N\,m^2/C^2}\); it converts "charges and a distance" into newtons. Same thing as \(1/(4\pi\varepsilon_0)\)</dd></dl></div>
+
 <p>Moving away (\(r_2 \gt r_1\)) makes this negative, as it must: like charges lower their energy by separating. The straight-line distance \(R\) traveled does not appear; only the initial and final radii matter (conservative force).</p>
 <p><strong>Homework 5 P4:</strong> \(Q_1 = +5.7\ \mu\mathrm{C}\) fixed, \(Q_2 = +3.5\ \mathrm{nC}\), \(m = 6.4\ \mu\mathrm{g}\). \(U\) at \(0.39\ \mathrm{m}\): \(kQ_1Q_2/r = 8.99\times10^9(5.7\times10^{-6})(3.5\times10^{-9})/0.39 = 4.6\times10^{-4}\ \mathrm{J}\). Released from rest at 0.39 m, speed at 0.79 m: \(\Delta U = 1.79\times10^{-4}(1/0.79 - 1/0.39) = -2.33\times10^{-4}\ \mathrm{J}\), so \(K = 2.33\times10^{-4}\ \mathrm{J}\) and \(v = \sqrt{2K/m} = \sqrt{2(2.33\times10^{-4})/6.4\times10^{-9}} = 270\ \mathrm{m/s}\).</p>
 <div class="check" data-answer="270" data-tol="0.03"><label for="check-in-17">Your answer, speed at 0.79 m (HW5 P4):</label><input type="text" id="check-in-17" inputmode="decimal" placeholder="e.g. 0.47 or 3.35e5" autocomplete="off"><span class="small">m/s</span><button type="button" id="check-btn-17">Check</button><span class="fb" aria-live="polite"></span></div>
 
-<p><strong>Near an infinite line</strong> (Fall 2015 Q8–9): \(+Q\) moved from \(a\) to \(b \lt a\) toward a positive line \(\lambda\). The field pushes away; the motion is toward: the field does <em>negative</em> work. \(|\Delta U| = Q|\Delta V| = |2k\lambda Q\ln(b/a)|\), because for a line \(V(r) = -2k\lambda\ln r + \text{const}\) (Section 7.4). The \(1/b - 1/a\) form is for a point charge; the \((a-b)\) form is for a uniform field.</p></div>
+<p><strong>Near an infinite line</strong> (Fall 2015 Q8–9): \(+Q\) moved from \(a\) to \(b \lt a\) toward a positive line \(\lambda\). The field pushes away; the motion is toward: the field does <em>negative</em> work. \(|\Delta U| = Q|\Delta V| = |2k\lambda Q\ln(b/a)|\), because for a line \(V(r) = -2k\lambda\ln r + \text{const}\) (Section 7.4). The \(1/b - 1/a\) form is for a point charge; the \((a-b)\) form is for a uniform field.</p>
+<div class="sym"><div class="st">What each letter means</div><dl><dt>\(Q\)</dt><dd>the charge that is moved, C</dd><dt>\(\lambda\)</dt><dd>linear charge density: charge per unit length along a line, rod, or ring, in C/m (\(\lambda = Q/L\) when uniform)</dd><dt>\(a,\ b\)</dt><dd>the starting and ending distances from the line, m</dd><dt>\(\ln\)</dt><dd>natural logarithm; \(\ln(b/a)\) is negative when \(b \lt a\)</dd><dt>\(V(r)\)</dt><dd>the potential at distance \(r\) from the line; "const" is the arbitrary reference value</dd><dt>\(k\)</dt><dd>Coulomb\'s constant, \(8.99\times10^{9}\ \mathrm{N\,m^2/C^2}\); it converts "charges and a distance" into newtons. Same thing as \(1/(4\pi\varepsilon_0)\)</dd></dl></div>
+</div>
 
 <div class="ex"><div class="t">Two charges released: energy plus momentum</div><div class="src">Lecture 5, Example 5.1 · Homework 5, Problem 6</div>
 <p>\(q_1 = +6\ \mathrm{nC}\) (\(m_1 = 5\times10^{-10}\ \mathrm{kg}\)) and \(q_2 = +8\ \mathrm{nC}\) (\(m_2 = 7\times10^{-10}\ \mathrm{kg}\)) are held \(10\ \mathrm{cm}\) apart and released. Speeds when far apart?</p>
@@ -2816,12 +3018,16 @@ window.MathJax = {
 <li>Momentum (no external force, both start at rest): \(m_1v_1 = m_2v_2\), so \(v_2 = v_1 m_1/m_2\).</li>
 <li>Substitute: \(\tfrac12 m_1 v_1^2(1 + m_1/m_2) = 4.32\times10^{-6}\Rightarrow v_1 = \sqrt{2(4.32\times10^{-6})/(5\times10^{-10}\times1.714)} = 100\ \mathrm{m/s}\), \(v_2 = 71.7\ \mathrm{m/s}\).</li>
 </ol>
+<div class="sym"><div class="st">What each letter means</div><dl><dt>\(q_1,\ q_2\)</dt><dd>the two charges, C</dd><dt>\(m_1,\ m_2\)</dt><dd>their masses, kg</dd><dt>\(v_1,\ v_2\)</dt><dd>their final speeds when far apart, m/s</dd><dt>\(d\)</dt><dd>the initial separation, m</dd><dt>\(U_i\)</dt><dd>the initial potential energy, \(kq_1q_2/d\), J; it all becomes kinetic energy</dd><dt>\(m_1v_1 = m_2v_2\)</dt><dd>momentum conservation: equal and opposite momenta because they started at rest</dd></dl></div>
+
 <div class="check" data-answer="100" data-tol="0.03"><label for="check-in-18">Your answer, v₁ (Example 5.1):</label><input type="text" id="check-in-18" inputmode="decimal" placeholder="e.g. 0.47 or 3.35e5" autocomplete="off"><span class="small">m/s</span><button type="button" id="check-btn-18">Check</button><span class="fb" aria-live="polite"></span></div>
 
 <p>If one charge is <em>fixed</em> (Homework 5 P4 and P6), skip step 2: all the released energy goes to the free charge. <strong>HW5 P6:</strong> two \(5.22\ \mu\mathrm{C}\) charges at \((\pm3.01\ \mathrm{cm},0)\), a \(3.08\ \mu\mathrm{C}\), \(7.64\ \mathrm{mg}\) particle released at \((0,1.99\ \mathrm{cm})\). Initial distance to each fixed charge \(r_i = \sqrt{3.01^2+1.99^2} = 3.61\ \mathrm{cm}\); at \((0,5.35\ \mathrm{cm})\), \(r_f = \sqrt{3.01^2+5.35^2} = 6.14\ \mathrm{cm}\). \(\Delta U = 2kqQ(1/r_f - 1/r_i) = 2(8.99\times10^9)(5.22\times10^{-6})(3.08\times10^{-6})(16.29 - 27.72) = -3.30\ \mathrm{J}\); \(v = \sqrt{2(3.30)/7.64\times10^{-6}} = 930\ \mathrm{m/s}\). (Only the distances matter; the fixed pair's own \(U\) never changes.)</p></div>
 
 <div class="key"><div class="t">Potential energy of a collection of charges</div>
 \[ U_{\text{total}} = \sum_{\text{all pairs } i \lt j}\frac{k\,q_i q_j}{r_{ij}} \]
+<div class="sym"><div class="st">What each letter means</div><dl><dt>\(U_{\text{total}}\)</dt><dd>the energy stored in the whole arrangement, J</dd><dt>\(\sum_{i \lt j}\)</dt><dd>add one term for every <em>pair</em> of charges, counting each pair once (\(i \lt j\) is the bookkeeping that prevents double counting)</dd><dt>\(q_i,\ q_j\)</dt><dd>the two charges in that pair, with signs, C</dd><dt>\(r_{ij}\)</dt><dd>the distance between charge \(i\) and charge \(j\), m</dd><dt>\(k\)</dt><dd>Coulomb\'s constant, \(8.99\times10^{9}\ \mathrm{N\,m^2/C^2}\); it converts "charges and a distance" into newtons. Same thing as \(1/(4\pi\varepsilon_0)\)</dd><dt>\(\Delta U = qV\)</dt><dd>energy change when one more charge \(q\) is brought to a point where the others make potential \(V\)</dd></dl></div>
+
 <ul>
 <li>One term per <strong>pair</strong>: 3 charges have 3 pairs, 4 charges have 6 pairs. Do not double count (Lecture 5: "don't double count, no sines and cosines").</li>
 <li>\(U_{\text{total}}\) = the work <strong>an outside agent</strong> must do to assemble the configuration from infinity = minus the work done by the field during assembly.</li>
@@ -2848,8 +3054,12 @@ window.MathJax = {
 <h3 id="s7-2">7.2 Electric potential</h3>
 <div class="key"><div class="t">Definition</div>
 \[ V \equiv \frac{U}{q}, \qquad \Delta V = V_b - V_a = \frac{\Delta U}{q} = -\frac{W_{\text{field}}}{q} = -\int_a^b\vec E\cdot d\vec l \]
+<div class="sym"><div class="st">What each letter means</div><dl><dt>\(V\)</dt><dd>electric potential at a point, in volts (1 V = 1 J/C): the potential energy per coulomb a charge would have there</dd><dt>\(U\)</dt><dd>the potential energy a charge \(q\) has at that point, J</dd><dt>\(q\)</dt><dd>the charge used to probe the potential, C; it divides out, so \(V\) does not depend on it</dd><dt>\(V_a,\ V_b\)</dt><dd>the potential at the starting point \(a\) and the ending point \(b\)</dd><dt>\(\Delta V\)</dt><dd>potential difference (voltage) between two points, in volts; \(\Delta\) always means "final minus initial"</dd><dt>\(W_{\text{field}}\)</dt><dd>work the field does on \(q\) going from \(a\) to \(b\), J</dd><dt>\(\int_a^b\vec E\cdot d\vec l\)</dt><dd>add up (field) × (step along the path) from \(a\) to \(b\); \(d\vec l\) is a tiny step of the path in m; the minus sign means moving with the field lowers \(V\)</dd></dl></div>
+
 <p>Units: 1 V = 1 J/C. Also \(1\ \mathrm{eV} = 1.6\times10^{-19}\ \mathrm{J}\) (energy of charge \(e\) moved through 1 V) and N/C = V/m. Point charge, with \(V = 0\) at infinity:</p>
 \[ V = \frac{kq}{r}, \qquad V_{\text{total}} = \sum_i\frac{kq_i}{r_i}\quad\text{(scalar sum: signs, no components)} \]
+<div class="sym"><div class="st">What each letter means</div><dl><dt>\(V\)</dt><dd>the potential a point charge makes at distance \(r\), V, with \(V = 0\) at infinity</dd><dt>\(q\)</dt><dd>the source charge with its sign, C: negative charges make negative potential</dd><dt>\(r\)</dt><dd>distance from the charge to the point, m</dd><dt>\(V_{\text{total}},\ \sum_i,\ q_i,\ r_i\)</dt><dd>for several charges, simply add the numbers \(kq_i/r_i\) (each charge's value with its own distance); no directions, no components</dd><dt>\(W_{\text{you}} = qV\)</dt><dd>work an outside agent does to bring charge \(q\) from infinity to a point at potential \(V\), J</dd><dt>\(k\)</dt><dd>Coulomb\'s constant, \(8.99\times10^{9}\ \mathrm{N\,m^2/C^2}\); it converts "charges and a distance" into newtons. Same thing as \(1/(4\pi\varepsilon_0)\)</dd></dl></div>
+
 <p>Work you must do to bring a charge \(q\) from infinity (where \(V=0\)) to a point at potential \(V\), at constant speed: \(W_{\text{you}} = qV\). Work the field does: \(-qV\).</p></div>
 
 <div class="why"><div class="t">Why divide by the charge again, and what a volt is</div>
@@ -2869,14 +3079,20 @@ window.MathJax = {
 
 <div class="key"><div class="t">Potential in a uniform field, and the "zero field" checkpoint</div>
 <p>In a uniform field, moving a distance \(d\) <em>along</em> \(\vec E\) lowers the potential: \(\Delta V = -Ed\). Moving perpendicular to \(\vec E\) changes nothing. Lecture 6's three points A, B, C in a constant field: choose any path (A→D→C, with A→D perpendicular to \(\vec E\) and D→C along it), so \(V_C - V_A = -E\,\Delta x \lt 0\).</p>
+<div class="sym"><div class="st">What each letter means</div><dl><dt>\(E\)</dt><dd>the magnitude of the uniform field, N/C</dd><dt>\(d,\ \Delta x\)</dt><dd>the distance moved <em>along</em> the field direction, m</dd><dt>\(\Delta V,\ V_C - V_A\)</dt><dd>the potential difference, V; negative when moving with the field</dd></dl></div>
+
 <p>If \(\vec E = 0\) throughout a region, then \(\Delta V = 0\) between any two points: \(V\) is <strong>constant</strong>, not necessarily zero (Lecture 6 checkpoint). This is why a conductor's interior is all at the surface potential.</p></div>
 
 <div class="ex"><div class="t">Two charged conducting spheres, far apart</div><div class="src">Lecture 7 checkpoints · Spring 2015 Q3–4</div>
-<p>An isolated conducting sphere of radius \(R\) with charge \(Q\) has \(V = kQ/R\) at its surface (it looks like a point charge from outside). <strong>Same \(Q\), larger radius: lower \(V\).</strong> Spring 2015: \(r_1 = 20\ \mathrm{mm}\), \(q_1 = 0.4\ \mu\mathrm{C}\): \(V_1 = 8.99\times10^9(0.4\times10^{-6})/0.02 = 1.80\times10^{5}\ \mathrm{V}\). \(r_2 = 5\ \mathrm{mm}\), \(q_2 = 0.12\ \mu\mathrm{C}\): \(V_2 = 2.16\times10^{5}\ \mathrm{V}\). Difference \(3.6\times10^{4}\ \mathrm{V}\). Connect them with a wire: charge flows until \(V_1 = V_2\); positive charge flows from the higher potential (sphere 2) to the lower (sphere 1). After connection, \(kq_1'/r_1 = kq_2'/r_2\) gives \(q_1'/q_2' = r_1/r_2\): the bigger sphere holds more charge, but the smaller sphere has the larger surface density (\(\sigma \propto q/r^2 \propto 1/r\)) and the larger surface field. That is why charge leaks from sharp points.</p></div>
+<p>An isolated conducting sphere of radius \(R\) with charge \(Q\) has \(V = kQ/R\) at its surface (it looks like a point charge from outside). <strong>Same \(Q\), larger radius: lower \(V\).</strong> Spring 2015: \(r_1 = 20\ \mathrm{mm}\), \(q_1 = 0.4\ \mu\mathrm{C}\): \(V_1 = 8.99\times10^9(0.4\times10^{-6})/0.02 = 1.80\times10^{5}\ \mathrm{V}\). \(r_2 = 5\ \mathrm{mm}\), \(q_2 = 0.12\ \mu\mathrm{C}\): \(V_2 = 2.16\times10^{5}\ \mathrm{V}\). Difference \(3.6\times10^{4}\ \mathrm{V}\). Connect them with a wire: charge flows until \(V_1 = V_2\); positive charge flows from the higher potential (sphere 2) to the lower (sphere 1). After connection, \(kq_1'/r_1 = kq_2'/r_2\) gives \(q_1'/q_2' = r_1/r_2\): the bigger sphere holds more charge, but the smaller sphere has the larger surface density (\(\sigma \propto q/r^2 \propto 1/r\)) and the larger surface field. That is why charge leaks from sharp points.</p>
+<div class="sym"><div class="st">What each letter means</div><dl><dt>\(V\)</dt><dd>the potential at the sphere's surface (and everywhere inside it), V</dd><dt>\(Q,\ q_1,\ q_2\)</dt><dd>the charge on a sphere, C</dd><dt>\(R,\ r_1,\ r_2\)</dt><dd>the sphere radii, m</dd><dt>\(q_1\prime,\ q_2\prime\)</dt><dd>the charges after the spheres are connected by a wire and share one potential</dd><dt>\(\sigma\)</dt><dd>surface charge density, C/m²; \(\propto 1/r\) for connected spheres</dd><dt>\(k\)</dt><dd>Coulomb\'s constant, \(8.99\times10^{9}\ \mathrm{N\,m^2/C^2}\); it converts "charges and a distance" into newtons. Same thing as \(1/(4\pi\varepsilon_0)\)</dd></dl></div>
+</div>
 
 <h3 id="s7-3">7.3 \(V\) from \(\vec E\), and \(\vec E\) from \(V\)</h3>
 <div class="key"><div class="t">The two directions</div>
 \[ V_b - V_a = -\int_a^b \vec E\cdot d\vec l \qquad\qquad \vec E = -\nabla V,\quad E_x = -\frac{\partial V}{\partial x},\ E_y = -\frac{\partial V}{\partial y},\ E_z = -\frac{\partial V}{\partial z} \]
+<div class="sym"><div class="st">What each letter means</div><dl><dt>\(V_a,\ V_b\)</dt><dd>potential at the start and end points, V</dd><dt>\(\vec E\)</dt><dd>the electric field vector: the force per coulomb that a positive test charge would feel at that point, in N/C (= V/m)</dd><dt>\(d\vec l\)</dt><dd>a tiny step along any path from \(a\) to \(b\), m</dd><dt>\(\nabla V\)</dt><dd>the gradient of \(V\): a vector whose components are the slopes of \(V\) along \(x\), \(y\), \(z\); it points uphill</dd><dt>\(\partial V/\partial x\)</dt><dd>the partial derivative: the slope of \(V\) in the \(x\)-direction with \(y\) and \(z\) held fixed, V/m</dd><dt>\(E_x,\ E_y,\ E_z\)</dt><dd>the field components, N/C; each is minus the slope in its own direction</dd></dl></div>
+
 <p>\(\vec E\) points from high \(V\) to low \(V\) ("downhill"), and its magnitude is the steepness of \(V\). On a graph of \(V(x)\): \(E_x\) is minus the slope. Steepest slope = strongest field; positive slope = field pointing in \(-x\); flat = zero field.</p></div>
 
 <div class="why"><div class="t">Why there is a minus sign in \(\Delta V = -\int E\,dl\) and in \(E = -dV/dx\)</div>
@@ -2907,11 +3123,15 @@ window.MathJax = {
 <p>From Chapter 6: with \(\sigma_1 = +8\) at \(x = 0.6\) and \(\sigma_2 = -6.5\ \mu\mathrm{C/m^2}\) at \(x = 0.8\) and a neutral slab at \(0\)–\(0.2\), the field in the region \(0.2 \lt x \lt 0.6\) is uniform: both sheets are to the right, \(\sigma_1\) pushes left, \(\sigma_2\) pulls right, \(E_x = (-8 + 6.5)\times10^{-6}/(2\varepsilon_0) = -8.47\times10^{4}\ \mathrm{V/m}\). Then \(V_B - V_A = -\int_{0.2}^{0.5}E_x\,dx = -(-8.47\times10^4)(0.3) = +2.5\times10^{4}\ \mathrm{V}\). Moving against the field (the field points \(-x\), we moved \(+x\)) raises the potential.</p>
 <div class="check" data-answer="25400.0" data-tol="0.03"><label for="check-in-22">Your answer, V_B − V_A (Fall 2018 Q15):</label><input type="text" id="check-in-22" inputmode="decimal" placeholder="e.g. 0.47 or 3.35e5" autocomplete="off"><span class="small">V</span><button type="button" id="check-btn-22">Check</button><span class="fb" aria-live="polite"></span></div>
 
-<p><strong>Homework 6 P5:</strong> plate \(-\sigma\) at \(y = 0\) (defined as \(V = 0\)), plate \(+\sigma\) at \(y = d\). Outside both plates the fields cancel: \(\vec E = 0\) for \(y \lt 0\) and \(y \gt d\). Between: the \(+\sigma\) plate above pushes down, the \(-\sigma\) plate below pulls down: \(\vec E = -(\sigma/\varepsilon_0)\hat j\). Potential: \(V(y) = -\int_0^y(-\sigma/\varepsilon_0)dy' = +\sigma y/\varepsilon_0\) for \(0 \lt y \lt d\); \(V = 0\) for \(y \lt 0\); \(V = \sigma d/\varepsilon_0\) for \(y \gt d\). Equipotentials between the plates are planes perpendicular to \(y\); each outside region is one big equipotential volume; field lines run parallel to \(y\), originating at \(y = d\) and terminating at \(y = 0\), with their density greatest (and only nonzero) between the plates.</p></div>
+<p><strong>Homework 6 P5:</strong> plate \(-\sigma\) at \(y = 0\) (defined as \(V = 0\)), plate \(+\sigma\) at \(y = d\). Outside both plates the fields cancel: \(\vec E = 0\) for \(y \lt 0\) and \(y \gt d\). Between: the \(+\sigma\) plate above pushes down, the \(-\sigma\) plate below pulls down: \(\vec E = -(\sigma/\varepsilon_0)\hat j\). Potential: \(V(y) = -\int_0^y(-\sigma/\varepsilon_0)dy' = +\sigma y/\varepsilon_0\) for \(0 \lt y \lt d\); \(V = 0\) for \(y \lt 0\); \(V = \sigma d/\varepsilon_0\) for \(y \gt d\). Equipotentials between the plates are planes perpendicular to \(y\); each outside region is one big equipotential volume; field lines run parallel to \(y\), originating at \(y = d\) and terminating at \(y = 0\), with their density greatest (and only nonzero) between the plates.</p>
+<div class="sym"><div class="st">What each letter means</div><dl><dt>\(\sigma\)</dt><dd>the surface charge density on each plate (\(+\sigma\) on one, \(-\sigma\) on the other), C/m²</dd><dt>\(y\)</dt><dd>the coordinate perpendicular to the plates, m; the \(-\sigma\) plate is at \(y = 0\)</dd><dt>\(d\)</dt><dd>the plate separation, m</dd><dt>\(\hat j\)</dt><dd>unit vector along \(+y\)</dd><dt>\(V(y)\)</dt><dd>the potential as a function of position, with \(V = 0\) chosen at the lower plate</dd><dt>\(\varepsilon_0\)</dt><dd>permittivity of free space, \(8.85\times10^{-12}\ \mathrm{C^2/(N\,m^2)}\); a constant of nature, given on the equation sheet</dd></dl></div>
+</div>
 
 <div class="ex"><div class="t">Potential difference near a line of charge (the logarithm)</div><div class="src">Lecture 6, Example 6.5 · Fall 2015 Q9 · Homework 6, Problems 2–4</div>
 <p>Outside any cylindrically symmetric charge, \(E = 2k\lambda_{\text{enc}}/r\) radially. Then</p>
 \[ V(r_2) - V(r_1) = -\int_{r_1}^{r_2}\frac{2k\lambda}{r}\,dr = -2k\lambda\ln\frac{r_2}{r_1} = \frac{\lambda}{2\pi\varepsilon_0}\ln\frac{r_1}{r_2} \]
+<div class="sym"><div class="st">What each letter means</div><dl><dt>\(V(r_1),\ V(r_2)\)</dt><dd>the potential at distance \(r_1\) and at \(r_2\) from the axis, V</dd><dt>\(\lambda,\ \lambda_{\text{enc}}\)</dt><dd>the charge per length enclosed by a cylinder through the point, C/m, with sign</dd><dt>\(r\)</dt><dd>perpendicular distance from the axis, m; the integration variable</dd><dt>\(\ln\)</dt><dd>natural logarithm; \(\ln(r_2/r_1) = -\ln(r_1/r_2)\)</dd><dt>\(k\)</dt><dd>Coulomb\'s constant, \(8.99\times10^{9}\ \mathrm{N\,m^2/C^2}\); it converts "charges and a distance" into newtons. Same thing as \(1/(4\pi\varepsilon_0)\)</dd><dt>\(\varepsilon_0\)</dt><dd>permittivity of free space, \(8.85\times10^{-12}\ \mathrm{C^2/(N\,m^2)}\); a constant of nature, given on the equation sheet</dd></dl></div>
+
 <p>You <em>cannot</em> set \(V = 0\) at infinity for an infinite line (the log diverges); problems always specify a reference radius, or ask only for a difference.</p>
 <p><strong>Lecture 6, Example 6.5:</strong> solid insulating cylinder \(a = 4.1\ \mathrm{cm}\), \(\rho = 27\ \mu\mathrm{C/m^3}\), inside a conducting shell (\(b = 19.9\), \(c = 21.9\ \mathrm{cm}\)) with \(\lambda_{\text{shell}} = -0.36\ \mu\mathrm{C/m}\). Points \(P = (46, 46)\ \mathrm{cm}\) and \(R = (0, 46)\ \mathrm{cm}\) are both outside everything.</p>
 <ol class="steps">
@@ -2929,6 +3149,8 @@ window.MathJax = {
 <li>Use Gauss's law to get \(E(r)\) in every region (Chapter 6 catalog).</li>
 <li>Integrate inward from the reference point: \(V(r) = V(\text{ref}) - \int_{\text{ref}}^{r}E\,dr'\). With \(V(\infty) = 0\) for finite objects: \(V(r) = \int_r^{\infty}E(r')\,dr'\), adding up region by region. Inside a conductor \(E = 0\), so \(V\) does not change across it.</li>
 </ol>
+<div class="sym"><div class="st">What each letter means</div><dl><dt>\(V(r)\)</dt><dd>the potential at radius \(r\), V</dd><dt>\(V(\text{ref}),\ \text{ref}\)</dt><dd>the value of \(V\) at the reference point, and the reference point itself (infinity for finite objects, a stated radius for lines)</dd><dt>\(E(r\prime),\ dr\prime\)</dt><dd>the field from Gauss's law and a tiny step in radius; \(r\prime\) is the dummy variable you integrate over</dd><dt>\(\infty\)</dt><dd>infinity: infinitely far away, where \(V = 0\) is usually chosen</dd></dl></div>
+
 <p>Lecture 6: "Good news: they're going to be really, really simple. Sometimes so simple we can do them conceptually."</p></div>
 
 <div class="why"><div class="t">Why "integrate inward from the reference" works, and why infinity fails for a line</div>
@@ -2944,6 +3166,9 @@ window.MathJax = {
 <tr><td>Long cylinder / line, \(\lambda\), reference at \(r_0\)</td><td>\(-2k\lambda\ln(r/r_0)\)</td><td>conductor: constant \(= -2k\lambda\ln(R/r_0)\); insulator: \(V(R) + \dfrac{\rho}{4\varepsilon_0}(R^2 - r^2)\)</td><td>HW6 P2–4; Fall 2018 Q19–20</td></tr>
 <tr><td>Parallel plates \(\pm\sigma\), gap \(d\)</td><td>constant on each side</td><td>linear, \(\Delta V = Ed = \sigma d/\varepsilon_0\)</td><td>HW6 P5; Chapter 8</td></tr>
 </tbody></table></div>
+<div class="sym"><div class="st">What each letter means</div><dl><dt>\(Q,\ q\)</dt><dd>the charge on the object (or the point charge at the center), C</dd><dt>\(R\)</dt><dd>the object's radius, m</dd><dt>\(r\)</dt><dd>the distance from the center or axis to the point, m</dd><dt>\(r_0\)</dt><dd>the reference radius where \(V = 0\) is chosen for a line or cylinder, m</dd><dt>\(\lambda\)</dt><dd>linear charge density: charge per unit length along a line, rod, or ring, in C/m (\(\lambda = Q/L\) when uniform)</dd><dt>\(\rho\)</dt><dd>volume charge density: charge per unit volume inside an insulator, in C/m³ (\(
+ho = Q/V\) when uniform)</dd><dt>\(\sigma\)</dt><dd>surface charge density: charge per unit area on a sheet or surface, in C/m² (\(\sigma = Q/A\) when uniform)</dd><dt>\(d\)</dt><dd>the plate separation, m</dd><dt>\(E\)</dt><dd>magnitude of the electric field, in N/C (the same unit as V/m)</dd><dt>\(k\)</dt><dd>Coulomb\'s constant, \(8.99\times10^{9}\ \mathrm{N\,m^2/C^2}\); it converts "charges and a distance" into newtons. Same thing as \(1/(4\pi\varepsilon_0)\)</dd><dt>\(\varepsilon_0\)</dt><dd>permittivity of free space, \(8.85\times10^{-12}\ \mathrm{C^2/(N\,m^2)}\); a constant of nature, given on the equation sheet</dd></dl></div>
+
 
 <figure class="fig">
 <div class="row">
@@ -3039,17 +3264,23 @@ window.MathJax = {
 <li>\(a_1 \lt r \lt a_2\): constant, \(= \frac{k(q+Q)}{a_4} + kq\left(\frac1{a_2} - \frac1{a_3}\right)\).</li>
 <li>\(r \lt a_1\): \(\frac{k(q+Q)}{a_4} + kq\left(\frac1{a_2} - \frac1{a_3}\right) + kq\left(\frac1r - \frac1{a_1}\right)\).</li>
 </ol>
-<p>The graph of \(V(r)\) is a staircase of \(1/r\) curves joined by flat segments. <strong>Homework 6 P1</strong> is the same with a solid aluminum sphere \(-q\) (radius \(a\)) inside a copper shell (\(b\) to \(c\)) with \(+Q\), \(|Q| \gt |q|\): \(E_r = k(Q-q)/r^2\) for \(r \gt c\); 0 in the copper; \(-kq/r^2\) for \(a \lt r \lt b\) (inward); 0 inside the aluminum. \(V = k(Q-q)/r\) outside; \(k(Q-q)/c\) in the copper; \(k(Q-q)/c - kq(1/r - 1/b)\) in the gap; \(k(Q-q)/c - kq(1/a - 1/b)\) throughout the aluminum. Equipotentials: each conductor's entire volume, and every concentric sphere in the gap and outside. Field lines: from the copper's inner surface inward to the aluminum (the gap), and from the copper's outer surface to infinity; none inside either metal; the lines in the gap are denser (\(|q|\) over a smaller area) than the ones just outside \(c\) only if \(q/b^2 \gt (Q-q)/c^2\), so compare before you answer.</p></div>
+<p>The graph of \(V(r)\) is a staircase of \(1/r\) curves joined by flat segments. <strong>Homework 6 P1</strong> is the same with a solid aluminum sphere \(-q\) (radius \(a\)) inside a copper shell (\(b\) to \(c\)) with \(+Q\), \(|Q| \gt |q|\): \(E_r = k(Q-q)/r^2\) for \(r \gt c\); 0 in the copper; \(-kq/r^2\) for \(a \lt r \lt b\) (inward); 0 inside the aluminum. \(V = k(Q-q)/r\) outside; \(k(Q-q)/c\) in the copper; \(k(Q-q)/c - kq(1/r - 1/b)\) in the gap; \(k(Q-q)/c - kq(1/a - 1/b)\) throughout the aluminum. Equipotentials: each conductor's entire volume, and every concentric sphere in the gap and outside. Field lines: from the copper's inner surface inward to the aluminum (the gap), and from the copper's outer surface to infinity; none inside either metal; the lines in the gap are denser (\(|q|\) over a smaller area) than the ones just outside \(c\) only if \(q/b^2 \gt (Q-q)/c^2\), so compare before you answer.</p>
+<div class="sym"><div class="st">What each letter means</div><dl><dt>\(q\)</dt><dd>the point charge at the center (or the inner sphere's charge), C</dd><dt>\(Q\)</dt><dd>the net charge on the outer shell, C</dd><dt>\(a_1,\ a_2,\ a_3,\ a_4\)</dt><dd>the radii of the four metal surfaces, inside to outside, m</dd><dt>\(a,\ b,\ c\)</dt><dd>in Homework 6 P1: the inner sphere's radius and the shell's inner and outer radii, m</dd><dt>\(E_r\)</dt><dd>the radial field component, N/C; negative means inward</dd><dt>\(V\)</dt><dd>the potential in each region, V, with \(V = 0\) at infinity</dd><dt>\(r\prime\)</dt><dd>the dummy radius in the integral</dd><dt>\(k\)</dt><dd>Coulomb\'s constant, \(8.99\times10^{9}\ \mathrm{N\,m^2/C^2}\); it converts "charges and a distance" into newtons. Same thing as \(1/(4\pi\varepsilon_0)\)</dd></dl></div>
+</div>
 
 <div class="ex"><div class="t">Potential inside an insulating sphere</div><div class="src">Lecture 6, Example 6.7 · Homework 6-style</div>
 <p>Insulator of radius \(a\), charge \(+Q\) uniformly through the volume. Outside: \(V = kQ/r\). Inside, \(E = kQr/a^3\), so</p>
 \[ V(r) = V(a) - \int_a^r\frac{kQr'}{a^3}dr' = \frac{kQ}{a} - \frac{kQ}{2a^3}(r^2 - a^2) = \frac{kQ}{2a^3}\left(3a^2 - r^2\right) \]
+<div class="sym"><div class="st">What each letter means</div><dl><dt>\(V(r)\)</dt><dd>the potential at radius \(r\) inside the insulator, V</dd><dt>\(V(a)\)</dt><dd>the potential at the surface, \(kQ/a\)</dd><dt>\(a\)</dt><dd>the insulator's radius, m</dd><dt>\(Q\)</dt><dd>its total charge, spread uniformly through the volume, C</dd><dt>\(r\prime,\ dr\prime\)</dt><dd>the dummy radius integrated from the surface \(a\) inward to \(r\), and its tiny step</dd><dt>\(kQr\prime/a^3\)</dt><dd>the field inside a uniform insulator (grows linearly with radius)</dd><dt>\(k\)</dt><dd>Coulomb\'s constant, \(8.99\times10^{9}\ \mathrm{N\,m^2/C^2}\); it converts "charges and a distance" into newtons. Same thing as \(1/(4\pi\varepsilon_0)\)</dd></dl></div>
+
 <p>At the center \(V = \tfrac32 kQ/a\), 50% more than at the surface. The equipotential picture for a spherical insulator is a set of concentric circles that get <em>closer together</em> as you go out to the surface (field grows with \(r\) inside) and then spread apart outside (field falls as \(1/r^2\)).</p></div>
 
 <div class="ex"><div class="t">Conducting cylinder and pipe with a chosen reference</div><div class="src">Homework 6, Problems 2 and 3</div>
 <p><strong>P2:</strong> aluminum cylinder radius \(R\), charge per length \(\lambda\), with \(V = 0\) at \(r = 2R\). \(E_r = \lambda/(2\pi\varepsilon_0 r)\) for \(r \gt R\), 0 inside. Outside: \(V(r) = -\int_{2R}^{r}\frac{\lambda}{2\pi\varepsilon_0 r'}dr' = -\frac{\lambda}{2\pi\varepsilon_0}\ln\frac{r}{2R}\). Inside (and on the surface): constant at \(V(R) = -\frac{\lambda}{2\pi\varepsilon_0}\ln\frac12 = +\frac{\lambda}{2\pi\varepsilon_0}\ln 2\). Graphs: \(E\) is zero then \(1/r\); \(V\) is flat then a falling logarithm. Equipotentials are coaxial cylinders (and the whole interior); field lines are radial from the surface to infinity, densest just outside the cylinder.</p>
 <p><strong>P3:</strong> pipe of radius \(a\) with surface density \(\sigma\), so \(\lambda = 2\pi a\sigma\) and \(E_r = \sigma a/(\varepsilon_0 r)\) outside, 0 inside. With \(V = 0\) at \(3a\): \(V(r) = -\frac{\sigma a}{\varepsilon_0}\ln\frac{r}{3a}\) outside; inside, constant \(= -\frac{\sigma a}{\varepsilon_0}\ln\frac13 = \frac{\sigma a}{\varepsilon_0}\ln 3\). To move the zero to \(r = 2a\) instead, add \(V_{\text{shift}} = -V_{\text{old}}(2a) = +\frac{\sigma a}{\varepsilon_0}\ln\frac23\) to every value.</p>
-<p><strong>P4 (cylindrical capacitor):</strong> inner conductor radius \(a\) with \(+Q\), outer shell \(b\) to \(c\) with \(-Q\), length \(L\). Field only in the gap: \(E = Q/(2\pi\varepsilon_0 L r)\). \(|\Delta V| = \frac{Q}{2\pi\varepsilon_0 L}\ln\frac ba\). Only \(a\) and \(b\) matter; \(c\) drops out.</p></div>
+<p><strong>P4 (cylindrical capacitor):</strong> inner conductor radius \(a\) with \(+Q\), outer shell \(b\) to \(c\) with \(-Q\), length \(L\). Field only in the gap: \(E = Q/(2\pi\varepsilon_0 L r)\). \(|\Delta V| = \frac{Q}{2\pi\varepsilon_0 L}\ln\frac ba\). Only \(a\) and \(b\) matter; \(c\) drops out.</p>
+<div class="sym"><div class="st">What each letter means</div><dl><dt>\(R,\ a\)</dt><dd>the radius of the conducting cylinder or pipe, m</dd><dt>\(\lambda\)</dt><dd>linear charge density: charge per unit length along a line, rod, or ring, in C/m (\(\lambda = Q/L\) when uniform)</dd><dt>\(\sigma\)</dt><dd>surface charge density: charge per unit area on a sheet or surface, in C/m² (\(\sigma = Q/A\) when uniform)</dd><dt>\(E_r\)</dt><dd>the radial field, N/C</dd><dt>\(r\)</dt><dd>perpendicular distance from the axis, m</dd><dt>\(V(r)\)</dt><dd>the potential as a function of \(r\), with \(V = 0\) at the stated reference radius</dd><dt>\(V_{\text{shift}}\)</dt><dd>the constant you add to every value to move the zero somewhere else</dd><dt>\(Q,\ L\)</dt><dd>the charge and length of the cylindrical capacitor, C and m</dd><dt>\(a,\ b,\ c\)</dt><dd>inner conductor radius, and the outer shell's inner and outer radii, m</dd><dt>\(|\Delta V|\)</dt><dd>the size of the potential difference between the conductors, V</dd><dt>\(\varepsilon_0\)</dt><dd>permittivity of free space, \(8.85\times10^{-12}\ \mathrm{C^2/(N\,m^2)}\); a constant of nature, given on the equation sheet</dd></dl></div>
+</div>
 
 <h3 id="s7-5">7.5 Equipotential surfaces and conductors</h3>
 <div class="key"><div class="t">Reading equipotential maps</div>
@@ -3059,7 +3290,9 @@ window.MathJax = {
 <li>Drawn at equal \(\Delta V\) steps, <strong>closer spacing means stronger field</strong> (like contour lines on a topographic map: closer lines, steeper hill).</li>
 <li>Potential difference between two points = (number of equipotential lines crossed) × (step size), regardless of the path length.</li>
 <li>Every conductor in equilibrium is one equipotential (surface and interior), and \(\vec E\) meets its surface at 90°.</li>
-</ul></div>
+</ul>
+<div class="sym"><div class="st">What each letter means</div><dl><dt>\(V\)</dt><dd>the potential, V; an equipotential is a surface where it has one value</dd><dt>\(\Delta V\)</dt><dd>the potential difference between two points, or the step between adjacent drawn lines, V</dd><dt>\(q\)</dt><dd>a charge moved along the surface, C</dd><dt>\(\Delta U\)</dt><dd>its change in potential energy, \(q\Delta V\), J</dd><dt>\(\vec E\)</dt><dd>the electric field vector: the force per coulomb that a positive test charge would feel at that point, in N/C (= V/m)</dd></dl></div>
+</div>
 
 
 <div class="why"><div class="t">Why equipotentials are perpendicular to the field, and why a conductor is one big equipotential</div>
@@ -4369,6 +4602,8 @@ window.MathJax = {
 <h3 id="s8-1">8.1 Capacitors and capacitance</h3>
 <div class="key"><div class="t">Definition</div>
 \[ Q = C\,\Delta V \qquad\Longleftrightarrow\qquad C = \frac{Q}{\Delta V} \]
+<div class="sym"><div class="st">What each letter means</div><dl><dt>\(Q\)</dt><dd>the magnitude of the charge on one plate, C (the other plate holds \(-Q\); the net charge of the whole capacitor is zero)</dd><dt>\(C\)</dt><dd>capacitance, in farads (1 F = 1 C/V): how much charge the device stores per volt</dd><dt>\(\Delta V\)</dt><dd>the potential difference between the two plates, V (often written just \(V\))</dd><dt>\(\Longleftrightarrow\)</dt><dd>"is the same statement as": both forms say charge and voltage are proportional</dd></dl></div>
+
 <p>Units: farad, \(1\ \mathrm{F} = 1\ \mathrm{C/V}\). Practical values are pF to μF. \(Q\) is the magnitude of the charge on <em>one</em> plate (the plates hold \(+Q\) and \(-Q\)); \(\Delta V\) is the potential difference between them. Lecture 7's key points: \(+Q\) and \(-Q\) always have the same magnitude; charge does not jump across the gap, it is moved around the outside circuit; \(C\) is a positive number that depends only on geometry, "just like \(k\) for a spring."</p>
 <p><strong>Method for any geometry:</strong> put \(\pm Q\) on the conductors, find \(E\) between them with Gauss's law, integrate to get \(\Delta V\), and take the ratio \(Q/\Delta V\); the \(Q\) cancels.</p></div>
 
@@ -4396,6 +4631,8 @@ window.MathJax = {
 <p class="f">ΔV = E d = Qd/(ε₀A)</p>
 <p class="f">C = Q/ΔV = ε₀A/d</p>
 <p>Bigger area or smaller gap means bigger capacitance. Edge effects are ignored (the "infinite plane approximation").</p>
+<div class="sym"><div class="st">What each letter means</div><dl><dt>\(\sigma\)</dt><dd>the charge per unit area on each plate, \(Q/A\), C/m²</dd><dt>\(E\)</dt><dd>the uniform field in the gap, N/C; the two plates' sheet fields add there and cancel outside</dd><dt>\(Q\)</dt><dd>the charge on one plate, C</dd><dt>\(A\)</dt><dd>the area of one plate, m²</dd><dt>\(d\)</dt><dd>the gap between the plates, m</dd><dt>\(\Delta V\)</dt><dd>the voltage between the plates, \(Ed\), V</dd><dt>\(C\)</dt><dd>capacitance, in farads (1 F = 1 C/V): how much charge the device stores per volt</dd><dt>\(\varepsilon_0\)</dt><dd>permittivity of free space, \(8.85\times10^{-12}\ \mathrm{C^2/(N\,m^2)}\); a constant of nature, given on the equation sheet</dd></dl></div>
+
 </div>
 </figure>
 
@@ -4418,6 +4655,8 @@ window.MathJax = {
 <div class="ex"><div class="t">Cylindrical capacitor from nested shells</div><div class="src">Lecture 7, Example 7.2 · Spring 2015 Q19–20 · Homework 6, Problem 4</div>
 <p>Two conducting cylindrical shells, inner one with outer radius \(a_2\), outer one with inner radius \(a_3\), length \(L \gg a_i\). Put \(-Q\) on the inner and \(+Q\) on the outer. Only the surfaces facing the gap matter: Gauss's law in the gap gives \(E = Q/(2\pi\varepsilon_0 L r)\), radially inward. \(|\Delta V| = \dfrac{Q}{2\pi\varepsilon_0L}\ln\dfrac{a_3}{a_2}\), so</p>
 \[ C = \frac{2\pi\varepsilon_0 L}{\ln(a_3/a_2)} \]
+<div class="sym"><div class="st">What each letter means</div><dl><dt>\(C\)</dt><dd>capacitance, in farads (1 F = 1 C/V): how much charge the device stores per volt</dd><dt>\(L\)</dt><dd>the length of the cylinders, m (assumed much larger than the radii)</dd><dt>\(a_2\)</dt><dd>the outer radius of the inner conductor, m</dd><dt>\(a_3\)</dt><dd>the inner radius of the outer conductor, m; only the two surfaces facing the gap matter</dd><dt>\(\ln(a_3/a_2)\)</dt><dd>natural log of the radius ratio; a small gap makes it small and \(C\) large</dd><dt>\(Q,\ E,\ r\)</dt><dd>the charge on each conductor, the field in the gap at radius \(r\)</dd><dt>\(\varepsilon_0\)</dt><dd>permittivity of free space, \(8.85\times10^{-12}\ \mathrm{C^2/(N\,m^2)}\); a constant of nature, given on the equation sheet</dd></dl></div>
+
 <p>Limiting cases (the lecture's checks): longer \(L\) gives bigger \(C\); \(a_2 \to a_3\) makes the log go to zero and \(C\) blow up (a tiny gap is a huge capacitor). <strong>Spring 2015 Q19:</strong> decreasing the outer shell's inner radius \(r_2\) (with \(r_1\) fixed) shrinks \(\ln(r_2/r_1)\), so \(C\) <em>increases</em>. <strong>Q20:</strong> filling the gap with gasoline (\(\kappa = 2\)) doubles \(C\). (The outer radius \(r_3\) never enters.)</p></div>
 
 
@@ -4488,6 +4727,8 @@ window.MathJax = {
 <p class="f">|ΔV| = ∫ₐᵇ E dr = (Q/2πε₀L) ln(b/a)</p>
 <p class="f">C = Q/|ΔV| = 2πε₀L / ln(b/a)</p>
 <p>Only the two facing surfaces matter; the tube's outer radius never appears (Spring 2015 Q19, Homework 6 P4).</p>
+<div class="sym"><div class="st">What each letter means</div><dl><dt>\(a,\ b\)</dt><dd>radius of the inner conductor's surface and of the tube's inner surface, m</dd><dt>\(L\)</dt><dd>the length of the capacitor, m</dd><dt>\(\ell\)</dt><dd>the length of the (shorter) Gaussian cylinder, m; the charge it encloses is \(Q\ell/L\)</dd><dt>\(Q\)</dt><dd>the charge on the inner conductor, C</dd><dt>\(E,\ r\)</dt><dd>the field in the gap and the radius at which it is evaluated</dd><dt>\(|\Delta V|\)</dt><dd>the voltage between inner and outer conductors, V</dd><dt>\(C\)</dt><dd>capacitance, in farads (1 F = 1 C/V): how much charge the device stores per volt</dd><dt>\(\varepsilon_0\)</dt><dd>permittivity of free space, \(8.85\times10^{-12}\ \mathrm{C^2/(N\,m^2)}\); a constant of nature, given on the equation sheet</dd></dl></div>
+
 </div>
 </figure>
 <h3 id="s8-2">8.2 Capacitors in series and in parallel</h3>
@@ -4501,6 +4742,8 @@ window.MathJax = {
 <tr><td>Equivalent</td><td>\(C_{\text{eq}} = C_1 + C_2 + \cdots\) (bigger than any one)</td><td>\(\dfrac{1}{C_{\text{eq}}} = \dfrac1{C_1} + \dfrac1{C_2} + \cdots\) (smaller than any one); two in series: \(\dfrac{C_1C_2}{C_1+C_2}\)</td></tr>
 <tr><td>Largest share</td><td>largest \(C\) takes the most charge</td><td>smallest \(C\) takes the most voltage</td></tr>
 </tbody></table></div>
+<div class="sym"><div class="st">What each letter means</div><dl><dt>\(C_1,\ C_2,\ C_i\)</dt><dd>the individual capacitances, F; \(i\) is a label for "any one of them"</dd><dt>\(Q_i,\ \Delta V_i\)</dt><dd>the charge on and the voltage across capacitor \(i\)</dd><dt>\(Q,\ \Delta V\)</dt><dd>the total charge supplied and the total voltage across the combination</dd><dt>\(C_{\text{eq}}\)</dt><dd>the equivalent capacitance: one capacitor that would take the same total charge at the same total voltage, F</dd><dt>\(\sum\)</dt><dd>add up over all the capacitors in the combination</dd></dl></div>
+
 <p>Compare resistors (Chapter 10, not on this exam): capacitor rules are the <em>reverse</em> of resistor rules.</p></div>
 
 <div class="why"><div class="t">Why series capacitors share charge and parallel capacitors share voltage</div>
@@ -4515,6 +4758,8 @@ window.MathJax = {
 <li><strong>Unwind.</strong> Go back one step at a time. A series combination: each member gets the combination's \(Q\); then \(V_i = Q/C_i\). A parallel combination: each member gets the combination's \(V\); then \(Q_i = C_iV\).</li>
 <li><strong>Check:</strong> voltages around any loop add up to the battery's; charges into a junction of a series string are equal; \(\sum \tfrac12 C_iV_i^2 = \tfrac12C_{\text{eq}}V^2\).</li>
 </ol>
+<div class="sym"><div class="st">What each letter means</div><dl><dt>\(C_{\text{eq}}\)</dt><dd>the single equivalent capacitance of the whole network, F</dd><dt>\(V_{\text{battery}},\ V\)</dt><dd>the battery's voltage, V</dd><dt>\(Q_{\text{tot}}\)</dt><dd>the total charge the battery moves onto the network, C</dd><dt>\(Q_i,\ V_i,\ C_i\)</dt><dd>the charge, voltage, and capacitance of capacitor number \(i\)</dd><dt>\(\tfrac12C_iV_i^2\)</dt><dd>the energy stored in capacitor \(i\), J; the sum over all of them equals the energy of the equivalent capacitor</dd></dl></div>
+
 <p>If a problem gives you one capacitor's charge instead of the battery voltage (Spring 2014 Q16–19), start there and unwind <em>outward</em>: \(V\) of that capacitor gives \(V\) of its parallel partners, then \(Q\) of the series string it belongs to, and so on.</p></div>
 
 <figure class="fig">
@@ -4637,8 +4882,12 @@ window.MathJax = {
 <h3 id="s8-3">8.3 Energy stored in a capacitor</h3>
 <div class="key"><div class="t">Three equivalent forms, and the energy density</div>
 \[ U = \int_0^Q V\,dq = \int_0^Q\frac{q}{C}\,dq = \frac{Q^2}{2C} = \frac12C(\Delta V)^2 = \frac12Q\,\Delta V \]
+<div class="sym"><div class="st">What each letter means</div><dl><dt>\(U\)</dt><dd>the energy stored in the capacitor, J</dd><dt>\(Q\)</dt><dd>the final charge on a plate, C</dd><dt>\(q,\ dq\)</dt><dd>the charge already on the plate part-way through charging, and the next tiny bit moved, C</dd><dt>\(V = q/C\)</dt><dd>the voltage at that moment, which grows as charge accumulates</dd><dt>\(C\)</dt><dd>capacitance, in farads (1 F = 1 C/V): how much charge the device stores per volt</dd><dt>\(\Delta V\)</dt><dd>the final voltage, V</dd><dt>\(\tfrac12\)</dt><dd>the factor that appears because the average voltage during charging is half the final one</dd></dl></div>
+
 <p>The factor \(\tfrac12\) is there because the voltage grows from 0 to \(\Delta V\) as the charge is moved (Lecture 7: "\(U\) is the work it took to put all the charge on the two plates"). Energy per unit volume stored in the field:</p>
 \[ u = \frac{U}{\text{volume}} = \frac{1}{2}\varepsilon_0E^2 \]
+<div class="sym"><div class="st">What each letter means</div><dl><dt>\(u\)</dt><dd>energy density: energy stored per cubic meter of field, J/m³</dd><dt>\(U\)</dt><dd>the total stored energy, J</dd><dt>\(\text{volume}\)</dt><dd>the volume of the region where the field exists (for parallel plates, area × gap \(= Ad\)), m³</dd><dt>\(E\)</dt><dd>magnitude of the electric field, in N/C (the same unit as V/m)</dd><dt>\(\varepsilon_0\)</dt><dd>permittivity of free space, \(8.85\times10^{-12}\ \mathrm{C^2/(N\,m^2)}\); a constant of nature, given on the equation sheet</dd></dl></div>
+
 <p>Pick the form that uses what is held fixed: \(Q^2/2C\) when the charge is fixed (battery removed), \(\tfrac12CV^2\) when the voltage is fixed (battery connected).</p></div>
 
 <div class="why"><div class="t">Why the stored energy is half of \(QV\), and why it lives in the field</div>
@@ -4661,6 +4910,8 @@ window.MathJax = {
 <tr><td>Insert dielectric \(\kappa\) or reduce gap: \(C \to C' \gt C\)</td><td>\(\Delta V' = Q/C'\) drops; \(E\) drops; \(U' = Q^2/2C'\) <strong>drops</strong> (the slab is pulled in; energy goes to whatever holds it)</td><td>\(Q' = C'\Delta V\) rises; \(E = \Delta V/d\) unchanged (full dielectric); \(U' = \tfrac12C'\Delta V^2\) <strong>rises</strong> (battery pumps in more charge)</td></tr>
 <tr><td>Formula to use for \(U\)</td><td>\(Q^2/2C\)</td><td>\(\tfrac12CV^2\)</td></tr>
 </tbody></table></div>
+<div class="sym"><div class="st">What each letter means</div><dl><dt>\(Q,\ \Delta V,\ C,\ U,\ E\)</dt><dd>the original charge, voltage, capacitance, stored energy, and gap field</dd><dt>\(Q\prime,\ \Delta V\prime,\ C\prime,\ U\prime\)</dt><dd>the same quantities <em>after</em> the change (the prime means "new value")</dd><dt>\(\kappa\)</dt><dd>dielectric constant of the insulating material (a pure number, \(\ge 1\); 1 for vacuum or air)</dd><dt>\(d\)</dt><dd>the plate gap, m</dd></dl></div>
+
 <p>\(C\) itself never depends on whether the battery is connected: it is geometry plus dielectric.</p></div>
 
 <div class="ex"><div class="t">Sliding an uncharged conducting slab into the gap</div><div class="src">Lecture 7 clicker sequence · Spring 2015 Q16–18</div>
@@ -4671,11 +4922,15 @@ window.MathJax = {
 <li>\(\Delta V = E_0(d - t)\): the integral of \(E\) skips the slab. \(\Delta V\) <em>decreases</em>.</li>
 <li>\(C_1 = Q_0/\Delta V = \varepsilon_0A/(d-t) \gt C_0\). The slab position does not matter, only its thickness. (Lecture 7: "charge did not change but \(V\) did"; with the battery connected instead, \(V\) is fixed and \(Q\) increases, \(Q_1 \gt Q_0\), same \(C_1\) either way: "\(C\) depends only on geometry!")</li>
 </ol>
+<div class="sym"><div class="st">What each letter means</div><dl><dt>\(Q_0,\ Q_1\)</dt><dd>the plate charge before and after the slab is inserted, C</dd><dt>\(d\)</dt><dd>the original gap between the plates, m</dd><dt>\(t\)</dt><dd>the thickness of the conducting slab, m</dd><dt>\(A\)</dt><dd>the plate area, m²</dd><dt>\(E_0\)</dt><dd>the field in the air gaps, \(Q_0/(\varepsilon_0A)\), N/C</dd><dt>\(\Delta V\)</dt><dd>the voltage between the plates after insertion, V</dd><dt>\(C_0,\ C_1\)</dt><dd>the capacitance before and after, F</dd><dt>\(\varepsilon_0\)</dt><dd>permittivity of free space, \(8.85\times10^{-12}\ \mathrm{C^2/(N\,m^2)}\); a constant of nature, given on the equation sheet</dd></dl></div>
+
 <p><strong>Spring 2015 Q16–17:</strong> \(t = d/2\) gives \(C' = \varepsilon_0A/(d/2) = 2C\). Charge fixed, so \(U' = Q^2/2C' = U/2\): \(U' \lt U\). <strong>Q18:</strong> a charge can be moved without external work only along an equipotential, i.e. parallel to the plates.</p></div>
 
 <div class="key"><div class="t">Dielectrics</div>
 <p>An insulating material of dielectric constant \(\kappa \ge 1\) filling the gap:</p>
 \[ E = \frac{E_0}{\kappa}, \qquad C = \kappa C_0, \qquad \varepsilon_0\oint\kappa\vec E\cdot d\vec A = q_{\text{free}} \]
+<div class="sym"><div class="st">What each letter means</div><dl><dt>\(E,\ E_0\)</dt><dd>the field inside the dielectric, and the field the same plate charge would make with an empty gap, N/C</dd><dt>\(\kappa\)</dt><dd>dielectric constant of the insulating material (a pure number, \(\ge 1\); 1 for vacuum or air)</dd><dt>\(C,\ C_0\)</dt><dd>the capacitance with and without the dielectric, F</dd><dt>\(\oint\)</dt><dd>integral over a <em>closed</em> surface (one with an inside and an outside, like a balloon); the circle on the sign is what marks it as closed</dd><dt>\(q_{\text{free}}\)</dt><dd>the free charge enclosed (the charge on the plates), C; the dielectric's own bound charge is accounted for by \(\kappa\)</dd><dt>\(\sigma,\ \sigma_i\)</dt><dd>the plate's surface charge density and the induced (bound) density on the dielectric's faces, C/m²</dd><dt>\(\varepsilon_0\)</dt><dd>permittivity of free space, \(8.85\times10^{-12}\ \mathrm{C^2/(N\,m^2)}\); a constant of nature, given on the equation sheet</dd></dl></div>
+
 <p><strong>Molecular model (8.5):</strong> the field polarizes the molecules (aligns permanent dipoles or induces dipoles). The net effect is an induced surface charge \(-\sigma_i\) on the dielectric face next to the \(+\) plate and \(+\sigma_i\) next to the \(-\) plate, partially cancelling the plate charge. The field inside is \(E = (\sigma - \sigma_i)/\varepsilon_0 = \sigma/(\kappa\varepsilon_0)\), so \(\sigma_i = \sigma(1 - 1/\kappa)\). A conductor is the \(\kappa \to \infty\) limit (complete cancellation, \(E = 0\)).</p></div>
 
 <div class="why"><div class="t">The mechanism of a dielectric, and why the battery decides what happens</div>
@@ -4723,7 +4978,9 @@ window.MathJax = {
 </ol>
 <div class="check" data-answer="11.3" data-tol="0.03"><label for="check-in-32">Your answer, ΔV with the half slab (Spring 2014 Q20):</label><input type="text" id="check-in-32" inputmode="decimal" placeholder="e.g. 0.47 or 3.35e5" autocomplete="off"><span class="small">V</span><button type="button" id="check-btn-32">Check</button><span class="fb" aria-live="polite"></span></div>
 
-<p><strong>Fall 2018 Q26:</strong> bottom half \(\kappa_1\), top half \(\kappa_2\), each of thickness \(d/2\): \(C_1 = \kappa_1\varepsilon_0A/(d/2) = 2\kappa_1C_0\), \(C_2 = 2\kappa_2C_0\); in series, \(C = \dfrac{(2\kappa_1C_0)(2\kappa_2C_0)}{2\kappa_1C_0 + 2\kappa_2C_0} = \dfrac{2\kappa_1\kappa_2}{\kappa_1+\kappa_2}C_0\). (If the two dielectrics were side by side, each covering half the area, they would be in parallel: \(C = \tfrac12(\kappa_1+\kappa_2)C_0\).) Sanity check: \(\kappa_1 = \kappa_2 = \kappa\) gives \(\kappa C_0\) in both cases.</p></div>
+<p><strong>Fall 2018 Q26:</strong> bottom half \(\kappa_1\), top half \(\kappa_2\), each of thickness \(d/2\): \(C_1 = \kappa_1\varepsilon_0A/(d/2) = 2\kappa_1C_0\), \(C_2 = 2\kappa_2C_0\); in series, \(C = \dfrac{(2\kappa_1C_0)(2\kappa_2C_0)}{2\kappa_1C_0 + 2\kappa_2C_0} = \dfrac{2\kappa_1\kappa_2}{\kappa_1+\kappa_2}C_0\). (If the two dielectrics were side by side, each covering half the area, they would be in parallel: \(C = \tfrac12(\kappa_1+\kappa_2)C_0\).) Sanity check: \(\kappa_1 = \kappa_2 = \kappa\) gives \(\kappa C_0\) in both cases.</p>
+<div class="sym"><div class="st">What each letter means</div><dl><dt>\(\kappa_1,\ \kappa_2\)</dt><dd>the dielectric constants of the two slabs</dd><dt>\(d\)</dt><dd>the full gap, m; each slab is \(d/2\) thick</dd><dt>\(A\)</dt><dd>the plate area, m²</dd><dt>\(C_0\)</dt><dd>the empty-gap capacitance, \(\varepsilon_0A/d\)</dd><dt>\(C_1,\ C_2\)</dt><dd>the capacitance of each half treated as its own capacitor, F</dd><dt>\(C\)</dt><dd>the capacitance of the combination, F</dd><dt>\(\varepsilon_0\)</dt><dd>permittivity of free space, \(8.85\times10^{-12}\ \mathrm{C^2/(N\,m^2)}\); a constant of nature, given on the equation sheet</dd></dl></div>
+</div>
 
 <div class="ex"><div class="t">Full dielectric with the battery removed</div><div class="src">Fall 2015 Q16–18</div>
 <p>\(C_0 = 1.61\times10^{-11}\ \mathrm{F}\), charged to \(85.5\ \mathrm{V}\) (\(q = 1.38\times10^{-9}\ \mathrm{C}\)), battery disconnected, then a slab of \(\kappa = 2.65\) fills the gap. \(C_1 = \kappa C_0 = 4.27\times10^{-11}\ \mathrm{F}\). Charge is fixed, so \(V_1 = q/C_1 = 85.5/2.65 = 32.3\ \mathrm{V}\), and \(U_1 = q^2/2C_1 = U_0/\kappa\): \(U_0 \gt U_1\).</p>
@@ -5327,46 +5584,46 @@ window.MathJax = {
 
 <h3>Electric force and electric fields</h3>
 <div class="tw"><table>
-<thead><tr><th>On the sheet</th><th>What it is</th><th>Use it when</th></tr></thead>
+<thead><tr><th>On the sheet</th><th>What it is</th><th>Use it when</th><th>Each letter</th></tr></thead>
 <tbody>
-<tr><td>\(\vec F_{12} = \dfrac{kq_1q_2}{r^2}\hat r\)</td><td>Coulomb's law</td><td>force between two point charges; sign of \(q_1q_2\) sets attraction/repulsion</td></tr>
-<tr><td>\(q = Ne\)</td><td>quantization</td><td>counting electrons</td></tr>
-<tr><td>\(\vec F = q\vec E\)</td><td>definition of \(\vec E\)</td><td>force on a charge in a known field; negative q reverses direction</td></tr>
-<tr><td>\(\vec E = \dfrac{kq}{r^2}\hat r\); \(\vec E = \sum\dfrac{kq_i}{r_i^2}\hat r_i\)</td><td>point-charge field and superposition</td><td>a few point charges</td></tr>
-<tr><td>\(\vec E = \int d\vec E = \int\dfrac{k\,dq}{r^2}\hat r\)</td><td>continuous distribution</td><td>rods, rings, arcs, disks</td></tr>
-<tr><td>\(\vec p = q\vec d\); \(\vec\tau = \vec p\times\vec E\); \(U = -\vec p\cdot\vec E\)</td><td>dipole</td><td>torque and energy of a dipole in a field</td></tr>
-<tr><td>\(\Phi = \int\vec E\cdot d\vec A\); \(\oint\vec E\cdot d\vec A = q_{\text{enc}}/\varepsilon_0\)</td><td>flux; Gauss's law</td><td>flux through any surface; \(E\) for symmetric charge</td></tr>
-<tr><td>\(E = \dfrac{q}{4\pi\varepsilon_0r^2}\)</td><td>spherical symmetry (outside)</td><td>point charge, sphere, shell, with \(q = q_{\text{enc}}\)</td></tr>
-<tr><td>\(E = \dfrac{\lambda}{2\pi\varepsilon_0r}\)</td><td>cylindrical symmetry (outside)</td><td>infinite line, rod, tube, with \(\lambda = \lambda_{\text{enc}}\)</td></tr>
-<tr><td>\(E = \dfrac{\sigma}{2\varepsilon_0}\)</td><td>infinite sheet</td><td>each free sheet, each side, any distance</td></tr>
-<tr><td>\(E_{\text{cond}} = \dfrac{\sigma}{\varepsilon_0}\)</td><td>just outside a conductor</td><td>surface field from local density, or density from field</td></tr>
-<tr><td>\(\lambda = Q/L = dq/d\ell\); \(\sigma = Q/A = dq/dA\); \(\rho = Q/V = dq/dV\)</td><td>densities</td><td>converting total charge to density and back; building \(dq\)</td></tr>
+<tr><td>\(\vec F_{12} = \dfrac{kq_1q_2}{r^2}\hat r\)</td><td>Coulomb's law</td><td>force between two point charges; sign of \(q_1q_2\) sets attraction/repulsion</td><td>\(\vec F_{12}\) force by 1 on 2 (N); \(k\) Coulomb\'s constant; \(q_1, q_2\) the charges with signs (C); \(r\) their separation (m); \(\hat r\) unit vector from 1 to 2</td></tr>
+<tr><td>\(q = Ne\)</td><td>quantization</td><td>counting electrons</td><td>\(q\) total charge (C); \(N\) number of electrons or protons (no unit); \(e\) elementary charge \(1.60\times10^{-19}\) C</td></tr>
+<tr><td>\(\vec F = q\vec E\)</td><td>definition of \(\vec E\)</td><td>force on a charge in a known field; negative q reverses direction</td><td>\(\vec F\) force (N); \(q\) the charge that feels it (C, with sign); \(\vec E\) the field at its location (N/C)</td></tr>
+<tr><td>\(\vec E = \dfrac{kq}{r^2}\hat r\); \(\vec E = \sum\dfrac{kq_i}{r_i^2}\hat r_i\)</td><td>point-charge field and superposition</td><td>a few point charges</td><td>\(q\) source charge (C); \(r\) distance from it to the point (m); \(\hat r\) unit vector from source to point; \(q_i, r_i, \hat r_i\) the same for each charge \(i\); \(\sum\) add as vectors</td></tr>
+<tr><td>\(\vec E = \int d\vec E = \int\dfrac{k\,dq}{r^2}\hat r\)</td><td>continuous distribution</td><td>rods, rings, arcs, disks</td><td>\(dq\) tiny piece of charge, = \(\lambda\,dx\), \(\sigma\,dA\), or \(\rho\,dV\) (C); \(d\vec E\) its field; \(r\) its distance to the point; \(\int\) add over all pieces</td></tr>
+<tr><td>\(\vec p = q\vec d\); \(\vec\tau = \vec p\times\vec E\); \(U = -\vec p\cdot\vec E\)</td><td>dipole</td><td>torque and energy of a dipole in a field</td><td>\(\vec p\) dipole moment (C·m); \(q\) size of each charge; \(\vec d\) displacement from \(-q\) to \(+q\) (m); \(\vec\tau\) torque (N·m); \(U\) potential energy (J); \(\vec E\) the field</td></tr>
+<tr><td>\(\Phi = \int\vec E\cdot d\vec A\); \(\oint\vec E\cdot d\vec A = q_{\text{enc}}/\varepsilon_0\)</td><td>flux; Gauss's law</td><td>flux through any surface; \(E\) for symmetric charge</td><td>\(\Phi\) flux (N·m²/C); \(d\vec A\) surface patch, along its normal (m²); \(\oint\) over a closed surface; \(q_{\text{enc}}\) charge inside (C); \(\varepsilon_0\) permittivity constant</td></tr>
+<tr><td>\(E = \dfrac{q}{4\pi\varepsilon_0r^2}\)</td><td>spherical symmetry (outside)</td><td>point charge, sphere, shell, with \(q = q_{\text{enc}}\)</td><td>\(E\) field magnitude (N/C); \(q\) enclosed charge (C); \(r\) distance from the center (m); \(4\pi r^2\) is the Gaussian sphere\'s area</td></tr>
+<tr><td>\(E = \dfrac{\lambda}{2\pi\varepsilon_0r}\)</td><td>cylindrical symmetry (outside)</td><td>infinite line, rod, tube, with \(\lambda = \lambda_{\text{enc}}\)</td><td>\(\lambda\) enclosed charge per length (C/m); \(r\) perpendicular distance from the axis (m); \(2\pi r\) is the circumference of the Gaussian cylinder</td></tr>
+<tr><td>\(E = \dfrac{\sigma}{2\varepsilon_0}\)</td><td>infinite sheet</td><td>each free sheet, each side, any distance</td><td>\(\sigma\) the sheet\'s charge per area (C/m²); the 2 is there because flux leaves through both faces of the pillbox</td></tr>
+<tr><td>\(E_{\text{cond}} = \dfrac{\sigma}{\varepsilon_0}\)</td><td>just outside a conductor</td><td>surface field from local density, or density from field</td><td>\(E_{\text{cond}}\) field just outside the metal (N/C); \(\sigma\) local surface density there (C/m²); no 2 because the field inside the metal is zero</td></tr>
+<tr><td>\(\lambda = Q/L = dq/d\ell\); \(\sigma = Q/A = dq/dA\); \(\rho = Q/V = dq/dV\)</td><td>densities</td><td>converting total charge to density and back; building \(dq\)</td><td>\(Q\) total charge (C); \(L\) length (m); \(A\) area (m²); \(V\) volume (m³, not potential here); \(d\ell, dA, dV\) a tiny length, area, volume</td></tr>
 </tbody></table></div>
 
 <h3>Electric fields and potentials</h3>
 <div class="tw"><table>
-<thead><tr><th>On the sheet</th><th>What it is</th><th>Use it when</th></tr></thead>
+<thead><tr><th>On the sheet</th><th>What it is</th><th>Use it when</th><th>Each letter</th></tr></thead>
 <tbody>
-<tr><td>\(\Delta U = U_f - U_i = -W_{\text{field}}\)</td><td>potential energy from work</td><td>sign questions about who does work</td></tr>
-<tr><td>\(U = \dfrac{kq_1q_2}{r}\)</td><td>pair energy</td><td>one term per pair; sum for a system</td></tr>
-<tr><td>\(V = \dfrac{kq}{r}\); \(V = \sum\dfrac{kq_i}{r_i}\); \(V = \int\dfrac{k\,dq}{r}\)</td><td>potential of point charges / distributions</td><td>scalar sum, zero at infinity</td></tr>
-<tr><td>\(\Delta V = V_f - V_i = -\dfrac{W_{\text{field}}}{q} = -\int_i^f\vec E\cdot d\vec s\)</td><td>potential from field</td><td>uniform field (\(-Ed\)), spheres (\(1/r\)), cylinders (\(\ln\)), conductors (no change)</td></tr>
-<tr><td>\(\vec E = -\nabla V = -\left(\dfrac{\partial V}{\partial x}\hat i + \dfrac{\partial V}{\partial y}\hat j + \dfrac{\partial V}{\partial z}\hat k\right)\)</td><td>field from potential</td><td>slope of a \(V\) graph; \(V(x,y,z)\) formulas</td></tr>
+<tr><td>\(\Delta U = U_f - U_i = -W_{\text{field}}\)</td><td>potential energy from work</td><td>sign questions about who does work</td><td>\(\Delta U\) change in potential energy (J); \(U_i, U_f\) initial and final values; \(W_{\text{field}}\) work done by the electric force (J)</td></tr>
+<tr><td>\(U = \dfrac{kq_1q_2}{r}\)</td><td>pair energy</td><td>one term per pair; sum for a system</td><td>\(U\) potential energy of the pair (J), zero at infinite separation; \(q_1, q_2\) the charges with signs (C); \(r\) their separation (m)</td></tr>
+<tr><td>\(V = \dfrac{kq}{r}\); \(V = \sum\dfrac{kq_i}{r_i}\); \(V = \int\dfrac{k\,dq}{r}\)</td><td>potential of point charges / distributions</td><td>scalar sum, zero at infinity</td><td>\(V\) potential (V = J/C); \(q\) source charge with sign (C); \(r\) distance to the point (m); \(q_i, r_i\) each charge and its distance; \(dq\) a tiny piece of a continuous charge</td></tr>
+<tr><td>\(\Delta V = V_f - V_i = -\dfrac{W_{\text{field}}}{q} = -\int_i^f\vec E\cdot d\vec s\)</td><td>potential from field</td><td>uniform field (\(-Ed\)), spheres (\(1/r\)), cylinders (\(\ln\)), conductors (no change)</td><td>\(\Delta V\) potential difference (V); \(V_i, V_f\) potential at start and end; \(q\) the charge moved (C); \(\vec E\) the field; \(d\vec s\) a tiny step along the path (m)</td></tr>
+<tr><td>\(\vec E = -\nabla V = -\left(\dfrac{\partial V}{\partial x}\hat i + \dfrac{\partial V}{\partial y}\hat j + \dfrac{\partial V}{\partial z}\hat k\right)\)</td><td>field from potential</td><td>slope of a \(V\) graph; \(V(x,y,z)\) formulas</td><td>\(\nabla V\) gradient of \(V\) (V/m); \(\partial V/\partial x\) slope of \(V\) along \(x\) with \(y, z\) fixed; \(\hat i, \hat j, \hat k\) unit vectors along the axes</td></tr>
 </tbody></table></div>
 
 <h3>Capacitance</h3>
 <div class="tw"><table>
-<thead><tr><th>On the sheet</th><th>What it is</th><th>Use it when</th></tr></thead>
+<thead><tr><th>On the sheet</th><th>What it is</th><th>Use it when</th><th>Each letter</th></tr></thead>
 <tbody>
-<tr><td>\(q = C\Delta V\)</td><td>definition</td><td>always</td></tr>
-<tr><td>\(C = \dfrac{\varepsilon_0A}{d}\)</td><td>parallel plates</td><td>conducting slab of thickness t: replace d by \(d - t\)</td></tr>
-<tr><td>\(C = 2\pi\varepsilon_0\dfrac{L}{\ln(b/a)}\)</td><td>coaxial cylinders</td><td>a = inner conductor's outer radius, b = outer conductor's inner radius</td></tr>
-<tr><td>\(C = 4\pi\varepsilon_0\dfrac{ab}{b-a}\)</td><td>concentric spheres</td><td>same convention</td></tr>
-<tr><td>\(C = 4\pi\varepsilon_0R\)</td><td>isolated sphere</td><td>\(b \to \infty\)</td></tr>
-<tr><td>\(C_{\text{eq}} = \sum C_j\); \(\dfrac{1}{C_{\text{eq}}} = \sum\dfrac{1}{C_j}\)</td><td>parallel; series</td><td>parallel share V, series share Q</td></tr>
-<tr><td>\(U = \dfrac{q^2}{2C} = \dfrac12C(\Delta V)^2\)</td><td>stored energy</td><td>first form for fixed q, second for fixed V</td></tr>
-<tr><td>\(u = \dfrac12\varepsilon_0E^2\)</td><td>energy density</td><td>energy per volume in any field</td></tr>
-<tr><td>\(C = \kappa C_0\); \(\varepsilon_0\oint\kappa\vec E\cdot d\vec A = q\)</td><td>dielectric</td><td>field inside reduced by κ; Gauss's law with free charge</td></tr>
+<tr><td>\(q = C\Delta V\)</td><td>definition</td><td>always</td><td>\(q\) charge on one plate (C); \(C\) capacitance (F); \(\Delta V\) voltage between the plates (V)</td></tr>
+<tr><td>\(C = \dfrac{\varepsilon_0A}{d}\)</td><td>parallel plates</td><td>conducting slab of thickness t: replace d by \(d - t\)</td><td>\(A\) area of one plate (m²); \(d\) gap between the plates (m); \(\varepsilon_0\) permittivity constant; \(t\) thickness of an inserted conducting slab (m)</td></tr>
+<tr><td>\(C = 2\pi\varepsilon_0\dfrac{L}{\ln(b/a)}\)</td><td>coaxial cylinders</td><td>a = inner conductor's outer radius, b = outer conductor's inner radius</td><td>\(L\) length of the cylinders (m); \(a\) radius of the inner conductor\'s surface (m); \(b\) radius of the outer conductor\'s inner surface (m); \(\ln\) natural log</td></tr>
+<tr><td>\(C = 4\pi\varepsilon_0\dfrac{ab}{b-a}\)</td><td>concentric spheres</td><td>same convention</td><td>\(a\) inner sphere radius (m); \(b\) outer shell\'s inner radius (m)</td></tr>
+<tr><td>\(C = 4\pi\varepsilon_0R\)</td><td>isolated sphere</td><td>\(b \to \infty\)</td><td>\(R\) radius of the sphere (m)</td></tr>
+<tr><td>\(C_{\text{eq}} = \sum C_j\); \(\dfrac{1}{C_{\text{eq}}} = \sum\dfrac{1}{C_j}\)</td><td>parallel; series</td><td>parallel share V, series share Q</td><td>\(C_{\text{eq}}\) equivalent capacitance of the group (F); \(C_j\) each individual capacitor; \(\sum\) add them all</td></tr>
+<tr><td>\(U = \dfrac{q^2}{2C} = \dfrac12C(\Delta V)^2\)</td><td>stored energy</td><td>first form for fixed q, second for fixed V</td><td>\(U\) stored energy (J); \(q\) plate charge (C); \(C\) capacitance (F); \(\Delta V\) voltage (V)</td></tr>
+<tr><td>\(u = \dfrac12\varepsilon_0E^2\)</td><td>energy density</td><td>energy per volume in any field</td><td>\(u\) energy per cubic meter (J/m³); \(E\) field magnitude (N/C)</td></tr>
+<tr><td>\(C = \kappa C_0\); \(\varepsilon_0\oint\kappa\vec E\cdot d\vec A = q\)</td><td>dielectric</td><td>field inside reduced by κ; Gauss's law with free charge</td><td>\(\kappa\) dielectric constant (no unit, \(\ge 1\)); \(C_0\) capacitance with an empty gap (F); \(q\) the free charge on the plates enclosed by the surface (C)</td></tr>
 </tbody></table></div>
 
 <h3>Constants and geometry (as printed)</h3>
@@ -5395,6 +5652,8 @@ window.MathJax = {
 <tr><td>\(\displaystyle\int r^2\,dr,\ \int r^3\,dr\)</td><td>\(\dfrac{r^3}{3},\ \dfrac{r^4}{4}\)</td><td>\(Q_{\text{enc}}\) for \(\rho\) = const or \(\rho = Ar\) in spheres</td></tr>
 <tr><td>substitution \(x = h\tan\theta\)</td><td>\(dx = h\sec^2\theta\,d\theta\), \(x^2 + h^2 = h^2\sec^2\theta\)</td><td>Lecture 2's line-charge derivation</td></tr>
 </tbody></table></div>
+<div class="sym"><div class="st">Letters in these integrals</div><dl><dt>\(x\)</dt><dd>position along a rod, measured from one end or from the foot of the perpendicular, m</dd><dt>\(h\)</dt><dd>perpendicular distance from the rod or disk to the field point, m</dd><dt>\(a,\ L\)</dt><dd>a rod's length or the distance from its end to the point, m</dd><dt>\(\theta\)</dt><dd>the angle of a charge element seen from the field point or the arc's center</dd><dt>\(\theta_0\)</dt><dd>the total opening angle of an arc</dd><dt>\(r\)</dt><dd>radius or distance from a center or axis, m</dd><dt>\(u\)</dt><dd>a substitution variable that stands in for a messier expression while integrating</dd><dt>\(\rho = Ar\)</dt><dd>a density that grows with radius; \(A\) is a given constant with units C/m⁴</dd></dl></div>
+
 <p class="small">Compiled from: Physics 2112 Fall 2026 syllabus; Lecture Units 1–7 (Coulomb's Law; Electric Fields; Electric Flux and Field Lines; Gauss' Law; Electric Potential Energy; Electric Potential; Conductors and Capacitance); Expert TA Homework 1–7; the course equation sheet; and the Physics 212 exam database papers HE1 Spring 2014, Spring 2015, Fall 2015, Fall 2018. Numbers computed with \(k = 8.99\times10^{9}\) and \(\varepsilon_0 = 8.85\times10^{-12}\).</p>
 </section>
 

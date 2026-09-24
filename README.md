@@ -26,4 +26,7 @@ Contents
 - All four past Hour Exam 1 papers (Spring 2014, Spring 2015, Fall 2015, Fall 2018)
   with click-to-reveal solutions, 99 questions in total
 - A decision map, scaling rules, and a trap list for exam day
+- A "What each letter means" box under every equation (73 in all) naming each
+  symbol and its unit, a symbol glossary in Foundations F.6, and an "Each letter"
+  column in the annotated equation sheet
 - The course equation sheet, annotated, plus the integrals that appear
