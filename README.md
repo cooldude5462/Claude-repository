@@ -37,5 +37,6 @@ Contents
 (electric potential energy and electric potential). The quiz question is a homework
 problem with new numbers, so the page turns each of the eleven Homework 5 and 6 problems
 into a recipe with blank slots, solves it with the printout's numbers, adds practice runs
-with fresh numbers and full answers, ranks the problems by likelihood, gives a memorize
-card (quizzes allow no equation sheet), and ends with a ten-problem timed drill.
+with fresh numbers and full answers, ranks the problems by likelihood, separates the equations the quiz provides
+from the steps the student must supply, and ends with a ten-problem timed drill
+that prints the provided equations with each problem.
