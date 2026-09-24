@@ -40,3 +40,8 @@ into a recipe with blank slots, solves it with the printout's numbers, adds prac
 with fresh numbers and full answers, ranks the problems by likelihood, separates the equations the quiz provides
 from the steps the student must supply, and ends with a ten-problem timed drill
 that prints the provided equations with each problem.
+
+Every solution on the page, including all practice runs and drill problems, is broken
+into numbered steps. Each step states what it does, why it is needed, the arithmetic one
+operation per line, and what the result means. The numbers in these steps are generated
+by script from the problem inputs, not typed by hand.
