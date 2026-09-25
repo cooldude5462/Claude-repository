@@ -10,6 +10,10 @@ worked solutions) is inside the single file.
 
 Contents
 
+- The official Exam 1 breakdown (28 questions: electric fields 8, electrical potential 7,
+  capacitance 5, Gauss's law 4, electric flux 2, work and energy 2), compared with the
+  four past papers, with a per-topic table of what to read and which past questions to
+  drill, and a planner that splits study time by the breakdown
 - A Foundations section (vectors, the dq method, work and energy, reading formulas)
   for readers starting from zero, and 23 "Why this is true" boxes that explain the
   physical mechanism behind every rule
@@ -24,7 +28,8 @@ Contents
   cards for every Gauss's-law case, and a 3D potential landscape
 - Worked examples from the lectures and Homework 1–7
 - All four past Hour Exam 1 papers (Spring 2014, Spring 2015, Fall 2015, Fall 2018)
-  with click-to-reveal solutions, 99 questions in total
+  with click-to-reveal solutions, 99 questions in total, each tagged with its
+  breakdown topic and filterable by topic
 - A decision map, scaling rules, and a trap list for exam day
 - A "What each letter means" box under every equation (73 in all) naming each
   symbol and its unit, a symbol glossary in Foundations F.6, and an "Each letter"
