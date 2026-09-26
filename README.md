@@ -51,3 +51,24 @@ Every solution on the page, including all practice runs and drill problems, is b
 into numbered steps. Each step states what it does, why it is needed, the arithmetic one
 operation per line, and what the result means. The numbers in these steps are generated
 by script from the problem inputs, not typed by hand.
+
+## Chapter drills from past exams
+
+Four practice pages, one per chapter, built from the 119 questions on the five past
+Hour Exam 1 papers (Spring 2014, Spring 2015, Fall 2015, Spring 2018, Fall 2018):
+
+| File | Chapter | Questions |
+| --- | --- | --- |
+| `drills-ch5-electric-field.html` | 5: charge, Coulomb's law, electric fields | 30 |
+| `drills-ch6-gauss-law.html` | 6: flux, Gauss's law, conductors | 37 |
+| `drills-ch7-electric-potential.html` | 7: potential energy, electric potential | 23 |
+| `drills-ch8-capacitance.html` | 8: capacitors, networks, energy, dielectrics | 29 |
+
+Each question is sorted into a chapter by the guide section it tests. It shows the shared
+setup and the figure cropped from the exam paper, with the answer choices worded as on
+the exam. Pick a choice and check it. A wrong pick is struck out and you can try again, or
+you can reveal the worked solution one step at a time, with Dr. E's key note where one
+exists. Retry resets a question. The side list colors each question by its result
+(not tried, right on the first try, missed) and filters by result, paper, and section,
+with a Random button. Progress is kept in the browser's local storage. Keyboard: A–E to
+pick, Enter to check, arrow keys to move, R to retry.
